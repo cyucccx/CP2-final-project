@@ -74,7 +74,8 @@ int main(int argc, char* args[])
     
     SDL_RenderPresent(screen);
 
-    while (1)
+    int quit = 0;
+    while (!quit)
     {
         SDL_Event event;
         while (SDL_PollEvent(&event))
@@ -82,17 +83,17 @@ int main(int argc, char* args[])
             switch (event.type)
             {
                 case SDL_QUIT:
-
-                    SDL_Quit();
+                    quit = 1;
                     break;
-                
                 default:
                     break;
             }
         }
         
     }
-    
+    SDL_DestroyRenderer(screen);
+    SDL_DestroyWindow(window);
+    SDL_Quit();
  
     return 0;
 }
