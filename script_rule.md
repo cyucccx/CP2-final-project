@@ -59,11 +59,13 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 2 #(0~3)
 name = "L紀"
 photo = "assets/scene/L紀.png"
-favor = -2 #(-10~10)
+favor = -2 #(-9~+9)
 name = "TCC"
 photo = "assets/scene/TCC.png"
-favor = +5 #(-10~10)
+favor = +5 #(-9~+9)
 ```
+（！）event 數量最多1000個
+
 每個event 後面不一定要接子集，如果沒有加backpack 就代表背包內無物品
 
 `character_number`是出現在畫面的角色人數，最多3人，最少0人
@@ -98,14 +100,14 @@ text = "text3"
 `text`就是應該要出現的相對應string
 #### reply
 ```toml
-[[professor.discussing.dialogue_reply]] #沒讀到就不用處理
+[[professor.discussing.reply]] #沒讀到就不用處理
 option_box = "assets/scene/option_box.png"
-option = "text1"
-next = "[event1]" #connect to other event（被中括號包起來）
-option = "text2"
-next = "[event2]"
-option = "text3" 
-next = "[event3]"
+option1 = "text1"
+next1 = "[event1]" #connect to other event（被中括號包起來）
+option2 = "text2"
+next2 = "[event2]"
+option3 = "text3" 
+next3 = "[event3]"
 ```
 dialogue 的子集，如果沒有dialogue 就不會有reply
 
@@ -118,19 +120,19 @@ dialogue 的子集，如果沒有dialogue 就不會有reply
 items_number = 5 #(0~9)
 name = "water bottle"
 photo = "assets/backpack/water_bottle.png"
-discription = "just a cute water bottle"
+description = "just a cute water bottle"
 name = "pencil"
 photo = "assets/backpack/pencil.png"
-discription = "it can write on anything"
+description = "it can write on anything"
 name = "T-shirt"
 photo = "assets/backpack/T-shirt.png"
-discription = "it is too small to L紀"
+description = "it is too small to L紀"
 name = "watch"
 photo = "assets/backpack/watch.png"
-discription = "apple watch, very expensive"
+description = "apple watch, very expensive"
 name = "christmas tree"
 photo = "assets/backpack/christmas_tree.png"
-discription = "hahahappy christmas"
+description = "hahahappy christmas"
 ```
 如果沒出現backpack的子集，就預設背包內無道具
 
@@ -142,4 +144,4 @@ discription = "hahahappy christmas"
 
 `photo`是道具圖片
 
-`discription`是道具簡介，裡面放string介紹道具功能
+`description`是道具簡介，裡面放string介紹道具功能
