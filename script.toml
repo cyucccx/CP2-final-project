@@ -12,10 +12,10 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 2 #(0~3)
 name = "L紀"
 photo = "assets/scene/L紀.png"
-favor = -2 #(-10~10)
+favor = -2 #(-9~+9)
 name = "TCC"
 photo = "assets/scene/TCC.png"
-favor = +5 #(-10~10)
+favor = +5 #(-9~+9)
 
 [[professor.discussing.dialogue]] #假如沒讀到就不用處理
 dialog_box = "assets/scene/dialog_box.png"
