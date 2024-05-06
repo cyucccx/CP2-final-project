@@ -52,13 +52,13 @@ int main(){
             if (getstring(buffer, &project_name) == -1){
                 // wrong
             }
-            printf("%s\n", project_name);
+            // printf("%s\n", project_name);
         }
         else if (strstr(buffer, "author") != 0){
             if (getstring(buffer, &author) == -1){
                 // wrong
             }
-            printf("%s\n", author);
+            // printf("%s\n", author);
         }
         // read home
         if (strstr(buffer, "[home]") != 0){
@@ -71,13 +71,13 @@ int main(){
                 if (getstring(buffer, &home_background) == -1){
                     // wrong
                 }
-                printf("%s\n", home_background);
+                // printf("%s\n", home_background);
             }
             else if (home_button == 0){
                 if (getstring(buffer, &home_button) == -1){
                     // wrong
                 }
-                printf("%s\n", home_button);
+                // printf("%s\n", home_button);
             }
             else if (backpack_background == 0){
                 if (getstring(buffer, &backpack_background) == -1){
@@ -199,6 +199,8 @@ int main(){
                 }
             }
             if (scene[scene_number].reply > 0 && scene[scene_number].dialogue == 0){
+                printf("wrong\n");
+                return 0;
                 // wrong
             }
             // printf("%d %d %d\n", scene[scene_number].dialogue, scene[scene_number].reply, scene[scene_number].backpack);
@@ -241,9 +243,6 @@ int main(){
                     string_index++;
                 }
             }
-            if (strcmp(buffer, "\n") == 0){
-                scene[scene_number].dialogue = 0;
-            }
         }
 
         // read reply
@@ -274,9 +273,6 @@ int main(){
                 getstring(buffer, &reply.next3);
                 printf("%s\n", reply.next3);
                 // switch to next3 event
-            }
-            if (strcmp(buffer, "\n") == 0){
-                scene[scene_number].reply = 0;
             }
         }
 
