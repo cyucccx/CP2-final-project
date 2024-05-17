@@ -1,10 +1,15 @@
 project_name = "Final Project"
 author = "張貓芋圓"
 
+# favor 改成在option 進行+-5,開個array存favor 最多+-100（爆掉就不會再更多了）
+# character 最多10個
+# 在backpack item description 多設定一個對話框放description
+
 [home]
 background = "assets/home/background.png"
 button = "assets/home/button.png"
 backpack_background = "assets/home/backpack_background.png" # 這時候不用出現 只是先設定
+max_character = 5 #(1~10)
 
 [professor.discussing] #event #中間不能空格
 background = "assets/scene/background.png"
@@ -12,10 +17,8 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 2 #(0~3)
 name = "L紀"
 photo = "assets/scene/L紀.png"
-favor = -2 #(-9~+9)
 name = "TCC"
 photo = "assets/scene/TCC.png"
-favor = +5 #(-9~+9)
 
 [[professor.discussing.dialogue]] #假如沒讀到就不用處理
 dialog_box = "assets/scene/dialog_box.png"
@@ -28,15 +31,21 @@ speaker = "TCC"
 text = "text3"
 
 [[professor.discussing.reply]] #沒讀到就不用處理
+option_box = "assets/scene/option_box.png"
+object = "TCC"
 option1 = "text1"
 next1 = "[event1]" #connect to other event（被中括號包起來）
+change_favor1 = +3 #(-5~+5)
 option2 = "text2"
 next2 = "[event2]"
+change_favor2 = 0 #(-5~+5)
 option3 = "text3" 
 next3 = "[event3]"
+change_favor3 = -5 #(-5~+5)
 
 [[professor.discussing.backpack]] #每個event後面要再放當下情況的backpack
 items_number = 5 #(0~9)
+description_box = "assets/backpack/description_box.png"
 name = "water bottle"
 photo = "assets/backpack/water_bottle.png"
 description = "just a cute water bottle"
@@ -52,3 +61,41 @@ description = "apple watch, very expensive"
 name = "christmas tree"
 photo = "assets/backpack/christmas_tree.png"
 description = "hahahappy christmas"
+
+[event1] 
+background = "assets/scene/background_copy.png"
+backpack_icon = "assets/scene/backpack_icon_copy.png"
+character_number = 3 #(0~3)
+name = "cyucccx"
+photo = "assets/scene/cyucccx.png"
+name = "group leader"
+photo = "assets/scene/group_leader.png"
+name = "meow"
+photo = "assets/scene/meow.png"
+
+[[professor.hello.dialogue]] #假如沒讀到就不用處理
+dialog_box = "assets/scene/dialog_box.png"
+string_number = 5 #(0~100) 0代表沒有對話
+speaker = "cyucccx"
+text = "hello"
+speaker = "cyucccx"
+text = "我要被當了"
+speaker = "group leader"
+text = "QQQ"
+speaker = "meow"
+text = "meowmeow"
+speaker = "meow"
+text = "meowwwww"
+
+[[professor.hello.reply]] #沒讀到就不用處理
+option_box = "assests/scene/option_box.png"
+object = "cyucccx"
+option1 = "text1"
+next1 = "[event4]" #connect to other event（被中括號包起來）
+change_favor1 = +2
+option2 = "text2"
+next2 = "[event5]"
+change_favor2 = -3
+option3 = "text3" 
+next3 = "[event6]"
+change_favor3 = +5

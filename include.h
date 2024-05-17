@@ -27,16 +27,22 @@ typedef struct dialogue{
 }sDialogue;
 
 typedef struct reply{
+    char *option_box;
+    char *object;
     char *option1;
     char *next1;
+    int32_t change_favor1;
     char *option2;
     char *next2;
+    int32_t change_favor2;
     char *option3;
     char *next3;
+    int32_t change_favor3;
 }sReply;
 
 typedef struct backpack{
     int32_t items_number;
+    char *description_box;
     char **name;
     char **photo;
     char **description;
@@ -49,9 +55,9 @@ typedef struct character{
 }sCharacter;
 
 void allocate(sScene *input){
-    input->name = calloc(500, sizeof(sScene));
-    input->background = calloc(500, sizeof(sScene));
-    input->backpack_icon = calloc(500, sizeof(sScene));
+    input->name = calloc(100, sizeof(sScene));
+    input->background = calloc(100, sizeof(sScene));
+    input->backpack_icon = calloc(100, sizeof(sScene));
     input->character_number = 0;
     input->dialogue = 0;
     input->reply = 0;
