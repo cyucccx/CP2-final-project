@@ -3,6 +3,7 @@
 // main and home is set the biggest problem is scene part...
 // remember to free the memory
 // don't read the sentence which is commented
+// if max_character < real number -> segmentation fault, plz resolve ;;
 
 int32_t getstring(char *string, char **var_name){
     char *start = strstr(string, "\"")+1;
@@ -118,7 +119,7 @@ int main(){
         // read event
         // search event code
         if (search_event != NULL){
-            if (strstr(buffer, search_event) != 0){
+            if (strstr(buffer, search_event) != 0 && buffer[0] == '['){
                 scene_number++;
                 search_event = NULL;
             }
@@ -188,6 +189,9 @@ int main(){
                 else if (strstr(buffer, "photo") != 0){
                     getstring(buffer, &character[character_index].photo);
                     printf("%s\n", character[character_index].photo);
+                    if (strcmp(character[character_index].photo, "null") == 0){
+                        // switch to no photo function
+                    }
                     index--;
                 }
             }
@@ -201,6 +205,7 @@ int main(){
                     dialogue.string_number = 0;
                     dialogue.speaker = calloc(100, sizeof(char));
                     dialogue.text = calloc(100, sizeof(char));
+                    dialogue.next = calloc(100, sizeof(char));
                     for (int32_t i = 0; i < 100; i++){
                         dialogue.speaker[i] = calloc(100, sizeof(char *));
                         dialogue.text[i] = calloc(100, sizeof(char *));
@@ -279,6 +284,14 @@ int main(){
                     printf("%s\n", dialogue.text[string_index]);
                     string_index++;
                 }
+            }
+            if (strstr(buffer, "next") != 0 && scene[scene_number].reply == 0){
+                getstring(buffer, &dialogue.next);
+                if (strcmp(dialogue.next, "null") != 0){
+                    search_event = calloc(100, sizeof(char));
+                    strcpy(search_event, dialogue.next);
+                }
+                printf("%s\n", dialogue.next);
             }
         }
 
