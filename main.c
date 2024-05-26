@@ -5,21 +5,6 @@
 // don't read the sentence which is commented
 // if max_character < real number -> segmentation fault, plz resolve ;;
 
-void free_scene(sScene *scene) {
-    if (scene->name) {
-        free(scene->name);
-        scene->name = NULL;
-    }
-    if (scene->background) {
-        free(scene->background);
-        scene->background = NULL;
-    }
-    if (scene->backpack_icon) {
-        free(scene->backpack_icon);
-        scene->backpack_icon = NULL;
-    }
-}//新加的free記得放
-
 int32_t getstring(char *string, char **var_name){
     char *start = strstr(string, "\"")+1;
     if (start == NULL){
