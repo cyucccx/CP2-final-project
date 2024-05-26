@@ -1,7 +1,7 @@
 #include "include.h"
 
 // main and home is set the biggest problem is scene part...
-// remember to free the memory
+// remember to free the memory!!!!!
 // don't read the sentence which is commented
 // if max_character < real number -> segmentation fault, plz resolve ;;
 
@@ -37,7 +37,6 @@ int32_t getstring(char *string, char **var_name){
 
 int main(int argc, char* args[]){
     FILE *script = fopen("script.toml", "r");
-    // 不可以隨便在pointer + 數值 如果讀到空行再加會爆掉 segmentation fault
     char buffer[500] = {0};
     char *project_name;
     char *author;
@@ -45,17 +44,18 @@ int main(int argc, char* args[]){
     char *home_background = 0;
     char *home_button = 0;
     char *backpack_background = 0;
-    int32_t scene_number = -1; // 0-1000
-    sScene scene[1001];
-    for (int32_t i = 0; i < 1001; i++){
-        allocate(&scene[i]);
-    }
-    sCharacter character[3];
+    int32_t max_character = 0; // create an array to store the favor of every character
+    sScene scene;
+    allocate_scene(&scene);
+    sCharacter *character;
+    int32_t count_character = 0;
     int32_t index = 0;
     sDialogue dialogue;
+    allocate_dialogue(&dialogue);
     sReply reply;
+    allocate_reply(&reply);
     sBackpack backpack;
-    backpack.items_number = 0;
+    allocate_backpack(&backpack);
     int32_t string_index = 0;
     int32_t backpack_index = 0;
     window = SDL_CreateWindow( "fin_project", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN );
@@ -108,44 +108,57 @@ int main(int argc, char* args[]){
             // printf("%s\n", backpack_background);
         }
         // read event
-        if (buffer[0] == '[' && home == 0 && buffer[1] != '['){
-            scene_number++;
+        // search event code
+        if (search_event != NULL){
+            if (strstr(buffer, search_event) != 0 && buffer[0] == '['){
+                if (scene.name != NULL){
+                    free_scene(&scene);
+                }
+                allocate_scene(&scene);
+                search_event = NULL;
+            }
+            else{
+                continue;
+            }
+        }
+        else if (buffer[0] == '[' && home == 0 && buffer[1] != '['){
+            if (scene.name != NULL){
+                free_scene(&scene);
+            }
+            allocate_scene(&scene);
             char *end = strstr(buffer, "]");
             *end = '\0';
-            strcpy(scene[scene_number].name, buffer+1);
-            // printf("%s\n", scene[scene_number].name);
+            strcpy(scene.name, buffer+1);
+            printf("%s\n", scene.name);
+
         }
         // printf("%d:%d %d %d\n", scene_number, scene[scene_number].dialogue, scene[scene_number].reply, scene[scene_number].backpack);
-        if (scene[scene_number].dialogue == 0 && scene[scene_number].reply == 0 && scene[scene_number].backpack == 0){
+        if (scene.dialogue == 0 && scene.reply == 0 && scene.backpack == 0){
             // printf("%s\n", scene[scene_number].background);
-            if (scene[scene_number].background != 0){
+            if (scene.background != 0){
                 if (strstr(buffer, "background") != 0){
-                    getstring(buffer, &scene[scene_number].background);
-                    printf("%s\n", scene[scene_number].background);
+                    getstring(buffer, &scene.background);
+                    printf("%s\n", scene.background);
                 }
             }
-            if (scene[scene_number].backpack_icon != 0){
+            if (scene.backpack_icon != 0){
                 if (strstr(buffer, "backpack_icon") != 0){
-                    getstring(buffer, &scene[scene_number].backpack_icon);
-                    printf("%s\n", scene[scene_number].backpack_icon);
+                    getstring(buffer, &scene.backpack_icon);
+                    printf("%s\n", scene.backpack_icon);
                 }
             }
-            if (scene[scene_number].character_number == 0){
+            if (scene.character_number == 0){
                 if (strstr(buffer, "character_number") != 0){
                     char *start = strstr(buffer, "=");
                     int32_t START = start-buffer;
                     for (int32_t i = START; buffer[i] != '\n'; i++){
                         if (buffer[i] >= 48 && buffer[i] < 57){
-                            scene[scene_number].character_number = buffer[i]-48;
+                            scene.character_number = buffer[i]-48;
                             break;
                         }
                     }
-                    for (int32_t i = 0; i < 3; i++){
-                        character[i].name = calloc(50, sizeof(char));
-                        character[i].photo = calloc(50, sizeof(char));
-                    }
-                    index = scene[scene_number].character_number;
-                    printf("character_number = %d\n", scene[scene_number].character_number);
+                    index = scene.character_number;
+                    printf("character_number = %d\n", scene.character_number);
                 }
             }
             if (index > 0){
@@ -175,49 +188,53 @@ int main(int argc, char* args[]){
                             break;
                         }
                     }
-                    printf("favor = %d\n", character[3-index].favor);
+                    if (check == 0){
+                        if (count_character == max_character){
+                            // wrong
+                        }
+                        character_index = count_character;
+                        strncpy(character[count_character].name, temp, 100);
+                        count_character++;
+                    }
+                    printf("%s\n", character[character_index].name);
+                }
+                else if (strstr(buffer, "photo") != 0){
+                    getstring(buffer, &character[character_index].photo);
+                    printf("%s\n", character[character_index].photo);
+                    if (strcmp(character[character_index].photo, "null") == 0){
+                        // switch to no photo function
+                    }
                     index--;
                 }
             }
         }
         if (buffer[0] == '[' && buffer[1] == '[' && home == 0){
-            if (strstr(buffer, scene[scene_number].name) != 0){
+            if (strstr(buffer, scene.name) != 0){
                 if (strstr(buffer, "dialogue") != 0){
                     string_index = 0;
-                    scene[scene_number].dialogue = 1;
-                    dialogue.dialog_box = calloc(500, sizeof(char));
-                    dialogue.string_number = 0;
-                    dialogue.speaker = calloc(100, sizeof(char));
-                    dialogue.text = calloc(100, sizeof(char));
-                    for (int32_t i = 0; i < 100; i++){
-                        dialogue.speaker[i] = calloc(500, sizeof(char *));
-                        dialogue.text[i] = calloc(500, sizeof(char *));
+                    scene.dialogue = 1;
+                    if (dialogue.dialog_box != NULL){
+                        free_dialogue(&dialogue);
                     }
+                    allocate_dialogue(&dialogue);
                 }
                 else if (strstr(buffer, "reply") != 0){
-                    scene[scene_number].reply = 1;
-                    reply.option1 = calloc(500, sizeof(char));
-                    reply.next1 = calloc(500, sizeof(char));
-                    reply.option2 = calloc(500, sizeof(char));
-                    reply.next2 = calloc(500, sizeof(char));
-                    reply.option3 = calloc(500, sizeof(char));
-                    reply.next3 = calloc(500, sizeof(char));
+                    scene.reply = 1;
+                    if (reply.option_box != NULL){
+                        free_reply(&reply);
+                    }
+                    allocate_reply(&reply);
                 }
                 else if (strstr(buffer, "backpack") != 0){
                     backpack_index = 0;
-                    scene[scene_number].backpack = 1;
-                    backpack.items_number = 0;
-                    backpack.name = calloc(9, sizeof(char));
-                    backpack.photo = calloc(9, sizeof(char));
-                    backpack.description = calloc(9, sizeof(char));
-                    for (int32_t i = 0; i < 9; i++){
-                        backpack.name[i] = calloc(500, sizeof(char *));
-                        backpack.photo[i] = calloc(500, sizeof(char *));
-                        backpack.description = calloc(500, sizeof(char *));
+                    scene.backpack = 1;
+                    if (backpack.description_box != NULL){
+                        free_backpack(&backpack);
                     }
+                    allocate_backpack(&backpack);
                 }
             }
-            if (scene[scene_number].reply > 0 && scene[scene_number].dialogue == 0){
+            if (scene.reply > 0 && scene.dialogue == 0){
                 printf("wrong\n");
                 return 0;
                 // wrong
@@ -225,7 +242,7 @@ int main(int argc, char* args[]){
             // printf("%d %d %d\n", scene[scene_number].dialogue, scene[scene_number].reply, scene[scene_number].backpack);
         }
         // read dialogue
-        if (scene[scene_number].dialogue == 1){
+        if (scene.dialogue == 1){
             if (strstr(buffer, "dialog_box") != 0){
                 getstring(buffer, &dialogue.dialog_box);
                 printf("%s\n", dialogue.dialog_box);
@@ -262,11 +279,37 @@ int main(int argc, char* args[]){
                     string_index++;
                 }
             }
+            if (strstr(buffer, "next") != 0 && scene.reply == 0){
+                getstring(buffer, &dialogue.next);
+                if (strcmp(dialogue.next, "null") != 0){
+                    search_event = calloc(100, sizeof(char));
+                    strcpy(search_event, dialogue.next);
+                }
+                printf("%s\n", dialogue.next);
+            }
         }
 
         // read reply
-        if (scene[scene_number].reply == 1){
-            if (strstr(buffer, "option1") != 0){
+        if (scene.reply == 1){
+            int32_t object_number = -1;
+            if (strstr(buffer, "option_box") != 0){
+                getstring(buffer, &reply.option_box);
+                printf("%s\n", reply.option_box);
+            }
+            else if (strstr(buffer, "object") != 0){
+                getstring(buffer, &reply.object);
+                for (int32_t i = 0; i < count_character; i++){
+                    if (strcmp(reply.object, character[i].name) == 0){
+                        object_number = i;
+                        break;
+                    }
+                }
+                if (object_number == -1){
+                    // wrong
+                }
+                printf("%s\n", reply.object);
+            }
+            else if (strstr(buffer, "option1") != 0){
                 getstring(buffer, &reply.option1);
                 printf("%s\n", reply.option1);
             }
@@ -296,7 +339,7 @@ int main(int argc, char* args[]){
         }
 
         // read backpack
-        if (scene[scene_number].backpack == 1){
+        if (scene.backpack == 1){
             /*這裡是測試區
             for(int i=0;i<dialogue.string_number;i++)
             {
@@ -344,7 +387,9 @@ int main(int argc, char* args[]){
                     backpack_index++;
                 }
             }
+            free_scene(&scene);
         }
         
     }
+    fclose(script);
 }
