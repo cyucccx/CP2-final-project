@@ -7,6 +7,23 @@
 #include <stdlib.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include <SDL2/SDL_ttf.h>
+
+extern SDL_Window* window;
+extern SDL_Renderer* screen;
+
+typedef struct
+{
+    double x,y;
+    int width,height;
+    SDL_Texture *texture;
+}Player;
+
+void create_player(Player play, SDL_Renderer *render, SDL_Surface *image, SDL_Rect a);
+
+int SDL_no_choice_one_character(char *background_image, char *character_image, char *character_message, char *character_name);
+
+int SDL_choice_one_character(char *background_image, char *character_image,char *sellect_button_message_up,char *sellect_button_message_middle,char *sellect_button_message_down);
 
 typedef struct scene{
     int32_t number;
@@ -27,22 +44,16 @@ typedef struct dialogue{
 }sDialogue;
 
 typedef struct reply{
-    char *option_box;
-    char *object;
     char *option1;
     char *next1;
-    int32_t change_favor1;
     char *option2;
     char *next2;
-    int32_t change_favor2;
     char *option3;
     char *next3;
-    int32_t change_favor3;
 }sReply;
 
 typedef struct backpack{
     int32_t items_number;
-    char *description_box;
     char **name;
     char **photo;
     char **description;
@@ -54,12 +65,4 @@ typedef struct character{
     int32_t favor;
 }sCharacter;
 
-void allocate(sScene *input){
-    input->name = calloc(100, sizeof(sScene));
-    input->background = calloc(100, sizeof(sScene));
-    input->backpack_icon = calloc(100, sizeof(sScene));
-    input->character_number = 0;
-    input->dialogue = 0;
-    input->reply = 0;
-    input->backpack = 0;
-}
+void allocate(sScene *input);
