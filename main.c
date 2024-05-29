@@ -74,16 +74,19 @@ int main(){
                 if (getstring(buffer, &home_background) == -1){
                     // wrong
                 }
+                printf("%s\n", home_background);
             }
             else if (home_button == 0){
                 if (getstring(buffer, &home_button) == -1){
                     // wrong
                 }
+                printf("%s\n", home_button);
             }
             else if (backpack_background == 0){
                 if (getstring(buffer, &backpack_background) == -1){
                     // wrong
                 }
+                printf("%s\n", backpack_background);
             }
             else if (max_character == 0){
                 if (strstr(buffer, "max_character") != 0){
@@ -108,11 +111,8 @@ int main(){
                         character[i].favor = 0;
                     }
                 }
+                printf("%d\n", max_character);
             }
-            printf("%s\n", home_background);
-            printf("%s\n", home_button);
-            printf("%s\n", backpack_background);
-            printf("%d\n", max_character);
         }
         // read event
         // search event code
