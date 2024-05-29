@@ -5,6 +5,7 @@
 // don't read the sentence which is commented
 // if max_character < real number -> segmentation fault, plz resolve ;;
 
+
 int32_t getstring(char *string, char **var_name){
     char *start = strstr(string, "\"")+1;
     if (start == NULL){
@@ -44,7 +45,8 @@ int main(){
     int32_t string_index = 0;
     int32_t backpack_index = 0;
     char *search_event = NULL;
-
+    window = SDL_CreateWindow( "fin_project", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN );
+    screen = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     while(fgets(buffer, 500, script) != 0){
         if (strcmp(buffer, "\n") == 0 && home == 1){
             home = 0;
@@ -172,10 +174,10 @@ int main(){
             }
             if (index > 0){
                 int32_t character_index = 0;
+                int32_t check = 0;
                 if (strstr(buffer, "name") != 0){
                     char *temp = 0;
                     getstring(buffer, &temp);
-                    int32_t check = 0;
                     for (int32_t i = 0; i < count_character; i++){
                         if (strcmp(character[i].name, temp) == 0){
                             check = 1;
@@ -189,18 +191,22 @@ int main(){
                         }
                         character_index = count_character;
                         strncpy(character[count_character].name, temp, 100);
-                        count_character++;
                     }
                     printf("%s\n", character[character_index].name);
                 }
                 else if (strstr(buffer, "photo") != 0){
-                    getstring(buffer, &character[character_index].photo);
-                    printf("%s\n", character[character_index].photo);
-                    if (strcmp(character[character_index].photo, "null") == 0){
-                        // switch to no photo function
+                    if (check == 0){
+                        character_index = count_character;
+                        getstring(buffer, &character[character_index].photo);
+                        printf("%s\n", character[character_index].photo);
+                        if (strcmp(character[character_index].photo, "null") == 0){
+                            // switch to no photo function
+                        }
+                        count_character++;
                     }
                     index--;
                 }
+                
             }
         }
         if (buffer[0] == '[' && buffer[1] == '[' && home == 0){
@@ -280,7 +286,28 @@ int main(){
                     search_event = calloc(100, sizeof(char));
                     strcpy(search_event, dialogue.next);
                 }
-                printf("%s\n", dialogue.next);
+                /*
+                for(int i=0;i<dialogue.string_number;i++)
+                {
+                    for(int j=0;j<scene.character_number;j++)
+                    {
+                        if(strcmp(dialogue.speaker[i],character[j].name)==0 )
+                        {
+                            int end = SDL_no_choice_one_character(scene.background,character[j].photo,dialogue.text[i],character[j].name);
+                            if(end==1)
+                            {
+                                SDL_DestroyRenderer(screen);
+                                SDL_DestroyWindow(window);
+                                SDL_Quit();
+                                for (int32_t i = 0; i < 1001; i++) {
+                                    free_scene(&scene);
+                                }
+                                return 0;
+                            }
+                        }
+                    }
+                }
+                */
                 if (dialogue.dialog_box != NULL){
                     free_dialogue(&dialogue);
                 }
