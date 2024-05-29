@@ -9,16 +9,18 @@ author = "張貓芋圓"
 background = "assets/home/background.png"
 button = "assets/home/button.png"
 backpack_background = "assets/home/backpack_background.png" # 這時候不用出現 只是先設定
-max_character = 5 #(1~10)
+max_character = 6 #(1~10)
 
 [professor.discussing] #event #中間不能空格
 background = "assets/scene/background.png"
 backpack_icon = "assets/scene/backpack_icon.png"
-character_number = 2 #(0~3)
+character_number = 3 #(0~6) #要確認數量
 name = "L紀"
 photo = "assets/scene/L紀.png"
 name = "TCC"
 photo = "assets/scene/TCC.png"
+name = "旁白"
+photo = "null"
 
 [[professor.discussing.dialogue]] #假如沒讀到就不用處理
 dialog_box = "assets/scene/dialog_box.png"
@@ -29,19 +31,20 @@ speaker = "L紀"
 text = "text2"
 speaker = "TCC"
 text = "text3"
+next = "null"
 
 [[professor.discussing.reply]] #沒讀到就不用處理
 option_box = "assets/scene/option_box.png"
 object = "TCC"
 option1 = "text1"
-next1 = "[event1]" #connect to other event（被中括號包起來）
 change_favor1 = +3 #(-5~+5)
+next1 = "[professor.hello]" #connect to other event（被中括號包起來）
 option2 = "text2"
-next2 = "[event2]"
 change_favor2 = 0 #(-5~+5)
+next2 = "[event2]"
 option3 = "text3" 
-next3 = "[event3]"
 change_favor3 = -5 #(-5~+5)
+next3 = "[event3]"
 
 [[professor.discussing.backpack]] #每個event後面要再放當下情況的backpack
 items_number = 5 #(0~9)
@@ -62,7 +65,7 @@ name = "christmas tree"
 photo = "assets/backpack/christmas_tree.png"
 description = "hahahappy christmas"
 
-[event1] 
+[professor.hello]
 background = "assets/scene/background_copy.png"
 backpack_icon = "assets/scene/backpack_icon_copy.png"
 character_number = 3 #(0~3)
@@ -86,6 +89,7 @@ speaker = "meow"
 text = "meowmeow"
 speaker = "meow"
 text = "meowwwww"
+next = "[event6]"
 
 [[professor.hello.reply]] #沒讀到就不用處理
 option_box = "assests/scene/option_box.png"
