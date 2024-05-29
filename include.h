@@ -7,23 +7,6 @@
 #include <stdlib.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
-#include <SDL2/SDL_ttf.h>
-
-extern SDL_Window* window;
-extern SDL_Renderer* screen;
-
-typedef struct
-{
-    double x,y;
-    int width,height;
-    SDL_Texture *texture;
-}Player;
-
-void create_player(Player play, SDL_Renderer *render, SDL_Surface *image, SDL_Rect a);
-
-int SDL_no_choice_one_character(char *background_image, char *character_image, char *character_message, char *character_name);
-
-int SDL_choice_one_character(char *background_image, char *character_image,char *sellect_button_message_up,char *sellect_button_message_middle,char *sellect_button_message_down);
 
 typedef struct scene{
     int32_t number;
@@ -45,16 +28,22 @@ typedef struct dialogue{
 }sDialogue;
 
 typedef struct reply{
+    char *option_box;
+    char *object;
     char *option1;
     char *next1;
+    int32_t change_favor1;
     char *option2;
     char *next2;
+    int32_t change_favor2;
     char *option3;
     char *next3;
+    int32_t change_favor3;
 }sReply;
 
 typedef struct backpack{
     int32_t items_number;
+    char *description_box;
     char **name;
     char **photo;
     char **description;
@@ -78,8 +67,11 @@ void allocate_scene(sScene *input){
 
 void free_scene(sScene *input){
     free(input->name);
+    input->name = NULL;
     free(input->background);
+    input->background = NULL;
     free(input->backpack_icon);
+    input->backpack_icon = NULL;
 }
 
 void allocate_dialogue(sDialogue *input){
@@ -96,13 +88,19 @@ void allocate_dialogue(sDialogue *input){
 
 void free_dialogue(sDialogue *input){
     free(input->dialog_box);
+    input->dialog_box = NULL;
     free(input->next);
+    input->next = NULL;
     for (int32_t i = 0; i < 100; i++){
         free(input->speaker[i]);
+        input->speaker[i] = NULL;
         free(input->text[i]);
+        input->text[i] = NULL;
     }
     free(input->speaker);
+    input->speaker = NULL;
     free(input->text);
+    input->text = NULL;
 }
 
 void allocate_reply(sReply *input){
@@ -121,13 +119,21 @@ void allocate_reply(sReply *input){
 
 void free_reply(sReply *input){
     free(input->option_box);
+    input->option_box = NULL;
     free(input->object);
+    input->object = NULL;
     free(input->option1);
+    input->option1 = NULL;
     free(input->next1);
+    input->next1 = NULL;
     free(input->option2);
+    input->option2 = NULL;
     free(input->next2);
+    input->next2 = NULL;
     free(input->option3);
+    input->option3 = NULL;
     free(input->next3);
+    input->next3 = NULL;
 }
 
 void allocate_backpack(sBackpack *input){
@@ -145,12 +151,19 @@ void allocate_backpack(sBackpack *input){
 
 void free_backpack(sBackpack *input){
     free(input->description_box);
+    input->description_box = NULL;
     for (int32_t i = 0; i < 9; i++){
         free(input->name[i]);
+        input->name[i] = NULL;
         free(input->photo[i]);
+        input->photo[i] = NULL;
         free(input->description[i]);
+        input->description[i] = NULL;
     }
     free(input->name);
+    input->name = NULL;
     free(input->photo);
+    input->photo = NULL;
     free(input->description);
+    input->description = NULL;
 }
