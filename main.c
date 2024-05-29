@@ -5,21 +5,6 @@
 // don't read the sentence which is commented
 // if max_character < real number -> segmentation fault, plz resolve ;;
 
-void free_scene(sScene *scene) {
-    if (scene->name) {
-        free(scene->name);
-        scene->name = NULL;
-    }
-    if (scene->background) {
-        free(scene->background);
-        scene->background = NULL;
-    }
-    if (scene->backpack_icon) {
-        free(scene->backpack_icon);
-        scene->backpack_icon = NULL;
-    }
-}//新加的free記得放
-
 int32_t getstring(char *string, char **var_name){
     char *start = strstr(string, "\"")+1;
     if (start == NULL){
@@ -35,7 +20,7 @@ int32_t getstring(char *string, char **var_name){
     return 0;
 }
 
-int main(int argc, char* args[]){
+int main(){
     FILE *script = fopen("script.toml", "r");
     char buffer[500] = {0};
     char *project_name;
@@ -58,8 +43,7 @@ int main(int argc, char* args[]){
     allocate_backpack(&backpack);
     int32_t string_index = 0;
     int32_t backpack_index = 0;
-    window = SDL_CreateWindow( "fin_project", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN );
-    screen = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    char *search_event = NULL;
 
     while(fgets(buffer, 500, script) != 0){
         if (strcmp(buffer, "\n") == 0 && home == 1){
@@ -71,13 +55,13 @@ int main(int argc, char* args[]){
             if (getstring(buffer, &project_name) == -1){
                 // wrong
             }
-            // printf("%s\n", project_name);
+            printf("%s\n", project_name);
         }
         else if (strstr(buffer, "author") != 0){
             if (getstring(buffer, &author) == -1){
                 // wrong
             }
-            // printf("%s\n", author);
+            printf("%s\n", author);
         }
         // read home
         if (strstr(buffer, "[home]") != 0){
@@ -90,22 +74,45 @@ int main(int argc, char* args[]){
                 if (getstring(buffer, &home_background) == -1){
                     // wrong
                 }
-                // printf("%s\n", home_background);
             }
             else if (home_button == 0){
                 if (getstring(buffer, &home_button) == -1){
                     // wrong
                 }
-                // printf("%s\n", home_button);
             }
             else if (backpack_background == 0){
                 if (getstring(buffer, &backpack_background) == -1){
                     // wrong
                 }
             }
-            // printf("%s\n", home_background);
-            // printf("%s\n", home_button);
-            // printf("%s\n", backpack_background);
+            else if (max_character == 0){
+                if (strstr(buffer, "max_character") != 0){
+                    char *start = strstr(buffer, "=");
+                    int32_t START = start-buffer;
+                    for (int32_t i = START; buffer[i] != '\n'; i++){
+                        if (buffer[i] >= 48 && buffer[i] < 57){
+                            if (buffer[i+1] >= 48 && buffer[i+1] < 57){
+                                max_character = (buffer[i]-48)*10 + buffer[i+1]-48;
+                                break;
+                            }
+                            else{
+                                max_character = buffer[i]-48;
+                                break;
+                            }
+                        }
+                    }
+                    character = calloc(max_character, sizeof(sCharacter));
+                    for (int32_t i = 0; i < max_character; i++){
+                        character[i].name = calloc(100, sizeof(char));
+                        character[i].photo = calloc(100, sizeof(char));
+                        character[i].favor = 0;
+                    }
+                }
+            }
+            printf("%s\n", home_background);
+            printf("%s\n", home_button);
+            printf("%s\n", backpack_background);
+            printf("%d\n", max_character);
         }
         // read event
         // search event code
@@ -115,6 +122,7 @@ int main(int argc, char* args[]){
                     free_scene(&scene);
                 }
                 allocate_scene(&scene);
+                strcpy(scene.name, search_event);
                 search_event = NULL;
             }
             else{
@@ -123,6 +131,8 @@ int main(int argc, char* args[]){
         }
         else if (buffer[0] == '[' && home == 0 && buffer[1] != '['){
             if (scene.name != NULL){
+                printf("%s\n", scene.name);
+                printf("137\n");
                 free_scene(&scene);
             }
             allocate_scene(&scene);
@@ -130,7 +140,6 @@ int main(int argc, char* args[]){
             *end = '\0';
             strcpy(scene.name, buffer+1);
             printf("%s\n", scene.name);
-
         }
         // printf("%d:%d %d %d\n", scene_number, scene[scene_number].dialogue, scene[scene_number].reply, scene[scene_number].backpack);
         if (scene.dialogue == 0 && scene.reply == 0 && scene.backpack == 0){
@@ -162,29 +171,15 @@ int main(int argc, char* args[]){
                 }
             }
             if (index > 0){
+                int32_t character_index = 0;
                 if (strstr(buffer, "name") != 0){
-                    getstring(buffer, &character[3-index].name);
-                    printf("%s\n", character[3-index].name);
-                }
-                else if (strstr(buffer, "photo") != 0){
-                    getstring(buffer, &character[3-index].photo);
-                    printf("%s\n", character[3-index].photo);
-                }
-                else if (strstr(buffer, "favor") != 0){
-                    char *start = strstr(buffer, "=");
-                    int32_t START = start-buffer;
-                    for (int32_t i = START; buffer[i] != '\n'; i++){
-                        if (buffer[i] == 43 || buffer[i] == 45){
-                            if (buffer[i+2] >= 48 && buffer[i+2] < 57){
-                                printf("%d", buffer[i+2]);
-                                character[3-index].favor = (buffer[i+1]-48)*10 + buffer[i+2]-48;
-                            }
-                            else{
-                                character[3-index].favor = buffer[i+1]-48;
-                            }
-                            if (buffer[i] == 45){
-                                character[3-index].favor = -character[3-index].favor;
-                            }
+                    char *temp = 0;
+                    getstring(buffer, &temp);
+                    int32_t check = 0;
+                    for (int32_t i = 0; i < count_character; i++){
+                        if (strcmp(character[i].name, temp) == 0){
+                            check = 1;
+                            character_index = i;
                             break;
                         }
                     }
@@ -281,11 +276,14 @@ int main(int argc, char* args[]){
             }
             if (strstr(buffer, "next") != 0 && scene.reply == 0){
                 getstring(buffer, &dialogue.next);
-                if (strcmp(dialogue.next, "null") != 0){
+                if (strstr(dialogue.next, "null") == 0){
                     search_event = calloc(100, sizeof(char));
                     strcpy(search_event, dialogue.next);
                 }
                 printf("%s\n", dialogue.next);
+                if (dialogue.dialog_box != NULL){
+                    free_dialogue(&dialogue);
+                }
             }
         }
 
@@ -313,55 +311,126 @@ int main(int argc, char* args[]){
                 getstring(buffer, &reply.option1);
                 printf("%s\n", reply.option1);
             }
+            else if (strstr(buffer, "change_favor1") != 0){
+                char *start = strstr(buffer, "=");
+                int32_t START = start-buffer;
+                for (int32_t i = START; buffer[i] != '\n'; i++){
+                    if (buffer[i] == 43){
+                        reply.change_favor1 = buffer[i+1]-48;
+                        break;
+                    }
+                    else if (buffer[i] == 45){
+                        reply.change_favor1 = -(buffer[i+1]-48);
+                        break;
+                    }
+                    else if (buffer[i] >= 48 && buffer[i] < 57){
+                        reply.change_favor1 = buffer[i]-48;
+                        break;
+                    }
+                }
+                printf("%d\n", reply.change_favor1);
+                // if player choose option 1
+                // character[object_number].favor += reply.change_favor1;
+                // if (character[object_number].favor > 100){
+                //     character[object_number].favor = 100;
+                // }
+                // else if (character[object_number].favor < 0){
+                //     character[object_number].favor = 0;
+                // }
+            }
             else if (strstr(buffer, "next1") != 0){
                 getstring(buffer, &reply.next1);
                 printf("%s\n", reply.next1);
                 // switch to next1 event
+                // if player choose option1
+                search_event = calloc(100, sizeof(char));
+                strcpy(search_event, reply.next1);
             }
             else if (strstr(buffer, "option2") != 0){
                 getstring(buffer, &reply.option2);
                 printf("%s\n", reply.option2);
             }
+            else if (strstr(buffer, "change_favor2") != 0){
+                char *start = strstr(buffer, "=");
+                int32_t START = start-buffer;
+                for (int32_t i = START; buffer[i] != '\n'; i++){
+                    if (buffer[i] == 43){
+                        reply.change_favor2 = buffer[i+1]-48;
+                        break;
+                    }
+                    else if (buffer[i] == 45){
+                        reply.change_favor2 = -(buffer[i+1]-48);
+                        break;
+                    }
+                    else if (buffer[i] >= 48 && buffer[i] < 57){
+                        reply.change_favor2 = buffer[i]-48;
+                        break;
+                    }
+                }
+                printf("%d\n", reply.change_favor2);
+                // if player choose option 2
+                // character[object_number].favor += reply.change_favor2;
+                // if (character[object_number].favor > 100){
+                //     character[object_number].favor = 100;
+                // }
+                // else if (character[object_number].favor < 0){
+                //     character[object_number].favor = 0;
+                // }
+            }
             else if (strstr(buffer, "next2") != 0){
                 getstring(buffer, &reply.next2);
                 printf("%s\n", reply.next2);
                 // switch to next2 event
+                // if player choose option2
+                // search_event = calloc(100, sizeof(char));
+                // strcpy(search_event, reply.next2);
             }
             else if (strstr(buffer, "option3") != 0){
                 getstring(buffer, &reply.option3);
                 printf("%s\n", reply.option3);
             }
+            else if (strstr(buffer, "change_favor3") != 0){
+                char *start = strstr(buffer, "=");
+                int32_t START = start-buffer;
+                for (int32_t i = START; buffer[i] != '\n'; i++){
+                    if (buffer[i] == 43){
+                        reply.change_favor3 = buffer[i+1]-48;
+                        break;
+                    }
+                    else if (buffer[i] == 45){
+                        reply.change_favor3 = -(buffer[i+1]-48);
+                        break;
+                    }
+                    else if (buffer[i] >= 48 && buffer[i] < 57){
+                        reply.change_favor3 = buffer[i]-48;
+                        break;
+                    }
+                }
+                printf("%d\n", reply.change_favor3);
+                // if player choose option 3
+                // character[object_number].favor += reply.change_favor3;
+                // if (character[object_number].favor > 100){
+                //     character[object_number].favor = 100;
+                // }
+                // else if (character[object_number].favor < 0){
+                //     character[object_number].favor = 0;
+                // }
+            }
             else if (strstr(buffer, "next3") != 0){
                 getstring(buffer, &reply.next3);
                 printf("%s\n", reply.next3);
                 // switch to next3 event
+                // if player choose option3
+                // search_event = calloc(100, sizeof(char));
+                // strcpy(search_event, reply.next3);
+                if (reply.option_box != NULL){
+                    free_reply(&reply);
+                }
             }
         }
 
         // read backpack
         if (scene.backpack == 1){
-            /*這裡是測試區
-            for(int i=0;i<dialogue.string_number;i++)
-            {
-                for(int j=0;j<scene[scene_number].character_number;j++)
-                {
-                    if(strcmp(dialogue.speaker[i],character[j].name)==0 )
-                    {
-                        int end = SDL_no_choice_one_character(scene[scene_number].background,character[j].photo,dialogue.text[i],character[j].name);
-                        if(end==1)
-                        {
-                            SDL_DestroyRenderer(screen);
-                            SDL_DestroyWindow(window);
-                            SDL_Quit();
-                            for (int32_t i = 0; i < 1001; i++) {
-                                free_scene(&scene[i]);
-                            }
-                            return 0;
-                        }
-                    }
-                }
-            }
-            */
             if (strstr(buffer, "items_number") != 0){
                 char *start = strstr(buffer, "=");
                 int32_t START = start-buffer;
@@ -371,6 +440,11 @@ int main(int argc, char* args[]){
                         break;
                     }
                 }
+                printf("%d\n", backpack.items_number);
+            }
+            if (strstr(buffer, "description_box") != 0){
+                getstring(buffer, &backpack.description_box);
+                printf("%s\n", backpack.description_box);
             }
             if (backpack_index < backpack.items_number){
                 if (strstr(buffer, "name") != 0){
@@ -381,15 +455,17 @@ int main(int argc, char* args[]){
                     getstring(buffer, &backpack.photo[backpack_index]);
                     printf("%s\n", backpack.photo[backpack_index]);
                 }
-                else if(strstr(buffer, "description") != 0){
+                else if(strstr(buffer, "description") != 0 && strstr(buffer, "description_box") == 0){
                     getstring(buffer, &backpack.description[backpack_index]);
                     printf("%s\n", backpack.description[backpack_index]);
                     backpack_index++;
                 }
             }
-            free_scene(&scene);
+            if (backpack.description_box != NULL && backpack_index == backpack.items_number && backpack_index != 0){
+                free_backpack(&backpack);
+                free_scene(&scene);
+            }
         }
-        
     }
     fclose(script);
 }
