@@ -77,6 +77,10 @@ void allocate_scene(sScene *input);
 
 void free_scene(sScene *input);
 
+void allocate_backpack(sBackpack *input);
+
+void free_backpack(sBackpack *input);
+
 void allocate_dialogue(sDialogue *input);
 
 void free_dialogue(sDialogue *input);
@@ -84,7 +88,3 @@ void free_dialogue(sDialogue *input);
 void allocate_reply(sReply *input);
 
 void free_reply(sReply *input);
-
-void allocate_backpack(sBackpack *input);
-
-void free_backpack(sBackpack *input);
