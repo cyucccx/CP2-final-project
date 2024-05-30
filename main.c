@@ -211,7 +211,15 @@ int main(){
         }
         if (buffer[0] == '[' && buffer[1] == '[' && home == 0){
             if (strstr(buffer, scene.name) != 0){
-                if (strstr(buffer, "dialogue") != 0){
+                if (strstr(buffer, "backpack") != 0){
+                    backpack_index = 0;
+                    scene.backpack = 1;
+                    if (backpack.description_box != NULL){
+                        free_backpack(&backpack);
+                    }
+                    allocate_backpack(&backpack);
+                }
+                else if (strstr(buffer, "dialogue") != 0){
                     string_index = 0;
                     scene.dialogue = 1;
                     if (dialogue.dialog_box != NULL){
@@ -226,14 +234,6 @@ int main(){
                     }
                     allocate_reply(&reply);
                 }
-                else if (strstr(buffer, "backpack") != 0){
-                    backpack_index = 0;
-                    scene.backpack = 1;
-                    if (backpack.description_box != NULL){
-                        free_backpack(&backpack);
-                    }
-                    allocate_backpack(&backpack);
-                }
             }
             if (scene.reply > 0 && scene.dialogue == 0){
                 printf("wrong\n");
@@ -242,6 +242,45 @@ int main(){
             }
             // printf("%d %d %d\n", scene[scene_number].dialogue, scene[scene_number].reply, scene[scene_number].backpack);
         }
+
+        // read backpack
+        if (scene.backpack == 1){
+            if (strstr(buffer, "items_number") != 0){
+                char *start = strstr(buffer, "=");
+                int32_t START = start-buffer;
+                for (int32_t i = START; buffer[i] != '\n'; i++){
+                    if (buffer[i] >= 48 && buffer[i] < 57){
+                        backpack.items_number = buffer[i]-48;
+                        break;
+                    }
+                }
+                printf("%d\n", backpack.items_number);
+            }
+            if (strstr(buffer, "description_box") != 0){
+                getstring(buffer, &backpack.description_box);
+                printf("%s\n", backpack.description_box);
+            }
+            if (backpack_index < backpack.items_number){
+                if (strstr(buffer, "name") != 0){
+                    getstring(buffer, &backpack.name[backpack_index]);
+                    printf("%s\n", backpack.name[backpack_index]);
+                }
+                else if(strstr(buffer, "photo") != 0){
+                    getstring(buffer, &backpack.photo[backpack_index]);
+                    printf("%s\n", backpack.photo[backpack_index]);
+                }
+                else if(strstr(buffer, "description") != 0 && strstr(buffer, "description_box") == 0){
+                    getstring(buffer, &backpack.description[backpack_index]);
+                    printf("%s\n", backpack.description[backpack_index]);
+                    backpack_index++;
+                }
+            }
+            // if (backpack.description_box != NULL && backpack_index == backpack.items_number && backpack_index != 0){
+            //     free_backpack(&backpack);
+            //     free_scene(&scene);
+            // }
+        }
+        
         // read dialogue
         if (scene.dialogue == 1){
             if (strstr(buffer, "dialog_box") != 0){
@@ -453,44 +492,6 @@ int main(){
                 if (reply.option_box != NULL){
                     free_reply(&reply);
                 }
-            }
-        }
-
-        // read backpack
-        if (scene.backpack == 1){
-            if (strstr(buffer, "items_number") != 0){
-                char *start = strstr(buffer, "=");
-                int32_t START = start-buffer;
-                for (int32_t i = START; buffer[i] != '\n'; i++){
-                    if (buffer[i] >= 48 && buffer[i] < 57){
-                        backpack.items_number = buffer[i]-48;
-                        break;
-                    }
-                }
-                printf("%d\n", backpack.items_number);
-            }
-            if (strstr(buffer, "description_box") != 0){
-                getstring(buffer, &backpack.description_box);
-                printf("%s\n", backpack.description_box);
-            }
-            if (backpack_index < backpack.items_number){
-                if (strstr(buffer, "name") != 0){
-                    getstring(buffer, &backpack.name[backpack_index]);
-                    printf("%s\n", backpack.name[backpack_index]);
-                }
-                else if(strstr(buffer, "photo") != 0){
-                    getstring(buffer, &backpack.photo[backpack_index]);
-                    printf("%s\n", backpack.photo[backpack_index]);
-                }
-                else if(strstr(buffer, "description") != 0 && strstr(buffer, "description_box") == 0){
-                    getstring(buffer, &backpack.description[backpack_index]);
-                    printf("%s\n", backpack.description[backpack_index]);
-                    backpack_index++;
-                }
-            }
-            if (backpack.description_box != NULL && backpack_index == backpack.items_number && backpack_index != 0){
-                free_backpack(&backpack);
-                free_scene(&scene);
             }
         }
     }
