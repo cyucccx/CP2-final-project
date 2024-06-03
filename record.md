@@ -13,3 +13,11 @@ DDL：2024.05.04
 宋品頤：完成劇本TOML和主畫面介面
 DDL：2024.05.27
 ```
+
+```
+2024.05.29
+張祐豪：在main.c call SDL function
+陳育渝：寫backpack的SDL
+宋品頤：完成劇本TOML和主畫面介面
+DDL：期末考完
+```
