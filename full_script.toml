@@ -1,0 +1,2041 @@
+project_name = "Final Project"
+author = "宋品頤"
+
+[home]
+background = "assets/home/background.png"
+button = "assets/home/button.png"
+backpack_background = "assets/home/backpack_background.png"
+max_character = 5
+
+[chi_1_start]
+background = "assets/scene/road.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 3
+name = "博玟"
+photo = "assets/scene/chi.png"
+name = "我"
+photo = "null"
+name = "旁白"
+photo = "null"
+
+[[chi_1_start.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 6
+speaker = "我"
+text = "完蛋！要遲到了！"
+speaker = "旁白"
+text = "絕望的對著空氣大喊的我，此刻正在用百米賽跑的速度衝向學校"
+speaker = "我"
+text = "（開學第一天，原本應該吃完早餐再悠悠哉哉散步到學校才對，怎麼會變成這樣...）"
+speaker = "旁白"
+text = "就在我默默後悔出門沒有叼一片土司走的時候，突然有個人影從眼前的轉角衝了出來"
+speaker = "我"
+test = "嗚喔！"
+speaker = "旁白"
+text = "出現在眼前的，是一位綁著可愛雙馬尾、嘴裡叼著筆電的豐滿女孩"
+next = "null"
+
+[[chi_1_start.reply]]
+option_box = "assets/scene/select_button.png"
+object = "博玟"
+option1 = "欸！走路不看路啊！"
+change_favor1 = -5
+next1 = "[chi_1_bad]"
+option2 = "你...好可愛..."
+change_favor2 = 0
+next2 = "[chi_1_normal]"
+option3 = "你嘴裡那台不是Razer Blade 16嗎！好香！好香！" 
+change_favor3 = +5
+next3 = "[chi_1_good]"
+
+[[chi_1_start.backpack]]
+items_number = 0
+description_box = "assets/backpack/description_box.png"
+
+[chi_1_bad]
+background = "assets/scene/road.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 3
+name = "博玟"
+photo = "assets/scene/chi.png"
+name = "我"
+photo = "null"
+name = "旁白"
+photo = "null"
+
+[[chi_1_bad.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 3
+speaker = "我"
+text = "被嚇了一大跳的我下意識蹦出這句話"
+speaker = "博玟"
+text = "蛤？想被當是不是？"
+speaker = "旁白"
+text = "眼前的女孩拋下這句意義不明的話後就快跑著離開了，只留下呆站在原地的我"
+next = "[chi_1_end]"
+
+[[chi_1_bad.backpack]]
+items_number = 0
+description_box = "assets/backpack/description_box.png"
+
+[chi_1_normal]
+background = "assets/scene/road.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 3 
+name = "博玟"
+photo = "assets/scene/chi.png"
+name = "我"
+photo = "null"
+name = "旁白"
+photo = "null"
+
+[[chi_1_normal.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 3
+speaker = "我"
+text = "被眼前這位女孩的風采給震懾，我下意識蹦出這句話"
+speaker = "博玟"
+text = "喔喔謝囉"
+speaker = "旁白"
+text = "眼前的女孩淡淡的拋下這句話後就快跑著離開了，只留下呆站在原地的我"
+next = "[chi_1_end]"
+
+[[chi_1_normal.backpack]]
+items_number = 0
+description_box = "assets/backpack/description_box.png"
+
+[chi_1_good]
+background = "assets/scene/road.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 3
+name = "博玟"
+photo = "assets/scene/chi.png"
+name = "我"
+photo = "null"
+name = "旁白"
+photo = "null"
+
+[[chi_1_good.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 3
+speaker = "我"
+text = "看著那台最快速、最鮮明、最清晰。全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，我下意識的蹦出這句話"
+speaker = "博玟"
+text = "ㄛ！識貨喔！"
+speaker = "旁白"
+text = "眼前的女孩開心的拋下這句話後就快跑著離開了，只留下呆站在原地的我"
+next = "[chi_1_end]"
+
+[[chi_1_good.backpack]]
+items_number = 0
+description_box = "assets/backpack/description_box.png"
+
+[chi_1_end]
+background = "assets/scene/road.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 2
+name = "我"
+photo = "null"
+name = "旁白"
+photo = "null"
+
+[[chi_1_end.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 8
+speaker = "旁白"
+text = "但或許是過於匆忙、又或許是剛剛為了開口說話，少女離開時叼著的筆電掉在了地上"
+speaker = "我"
+text = "欸你的筆電啊！"
+speaker = "旁白"
+text = "當我撿起筆電抬頭一看，那個女孩卻早已不見蹤影了"
+speaker = "我"
+text = "（沒辦法...總之先帶走吧...看來她是真的有夠趕時間、筆電掉了都沒發現）"
+speaker = "我"
+text = "..."
+speaker = "我"
+text = "不對！我不是也要遲到了嗎？！"
+speaker = "旁白"
+text = "這才想起自己已經快遲到的我開始拔腿狂奔"
+speaker = "我"
+text = "（唉...真的有夠倒楣...）"
+next = "null"
+
+[[chi_1_end.backpack]]
+items_number = 1
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+
+[wang_1_start]
+background = "assets/scene/hallway.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 3
+name = "虹倫"
+photo = "assets/scene/wang.png"
+name = "我"
+photo = "null"
+name = "旁白"
+photo = "null"
+
+[[wang_1_start.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 8
+speaker = "我"
+text = "呼...呼...終於趕上了..."
+speaker = "旁白"
+text = "一路狂奔下總算是趕在正門關起來之前衝進學校了，累到只剩半條命的我緩緩走向教室門口"
+speaker = "旁白"
+text = "就在這時，有人從背後戳了戳我的肩膀"
+speaker = "虹倫"
+text = "早安，這麼早就在運動啊，滿身大汗的"
+speaker = "旁白"
+text = "眼前一開口就馬上調侃我的少女是虹倫。有氣質的相貌加上平時溫柔的語調，讓她在班上累積了一票粉絲"
+speaker = "旁白"
+text = "同時她也是我從小同班到大的青梅竹馬，也或許是因為這份安心感，在她身邊時總是讓我特別想睡"
+speaker = "我"
+text = "饒了我吧...開學第一天就這麼狼狽真的扛不住"
+speaker = "虹倫"
+text = "就是難得看你這樣感覺很新鮮啊，是說所以你為什麼會差點遲到啊？"
+next = "null"
+
+[[wang_1_start.reply]]
+option_box = "assets/scene/select_button.png"
+object = "虹倫"
+option1 = "...沒有啦就睡過頭啊"
+change_favor1 = -5
+next1 = "[wang_1_bad]"
+option2 = "夢到你捨不得起床啊"
+change_favor2 = +5
+next2 = "[wang_1_good]"
+option3 = "關你屁事" 
+change_favor3 = -5
+next3 = "[wang_1_bad]"
+
+[[wang_1_start.backpack]]
+items_number = 1
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+
+[wang_1_bad]
+background = "assets/scene/hallway.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 2
+name = "虹倫"
+photo = "assets/scene/wang.png"
+name = "旁白"
+photo = "null"
+
+[[wang_1_bad.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 2
+speaker = "虹倫"
+text = "喔...好喔？"
+speaker = "旁白"
+text = "總覺得她臉上的笑容好像更冰冷了一點"
+next = "[wang_1_end]"
+
+[[wang_1_bad.backpack]]
+items_number = 1
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+
+[wang_1_good]
+background = "assets/scene/hallway.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 2
+name = "虹倫"
+photo = "assets/scene/wang.png"
+name = "旁白"
+photo = "null"
+
+[[wang_1_good.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 2
+speaker = "虹倫"
+text = "呵 好喔"
+speaker = "旁白"
+text = "總覺得她臉上的笑容好像更柔和了一點"
+next = "[wang_1_end]"
+
+[[wang_1_good.backpack]]
+items_number = 1
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+
+[wang_1_end]
+background = "assets/scene/hallway.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 3
+name = "虹倫"
+photo = "assets/scene/wang.png"
+name = "我"
+photo = "null"
+name = "旁白"
+photo = "null"
+
+[[wang_1_end.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 3
+speaker = "虹倫"
+text = "好啦不要講這些有的沒的，趕快進去上課了"
+speaker = "我"
+text = "（明明就是你先來跟我搭話的...）" 
+speaker = "旁白"
+text = "跟在虹倫後面，我也默默的走進了教室"
+next = "null"
+
+[[wang_1_end.backpack]]
+items_number = 1
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+
+
+[jiang_1_start]
+background = "assets/scene/classroom.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 3
+name = "中晢"
+photo = "assets/scene/jiang.png"
+name = "我"
+photo = "null"
+name = "旁白"
+photo = "null"
+
+[[jiang_1_start.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 7
+speaker = "旁白"
+text = "一坐到座位上，我打開書包的同時忍不住長嘆了一口氣，希望今天不要再有什麼麻煩事發生了"
+speaker = "旁白"
+text = "才剛這麼想，但翻了翻書包，發現今天要用的筆記好像從書包消失了，我明明記得自己有帶的"
+speaker = "旁白"
+text = "在我努力找書的時候，卻突然感覺到有股強烈的視線從隔壁刺到我身上"
+speaker = "中晢"
+text = "..."
+speaker = "我"
+text = "..."
+speaker = "旁白"
+text = "眼前帶著神秘氣息的美少女是中晢，雖然以前就同班過，但坐在她隔壁還是第一次"
+speaker = "旁白"
+text = "...我還是完全看不出她在想什麼，還是搭個話吧"
+
+[[jiang_1_start.reply]]
+option_box = "assets/scene/select_button.png"
+object = "中晢"
+option1 = "我的臉上有什麼嗎？"
+change_favor1 = +5
+next1 = "[jiang_1_normal]"
+option2 = "早安"
+change_favor2 = +5
+next2 = "[jiang_1_good]"
+option3 = "看屁啊" 
+change_favor3 = -5
+next3 = "[jiang_1_bad]"
+
+[[jiang_1_start.backpack]] 
+items_number = 1
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+
+[jiang_1_bad]
+background = "assets/scene/classroom.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 2
+name = "中晢"
+photo = "assets/scene/jiang.png"
+name = "旁白"
+photo = "null"
+
+[[jiang_1_bad.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 2
+speaker = "中晢"
+text = "抱...抱歉"
+speaker = "旁白"
+text = "好像突然發現自己的行為有點奇怪，她這才慌慌張張的移開視線"
+next = "[jiang_1_end]"
+
+[[jiang_1_bad.backpack]]
+items_number = 1
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+
+[jiang_1_normal]
+background = "assets/scene/classroom.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 3 
+name = "中晢"
+photo = "assets/scene/jiang.png"
+name = "我"
+photo = "null"
+name = "旁白"
+photo = "null"
+
+[[jiang_1_normal.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 4
+speaker = "中晢"
+text = "...！"
+speaker = "中晢"
+text = "啊啊...沒事"
+speaker = "旁白"
+text = "彷彿被我搭話後才回過神，她這才默默的把臉轉到一邊去"
+speaker = "旁白"
+text = "...是錯覺嗎？總覺得她的臉好紅"
+next = "[jiang_1_end]"
+
+[[jiang_1_normal.backpack]]
+items_number = 1
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+
+[jiang_1_good]
+background = "assets/scene/hallway.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 3 
+name = "中晢"
+photo = "assets/scene/jiang.png"
+name = "我"
+photo = "null"
+name = "旁白"
+photo = "null"
+
+[[jiang_1_good.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 4
+speaker = "中晢"
+text = "...！"
+speaker = "中晢"
+text = "嗯嗯，早安"
+speaker = "旁白"
+text = "彷彿被我搭話後才回過神，她這才默默的把臉轉到一邊去"
+speaker = "旁白"
+text = "...是錯覺嗎？總覺得她的臉好紅"
+next = "[jiang_1_end]"
+
+[[jiang_1_good.backpack]]
+items_number = 1
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+
+[jiang_1_end]
+background = "assets/scene/classroom"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 4
+name = "老師"
+photo = "null"
+name = "我"
+photo = "null"
+name = "旁白"
+photo = "null"
+name = "博玟"
+photo = "assets/scene/chi.png"
+
+[[jiang_1_end.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 17
+speaker = "旁白"
+text = "...嗯，我果然還是搞不懂她在想什麼"
+speaker = "旁白"
+text = "在我還在想自己的臉到底有什麼好看的時候，老師清喉嚨的聲音打斷了我的思考"
+speaker = "老師"
+text = "咳嗯！各位同學安靜了！老師這邊有事情要宣佈一下"
+speaker = "老師"
+text = "好，從今天開始呢，我們班上會有一位新的轉學生，等一下大家記得鼓掌歡迎一下喔"
+speaker = "老師"
+text = "博玟，你可以進來了"
+speaker = "博玟"
+text = "好！"
+speaker = "博玟"
+text = "大家好！我叫博玟，請多指教！"
+speaker = "我"
+text = "欸？！"
+speaker = "旁白"
+text = "沒想到眼前走進教室的，竟然就是我早上差點撞到的那個女生，害我忍不住驚訝得叫了出來"
+speaker = "老師"
+text = "那邊的同學你叫這麼大聲幹嘛，你們認識喔"
+speaker = "旁白"
+text = "這時候博玟也看向這裡，好像發現了我就是早上的那個人"
+speaker = "博玟"
+text = "欸！哈囉！！好巧喔！！！"
+speaker = "老師"
+text = "喔原來你們認識，那就好說了。我還想說要請人帶她認識一下學校，那就交給你了喔，同學"
+speaker = "博玟"
+text = "那就交給你了喔，同學！"
+speaker = "旁白"
+text = "還不等我反應過來，老師跟博玟就這樣一搭一唱的把事情定下來了"
+speaker = "我"
+text = "（現在到底什麼情況啊？？？）"
+speaker = "旁白"
+text = "一時之間資訊量實在太大，雖然老師之後好像又說了什麼，但我已經完全聽不進去了..."
+next = "null"
+
+[[jiang_1_end.backpack]]
+items_number = 1
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+
+[chi_2_start]
+background = "assets/scene/library.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 3
+name = "博玟"
+photo = "assets/scene/chi.png"
+name = "我"
+photo = "null"
+name = "旁白"
+photo = "null"
+
+[[chi_2_start.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 21
+speaker = "旁白"
+text = "讓人心累的早自修終於結束後，我馬上就被博玟抓去帶她參觀圖書館。畢竟被交代了，我還是決定打起精神認真導覽一下"
+speaker = "旁白"
+text = "但還沒開始導覽，我就想起博玟的東西還在我這裡"
+speaker = "我"
+text = "欸對了，等下回教室記得叫我把筆電還你，你早上掉在路上了"
+speaker = "博玟"
+text = "蛤？"
+speaker = "博玟"
+text = "喔對耶，這麼說我早上好像是有多帶一台筆電出門沒錯"
+speaker = "博玟"
+text = "不過沒差啦，反正我還有帶著備用筆電跟備用的備用，那台就送你拿去打電動好了"
+speaker = "我"
+text = "（...這什麼好像可以輕鬆買一棟大樓捐給資工系的暴發戶發言）"
+speaker = "旁白"
+text = "（雖然有點心動，不過所謂無功不受祿，這裡還是拒絕一下好了）"
+speaker = "我"
+text = "不是，你拿回去啦，我平常又沒在打遊戲"
+speaker = "旁白"
+text = "聽到這句話的博玟擺出一臉有夠吃驚的表情"
+speaker = "博玟"
+text = "蛤你不打遊戲？你知不知道這樣你的人生到底錯過了多少東西啊？"
+speaker = "博玟"
+text = "至少聽過炎龍騎士團吧，我們這個年代的人不是從小都從FD2的修改器學十六進位的嗎？"
+speaker = "旁白"
+text = "雖然博玟一副理所當然的樣子講了一堆，但很可惜我連一個字都聽不懂"
+speaker = "我"
+text = "不是啊，我就對電玩那類的比較沒興趣齁，不過桌遊什麼的倒是有在玩啦"
+speaker = "博玟"
+text = "喔喔你有在玩桌遊啊，現在玩桌遊的反而比較少見吧。那下次要不要一起玩BGA"
+speaker = "我"
+text = "蛤？那是什麼"
+speaker = "博玟"
+text = "就是可以讓你在線上玩桌遊的東西啦，我開給你看...但這裡網路好爛！"
+speaker = "我"
+text = "你有eduroam嗎？如果有在其他地方註冊過的話我們學校也可以用，連那個會比較快"
+speaker = "博玟"
+text = "原來這裡也有！幸好我有註冊過"
+speaker = "博玟"
+text = "..."
+speaker = "博玟"
+text = "那你知道在C語言裡，哪種變數類型也是在某個檔案定義過之後就可以在其他檔案使用嗎？"
+next = "null"
+
+[[chi_2_start.reply]]
+option_box = "assets/scene/select_button.png"
+object = "博玟"
+option1 = "enum"
+change_favor1 = -5
+next1 = "[chi_2_bad]"
+option2 = "extern"
+change_favor2 = +5
+next2 = "[chi_2_good]"
+option3 = "excalibur" 
+change_favor3 = -5
+next3 = "[chi_2_bad]"
+
+[[chi_2_start.backpack]] 
+items_number = 1
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+
+[chi_2_bad]
+background = "assets/scene/library.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 2 
+name = "博玟"
+photo = "assets/scene/chi.png"
+name = "旁白"
+photo = "null"
+
+[[chi_2_bad.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 2
+speaker = "旁白"
+text = "博玟的表情垮了下來，看來我是猜錯了"
+speaker = "博玟"
+text = "身為一個資工系的學生，我還是希望你這些基本的東西要知道..."
+next = "[chi_2_end]"
+
+[[chi_2_bad.backpack]]
+items_number = 1
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+
+[chi_2_good]
+background = "assets/scene/library.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 2
+name = "博玟"
+photo = "assets/scene/chi.png"
+name = "旁白"
+photo = "null"
+
+[[chi_2_good.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 2
+speaker = "旁白"
+text = "大大的笑容綻放在博玟的臉上"
+speaker = "博玟"
+text = "雖然沒在玩遊戲但懂得倒挺多的，你不錯喔"
+next = "[chi_2_end]"
+
+[[chi_2_good.backpack]]
+items_number = 1
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+
+[chi_2_end]
+background = "assets/scene/library.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 3
+name = "博玟"
+photo = "assets/scene/chi.png"
+name = "我"
+photo = "null"
+name = "旁白"
+photo = "null"
+
+[[chi_2_end.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 5
+speaker = "博玟"
+text = "好啦跑好了，給你看"
+speaker = "旁白"
+text = "螢幕上顯示出app的界面，琳瑯滿目的、看起來都是可以免費玩的桌遊"
+speaker = "我"
+text = "這個看起來還不錯欸，可以試一下"
+speaker = "博玟"
+text = "是齁，那就說好囉，這周六晚上開打喔！"
+speaker = "旁白"
+text = "約了時間後，博玟又簡單跟我介紹了一下BGA有哪些桌遊。最後下課時間都結束了也沒逛到什麼圖書館"
+next = "null"
+
+[[chi_2_end.backpack]]
+items_number = 1
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+
+[jiang_2_start]
+background = "assets/scene/classroom.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 4
+name = "中晢"
+photo = "assets/scene/jiang.png"
+name = "我"
+photo = "null"
+name = "旁白"
+photo = "null"
+name = "同學們"
+photo = "null"
+
+[[jiang_2_start.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 22
+speaker = "旁白"
+text = "歷史課的鐘聲響起，班上的同學們都已經在座位上翻開筆記，等著老師抵達教室開始講課"
+speaker = "旁白"
+text = "但不管我怎麼找，就是找不到那本我平常用的上課筆記"
+speaker = "我"
+text = "（糟糕真的找不到，但我完全忘記上節課在講什麼了，這樣等下肯定聽不懂）"
+speaker = "我"
+text = "（沒辦法了，問一下中晢可不可以一起看好了）"
+speaker = "旁白"
+text = "決定借筆記來看的我抬頭看向隔壁的中晢"
+speaker = "旁白"
+text = "但我還來不及開口，突然一陣天搖地動"
+speaker = "同學們"
+text = "欸...欸欸欸！地震地震地震！"
+speaker = "同學們"
+text = "夭壽超大的！感覺有七級喔！快開批踢踢！"
+speaker = "同學們"
+text = "等一下啦我限動發到一半！"
+speaker = "我"
+text = "（...這些人真的完全不緊張欸）"
+speaker = "旁白"
+text = "一邊這樣想著的我，一邊發了一篇便利貼"
+speaker = "旁白"
+text = "接著我趕緊觀察了一下教室的情況，首先看到的就是隔壁中晢在整理倒下的書包和散落一地的筆記紙"
+speaker = "旁白"
+text = "不過真正吸引我注意的不是滿地的雜亂，而是那些筆記紙上眼熟的字跡"
+speaker = "我"
+text = "..."
+speaker = "我"
+text = "啊那些不就是我的筆記嗎？！"
+speaker = "旁白"
+text = "原本若無其事收拾地面的中晢聽到我大叫一聲，心虛的抖了一下"
+speaker = "中晢"
+text = "啊這"
+speaker = "我"
+text = "..."
+speaker = "中晢"
+text = "..."
+speaker = "旁白"
+text = "過了彷彿一輩子的沉默之後，中晢才終於開口"
+speaker = "中晢"
+text = "不是，就我看你最近成績好像退步的有點嚴重，想說看一下你是不是有什麼觀念沒搞清楚"
+speaker = "中晢"
+text = "...所以才會拿你的筆記印出來一頁一頁幫你看啦"
+next = "null"
+
+[[jiang_2_start.reply]]
+option_box = "assets/scene/select_button.png"
+object = "中晢"
+option1 = "原來如此，你好有心喔！謝謝！"
+change_favor1 = +5
+next1 = "[jiang_2_good]"
+option2 = "...哇喔"
+change_favor2 = +5
+next2 = "[jiang_2_normal]"
+option3 = "太扯了吧，先不要欸" 
+change_favor3 = "[jiang_2_normal]"
+next3 = "-5"
+
+[[jiang_2_start.backpack]] 
+items_number = 1
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+
+[jiang_2_bad]
+background = "assets/scene/classroom.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 3 
+name = "中晢"
+photo = "assets/scene/jiang.png"
+name = "我"
+photo = "null"
+name = "旁白"
+photo = "null"
+
+[[jiang_2_bad.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 5
+speaker = "旁白"
+text = "聽到這句話，中晢愣了一下"
+speaker = "中晢"
+text = "啊...抱歉..."
+speaker = "中晢"
+text = "...原本想說找機會放進你書包的，既然被發現了，那就直接還你吧"
+speaker = "旁白"
+text = "中晢難過的把臉轉向一邊，把整理好的筆記塞進了我的書包"
+speaker = "我"
+text = "（...蛤？這狀況怎麼搞得好像我做錯什麼事一樣？）"
+next = "[jiang_2_end]"
+
+[[jiang_2_bad.backpack]]
+items_number = 2
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+name = "中晢訂正的筆記"
+photo = "assets/backpack/note.png"
+
+[jiang_2_normal]
+background = "assets/scene/classroom.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 3 
+name = "中晢"
+photo = "assets/scene/jiang.png"
+name = "我"
+photo = "null"
+name = "旁白"
+photo = "null"
+
+[[jiang_2_normal.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 5
+speaker = "旁白"
+text = "看到我不敢置信的樣子，中晢把臉轉了過去"
+speaker = "中晢"
+text = "不...不要這樣盯著我看啦..."
+speaker = "中晢"
+text = "...原本想說找機會放進你書包的，既然被發現了，那就直接還你吧"
+speaker = "旁白"
+text = "中晢就這樣把整理好的筆記塞進傻眼的我的書包"
+speaker = "旁白"
+text = "...是錯覺嗎？她的臉是不是超紅的"
+next = "[jiang_2_end]"
+
+[[jiang_2_normal.backpack]]
+items_number = 2
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+name = "中晢訂正的筆記"
+photo = "assets/backpack/note.png"
+
+[jiang_2_good]
+background = "assets/scene/classroom.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 3 
+name = "中晢"
+photo = "assets/scene/jiang.png"
+name = "我"
+photo = "null"
+name = "旁白"
+photo = "null"
+
+[[jiang_2_good.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 5
+speaker = "旁白"
+text = "好像沒有料到我會是這個反應，中晢愣了一下"
+speaker = "中晢"
+text = "欸...欸嘿嘿...沒有啦，我已經改得差不多了"
+speaker = "中晢"
+text = "原本想說找機會放進你書包的，既然被發現了，那就直接還你吧"
+speaker = "旁白"
+text = "中晢默默把臉轉向一邊，把整理好的筆記塞進了我的書包"
+speaker = "旁白"
+text = "...是錯覺嗎？她的臉是不是超紅的"
+next = "[jiang_2_end]"
+
+[[jiang_2_good.backpack]]
+items_number = 2
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+name = "中晢訂正的筆記"
+photo = "assets/backpack/note.png"
+
+[jiang_2_end]
+background = "assets/scene/classroom.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 4
+name = "中晢"
+photo = "assets/scene/jiang.png"
+name = "我"
+photo = "null"
+name = "旁白"
+photo = "null"
+name = "老師"
+photo = "null"
+
+[[jiang_2_end.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 5
+speaker = "旁白"
+text = "不知不覺間地震已經結束了，老師也走進了教室"
+speaker = "老師"
+text = "剛剛的地震真的很晃耶，同學們有沒有怎麼樣？"
+speaker = "老師"
+text = "而且還是上下晃的那種，跟921的時候一樣，真的很恐怖"
+speaker = "老師"
+text = "欸？921的時候你們出生了嗎？"
+speaker = "旁白"
+text = "就這樣，老師滔滔不絕的說起每逢地震必講的話題，看來這節課根本不會用到筆記了"
+next = "null"
+
+[[jiang_2_end.backpack]]
+items_number = 2
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+name = "中晢訂正的筆記"
+photo = "assets/backpack/note.png"
+
+[wang_2_start]
+background = "assets/scene/hallway_night.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 3
+name = "虹倫"
+photo = "assets/scene/wang.png"
+name = "我"
+photo = "null"
+name = "旁白"
+photo = "null"
+
+[[wang_2_start.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 15
+speaker = "旁白"
+text = "經過忙碌的一天，終於到了放學時間"
+speaker = "旁白"
+text = "但非常不幸的，外頭毫無徵兆的下起了暴雨"
+speaker ="我"
+text = "哇...氣象預報也太不準了吧...說好的整天大太陽呢？"
+speaker ="旁白"
+text = "我決定放棄掙扎，就這樣滑手機等到雨停吧"
+speaker ="旁白"
+text = "...但怎麼突然有點想睡"
+speaker ="旁白"
+text = "正當我這麼想，就聽到身後有耳熟的聲音向我搭話"
+speaker ="虹倫"
+text = "嗨，忘記帶傘啦？"
+speaker ="旁白"
+text = "拿著一支折疊傘的虹倫出現在我身後"
+speaker ="我"
+text = "沒辦法啊...氣象明明就說不會下雨，爛台北"
+speaker ="我"
+text = "該不會你剛好有帶兩支傘？"
+speaker ="旁白"
+text = "我帶著期待的眼神看向虹倫"
+speaker ="虹倫"
+text = "我覺得沒有人會帶兩支傘出門"
+speaker ="旁白"
+text = "希望破滅了"
+speaker ="虹倫"
+text = "還是我們兩個撐一把...不過這雨這麼大，感覺會兩個人都淋濕..."
+speaker ="虹倫"
+text = "你覺得呢？怎麼辦比較好？"
+next = "null"
+
+[[wang_2_start.reply]]
+option_box = "assets/scene/select_button.png"
+object = "虹倫"
+option1 = "沒差啦，你先回去吧"
+change_favor1 = -5
+next1 = "[wang_2_bad]"
+option2 = "走啦一起撐吧"
+change_favor2 = -5
+next2 = "[wang_2_bad]"
+option3 = "留下來陪我"
+change_favor3 = +5
+next3 = "[wang_2_good]"
+
+[[wang_2_start.backpack]] 
+items_number = 2
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+name = "中晢訂正的筆記"
+photo = "assets/backpack/note.png"
+
+[wang_2_bad]
+background = "assets/scene/hallway_night.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 3 
+name = "虹倫"
+photo = "assets/scene/wang.png"
+name = "我"
+photo = "null"
+name = "旁白"
+photo = "null"
+
+[[wang_2_bad.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 3
+speaker = "虹倫"
+text = "喔..."
+speaker = "旁白"
+text = "虹倫的微笑好像變得更冰冷了一點"
+speaker = "虹倫"
+text = "算了，雨這麼大我還是陪你一下好了"
+next = "[wang_2_end]"
+
+[[_bad.backpack]]
+items_number = 2
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+name = "中晢訂正的筆記"
+photo = "assets/backpack/note.png"
+
+[wang_2_good]
+background = "assets/scene/hallway_night.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 3 
+name = "虹倫"
+photo = "assets/scene/wang.png"
+name = "我"
+photo = "null"
+name = "旁白"
+photo = "null"
+
+[[wang_2_good.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 2
+speaker = "旁白"
+text = "虹倫的笑容好像變得更溫和了一點"
+speaker = "虹倫"
+text = "呵呵好啊，那我就稍微陪你等一下"
+next = "[wang_2_end]"
+
+[[wang_2_good.backpack]]
+items_number = 2
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+name = "中晢訂正的筆記"
+photo = "assets/backpack/note.png"
+
+[wang_2_end]
+background = "assets/scene/hallway_night.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 3
+name = "虹倫"
+photo = "assets/scene/wang.png"
+name = "我"
+photo = "null"
+name = "旁白"
+photo = "null"
+
+[[wang_2_end.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 10
+speaker = "虹倫"
+text = "啊，對了"
+speaker = "旁白"
+text = "好像突然想到什麼事，虹倫翻了翻他的書包"
+speaker = "虹倫"
+text = "我朋友上次給我兩張電影票，說是原本要跟男友去看，結果後來兩個人有事沒辦法去了"
+speaker = "虹倫"
+text = "怎麼樣？明天不是放假嗎，要不要一起去看？"
+speaker = "旁白"
+text = "我看了看她手上的電影票，沒想到剛好是我最喜歡的《排球少年！！垃圾場的決戰》附特典4DX電影票"
+speaker = "我"
+text = "好啊，反正不用也是浪費"
+speaker = "旁白"
+text = "雖然回覆得很淡定，但我心裡雀躍到一個不行"
+speaker = "虹倫"
+text = "好，那就約好明天下午去看囉"
+speaker = "旁白"
+text = "就這樣，我莫名其妙賺到了一張電影票，雨也在不知不覺間停下來了"
+speaker = "旁白"
+text = "折騰了一天終於有好事發生，和虹倫道別後的我開心的走在回家路上，開始有點期待明天了"
+next = "null"
+
+[[wang_2_end.backpack]]
+items_number = 2
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+name = "中晢訂正的筆記"
+photo = "assets/backpack/note.png"
+
+[wang_3_start]
+background = "assets/scene/cinema.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 3
+name = "虹倫"
+photo = "assets/scene/wang.png"
+name = "我"
+photo = "null"
+name = "旁白"
+photo = "null"
+
+[[wang_3_start.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 19
+speaker = "旁白"
+text = "第二天，我和虹倫都準時抵達電影院"
+speaker = "旁白"
+text = "入座後，我們靠著電影院舒適的椅背，在昏暗的燈光下，一邊吃爆米花一邊期待著即將播放的電影"
+speaker = "旁白"
+text = "也許是太享受這種輕鬆的氣氛了，我和虹倫拿爆米花的手一個不小心碰在了一起"
+speaker = "旁白"
+text = "雖然只有一瞬間，但我確實感受到了虹倫的手，是如此細軟"
+speaker = "我"
+text = "啊...抱歉"
+speaker = "虹倫"
+text = "沒事..."
+speaker = "我"
+text = "（該怎麼說呢，總覺得現在的氣氛...）"
+speaker = "我"
+text = "（讓人非常的想睡，這就是虹倫的魔力嗎？）"
+speaker = "旁白"
+text = "明明知道電影即將開始，我卻怎麼也抵擋不住習來的睡意，視野就這樣慢慢變黑..."
+speaker = "旁白"
+text = "..."
+speaker = "旁白"
+text = "..."
+speaker = "我"
+text = "...！"
+speaker = "旁白"
+text = "當我睜開眼睛，只見電影院的燈已經全部打開，電影也結束了"
+speaker = "虹倫"
+text = "真的很好看耶"
+speaker = "旁白"
+text = "虹倫一副深受感動的樣子，把臉轉向這裡"
+speaker = "虹倫"
+text = "你覺得哪一幕最棒？"
+speaker = "我"
+text = "啊...就那個..."
+speaker = "旁白"
+text = "看我支支吾吾了好一陣子都說不出個所以然，虹倫好像也發現不對勁了"
+speaker = "虹倫"
+text = "...你剛剛該不會是睡著了吧？"
+next = "null"
+
+[[wang_3_start.reply]]
+option_box = "assets/scene/select_button.png"
+object = "虹倫"
+option1 = "沒有啊"
+change_favor1 = -5
+next1 = "[wang_3_bad]"
+option2 = "抱歉..."
+change_favor2 = -5
+next2 = "[wang_3_bad]"
+option3 = "沒辦法，有你在旁邊感覺太安心了" 
+change_favor3 = +5
+next3 = "[wang_3_good]"
+
+[[wang_3_start.backpack]] 
+items_number = 2
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+name = "中晢訂正的筆記"
+photo = "assets/backpack/note.png"
+
+[wang_3_bad]
+background = "assets/scene/cinema.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 2
+name = "虹倫"
+photo = "assets/scene/wang.png"
+name = "旁白"
+photo = "null"
+
+[[wang_3_bad.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 2
+speaker = "虹倫"
+text = "...好喔"
+speaker = "旁白"
+text = "總覺得虹倫的微笑變得更冰冷了"
+next = "[wang_3_end]"
+
+[[wang_3_bad.backpack]]
+items_number = 2
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+name = "中晢訂正的筆記"
+photo = "assets/backpack/note.png"
+
+[wang_3_good]
+background = "assets/scene/cinema.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 2 
+name = "虹倫"
+photo = "assets/scene/wang.png"
+name = "旁白"
+photo = "null"
+
+[[wang_3_good.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 2
+speaker = "虹倫"
+text = "哈 哈 哈，好喔"
+speaker = "旁白"
+text = "雖然帶著挖苦的語氣，不過虹倫的微笑好像變得更柔和了一點"
+next = "[wang_3_end]"
+
+[[wang_3_good.backpack]]
+items_number = 2
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+name = "中晢訂正的筆記"
+photo = "assets/backpack/note.png"
+
+[wang_3_end]
+background = "assets/scene/cinema.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 3
+name = "虹倫"
+photo = "assets/scene/wang.png"
+name = "我"
+photo = "null"
+name = "旁白"
+photo = "null"
+
+[[wang_3_end.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 10
+speaker = "虹倫"
+text = "唉...不過我是真的沒想到你連看4DX都能睡著"
+speaker = "我"
+text = "我也沒辦法啊...離散真的有夠難..."
+speaker = "虹倫"
+text = "蛤？"
+speaker = "我"
+text = "沒事"
+speaker = "虹倫"
+text = "...算了，這個給你"
+speaker = "旁白"
+text = "虹倫遞了一張電影的票根給我"
+speaker = "虹倫"
+text = "難得一起出來看電影，給你帶回去作紀念...雖然你根本沒看到就是了"
+speaker = "我"
+text = "哈哈...謝啦..."
+speaker = "旁白"
+text = "雖然有點難受但我完全無法反駁，只能苦笑著回應"
+speaker = "旁白"
+text = "就這樣，期待的電影環節在和虹倫道別後結束了，所以我到底是來幹嘛的..."
+next = "null"
+
+[[wang_3_end.backpack]]
+items_number = 3
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+name = "中晢訂正的筆記"
+photo = "assets/backpack/note.png"
+name = "電影票根"
+photo = "assets/backpack/ticket.png"
+
+[jiang_3_start]
+background = "assets/scene/street.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 3
+name = "中晢"
+photo = "assets/scene/wang.png"
+name = "我"
+photo = "null"
+name = "旁白"
+photo = "null"
+
+[[jiang_3_start.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 15
+speaker = "旁白"
+text = "和虹倫道別之後我打算騎Ubike回家，卻發現卡片餘額已經是負數了"
+speaker = "我"
+text = "啊，我記得剛剛有經過超商...可惡好麻煩..."
+speaker = "旁白"
+text = "我哀怨的回頭準備看看剛剛的超商大概有多遠"
+speaker = "旁白"
+text = "結果一回頭就猝不及防的和站在路邊、和我保持著微妙距離的中晢四目相交了"
+speaker = "中晢"
+text = "...！"
+speaker = "旁白"
+text = "只見中晢用飛快的速度移開視線並轉過身，想假裝沒看到"
+speaker = "我"
+text = "幹嘛啦？？你剛剛在後面絕對有看到我吧？"
+speaker = "旁白"
+text = "發現好像糊弄不過去，中晢這才朝我走過來"
+speaker = "中晢"
+text = "沒有啦，我剛剛從超商出來剛好看到你，想說你看電影花這麼多錢會不會沒錢儲悠遊卡才跟著你看看的..."
+speaker = "旁白"
+text = "中晢用有點委屈的語氣這麼說道"
+speaker = "我"
+text = "喔原來是這樣喔，早說嘛"
+speaker = "我"
+text = "..."
+speaker = "我"
+text = "...等等，你怎麼知道我剛去看電影？"
+speaker = "中晢"
+text = "..."
+speaker = "我"
+text = "..."
+next = "null"
+
+[[jiang_3_start.reply]]
+option_box = "assets/scene/select_button.png"
+object = "中晢"
+option1 = "你真的超噁"
+change_favor1 = -5
+next1 = "[jiang_3_bad]"
+option2 = "哈哈該不會是你剛遇到虹倫她跟你說的吧"
+change_favor2 = +5
+next2 = "[jiang_3_normal]"
+option3 = "下次不要用跟蹤的，直接約我就好了啊" 
+change_favor3 = +5
+next3 = "[jiang_3_good]"
+
+[[jiang_3_start.backpack]] 
+items_number = 3
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+name = "中晢訂正的筆記"
+photo = "assets/backpack/note.png"
+name = "電影票根"
+photo = "assets/backpack/ticket.png"
+
+[jiang_3_bad]
+background = "assets/scene/street.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 3 
+name = "中晢"
+photo = "assets/scene/jiang.png"
+name = "旁白"
+photo = "null"
+
+[[jiang_3_bad.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 2
+speaker = "中晢"
+text = "啊...抱歉..."
+speaker = "旁白"
+text = "中晢一副難過的樣子，默默走掉了"
+next = "[jiang_3_end]"
+
+[[jiang_3_bad.backpack]]
+items_number = 3
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+name = "中晢訂正的筆記"
+photo = "assets/backpack/note.png"
+name = "電影票根"
+photo = "assets/backpack/ticket.png"
+
+[jiang_3_normal]
+background = "assets/scene/street.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 3 
+name = "中晢"
+photo = "assets/scene/jiang.png"
+name = "我"
+photo = "null"
+name = "旁白"
+photo = "null"
+
+[[jiang_3_normal.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 5
+speaker = "旁白"
+text = "中晢聽到之後愣了一下"
+speaker = "中晢"
+text = "對...對啊！就是剛剛她跟我說的！她說排球少年超好看，下次還要看4DX，哈哈"
+speaker = "中晢"
+text = "好...好啦！既然沒什麼事那我先走了！還要回去改作業！"
+speaker = "旁白"
+text = "還不等我回應，中晢就轉頭跑走了"
+speaker = "旁白"
+text = "總覺得她剛剛臉好像很紅，是錯覺嗎"
+next = "[jiang_3_end]"
+
+[[jiang_3_normal.backpack]]
+items_number = 3
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+name = "中晢訂正的筆記"
+photo = "assets/backpack/note.png"
+name = "電影票根"
+photo = "assets/backpack/ticket.png"
+
+[jiang_3_good]
+background = "assets/scene/street.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 3 
+name = "中晢"
+photo = "assets/scene/jiang.png"
+name = "我"
+photo = "null"
+name = "旁白"
+photo = "null"
+
+[[jiang_3_good.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 5
+speaker = "旁白"
+text = "好像沒有料到我會這麼說，中晢愣了一下之後默默的低下頭"
+speaker = "中晢"
+text = "嗯...嗯！"
+speaker = "中晢"
+text = "好...好啦！既然沒什麼事那我先走了！還要回去改作業！"
+speaker = "旁白"
+text = "還不等我回應，中晢就轉頭跑走了"
+speaker = "旁白"
+text = "總覺得她剛剛臉好像很紅，是錯覺嗎"
+next = "[jiang_3_end]"
+
+[[jiang_3_good.backpack]]
+items_number = 3
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+name = "中晢訂正的筆記"
+photo = "assets/backpack/note.png"
+name = "電影票根"
+photo = "assets/backpack/ticket.png"
+
+[jiang_3_end]
+background = "assets/scene/street.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 3
+name = "我"
+photo = "null"
+name = "旁白"
+photo = "null"
+
+[[jiang_3_end.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 5
+speaker = "我"
+text = "..."
+speaker = "我"
+text = "（結果她到底跟著我幹嘛啊...）"
+speaker = "旁白"
+text = "帶著這個可能永遠解不開的謎，我默默走向Ubike準備騎車回家"
+speaker = "我"
+text = "..."
+speaker = "我"
+text = "不對！我還是沒儲值啊！"
+next = "null"
+
+[[jiang_3_end.backpack]]
+items_number = 3
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+name = "中晢訂正的筆記"
+photo = "assets/backpack/note.png"
+name = "電影票根"
+
+[chi_3_start]
+background = "assets/scene/room.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 3
+name = "博玟"
+photo = "assets/scene/chi.png"
+name = "我"
+photo = "null"
+name = "旁白"
+photo = "null"
+
+[[chi_3_start.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 12
+speaker = "旁白"
+text = "晚上，到了和博玟約好的時間，我回到房間準備上線"
+speaker = "我"
+text = "喂喂喂，聽得到嗎？"
+speaker = "博玟"
+text = "okok 有聽到喔"
+speaker = "旁白"
+text = "確定通話沒問題之後我打開BGA的頁面，卻發現完全不知道怎麼加進博玟的房間"
+speaker = "我"
+text = "呃？我要怎麼進去啊？沒看到可以搜尋的地方啊"
+speaker = "博玟"
+text = "等下，你先加我好友好了啦，這樣比較快"
+speaker = "旁白"
+text = "又搜尋了一下，結果我連好友怎麼加都不知道"
+speaker = "我"
+text = "...等一下，這介面真的很難找，你說那個好友在哪裡？"
+speaker = "博玟"
+text = "真的假的...好啦我直接截圖傳給你好了，等我一下喔"
+speaker = "博玟"
+text = "..."
+speaker = "博玟"
+text = "是說..."
+speaker = "博玟"
+text = "那你知道網路傳輸資料通常是用big-endian還是little-endian嗎？"
+next = "null"
+
+[[chi_3_start.reply]]
+option_box = "assets/scene/select_button.png"
+object = "博玟"
+option1 = "big-endian"
+change_favor1 = +5
+next1 = "[chi_3_good]"
+option2 = "little-endian"
+change_favor2 = -5
+next2 = "[chi_3_normal]"
+option3 = "I'm not indian. I'm Taiwanese." 
+change_favor3 = -5
+next3 = "[chi_3_bad]"
+
+[[chi_3_start.backpack]] 
+items_number = 3
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+name = "中晢訂正的筆記"
+photo = "assets/backpack/note.png"
+name = "電影票根"
+photo = "assets/backpack/ticket.png"
+
+[chi_3_bad]
+background = "assets/scene/room.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 2 
+name = "博玟"
+photo = "assets/scene/chi.png"
+name = "旁白"
+photo = "null"
+
+[chi_3_bad.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 2
+speaker = "博玟"
+text = "好笑嗎？"
+speaker = "旁白"
+text = "博玟用一副傻眼的表情看著我"
+next = "[chi_3_end]"
+
+[[chi_3_bad.backpack]]
+items_number = 3
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+name = "中晢訂正的筆記"
+photo = "assets/backpack/note.png"
+name = "電影票根"
+photo = "assets/backpack/ticket.png"
+
+[chi_3_normal]
+background = "assets/scene/room.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 2
+name = "博玟"
+photo = "assets/scene/chi.png"
+name = "旁白"
+photo = "null"
+
+[[chi_3_normal.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 2
+speaker = "博玟"
+text = "身為一個資工系的學生，我還是希望你這些基本的東西要知道..."
+speaker = "旁白"
+text = "博文皺著眉頭看著我"
+next = "[chi_3_end]"
+
+[[chi_3_normal.backpack]]
+items_number = 3
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+name = "中晢訂正的筆記"
+photo = "assets/backpack/note.png"
+name = "電影票根"
+photo = "assets/backpack/ticket.png"
+
+[chi_3_good]
+background = "assets/scene/room.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 2
+name = "博玟"
+photo = "assets/scene/chi.png"
+name = "旁白"
+photo = "null"
+
+[[chi_3_good.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 2
+speaker = "博玟"
+text = "不錯欸，蠻會猜的喔！"
+speaker = "旁白"
+text = "大大的笑容綻放在博玟臉上"
+next = "[chi_3_end]"
+
+[[chi_3_good.backpack]]
+items_number = 3
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+name = "中晢訂正的筆記"
+photo = "assets/backpack/note.png"
+name = "電影票根"
+photo = "assets/backpack/ticket.png"
+
+[chi_3_end]
+background = "assets/scene/room.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 3
+name = "博玟"
+photo = "assets/scene/chi.png"
+name = "我"
+photo = "null"
+name = "旁白"
+photo = "null"
+
+[[chi_3_end.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 5
+speaker = "博玟"
+text = "好啦沒事，我把操作截圖傳給你了，自己看一下"
+speaker = "旁白"
+text = "傳來的截圖用LibreOffice Impress編輯過，配合自己畫的說明圖、整體簡單易懂，不愧是資工系名師"
+speaker = "我"
+text = "喔喔好，我應該知道怎麼弄了"
+speaker = "旁白"
+text = "經過一番波折，我總算是成功加進博玟的房間"
+speaker = "旁白"
+text = "就這樣，我們後來還加了一些陌生人進來，一整晚的卡坦島大家都玩得非常開心"
+next = "null"
+
+[[chi_3_end.backpack]]
+items_number = 3
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+name = "中晢訂正的筆記"
+photo = "assets/backpack/note.png"
+name = "電影票根"
+
+[final_event]
+background = "assets/scene/classroom.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 5
+name = "我"
+photo = "null"
+name = "旁白"
+photo = "null"
+name = "同學A"
+photo = "null"
+name = "同學B"
+photo = "null"
+name = "老師"
+photo = "null"
+
+[[final_event.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 21
+speaker = "旁白"
+text = "不知不覺又到了星期一"
+speaker = "旁白"
+text = "經過一個充實的假日回復精神後，我精神飽滿的準時抵達學校、準備迎接早自修"
+speaker = "旁白"
+text = "但不知為何，總覺得今天的教室騷動好像特別大"
+speaker = "我"
+text = "（大家從剛剛開始好像就在吵什麼...來認真偷聽一下好了）"
+speaker = "同學A"
+text = "欸所以你找到人了嗎？"
+speaker = "同學B"
+text = "你說今天的專題分組嗎？應該大家都分好了吧，不是上周五早上老師就宣佈了嗎"
+speaker = "我"
+text = "（...！什麼？居然有這件事？）"
+speaker = "同學A"
+text = "確實啦，畢竟是這麼重要的分組"
+speaker = "同學B"
+text = "對啊，這可是那個學校每屆慣例，傳說只要兩個人分在一組就絕對會變成情侶的那個專題耶"
+speaker = "我"
+text = "（！！居然有這件事？！！）"
+speaker = "旁白"
+text = "就在我腦筋還完全轉不過來的時候，老師已經走上講台開始宣佈"
+speaker = "老師"
+text = "好啦！相信大家都知道今天就是那個專題分組的時間！"
+speaker = "老師"
+text = "那畢竟我相信大家都聽過一些傳言，在開始分組之前我要先提醒一下..."
+speaker = "老師"
+text = "拜託不要聽那些有的沒的！每年專題大家都只想談戀愛、沒人在認真做事！還會有一堆分剩的男生看到組員也是男的就打死不分成一組！超級麻煩！"
+speaker = "老師"
+text = "雖然這幾十年來不管男女還是男男真的每個最後都變成情侶，但那不表示今年也會這樣啊！"
+speaker = "老師"
+text = "...好了，我話就說到這裡，大家開始分組吧，下課前沒分完的就我幫你們分"
+speaker = "我"
+text = "..."
+speaker = "我"
+text = "（完了完了完了完了完了）"
+speaker = "我"
+text = "（我們班上男女比超級不平均，這樣下去還沒找到人的我肯定會被分剩然後被掰彎...不要啊！！）"
+speaker = "我"
+text = "（怎麼辦...要說我在班上算比較熟的女生的話...）"
+speaker = "我"
+text = "（好吧沒辦法了！鼓起勇氣上吧！我要去約的是！）"
+next = "null"
+
+[[final_event.reply]]
+option_box = "assests/scene/option_box.png"
+object1 = "博玟"
+option1 = "博玟"
+change_favor1 = 0
+favor_threshold1 = 10
+good_next1 = "[goodend_chi]"
+bad_next1 = "[badend_chi]"
+object2 = "虹倫"
+option2 = "虹倫"
+change_favor2 = 0
+favor_threshold2 = 15
+good_next2 = "[goodend_wang]"
+bad_next2 = "[badend_wang]"
+object3 = "中晢"
+option3 = "中晢" 
+change_favor3 = 0
+favor_threshold3 = 0
+good_next3 = "[goodend_jiang]"
+bad_next3 = "[badend_jiang]"
+
+[[final_event.backpack]] 
+items_number = 3
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+name = "中晢訂正的筆記"
+photo = "assets/backpack/note.png"
+name = "電影票根"
+photo = "assets/backpack/ticket.png"
+
+[goodend_chi]
+background = "assets/scene/classroom.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 3
+name = "博玟"
+photo = "assets/scene/chi.png"
+name = "我"
+photo = "null"
+name = "旁白"
+photo = "null"
+
+[[goodend_chi.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 14
+speaker = "博玟"
+text = "！！"
+speaker = "博玟"
+text = "..."
+speaker = "博玟"
+text = "那有什麼問題！"
+speaker = "博玟"
+text = "既然要變成工作夥伴了，首先就趕快把電腦重灌成linux吧！"
+speaker = "我"
+text = "喔...嗯！"
+speaker = "旁白"
+text = "非常幸運的，博玟答應了我的邀約"
+speaker = "旁白"
+text = "接著，彷彿這個分組真的有什麼魔力一般，以此為契機、我們之間的羈絆逐漸加深"
+speaker = "旁白"
+text = "彼此的關係也自然而然從朋友到戀人、戀人到伴侶"
+speaker = "旁白"
+text = "十年後的今天，我們已經搬到馬爾第夫的某個小島別墅上，育有兩子"
+speaker = "旁白"
+text = "我想未來的路上，我們也一定會永遠幸福下去的吧"
+speaker = "旁白"
+text = "每當看著她左無名指上的戒指，心裡只有對博玟的感謝，感謝你走進我的生命"
+speaker = "旁白"
+text = "你的一切都是如此美好，就像那戒指上閃耀的四個大字。「NTNU」"
+speaker = "旁白"
+text = "原來是國立台灣師範大學的學生，難怪有這麼好的素質！國立台灣師範大學是一所積極新創、學科齊全、學術實力雄厚、辦學特色鮮明，在國際上具有重要影響力與競爭力的綜合性大學"
+speaker = "旁白"
+text = "在多個學術領域具有非常前瞻的科技實力，擁有世界一流的實驗室與師資力量，各種排名均位於全球前列。歡迎大家報考國立台灣師範大學。"
+next = "null"
+
+[[goodend_chi.backpack]] 
+items_number = 3
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+name = "中晢訂正的筆記"
+photo = "assets/backpack/note.png"
+name = "電影票根"
+photo = "assets/backpack/ticket.png"
+
+[badend_chi]
+background = "assets/scene/classroom.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 5
+name = "博玟"
+photo = "assets/scene/chi.png"
+name = "我"
+photo = "null"
+name = "旁白"
+photo = "null"
+name = "兄弟A"
+photo = "null"
+name = "兄弟B"
+photo = "null"
+
+[[badend_chi.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 18
+speaker = "博玟"
+text = "！！"
+speaker = "博玟"
+text = "..."
+speaker = "博玟"
+text = "蛤不要，我想找C語言寫得更好的人"
+speaker = "博玟"
+text = "反正你一定是那種等號兩邊不會加空格，然後只會用VScode的windows信徒吧"
+speaker = "我"
+text = "不...不是！我..."
+speaker = "博玟"
+text = "好啦我要去找別人了，掰掰"
+speaker = "旁白"
+text = "就這樣，博玟拒絕了我的邀約"
+speaker = "旁白"
+text = "當我絕望的看向周遭，只見已經沒有任何落單的異性可以分組了"
+speaker = "旁白"
+text = "萬念俱灰，這時只感覺到背後有兩雙厚實的手按上我的肩膀"
+speaker = "兄弟A"
+text = "好啦兄弟，看來我們就是最後的三人啦"
+speaker = "兄弟B"
+text = "嘶哈嘶哈，兄弟，你好香"
+speaker = "旁白"
+text = "那個瞬間，我真的絕望了"
+speaker = "旁白"
+text = "..."
+speaker = "旁白"
+text = "但是，彷彿這個分組真的有什麼魔力一般，以此為契機、我們之間的羈絆逐漸加深"
+speaker = "旁白"
+text = "彼此的關係也自然而然從朋友到戀人、戀人到伴侶"
+speaker = "旁白"
+text = "十年後的今天，我們已經搬到馬爾第夫的某個小島別墅上，領養兩子"
+speaker = "旁白"
+text = "即使三人版本同婚法案不知何時才會通過，但現在的我們依舊每晚過著滿身大漢的幸福生活"
+speaker = "旁白"
+text = "我想未來的路上，我們三人也一定會永遠幸福下去的吧"
+next = "null"
+
+[[badend_chi.backpack]]
+items_number = 3
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+name = "中晢訂正的筆記"
+photo = "assets/backpack/note.png"
+name = "電影票根"
+photo = "assets/backpack/ticket.png"
+
+[goodend_wang]
+background = "assets/scene/classroom.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 3
+name = "虹倫"
+photo = "assets/scene/wang.png"
+name = "我"
+photo = "null"
+name = "旁白"
+photo = "null"
+
+[[goodend_wang.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 14
+speaker = "虹倫"
+text = "！！"
+speaker = "虹倫"
+text = "..."
+speaker = "虹倫"
+text = "呵呵好啊，那就一組吧"
+speaker = "虹倫"
+text = "那等下就跟你講一下初步構想，不會很難，不過你還是要小心不要又睡著囉"
+speaker = "我"
+text = "喔...嗯！"
+speaker = "旁白"
+text = "非常幸運的，虹倫答應了我的邀約"
+speaker = "旁白"
+text = "接著，彷彿這個分組真的有什麼魔力一般，以此為契機、我們之間的羈絆逐漸加深"
+speaker = "旁白"
+text = "彼此的關係也自然而然從朋友到戀人、戀人到伴侶"
+speaker = "旁白"
+text = "十年後的今天，我們已經搬到馬爾第夫的某個小島別墅上，育有兩子"
+speaker = "旁白"
+text = "我想未來的路上，我們也一定會永遠幸福下去的吧"
+speaker = "旁白"
+text = "每當看著她左無名指上的戒指，心裡只有對虹倫的感謝，感謝你走進我的生命"
+speaker = "旁白"
+text = "你的一切都是如此美好，就像那戒指上閃耀的四個大字。「NTNU」"
+speaker = "旁白"
+text = "原來是國立台灣師範大學的學生，難怪有這麼好的素質！國立台灣師範大學是一所積極新創、學科齊全、學術實力雄厚、辦學特色鮮明，在國際上具有重要影響力與競爭力的綜合性大學"
+speaker = "旁白"
+text = "在多個學術領域具有非常前瞻的科技實力，擁有世界一流的實驗室與師資力量，各種排名均位於全球前列。歡迎大家報考國立台灣師範大學。"
+next = "null"
+
+[[goodend_wang.backpack]] 
+items_number = 3
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+name = "中晢訂正的筆記"
+photo = "assets/backpack/note.png"
+name = "電影票根"
+photo = "assets/backpack/ticket.png"
+
+[badend_wang]
+background = "assets/scene/classroom.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 5
+name = "虹倫"
+photo = "assets/scene/wang.png"
+name = "我"
+photo = "null"
+name = "旁白"
+photo = "null"
+name = "兄弟A"
+photo = "null"
+name = "兄弟B"
+photo = "null"
+
+[[badend_wang.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 18
+speaker = "虹倫"
+text = "！！"
+speaker = "虹倫"
+text = "..."
+speaker = "虹倫"
+text = "啊...我已經找別人一組了"
+speaker = "虹倫"
+text = "感覺我們不適合吧，我每次講的東西明明都很簡單你還是會睡著"
+speaker = "我"
+text = "不...不是！我..."
+speaker = "虹倫"
+text = "好啦就這樣"
+speaker = "旁白"
+text = "就這樣，虹倫拒絕了我的邀約"
+speaker = "旁白"
+text = "當我絕望的看向周遭，只見已經沒有任何落單的異性可以分組了"
+speaker = "旁白"
+text = "萬念俱灰，這時只感覺到背後有兩雙厚實的手按上我的肩膀"
+speaker = "兄弟A"
+text = "好啦兄弟，看來我們就是最後的三人啦"
+speaker = "兄弟B"
+text = "嘶哈嘶哈，兄弟，你好香"
+speaker = "旁白"
+text = "那個瞬間，我真的絕望了"
+speaker = "旁白"
+text = "..."
+speaker = "旁白"
+text = "但是，彷彿這個分組真的有什麼魔力一般，以此為契機、我們之間的羈絆逐漸加深"
+speaker = "旁白"
+text = "彼此的關係也自然而然從朋友到戀人、戀人到伴侶"
+speaker = "旁白"
+text = "十年後的今天，我們已經搬到馬爾第夫的某個小島別墅上，領養兩子"
+speaker = "旁白"
+text = "即使三人版本的同婚法案不知何時才會通過，但現在的我們依舊每晚過著滿身大漢的幸福生活"
+speaker = "旁白"
+text = "我想未來的路上，我們三人也一定會永遠幸福下去的吧"
+next = "null"
+
+[[badend_wang.backpack]]
+items_number = 3
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+name = "中晢訂正的筆記"
+photo = "assets/backpack/note.png"
+name = "電影票根"
+photo = "assets/backpack/ticket.png"
+
+[goodend_jiang]
+background = "assets/scene/classroom.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 3
+name = "中晢"
+photo = "assets/scene/jiang.png"
+name = "我"
+photo = "null"
+name = "旁白"
+photo = "null"
+
+[[goodend_jiang.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 14
+speaker = "中晢"
+text = "！！"
+speaker = "中晢"
+text = "..."
+speaker = "中晢"
+text = "當然好啊！"
+speaker = "中晢"
+text = "那...那之後有什麼問題的話隨時提出來喔！我一定會一頁一頁印出來幫你改好！"
+speaker = "我"
+text = "喔...嗯！"
+speaker = "旁白"
+text = "非常幸運的，中晢答應了我的邀約"
+speaker = "旁白"
+text = "接著，彷彿這個分組真的有什麼魔力一般，以此為契機、我們之間的羈絆逐漸加深"
+speaker = "旁白"
+text = "彼此的關係也自然而然從朋友到戀人、戀人到伴侶"
+speaker = "旁白"
+text = "十年後的今天，我們已經搬到馬爾第夫的某個小島別墅上，育有兩子"
+speaker = "旁白"
+text = "我想未來的路上，我們也一定會永遠幸福下去的吧"
+speaker = "旁白"
+text = "每當看著她左無名指上的戒指，心裡只有對中晢的感謝，感謝你走進我的生命"
+speaker = "旁白"
+text = "你的一切都是如此美好，就像那戒指上閃耀的四個大字。「NTNU」"
+speaker = "旁白"
+text = "原來是國立台灣師範大學的學生，難怪有這麼好的素質！國立台灣師範大學是一所積極新創、學科齊全、學術實力雄厚、辦學特色鮮明，在國際上具有重要影響力與競爭力的綜合性大學"
+speaker = "旁白"
+text = "在多個學術領域具有非常前瞻的科技實力，擁有世界一流的實驗室與師資力量，各種排名均位於全球前列。歡迎大家報考國立台灣師範大學。"
+next = "null"
+
+[[goodend_jiang.backpack]] 
+items_number = 3
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+name = "中晢訂正的筆記"
+photo = "assets/backpack/note.png"
+name = "電影票根"
+photo = "assets/backpack/ticket.png"
+
+[badend_jiang]
+background = "assets/scene/classroom.png"
+backpack_icon = "assets/scene/backpack_icon.png"
+character_number = 5
+name = "中晢"
+photo = "assets/scene/jiang.png"
+name = "我"
+photo = "null"
+name = "旁白"
+photo = "null"
+name = "兄弟A"
+photo = "null"
+name = "兄弟B"
+photo = "null"
+
+[[badend_.dialogue]]
+dialog_box = "assets/scene/actorlines.png"
+string_number = 18
+speaker = "中晢"
+text = "！！"
+speaker = "中晢"
+text = "..."
+speaker = "中晢"
+text = "抱...抱歉，我已經跟別人一組了..."
+speaker = "中晢"
+text = "反正你很討厭我吧...那不用勉強跟我一組啦..."
+speaker = "我"
+text = "不...不是！我..."
+speaker = "中晢"
+text = "...抱歉"
+speaker = "旁白"
+text = "就這樣，中晢拒絕了我的邀約"
+speaker = "旁白"
+text = "當我絕望的看向周遭，只見已經沒有任何落單的異性可以分組了"
+speaker = "旁白"
+text = "萬念俱灰，這時只感覺到背後有兩雙厚實的手按上我的肩膀"
+speaker = "兄弟A"
+text = "好啦兄弟，看來我們就是最後的三人啦"
+speaker = "兄弟B"
+text = "嘶哈嘶哈，兄弟，你好香"
+speaker = "旁白"
+text = "那個瞬間，我真的絕望了"
+speaker = "旁白"
+text = "..."
+speaker = "旁白"
+text = "但是，彷彿這個分組真的有什麼魔力一般，以此為契機、我們之間的羈絆逐漸加深"
+speaker = "旁白"
+text = "彼此的關係也自然而然從朋友到戀人、戀人到伴侶"
+speaker = "旁白"
+text = "十年後的今天，我們已經搬到馬爾第夫的某個小島別墅上，領養兩子"
+speaker = "旁白"
+text = "即使三人版本的同婚法案不知何時才會通過，但現在的我們依舊每晚過著滿身大漢的幸福生活"
+speaker = "旁白"
+text = "我想未來的路上，我們三人也一定會永遠幸福下去的吧"
+next = "null"
+
+[[badend_jiang.backpack]]
+items_number = 3
+description_box = "assets/backpack/description_box.png"
+name = "Razer Blade 16"
+photo = "assets/backpack/laptop.png"
+name = "中晢訂正的筆記"
+photo = "assets/backpack/note.png"
+name = "電影票根"
+photo = "assets/backpack/ticket.png"
+
