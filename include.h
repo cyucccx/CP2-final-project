@@ -41,7 +41,6 @@ typedef struct Backpack{
 }Backpack;
 
 typedef struct scene{
-    int32_t number;
     char *name;
     char *background;
     char *backpack_icon;
@@ -73,6 +72,28 @@ typedef struct reply{
     int32_t change_favor3;
 }sReply;
 
+typedef struct final_reply{
+    char *option_box;
+    char *object1;
+    char *option1;
+    char *good_next1;
+    char *bad_next1;
+    int32_t change_favor1;
+    int32_t favor_threshold1;
+    char *object2;
+    char *option2;
+    char *good_next2;
+    char *bad_next2;
+    int32_t change_favor2;
+    int32_t favor_threshold2;
+    char *object3;
+    char *option3;
+    char *good_next3;
+    char *bad_next3;
+    int32_t change_favor3;
+    int32_t favor_threshold3;
+}sFinalReply;
+
 typedef struct backpack{
     int32_t items_number;
     char *description_box;
@@ -91,10 +112,6 @@ void allocate_scene(sScene *input);
 
 void free_scene(sScene *input);
 
-void allocate_backpack(sBackpack *input);
-
-void free_backpack(sBackpack *input);
-
 void allocate_dialogue(sDialogue *input);
 
 void free_dialogue(sDialogue *input);
@@ -102,3 +119,11 @@ void free_dialogue(sDialogue *input);
 void allocate_reply(sReply *input);
 
 void free_reply(sReply *input);
+
+void allocate_backpack(sBackpack *input);
+
+void free_backpack(sBackpack *input);
+
+void allocate_FinalReply(sFinalReply *input);
+
+void free_FinalReply(sFinalReply *input);
