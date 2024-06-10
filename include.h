@@ -21,10 +21,24 @@ typedef struct
 
 void create_player(Player play, SDL_Renderer *render, SDL_Surface *image, SDL_Rect a);
 
-int SDL_no_choice_one_character(char *background_image, char *character_image, char *character_message, char *character_name);
+int backpack(char *background_image, char *laptop_image,char *note_image, char *ticket_image,char *laptop_message,char *note_message,char *ticket_message,char *laptop_name,char *note_name,char *ticket_name);
 
-int SDL_choice_one_character(char *background_image, char *character_image,char *sellect_button_message_up,char *sellect_button_message_middle,char *sellect_button_message_down);
+int SDL_no_choice_one_character(char *background_image, char *character_image, char *character_message, char *character_name, Backpack packing);
 
+int SDL_choice_one_character(char *background_image, char *character_image,char *sellect_button_message_up,char *sellect_button_message_middle,char *sellect_button_message_down, char *character_name, Backpack packing);
+
+typedef struct Backpack{
+    char *background_image;
+    char *laptop_image;
+    char *note_image;
+    char *ticket_image;
+    char *laptop_message;
+    char *note_message;
+    char *ticket_message;
+    char *laptop_name;
+    char *note_name;
+    char *ticket_name;
+}Backpack;
 
 typedef struct scene{
     int32_t number;
