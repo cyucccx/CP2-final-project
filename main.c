@@ -34,6 +34,7 @@ int main(){
     scene.name = NULL;
     scene.background = NULL;
     scene.backpack_icon = NULL;
+    scene.reply = 0;
     // allocate_scene(&scene);
     sCharacter *character;
     int32_t count_character = 0;
@@ -42,6 +43,7 @@ int main(){
     allocate_dialogue(&dialogue);
     sReply reply;
     allocate_reply(&reply);
+    sFinalReply final_reply;
     sBackpack backpack;
     allocate_backpack(&backpack);
     int32_t string_index = 0;
@@ -354,8 +356,190 @@ int main(){
         }
 
         // read reply
-        if (scene.reply == 1){
-            int32_t object_number = -1;
+        int32_t object_number = -1;
+        if (scene.name == NULL){
+            continue;
+        }
+        if (strcmp(scene.name, "final_event") == 0 && scene.reply == 1){
+            allocate_FinalReply(&final_reply);
+            if (strstr(buffer, "option_box") != 0){
+                getstring(buffer, &final_reply.option_box);
+                printf("special = %s\n", final_reply.option_box);
+            }
+            else if (strstr(buffer, "object1") != 0){
+                getstring(buffer, &final_reply.object1);
+                printf("%s\n", final_reply.object1);
+            }
+            else if (strstr(buffer, "option1") != 0){
+                getstring(buffer, &final_reply.option1);
+                printf("%s\n", final_reply.option1);
+            }
+            else if (strstr(buffer, "change_favor1") != 0){
+                char *start = strstr(buffer, "=");
+                int32_t START = start-buffer;
+                for (int32_t i = START; buffer[i] != '\n'; i++){
+                    if (buffer[i] == 43){
+                        final_reply.change_favor1 = buffer[i+1]-48;
+                        break;
+                    }
+                    else if (buffer[i] == 45){
+                        final_reply.change_favor1 = -(buffer[i+1]-48);
+                        break;
+                    }
+                    else if (buffer[i] >= 48 && buffer[i] < 57){
+                        final_reply.change_favor1 = buffer[i]-48;
+                        break;
+                    }
+                }
+                printf("%d\n", final_reply.change_favor1);
+            }
+            else if (strstr(buffer, "favor_threshold1") != 0){
+                char *start = strstr(buffer, "=");
+                int32_t START = start-buffer;
+                for (int32_t i = START; buffer[i] != '\n'; i++){
+                    if (buffer[i] >= 48 && buffer[i] < 57){
+                        if (buffer[i+1] >= 48 && buffer[i+1] < 57){
+                            final_reply.favor_threshold1 = (buffer[i]-48)*10 + buffer[i+1]-48;
+                            break;
+                        }
+                        else{
+                            final_reply.favor_threshold1 = buffer[i]-48;
+                            break;
+                        }
+                    }
+                }
+                printf("%d\n", final_reply.favor_threshold1);
+            }
+            else if (strstr(buffer, "good_next1") != 0){
+                getstring(buffer, &final_reply.good_next1);
+                printf("%s\n", final_reply.good_next1);
+            }
+            else if (strstr(buffer, "bad_next1") != 0){
+                getstring(buffer, &final_reply.bad_next1);
+                printf("%s\n", final_reply.bad_next1);
+            }
+            else if (strstr(buffer, "object2") != 0){
+                getstring(buffer, &final_reply.object2);
+                printf("%s\n", final_reply.object2);
+            }
+            else if (strstr(buffer, "option2") != 0){
+                getstring(buffer, &final_reply.option2);
+                printf("%s\n", final_reply.option2);
+            }
+            else if (strstr(buffer, "change_favor2") != 0){
+                char *start = strstr(buffer, "=");
+                int32_t START = start-buffer;
+                for (int32_t i = START; buffer[i] != '\n'; i++){
+                    if (buffer[i] == 43){
+                        final_reply.change_favor2 = buffer[i+1]-48;
+                        break;
+                    }
+                    else if (buffer[i] == 45){
+                        final_reply.change_favor2 = -(buffer[i+1]-48);
+                        break;
+                    }
+                    else if (buffer[i] >= 48 && buffer[i] < 57){
+                        final_reply.change_favor2 = buffer[i]-48;
+                        break;
+                    }
+                }
+                printf("%d\n", final_reply.change_favor2);
+            }
+            else if (strstr(buffer, "favor_threshold2") != 0){
+                char *start = strstr(buffer, "=");
+                int32_t START = start-buffer;
+                for (int32_t i = START; buffer[i] != '\n'; i++){
+                    if (buffer[i] >= 48 && buffer[i] < 57){
+                        if (buffer[i+1] >= 48 && buffer[i+1] < 57){
+                            final_reply.favor_threshold2 = (buffer[i]-48)*10 + buffer[i+1]-48;
+                            break;
+                        }
+                        else{
+                            final_reply.favor_threshold2 = buffer[i]-48;
+                            break;
+                        }
+                    }
+                }
+                printf("%d\n", final_reply.favor_threshold2);
+            }
+            else if (strstr(buffer, "good_next2") != 0){
+                getstring(buffer, &final_reply.good_next2);
+                printf("%s\n", final_reply.good_next2);
+            }
+            else if (strstr(buffer, "bad_next2") != 0){
+                getstring(buffer, &final_reply.bad_next2);
+                printf("%s\n", final_reply.bad_next2);
+            }
+            else if (strstr(buffer, "object3") != 0){
+                getstring(buffer, &final_reply.object3);
+                printf("%s\n", final_reply.object3);
+            }
+            else if (strstr(buffer, "option3") != 0){
+                getstring(buffer, &final_reply.option3);
+                printf("%s\n", final_reply.option3);
+            }
+            else if (strstr(buffer, "change_favor3") != 0){
+                char *start = strstr(buffer, "=");
+                int32_t START = start-buffer;
+                for (int32_t i = START; buffer[i] != '\n'; i++){
+                    if (buffer[i] == 43){
+                        final_reply.change_favor3 = buffer[i+1]-48;
+                        break;
+                    }
+                    else if (buffer[i] == 45){
+                        final_reply.change_favor3 = -(buffer[i+1]-48);
+                        break;
+                    }
+                    else if (buffer[i] >= 48 && buffer[i] < 57){
+                        final_reply.change_favor3 = buffer[i]-48;
+                        break;
+                    }
+                }
+                printf("%d\n", final_reply.change_favor3);
+            }
+            else if (strstr(buffer, "favor_threshold3") != 0){
+                char *start = strstr(buffer, "=");
+                int32_t START = start-buffer;
+                for (int32_t i = START; buffer[i] != '\n'; i++){
+                    if (buffer[i] >= 48 && buffer[i] < 57){
+                        if (buffer[i+1] >= 48 && buffer[i+1] < 57){
+                            final_reply.favor_threshold3 = (buffer[i]-48)*10 + buffer[i+1]-48;
+                            break;
+                        }
+                        else{
+                            final_reply.favor_threshold3 = buffer[i]-48;
+                            break;
+                        }
+                    }
+                }
+                printf("%d\n", final_reply.favor_threshold3);
+            }
+            else if (strstr(buffer, "good_next3") != 0){
+                getstring(buffer, &final_reply.good_next3);
+                printf("%s\n", final_reply.good_next3);
+            }
+            else if (strstr(buffer, "bad_next3") != 0){
+                getstring(buffer, &final_reply.bad_next3);
+                printf("%s\n", final_reply.bad_next3);
+                // SDL_choice_one_character(接return value)
+                // object_number = -1;
+                // for (int32_t i = 0; i < count_character; i++){
+                //     if (strcmp(final_reply.object1, character[i].name) == 0){
+                //         object_number = i;
+                //         break;
+                //     }
+                // }
+                // if (object_number == -1){
+                //     // wrong
+                // }
+                if (final_reply.option_box != NULL){
+                    free_FinalReply(&final_reply);
+                }
+            }
+        }
+
+        if (scene.reply == 1 && strcmp(scene.name, "final_event") != 0){
+            object_number = -1;
             if (strstr(buffer, "option_box") != 0){
                 getstring(buffer, &reply.option_box);
                 printf("%s\n", reply.option_box);
