@@ -5,17 +5,23 @@
 // don't read the sentence which is commented
 // if max_character < real number -> segmentation fault, plz resolve ;;
 
-int32_t getstring(char *string, char **var_name){
-    char *start = strstr(string, "\"")+1;
-    if (start == NULL){
+int32_t getstring(char *string, char **var_name) {
+    char *start = strstr(string, "\"");
+    if (start == NULL) {
         return -1;
     }
-    char *end = strstr(start+1, "\"");
-    if (end == NULL){
+    start++;
+    char *end = strstr(start, "\"");
+    if (end == NULL) {
         return -1;
     }
     *end = '\0';
-    *var_name = calloc(end-start, sizeof(char));
+
+    size_t len = end - start + 1; // +1 for the null terminator
+    *var_name = calloc(len, sizeof(char));
+    if (*var_name == NULL) {
+        return -1;
+    }
     strcpy(*var_name, start);
     return 0;
 }
@@ -327,28 +333,75 @@ int main(){
                     // search_event = calloc(100, sizeof(char));
                     // strcpy(search_event, dialogue.next);
                 }
-                /*
+                Backpack back;
+                strcpy(back.background_image,backpack.description_box);
+                for(int i=0;i<3;i++)
+                {
+                    back.laptop_image=NULL;
+                    back.laptop_image=NULL;
+                    back.laptop_message=NULL;
+                    back.laptop_name=NULL;
+                    back.note_image=NULL;
+                    back.note_message=NULL;
+                    back.note_name=NULL;
+                    back.ticket_image=NULL;
+                    back.ticket_message=NULL;
+                    back.ticket_name=NULL;
+                }
+                if(backpack.items_number==1)
+                {
+                    strcpy(back.laptop_image,backpack.photo[0]);
+                    //strcpy(back.note_image,backpack.photo[1]);
+                    //strcpy(back.ticket_image,backpack.photo[2]);
+                    strcpy(back.laptop_name,backpack.name[0]);
+                    //strcpy(back.note_name,backpack.name[1]);
+                    //strcpy(back.ticket_name,backpack.name[2]);
+                    strcpy(back.laptop_message,backpack.description[0]);
+                    //strcpy(back.note_message,backpack.description[1]);
+                    //strcpy(back.ticket_message,backpack.description[2]);
+                }
+                else if(backpack.items_number==2)
+                {
+                    strcpy(back.laptop_image,backpack.photo[0]);
+                    strcpy(back.note_image,backpack.photo[1]);
+                    //strcpy(back.ticket_image,backpack.photo[2]);
+                    strcpy(back.laptop_name,backpack.name[0]);
+                    strcpy(back.note_name,backpack.name[1]);
+                    //strcpy(back.ticket_name,backpack.name[2]);
+                    strcpy(back.laptop_message,backpack.description[0]);
+                    strcpy(back.note_message,backpack.description[1]);
+                    //strcpy(back.ticket_message,backpack.description[2]);
+                }
+                else if(backpack.items_number==3)
+                {
+                    strcpy(back.laptop_image,backpack.photo[0]);
+                    strcpy(back.note_image,backpack.photo[1]);
+                    strcpy(back.ticket_image,backpack.photo[2]);
+                    strcpy(back.laptop_name,backpack.name[0]);
+                    strcpy(back.note_name,backpack.name[1]);
+                    strcpy(back.ticket_name,backpack.name[2]);
+                    strcpy(back.laptop_message,backpack.description[0]);
+                    strcpy(back.note_message,backpack.description[1]);
+                    strcpy(back.ticket_message,backpack.description[2]);
+                }
                 for(int i=0;i<dialogue.string_number;i++)
                 {
                     for(int j=0;j<scene.character_number;j++)
                     {
                         if(strcmp(dialogue.speaker[i],character[j].name)==0 )
                         {
-                            int end = SDL_no_choice_one_character(scene.background,character[j].photo,dialogue.text[i],character[j].name);
-                            if(end==1)
+                            int end = SDL_no_choice_one_character(scene.background,character[j].photo,dialogue.text[i],character[j].name,back);
+                            if(end==4)
                             {
                                 SDL_DestroyRenderer(screen);
                                 SDL_DestroyWindow(window);
                                 SDL_Quit();
-                                for (int32_t i = 0; i < 1001; i++) {
-                                    free_scene(&scene);
-                                }
                                 return 0;
                             }
                         }
                     }
                 }
-                */
+                
                 if (dialogue.dialog_box != NULL){
                     free_dialogue(&dialogue);
                 }
@@ -521,6 +574,7 @@ int main(){
             else if (strstr(buffer, "bad_next3") != 0){
                 getstring(buffer, &final_reply.bad_next3);
                 printf("%s\n", final_reply.bad_next3);
+                
                 // SDL_choice_one_character(接return value)
                 // object_number = -1;
                 // for (int32_t i = 0; i < count_character; i++){
@@ -673,7 +727,75 @@ int main(){
                 // if player choose option3
                 // search_event = calloc(100, sizeof(char));
                 // strcpy(search_event, reply.next3);
-
+                Backpack back;
+                strcpy(back.background_image,backpack.description_box);
+                for(int i=0;i<3;i++)
+                {
+                    back.laptop_image=NULL;
+                    back.laptop_image=NULL;
+                    back.laptop_message=NULL;
+                    back.laptop_name=NULL;
+                    back.note_image=NULL;
+                    back.note_message=NULL;
+                    back.note_name=NULL;
+                    back.ticket_image=NULL;
+                    back.ticket_message=NULL;
+                    back.ticket_name=NULL;
+                }
+                if(backpack.items_number==1)
+                {
+                    strcpy(back.laptop_image,backpack.photo[0]);
+                    //strcpy(back.note_image,backpack.photo[1]);
+                    //strcpy(back.ticket_image,backpack.photo[2]);
+                    strcpy(back.laptop_name,backpack.name[0]);
+                    //strcpy(back.note_name,backpack.name[1]);
+                    //strcpy(back.ticket_name,backpack.name[2]);
+                    strcpy(back.laptop_message,backpack.description[0]);
+                    //strcpy(back.note_message,backpack.description[1]);
+                    //strcpy(back.ticket_message,backpack.description[2]);
+                }
+                else if(backpack.items_number==2)
+                {
+                    strcpy(back.laptop_image,backpack.photo[0]);
+                    strcpy(back.note_image,backpack.photo[1]);
+                    //strcpy(back.ticket_image,backpack.photo[2]);
+                    strcpy(back.laptop_name,backpack.name[0]);
+                    strcpy(back.note_name,backpack.name[1]);
+                    //strcpy(back.ticket_name,backpack.name[2]);
+                    strcpy(back.laptop_message,backpack.description[0]);
+                    strcpy(back.note_message,backpack.description[1]);
+                    //strcpy(back.ticket_message,backpack.description[2]);
+                }
+                else if(backpack.items_number==3)
+                {
+                    strcpy(back.laptop_image,backpack.photo[0]);
+                    strcpy(back.note_image,backpack.photo[1]);
+                    strcpy(back.ticket_image,backpack.photo[2]);
+                    strcpy(back.laptop_name,backpack.name[0]);
+                    strcpy(back.note_name,backpack.name[1]);
+                    strcpy(back.ticket_name,backpack.name[2]);
+                    strcpy(back.laptop_message,backpack.description[0]);
+                    strcpy(back.note_message,backpack.description[1]);
+                    strcpy(back.ticket_message,backpack.description[2]);
+                }
+                
+                for(int i=0;i<1;i++)
+                {
+                    for(int j=0;j<scene.character_number;j++)
+                    {
+                        if(strcmp(reply.object,character[j].name)==0 )
+                        {
+                            int end = SDL_choice_one_character(scene.background,character[j].photo,reply.option1,reply.option2,reply.option3,character[j].name,back);
+                            if(end==4)
+                            {
+                                SDL_DestroyRenderer(screen);
+                                SDL_DestroyWindow(window);
+                                SDL_Quit();
+                                return 0;
+                            }
+                        }
+                    }
+                }
                 // SDL_choice_one_character(接return value)
 
                 if (reply.option_box != NULL){
