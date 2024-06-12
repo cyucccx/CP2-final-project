@@ -5,7 +5,7 @@ author = "宋品頤"
 background = "assets/home/background.png"
 button = "assets/home/button.png"
 backpack_background = "assets/home/backpack_background.png"
-max_character = 5
+max_character = 15
 
 [chi_1_start]
 background = "assets/scene/road.png"
