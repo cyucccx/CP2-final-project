@@ -1,18 +1,19 @@
-project_name = "Final Project"
+p
+oject_name = "Final Project"
 author = "宋品頤"
 
 [home]
-background = "assets/home/menu.png"
-button = "assets/home/start.png"
+background = "../assets/home/menu.png"
+button = "../assets/home/start.png"
 max_character = 15
 
 [chi_1_start]
-background = "assets/scene/road.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/road.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 3
 name = "博玟"
-photo = "assets/scene/chi.png"
-avatar = "assets/scene/head_chi.png"
+photo = "../assets/scene/chi.png"
+avatar = "../assets/scene/head_chi.png"
 name = "我"
 photo = "null"
 avatar = "null"
@@ -24,7 +25,7 @@ avatar = "null"
 items_number = 0
 
 [[chi_1_start.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 6
 speaker = "我"
 text = "完蛋！要遲到了！"
@@ -41,7 +42,7 @@ text = "出現在眼前的，是一位綁著可愛雙馬尾、嘴裡叼著筆電
 next = "null"
 
 [[chi_1_start.reply]]
-option_box = "assets/scene/select_button.png"
+option_box = "../assets/scene/select_button.png"
 object = "博玟"
 option1 = "欸！走路不看路啊！"
 change_favor1 = -5
@@ -54,12 +55,12 @@ change_favor3 = +5
 next3 = "[chi_1_good]"
 
 [chi_1_bad]
-background = "assets/scene/road.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/road.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 3
 name = "博玟"
-photo = "assets/scene/chi.png"
-avatar = "assets/scene/head_chi.png"
+photo = "../assets/scene/chi.png"
+avatar = "../assets/scene/head_chi.png"
 name = "我"
 photo = "null"
 avatar = "null"
@@ -71,7 +72,7 @@ avatar = "null"
 items_number = 0
 
 [[chi_1_bad.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 3
 speaker = "我"
 text = "被嚇了一大跳的我下意識蹦出這句話"
@@ -82,12 +83,12 @@ text = "眼前的女孩拋下這句意義不明的話後就快跑著離開了，
 next = "[chi_1_end]"
 
 [chi_1_normal]
-background = "assets/scene/road.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/road.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 3 
 name = "博玟"
-photo = "assets/scene/chi.png"
-avatar = "assets/scene/head_chi.png"
+photo = "../assets/scene/chi.png"
+avatar = "../assets/scene/head_chi.png"
 name = "我"
 photo = "null"
 avatar = "null"
@@ -99,7 +100,7 @@ avatar = "null"
 items_number = 0
 
 [[chi_1_normal.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 3
 speaker = "我"
 text = "被眼前這位女孩的風采給震懾，我下意識蹦出這句話"
@@ -110,12 +111,12 @@ text = "眼前的女孩淡淡的拋下這句話後就快跑著離開了，只留
 next = "[chi_1_end]"
 
 [chi_1_good]
-background = "assets/scene/road.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/road.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 3
 name = "博玟"
-photo = "assets/scene/chi.png"
-avatar = "assets/scene/head_chi.png"
+photo = "../assets/scene/chi.png"
+avatar = "../assets/scene/head_chi.png"
 name = "我"
 photo = "null"
 avatar = "null"
@@ -127,7 +128,7 @@ avatar = "null"
 items_number = 0
 
 [[chi_1_good.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 3
 speaker = "我"
 text = "看著那台最快速、最鮮明、最清晰。全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，我下意識的蹦出這句話"
@@ -138,8 +139,8 @@ text = "眼前的女孩開心的拋下這句話後就快跑著離開了，只留
 next = "[chi_1_end]"
 
 [chi_1_end]
-background = "assets/scene/road.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/road.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 2
 name = "我"
 photo = "null"
@@ -152,7 +153,7 @@ avatar = "null"
 items_number = 0
 
 [[chi_1_end.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 8
 speaker = "旁白"
 text = "但或許是過於匆忙、又或許是剛剛為了開口說話，少女離開時叼著的筆電掉在了地上"
@@ -173,12 +174,12 @@ text = "（唉...真的有夠倒楣...）"
 next = "null"
 
 [wang_1_start]
-background = "assets/scene/hallway.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/hallway.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 3
 name = "虹倫"
-photo = "assets/scene/wang.png"
-avatar = "assets/scene/head_wang.png"
+photo = "../assets/scene/wang.png"
+avatar = "../assets/scene/head_wang.png"
 name = "我"
 photo = "null"
 avatar = "null"
@@ -189,11 +190,11 @@ avatar = "null"
 [[wang_1_start.backpack]]
 items_number = 1
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 
 [[wang_1_start.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 8
 speaker = "我"
 text = "呼...呼...終於趕上了..."
@@ -214,7 +215,7 @@ text = "就是難得看你這樣感覺很新鮮啊，是說所以你為什麼會
 next = "null"
 
 [[wang_1_start.reply]]
-option_box = "assets/scene/select_button.png"
+option_box = "../assets/scene/select_button.png"
 object = "虹倫"
 option1 = "...沒有啦就睡過頭啊"
 change_favor1 = -5
@@ -227,12 +228,12 @@ change_favor3 = -5
 next3 = "[wang_1_bad]"
 
 [wang_1_bad]
-background = "assets/scene/hallway.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/hallway.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 2
 name = "虹倫"
-photo = "assets/scene/wang.png"
-avatar = "assets/scene/head_wang.png"
+photo = "../assets/scene/wang.png"
+avatar = "../assets/scene/head_wang.png"
 name = "旁白"
 photo = "null"
 avatar = "null"
@@ -240,11 +241,11 @@ avatar = "null"
 [[wang_1_bad.backpack]]
 items_number = 1
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 
 [[wang_1_bad.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 2
 speaker = "虹倫"
 text = "喔...好喔？"
@@ -253,12 +254,12 @@ text = "總覺得她臉上的笑容好像更冰冷了一點"
 next = "[wang_1_end]"
 
 [wang_1_good]
-background = "assets/scene/hallway.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/hallway.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 2
 name = "虹倫"
-photo = "assets/scene/wang.png"
-avatar = "assets/scene/head_wang.png"
+photo = "../assets/scene/wang.png"
+avatar = "../assets/scene/head_wang.png"
 name = "旁白"
 photo = "null"
 avatar = "null"
@@ -266,11 +267,11 @@ avatar = "null"
 [[wang_1_good.backpack]]
 items_number = 1
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 
 [[wang_1_good.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 2
 speaker = "虹倫"
 text = "呵 好喔"
@@ -279,12 +280,12 @@ text = "總覺得她臉上的笑容好像更柔和了一點"
 next = "[wang_1_end]"
 
 [wang_1_end]
-background = "assets/scene/hallway.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/hallway.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 3
 name = "虹倫"
-photo = "assets/scene/wang.png"
-avatar = "assets/scene/head_wang.png"
+photo = "../assets/scene/wang.png"
+avatar = "../assets/scene/head_wang.png"
 name = "我"
 photo = "null"
 avatar = "null"
@@ -295,11 +296,11 @@ avatar = "null"
 [[wang_1_end.backpack]]
 items_number = 1
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 
 [[wang_1_end.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 3
 speaker = "虹倫"
 text = "好啦不要講這些有的沒的，趕快進去上課了"
@@ -310,12 +311,12 @@ text = "跟在虹倫後面，我也默默的走進了教室"
 next = "null"
 
 [jiang_1_start]
-background = "assets/scene/classroom.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/classroom.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 3
 name = "中晢"
-photo = "assets/scene/jiang.png"
-avatar = "assets/scene/head_jiang.png"
+photo = "../assets/scene/jiang.png"
+avatar = "../assets/scene/head_jiang.png"
 name = "我"
 photo = "null"
 avatar = "null"
@@ -326,11 +327,11 @@ avatar = "null"
 [[jiang_1_start.backpack]] 
 items_number = 1
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 
 [[jiang_1_start.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 7
 speaker = "旁白"
 text = "一坐到座位上，我打開書包的同時忍不住長嘆了一口氣，希望今天不要再有什麼麻煩事發生了"
@@ -348,7 +349,7 @@ speaker = "旁白"
 text = "...我還是完全看不出她在想什麼，還是搭個話吧"
 
 [[jiang_1_start.reply]]
-option_box = "assets/scene/select_button.png"
+option_box = "../assets/scene/select_button.png"
 object = "中晢"
 option1 = "我的臉上有什麼嗎？"
 change_favor1 = +5
@@ -361,12 +362,12 @@ change_favor3 = -5
 next3 = "[jiang_1_bad]"
 
 [jiang_1_bad]
-background = "assets/scene/classroom.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/classroom.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 2
 name = "中晢"
-photo = "assets/scene/jiang.png"
-avatar = "assets/scene/head_jiang.png"
+photo = "../assets/scene/jiang.png"
+avatar = "../assets/scene/head_jiang.png"
 name = "旁白"
 photo = "null"
 avatar = "null"
@@ -374,11 +375,11 @@ avatar = "null"
 [[jiang_1_bad.backpack]]
 items_number = 1
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 
 [[jiang_1_bad.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 2
 speaker = "中晢"
 text = "抱...抱歉"
@@ -387,12 +388,12 @@ text = "好像突然發現自己的行為有點奇怪，她這才慌慌張張的
 next = "[jiang_1_end]"
 
 [jiang_1_normal]
-background = "assets/scene/classroom.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/classroom.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 3 
 name = "中晢"
-photo = "assets/scene/jiang.png"
-avatar = "assets/scene/head_jiang.png"
+photo = "../assets/scene/jiang.png"
+avatar = "../assets/scene/head_jiang.png"
 name = "我"
 photo = "null"
 avatar = "null"
@@ -403,11 +404,11 @@ avatar = "null"
 [[jiang_1_normal.backpack]]
 items_number = 1
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 
 [[jiang_1_normal.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 4
 speaker = "中晢"
 text = "...！"
@@ -420,12 +421,12 @@ text = "...是錯覺嗎？總覺得她的臉好紅"
 next = "[jiang_1_end]"
 
 [jiang_1_good]
-background = "assets/scene/hallway.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/hallway.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 3 
 name = "中晢"
-photo = "assets/scene/jiang.png"
-avatar = "assets/scene/head_jiang.png"
+photo = "../assets/scene/jiang.png"
+avatar = "../assets/scene/head_jiang.png"
 name = "我"
 photo = "null"
 avatar = "null"
@@ -436,11 +437,11 @@ avatar = "null"
 [[jiang_1_good.backpack]]
 items_number = 1
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 
 [[jiang_1_good.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 4
 speaker = "中晢"
 text = "...！"
@@ -453,8 +454,8 @@ text = "...是錯覺嗎？總覺得她的臉好紅"
 next = "[jiang_1_end]"
 
 [jiang_1_end]
-background = "assets/scene/classroom"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/classroom"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 4
 name = "老師"
 photo = "null"
@@ -466,17 +467,17 @@ name = "旁白"
 photo = "null"
 avatar = "null"
 name = "博玟"
-photo = "assets/scene/chi.png"
-avatar = "assets/scene/head_chi.png"
+photo = "../assets/scene/chi.png"
+avatar = "../assets/scene/head_chi.png"
 
 [[jiang_1_end.backpack]]
 items_number = 1
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 
 [[jiang_1_end.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 17
 speaker = "旁白"
 text = "...嗯，我果然還是搞不懂她在想什麼"
@@ -515,12 +516,12 @@ text = "一時之間資訊量實在太大，雖然老師之後好像又說了什
 next = "null"
 
 [chi_2_start]
-background = "assets/scene/library.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/library.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 3
 name = "博玟"
-photo = "assets/scene/chi.png"
-avatar = "assets/scene/head_chi.png"
+photo = "../assets/scene/chi.png"
+avatar = "../assets/scene/head_chi.png"
 name = "我"
 photo = "null"
 avatar = "null"
@@ -531,11 +532,11 @@ avatar = "null"
 [[chi_2_start.backpack]] 
 items_number = 1
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 
 [[chi_2_start.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 21
 speaker = "旁白"
 text = "讓人心累的早自修終於結束後，我馬上就被博玟抓去帶她參觀圖書館。畢竟被交代了，我還是決定打起精神認真導覽一下"
@@ -582,7 +583,7 @@ text = "那你知道在C語言裡，哪種變數類型也是在某個檔案定�
 next = "null"
 
 [[chi_2_start.reply]]
-option_box = "assets/scene/select_button.png"
+option_box = "../assets/scene/select_button.png"
 object = "博玟"
 option1 = "enum"
 change_favor1 = -5
@@ -595,12 +596,12 @@ change_favor3 = -5
 next3 = "[chi_2_bad]"
 
 [chi_2_bad]
-background = "assets/scene/library.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/library.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 2 
 name = "博玟"
-photo = "assets/scene/chi.png"
-avatar = "assets/scene/head_chi.png"
+photo = "../assets/scene/chi.png"
+avatar = "../assets/scene/head_chi.png"
 name = "旁白"
 photo = "null"
 avatar = "null"
@@ -608,11 +609,11 @@ avatar = "null"
 [[chi_2_bad.backpack]]
 items_number = 1
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 
 [[chi_2_bad.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 2
 speaker = "旁白"
 text = "博玟的表情垮了下來，看來我是猜錯了"
@@ -621,12 +622,12 @@ text = "身為一個資工系的學生，我還是希望你這些基本的東西
 next = "[chi_2_end]"
 
 [chi_2_good]
-background = "assets/scene/library.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/library.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 2
 name = "博玟"
-photo = "assets/scene/chi.png"
-avatar = "assets/scene/head_chi.png"
+photo = "../assets/scene/chi.png"
+avatar = "../assets/scene/head_chi.png"
 name = "旁白"
 photo = "null"
 avatar = "null"
@@ -634,11 +635,11 @@ avatar = "null"
 [[chi_2_good.backpack]]
 items_number = 1
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 
 [[chi_2_good.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 2
 speaker = "旁白"
 text = "大大的笑容綻放在博玟的臉上"
@@ -647,12 +648,12 @@ text = "雖然沒在玩遊戲但懂得倒挺多的，你不錯喔"
 next = "[chi_2_end]"
 
 [chi_2_end]
-background = "assets/scene/library.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/library.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 3
 name = "博玟"
-photo = "assets/scene/chi.png"
-avatar = "assets/scene/head_chi.png"
+photo = "../assets/scene/chi.png"
+avatar = "../assets/scene/head_chi.png"
 name = "我"
 photo = "null"
 avatar = "null"
@@ -663,11 +664,11 @@ avatar = "null"
 [[chi_2_end.backpack]]
 items_number = 1
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 
 [[chi_2_end.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 5
 speaker = "博玟"
 text = "好啦跑好了，給你看"
@@ -682,12 +683,12 @@ text = "約了時間後，博玟又簡單跟我介紹了一下BGA有哪些桌遊
 next = "null"
 
 [jiang_2_start]
-background = "assets/scene/classroom.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/classroom.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 4
 name = "中晢"
-photo = "assets/scene/jiang.png"
-avatar = "assets/scene/head_jiang.png"
+photo = "../assets/scene/jiang.png"
+avatar = "../assets/scene/head_jiang.png"
 name = "我"
 photo = "null"
 avatar = "null"
@@ -701,11 +702,11 @@ avatar = "null"
 [[jiang_2_start.backpack]] 
 items_number = 1
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 
 [[jiang_2_start.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 22
 speaker = "旁白"
 text = "歷史課的鐘聲響起，班上的同學們都已經在座位上翻開筆記，等著老師抵達教室開始講課"
@@ -754,7 +755,7 @@ text = "...所以才會拿你的筆記印出來一頁一頁幫你看啦"
 next = "null"
 
 [[jiang_2_start.reply]]
-option_box = "assets/scene/select_button.png"
+option_box = "../assets/scene/select_button.png"
 object = "中晢"
 option1 = "原來如此，你好有心喔！謝謝！"
 change_favor1 = +5
@@ -767,12 +768,12 @@ change_favor3 = "[jiang_2_normal]"
 next3 = "-5"
 
 [jiang_2_bad]
-background = "assets/scene/classroom.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/classroom.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 3 
 name = "中晢"
-photo = "assets/scene/jiang.png"
-avatar = "assets/scene/head_jiang.png"
+photo = "../assets/scene/jiang.png"
+avatar = "../assets/scene/head_jiang.png"
 name = "我"
 photo = "null"
 avatar = "null"
@@ -783,11 +784,11 @@ avatar = "null"
 [[jiang_2_bad.backpack]]
 items_number = 1
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 
 [[jiang_2_bad.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 5
 speaker = "旁白"
 text = "聽到這句話，中晢愣了一下"
@@ -802,12 +803,12 @@ text = "（...蛤？這狀況怎麼搞得好像我做錯什麼事一樣？）"
 next = "[jiang_2_end]"
 
 [jiang_2_normal]
-background = "assets/scene/classroom.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/classroom.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 3 
 name = "中晢"
-photo = "assets/scene/jiang.png"
-avatar = "assets/scene/head_jiang.png"
+photo = "../assets/scene/jiang.png"
+avatar = "../assets/scene/head_jiang.png"
 name = "我"
 photo = "null"
 avatar = "null"
@@ -818,11 +819,11 @@ avatar = "null"
 [[jiang_2_normal.backpack]]
 items_number = 1
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 
 [[jiang_2_normal.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 5
 speaker = "旁白"
 text = "看到我不敢置信的樣子，中晢把臉轉了過去"
@@ -837,12 +838,12 @@ text = "...是錯覺嗎？她的臉是不是超紅的"
 next = "[jiang_2_end]"
 
 [jiang_2_good]
-background = "assets/scene/classroom.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/classroom.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 3 
 name = "中晢"
-photo = "assets/scene/jiang.png"
-avatar = "assets/scene/head_jiang.png"
+photo = "../assets/scene/jiang.png"
+avatar = "../assets/scene/head_jiang.png"
 name = "我"
 photo = "null"
 avatar = "null"
@@ -853,11 +854,11 @@ avatar = "null"
 [[jiang_2_good.backpack]]
 items_number = 1
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 
 [[jiang_2_good.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 5
 speaker = "旁白"
 text = "好像沒有料到我會是這個反應，中晢愣了一下"
@@ -872,12 +873,12 @@ text = "...是錯覺嗎？她的臉是不是超紅的"
 next = "[jiang_2_end]"
 
 [jiang_2_end]
-background = "assets/scene/classroom.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/classroom.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 4
 name = "中晢"
-photo = "assets/scene/jiang.png"
-avatar = "assets/scene/head_jiang.png"
+photo = "../assets/scene/jiang.png"
+avatar = "../assets/scene/head_jiang.png"
 name = "我"
 photo = "null"
 avatar = "null"
@@ -891,14 +892,14 @@ avatar = "null"
 [[jiang_2_end.backpack]]
 items_number = 2
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
-photo = "assets/backpack/note.png"
+photo = "../assets/backpack/note.png"
 description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 
 [[jiang_2_end.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 5
 speaker = "旁白"
 text = "不知不覺間地震已經結束了，老師也走進了教室"
@@ -913,12 +914,12 @@ text = "就這樣，老師滔滔不絕的說起每逢地震必講的話題，看
 next = "null"
 
 [wang_2_start]
-background = "assets/scene/hallway_night.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/hallway_night.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 3
 name = "虹倫"
-photo = "assets/scene/wang.png"
-avatar = "assets/scene/head_wang.png"
+photo = "../assets/scene/wang.png"
+avatar = "../assets/scene/head_wang.png"
 name = "我"
 photo = "null"
 avatar = "null"
@@ -929,14 +930,14 @@ avatar = "null"
 [[wang_2_start.backpack]] 
 items_number = 2
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
-photo = "assets/backpack/note.png"
+photo = "../assets/backpack/note.png"
 description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 
 [[wang_2_start.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 15
 speaker = "旁白"
 text = "經過忙碌的一天，終於到了放學時間"
@@ -971,7 +972,7 @@ text = "你覺得呢？怎麼辦比較好？"
 next = "null"
 
 [[wang_2_start.reply]]
-option_box = "assets/scene/select_button.png"
+option_box = "../assets/scene/select_button.png"
 object = "虹倫"
 option1 = "沒差啦，你先回去吧"
 change_favor1 = -5
@@ -984,12 +985,12 @@ change_favor3 = +5
 next3 = "[wang_2_good]"
 
 [wang_2_bad]
-background = "assets/scene/hallway_night.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/hallway_night.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 3 
 name = "虹倫"
-photo = "assets/scene/wang.png"
-avatar = "assets/scene/head_wang.png"
+photo = "../assets/scene/wang.png"
+avatar = "../assets/scene/head_wang.png"
 name = "我"
 photo = "null"
 avatar = "null"
@@ -1000,14 +1001,14 @@ avatar = "null"
 [[wang_2_bad.backpack]]
 items_number = 2
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
-photo = "assets/backpack/note.png"
+photo = "../assets/backpack/note.png"
 description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 
 [[wang_2_bad.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 3
 speaker = "虹倫"
 text = "喔..."
@@ -1018,12 +1019,12 @@ text = "算了，雨這麼大我還是陪你一下好了"
 next = "[wang_2_end]"
 
 [wang_2_good]
-background = "assets/scene/hallway_night.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/hallway_night.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 3 
 name = "虹倫"
-photo = "assets/scene/wang.png"
-avatar = "assets/scene/head_wang.png"
+photo = "../assets/scene/wang.png"
+avatar = "../assets/scene/head_wang.png"
 name = "我"
 photo = "null"
 avatar = "null"
@@ -1034,14 +1035,14 @@ avatar = "null"
 [[wang_2_good.backpack]]
 items_number = 2
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
-photo = "assets/backpack/note.png"
+photo = "../assets/backpack/note.png"
 description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 
 [[wang_2_good.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 2
 speaker = "旁白"
 text = "虹倫的笑容好像變得更溫和了一點"
@@ -1050,12 +1051,12 @@ text = "呵呵好啊，那我就稍微陪你等一下"
 next = "[wang_2_end]"
 
 [wang_2_end]
-background = "assets/scene/hallway_night.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/hallway_night.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 3
 name = "虹倫"
-photo = "assets/scene/wang.png"
-avatar = "assets/scene/head_wang.png"
+photo = "../assets/scene/wang.png"
+avatar = "../assets/scene/head_wang.png"
 name = "我"
 photo = "null"
 avatar = "null"
@@ -1066,14 +1067,14 @@ avatar = "null"
 [[wang_2_end.backpack]]
 items_number = 2
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
-photo = "assets/backpack/note.png"
+photo = "../assets/backpack/note.png"
 description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 
 [[wang_2_end.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 10
 speaker = "虹倫"
 text = "啊，對了"
@@ -1098,12 +1099,12 @@ text = "折騰了一天終於有好事發生，和虹倫道別後的我開心的
 next = "null"
 
 [wang_3_start]
-background = "assets/scene/cinema.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/cinema.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 3
 name = "虹倫"
-photo = "assets/scene/wang.png"
-avatar = "assets/scene/head_wang.png"
+photo = "../assets/scene/wang.png"
+avatar = "../assets/scene/head_wang.png"
 name = "我"
 photo = "null"
 avatar = "null"
@@ -1114,14 +1115,14 @@ avatar = "null"
 [[wang_3_start.backpack]] 
 items_number = 2
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
-photo = "assets/backpack/note.png"
+photo = "../assets/backpack/note.png"
 description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 
 [[wang_3_start.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 19
 speaker = "旁白"
 text = "第二天，我和虹倫都準時抵達電影院"
@@ -1164,7 +1165,7 @@ text = "...你剛剛該不會是睡著了吧？"
 next = "null"
 
 [[wang_3_start.reply]]
-option_box = "assets/scene/select_button.png"
+option_box = "../assets/scene/select_button.png"
 object = "虹倫"
 option1 = "沒有啊"
 change_favor1 = -5
@@ -1177,12 +1178,12 @@ change_favor3 = +5
 next3 = "[wang_3_good]"
 
 [wang_3_bad]
-background = "assets/scene/cinema.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/cinema.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 2
 name = "虹倫"
-photo = "assets/scene/wang.png"
-avatar = "assets/scene/head_wang.png"
+photo = "../assets/scene/wang.png"
+avatar = "../assets/scene/head_wang.png"
 name = "旁白"
 photo = "null"
 avatar = "null"
@@ -1190,14 +1191,14 @@ avatar = "null"
 [[wang_3_bad.backpack]]
 items_number = 2
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
-photo = "assets/backpack/note.png"
+photo = "../assets/backpack/note.png"
 description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 
 [[wang_3_bad.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 2
 speaker = "虹倫"
 text = "...好喔"
@@ -1206,12 +1207,12 @@ text = "總覺得虹倫的微笑變得更冰冷了"
 next = "[wang_3_end]"
 
 [wang_3_good]
-background = "assets/scene/cinema.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/cinema.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 2 
 name = "虹倫"
-photo = "assets/scene/wang.png"
-avatar = "assets/scene/head_wang.png"
+photo = "../assets/scene/wang.png"
+avatar = "../assets/scene/head_wang.png"
 name = "旁白"
 photo = "null"
 avatar = "null"
@@ -1219,14 +1220,14 @@ avatar = "null"
 [[wang_3_good.backpack]]
 items_number = 2
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
-photo = "assets/backpack/note.png"
+photo = "../assets/backpack/note.png"
 description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 
 [[wang_3_good.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 2
 speaker = "虹倫"
 text = "哈 哈 哈，好喔"
@@ -1235,12 +1236,12 @@ text = "雖然帶著挖苦的語氣，不過虹倫的微笑好像變得更柔和
 next = "[wang_3_end]"
 
 [wang_3_end]
-background = "assets/scene/cinema.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/cinema.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 3
 name = "虹倫"
-photo = "assets/scene/wang.png"
-avatar = "assets/scene/head_wang.png"
+photo = "../assets/scene/wang.png"
+avatar = "../assets/scene/head_wang.png"
 name = "我"
 photo = "null"
 avatar = "null"
@@ -1251,14 +1252,14 @@ avatar = "null"
 [[wang_3_end.backpack]]
 items_number = 2
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
-photo = "assets/backpack/note.png"
+photo = "../assets/backpack/note.png"
 description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 
 [[wang_3_end.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 10
 speaker = "虹倫"
 text = "唉...不過我是真的沒想到你連看4DX都能睡著"
@@ -1283,12 +1284,12 @@ text = "就這樣，期待的電影環節在和虹倫道別後結束了，所以
 next = "null"
 
 [jiang_3_start]
-background = "assets/scene/street.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/street.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 3
 name = "中晢"
-photo = "assets/scene/jiang.png"
-avatar = "assets/scene/head_jiang.png"
+photo = "../assets/scene/jiang.png"
+avatar = "../assets/scene/head_jiang.png"
 name = "我"
 photo = "null"
 avatar = "null"
@@ -1299,17 +1300,17 @@ avatar = "null"
 [[jiang_3_start.backpack]] 
 items_number = 3
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
-photo = "assets/backpack/note.png"
+photo = "../assets/backpack/note.png"
 description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 name = "電影票根"
-photo = "assets/backpack/ticket.png"
+photo = "../assets/backpack/ticket.png"
 description = "《排球少年！！垃圾場的決戰》4DX電影票，描述一群少年在垃圾場將球排整齊的熱血故事"
 
 [[jiang_3_start.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 15
 speaker = "旁白"
 text = "和虹倫道別之後我打算騎Ubike回家，卻發現卡片餘額已經是負數了"
@@ -1344,7 +1345,7 @@ text = "..."
 next = "null"
 
 [[jiang_3_start.reply]]
-option_box = "assets/scene/select_button.png"
+option_box = "../assets/scene/select_button.png"
 object = "中晢"
 option1 = "你真的超噁"
 change_favor1 = -5
@@ -1357,12 +1358,12 @@ change_favor3 = +5
 next3 = "[jiang_3_good]"
 
 [jiang_3_bad]
-background = "assets/scene/street.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/street.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 3 
 name = "中晢"
-photo = "assets/scene/jiang.png"
-avatar = "assets/scene/head_jiang.png"
+photo = "../assets/scene/jiang.png"
+avatar = "../assets/scene/head_jiang.png"
 name = "旁白"
 photo = "null"
 avatar = "null"
@@ -1370,17 +1371,17 @@ avatar = "null"
 [[jiang_3_bad.backpack]]
 items_number = 3
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
-photo = "assets/backpack/note.png"
+photo = "../assets/backpack/note.png"
 description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 name = "電影票根"
-photo = "assets/backpack/ticket.png"
+photo = "../assets/backpack/ticket.png"
 description = "《排球少年！！垃圾場的決戰》4DX電影票，描述一群少年在垃圾場將球排整齊的熱血故事"
 
 [[jiang_3_bad.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 2
 speaker = "中晢"
 text = "啊...抱歉..."
@@ -1389,12 +1390,12 @@ text = "中晢一副難過的樣子，默默走掉了"
 next = "[jiang_3_end]"
 
 [jiang_3_normal]
-background = "assets/scene/street.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/street.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 3 
 name = "中晢"
-photo = "assets/scene/jiang.png"
-avatar = "assets/scene/head_jiang.png"
+photo = "../assets/scene/jiang.png"
+avatar = "../assets/scene/head_jiang.png"
 name = "我"
 photo = "null"
 avatar = "null"
@@ -1405,17 +1406,17 @@ avatar = "null"
 [[jiang_3_normal.backpack]]
 items_number = 3
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
-photo = "assets/backpack/note.png"
+photo = "../assets/backpack/note.png"
 description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 name = "電影票根"
-photo = "assets/backpack/ticket.png"
+photo = "../assets/backpack/ticket.png"
 description = "《排球少年！！垃圾場的決戰》4DX電影票，描述一群少年在垃圾場將球排整齊的熱血故事"
 
 [[jiang_3_normal.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 5
 speaker = "旁白"
 text = "中晢聽到之後愣了一下"
@@ -1430,12 +1431,12 @@ text = "總覺得她剛剛臉好像很紅，是錯覺嗎"
 next = "[jiang_3_end]"
 
 [jiang_3_good]
-background = "assets/scene/street.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/street.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 3 
 name = "中晢"
-photo = "assets/scene/jiang.png"
-avatar = "assets/scene/head_jiang.png"
+photo = "../assets/scene/jiang.png"
+avatar = "../assets/scene/head_jiang.png"
 name = "我"
 photo = "null"
 avatar = "null"
@@ -1446,17 +1447,17 @@ avatar = "null"
 [[jiang_3_good.backpack]]
 items_number = 3
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
-photo = "assets/backpack/note.png"
+photo = "../assets/backpack/note.png"
 description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 name = "電影票根"
-photo = "assets/backpack/ticket.png"
+photo = "../assets/backpack/ticket.png"
 description = "《排球少年！！垃圾場的決戰》4DX電影票，描述一群少年在垃圾場將球排整齊的熱血故事"
 
 [[jiang_3_good.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 5
 speaker = "旁白"
 text = "好像沒有料到我會這麼說，中晢愣了一下之後默默的低下頭"
@@ -1471,8 +1472,8 @@ text = "總覺得她剛剛臉好像很紅，是錯覺嗎"
 next = "[jiang_3_end]"
 
 [jiang_3_end]
-background = "assets/scene/street.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/street.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 3
 name = "我"
 photo = "null"
@@ -1484,17 +1485,17 @@ avatar = "null"
 [[jiang_3_end.backpack]]
 items_number = 3
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
-photo = "assets/backpack/note.png"
+photo = "../assets/backpack/note.png"
 description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 name = "電影票根"
-photo = "assets/backpack/ticket.png"
+photo = "../assets/backpack/ticket.png"
 description = "《排球少年！！垃圾場的決戰》4DX電影票，描述一群少年在垃圾場將球排整齊的熱血故事"
 
 [[jiang_3_end.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 5
 speaker = "我"
 text = "..."
@@ -1509,12 +1510,12 @@ text = "不對！我還是沒儲值啊！"
 next = "null"
 
 [chi_3_start]
-background = "assets/scene/room.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/room.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 3
 name = "博玟"
-photo = "assets/scene/chi.png"
-avatar = "assets/scene/head_chi.png"
+photo = "../assets/scene/chi.png"
+avatar = "../assets/scene/head_chi.png"
 name = "我"
 photo = "null"
 avatar = "null"
@@ -1525,17 +1526,17 @@ avatar = "null"
 [[chi_3_start.backpack]] 
 items_number = 3
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
-photo = "assets/backpack/note.png"
+photo = "../assets/backpack/note.png"
 description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 name = "電影票根"
-photo = "assets/backpack/ticket.png"
+photo = "../assets/backpack/ticket.png"
 description = "《排球少年！！垃圾場的決戰》4DX電影票，描述一群少年在垃圾場將球排整齊的熱血故事"
 
 [[chi_3_start.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 12
 speaker = "旁白"
 text = "晚上，到了和博玟約好的時間，我回到房間準備上線"
@@ -1564,7 +1565,7 @@ text = "那你知道網路傳輸資料通常是用big-endian還是little-endian�
 next = "null"
 
 [[chi_3_start.reply]]
-option_box = "assets/scene/select_button.png"
+option_box = "../assets/scene/select_button.png"
 object = "博玟"
 option1 = "big-endian"
 change_favor1 = +5
@@ -1577,12 +1578,12 @@ change_favor3 = -5
 next3 = "[chi_3_bad]"
 
 [chi_3_bad]
-background = "assets/scene/room.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/room.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 2 
 name = "博玟"
-photo = "assets/scene/chi.png"
-avatar = "assets/scene/head_chi.png"
+photo = "../assets/scene/chi.png"
+avatar = "../assets/scene/head_chi.png"
 name = "旁白"
 photo = "null"
 avatar = "null"
@@ -1590,17 +1591,17 @@ avatar = "null"
 [[chi_3_bad.backpack]]
 items_number = 3
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
-photo = "assets/backpack/note.png"
+photo = "../assets/backpack/note.png"
 description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 name = "電影票根"
-photo = "assets/backpack/ticket.png"
+photo = "../assets/backpack/ticket.png"
 description = "《排球少年！！垃圾場的決戰》4DX電影票，描述一群少年在垃圾場將球排整齊的熱血故事"
 
 [[chi_3_bad.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 2
 speaker = "博玟"
 text = "好笑嗎？"
@@ -1609,12 +1610,12 @@ text = "博玟用一副傻眼的表情看著我"
 next = "[chi_3_end]"
 
 [chi_3_normal]
-background = "assets/scene/room.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/room.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 2
 name = "博玟"
-photo = "assets/scene/chi.png"
-avatar = "assets/scene/head_chi.png"
+photo = "../assets/scene/chi.png"
+avatar = "../assets/scene/head_chi.png"
 name = "旁白"
 photo = "null"
 avatar = "null"
@@ -1622,17 +1623,17 @@ avatar = "null"
 [[chi_3_normal.backpack]]
 items_number = 3
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
-photo = "assets/backpack/note.png"
+photo = "../assets/backpack/note.png"
 description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 name = "電影票根"
-photo = "assets/backpack/ticket.png"
+photo = "../assets/backpack/ticket.png"
 description = "《排球少年！！垃圾場的決戰》4DX電影票，描述一群少年在垃圾場將球排整齊的熱血故事"
 
 [[chi_3_normal.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 2
 speaker = "博玟"
 text = "身為一個資工系的學生，我還是希望你這些基本的東西要知道..."
@@ -1641,12 +1642,12 @@ text = "博文皺著眉頭看著我"
 next = "[chi_3_end]"
 
 [chi_3_good]
-background = "assets/scene/room.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/room.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 2
 name = "博玟"
-photo = "assets/scene/chi.png"
-avatar = "assets/scene/head_chi.png"
+photo = "../assets/scene/chi.png"
+avatar = "../assets/scene/head_chi.png"
 name = "旁白"
 photo = "null"
 avatar = "null"
@@ -1654,17 +1655,17 @@ avatar = "null"
 [[chi_3_good.backpack]]
 items_number = 3
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
-photo = "assets/backpack/note.png"
+photo = "../assets/backpack/note.png"
 description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 name = "電影票根"
-photo = "assets/backpack/ticket.png"
+photo = "../assets/backpack/ticket.png"
 description = "《排球少年！！垃圾場的決戰》4DX電影票，描述一群少年在垃圾場將球排整齊的熱血故事"
 
 [[chi_3_good.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 2
 speaker = "博玟"
 text = "不錯欸，蠻會猜的喔！"
@@ -1673,12 +1674,12 @@ text = "大大的笑容綻放在博玟臉上"
 next = "[chi_3_end]"
 
 [chi_3_end]
-background = "assets/scene/room.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/room.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 3
 name = "博玟"
-photo = "assets/scene/chi.png"
-avatar = "assets/scene/head_chi.png"
+photo = "../assets/scene/chi.png"
+avatar = "../assets/scene/head_chi.png"
 name = "我"
 photo = "null"
 avatar = "null"
@@ -1689,17 +1690,17 @@ avatar = "null"
 [[chi_3_end.backpack]]
 items_number = 3
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
-photo = "assets/backpack/note.png"
+photo = "../assets/backpack/note.png"
 description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 name = "電影票根"
-photo = "assets/backpack/ticket.png"
+photo = "../assets/backpack/ticket.png"
 description = "《排球少年！！垃圾場的決戰》4DX電影票，描述一群少年在垃圾場將球排整齊的熱血故事"
 
 [[chi_3_end.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 5
 speaker = "博玟"
 text = "好啦沒事，我把操作截圖傳給你了，自己看一下"
@@ -1710,12 +1711,12 @@ text = "喔喔好，我應該知道怎麼弄了"
 speaker = "旁白"
 text = "經過一番波折，我總算是成功加進博玟的房間"
 speaker = "旁白"
-text = "就這樣，我們後來還加了一些陌生人進來，一整晚的卡坦島大家都玩得非常開心"
+text = "之後我、博玟和幾個陌生人就這樣玩了數不清幾場的卡坦島，度過了一個愉快的夜晚"
 next = "null"
 
 [final_event]
-background = "assets/scene/classroom.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/classroom.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 5
 name = "我"
 photo = "null"
@@ -1736,17 +1737,17 @@ avatar = "null"
 [[final_event.backpack]] 
 items_number = 3
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
-photo = "assets/backpack/note.png"
+photo = "../assets/backpack/note.png"
 description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 name = "電影票根"
-photo = "assets/backpack/ticket.png"
+photo = "../assets/backpack/ticket.png"
 description = "《排球少年！！垃圾場的決戰》4DX電影票，描述一群少年在垃圾場將球排整齊的熱血故事"
 
 [[final_event.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 21
 speaker = "旁白"
 text = "不知不覺又到了星期一"
@@ -1793,7 +1794,7 @@ text = "（好吧沒辦法了！鼓起勇氣上吧！我要去約的是！）"
 next = "null"
 
 [[final_event.reply]]
-option_box = "assests/scene/option_box.png"
+option_box = "../assests/scene/option_box.png"
 object1 = "博玟"
 option1 = "博玟"
 change_favor1 = 0
@@ -1814,12 +1815,12 @@ good_next3 = "[goodend_jiang]"
 bad_next3 = "[badend_jiang]"
 
 [goodend_chi]
-background = "assets/scene/classroom.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/classroom.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 3
 name = "博玟"
-photo = "assets/scene/chi.png"
-avatar = "assets/scene/head_chi.png"
+photo = "../assets/scene/chi.png"
+avatar = "../assets/scene/head_chi.png"
 name = "我"
 photo = "null"
 avatar = "null"
@@ -1830,17 +1831,17 @@ avatar = "null"
 [[goodend_chi.backpack]] 
 items_number = 3
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
-photo = "assets/backpack/note.png"
+photo = "../assets/backpack/note.png"
 description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 name = "電影票根"
-photo = "assets/backpack/ticket.png"
+photo = "../assets/backpack/ticket.png"
 description = "《排球少年！！垃圾場的決戰》4DX電影票，描述一群少年在垃圾場將球排整齊的熱血故事"
 
 [[goodend_chi.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 14
 speaker = "博玟"
 text = "！！"
@@ -1873,12 +1874,12 @@ text = "在多個學術領域具有非常前瞻的科技實力，擁有世界一
 next = "null"
 
 [badend_chi]
-background = "assets/scene/classroom.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/classroom.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 5
 name = "博玟"
-photo = "assets/scene/chi.png"
-avatar = "assets/scene/head_chi.png"
+photo = "../assets/scene/chi.png"
+avatar = "../assets/scene/head_chi.png"
 name = "我"
 photo = "null"
 avatar = "null"
@@ -1895,17 +1896,17 @@ avatar = "null"
 [[badend_chi.backpack]]
 items_number = 3
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
-photo = "assets/backpack/note.png"
+photo = "../assets/backpack/note.png"
 description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 name = "電影票根"
-photo = "assets/backpack/ticket.png"
+photo = "../assets/backpack/ticket.png"
 description = "《排球少年！！垃圾場的決戰》4DX電影票，描述一群少年在垃圾場將球排整齊的熱血故事"
 
 [[badend_chi.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 18
 speaker = "博玟"
 text = "！！"
@@ -1946,12 +1947,12 @@ text = "我想未來的路上，我們三人也一定會永遠幸福下去的吧
 next = "null"
 
 [goodend_wang]
-background = "assets/scene/classroom.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/classroom.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 3
 name = "虹倫"
-photo = "assets/scene/wang.png"
-avatar = "assets/scene/head_wang.png"
+photo = "../assets/scene/wang.png"
+avatar = "../assets/scene/head_wang.png"
 name = "我"
 photo = "null"
 avatar = "null"
@@ -1962,17 +1963,17 @@ avatar = "null"
 [[goodend_wang.backpack]] 
 items_number = 3
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
-photo = "assets/backpack/note.png"
+photo = "../assets/backpack/note.png"
 description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 name = "電影票根"
-photo = "assets/backpack/ticket.png"
+photo = "../assets/backpack/ticket.png"
 description = "《排球少年！！垃圾場的決戰》4DX電影票，描述一群少年在垃圾場將球排整齊的熱血故事"
 
 [[goodend_wang.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 14
 speaker = "虹倫"
 text = "！！"
@@ -2005,12 +2006,12 @@ text = "在多個學術領域具有非常前瞻的科技實力，擁有世界一
 next = "null"
 
 [badend_wang]
-background = "assets/scene/classroom.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/classroom.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 5
 name = "虹倫"
-photo = "assets/scene/wang.png"
-avatar = "assets/scene/head_wang.png"
+photo = "../assets/scene/wang.png"
+avatar = "../assets/scene/head_wang.png"
 name = "我"
 photo = "null"
 avatar = "null"
@@ -2027,17 +2028,17 @@ avatar = "null"
 [[badend_wang.backpack]]
 items_number = 3
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
-photo = "assets/backpack/note.png"
+photo = "../assets/backpack/note.png"
 description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 name = "電影票根"
-photo = "assets/backpack/ticket.png"
+photo = "../assets/backpack/ticket.png"
 description = "《排球少年！！垃圾場的決戰》4DX電影票，描述一群少年在垃圾場將球排整齊的熱血故事"
 
 [[badend_wang.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 18
 speaker = "虹倫"
 text = "！！"
@@ -2078,12 +2079,12 @@ text = "我想未來的路上，我們三人也一定會永遠幸福下去的吧
 next = "null"
 
 [goodend_jiang]
-background = "assets/scene/classroom.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/classroom.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 3
 name = "中晢"
-photo = "assets/scene/jiang.png"
-avatar = "assets/scene/head_jiang.png"
+photo = "../assets/scene/jiang.png"
+avatar = "../assets/scene/head_jiang.png"
 name = "我"
 photo = "null"
 avatar = "null"
@@ -2094,17 +2095,17 @@ avatar = "null"
 [[goodend_jiang.backpack]] 
 items_number = 3
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
-photo = "assets/backpack/note.png"
+photo = "../assets/backpack/note.png"
 description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 name = "電影票根"
-photo = "assets/backpack/ticket.png"
+photo = "../assets/backpack/ticket.png"
 description = "《排球少年！！垃圾場的決戰》4DX電影票，描述一群少年在垃圾場將球排整齊的熱血故事"
 
 [[goodend_jiang.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 14
 speaker = "中晢"
 text = "！！"
@@ -2137,12 +2138,12 @@ text = "在多個學術領域具有非常前瞻的科技實力，擁有世界一
 next = "null"
 
 [badend_jiang]
-background = "assets/scene/classroom.png"
-backpack_icon = "assets/scene/backpack_icon.png"
+background = "../assets/scene/classroom.png"
+backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 5
 name = "中晢"
-photo = "assets/scene/jiang.png"
-avatar = "assets/scene/head_jiang.png"
+photo = "../assets/scene/jiang.png"
+avatar = "../assets/scene/head_jiang.png"
 name = "我"
 photo = "null"
 avatar = "null"
@@ -2159,17 +2160,17 @@ avatar = "null"
 [[badend_jiang.backpack]]
 items_number = 3
 name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+photo = "../assets/backpack/laptop.png"
 description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
-photo = "assets/backpack/note.png"
+photo = "../assets/backpack/note.png"
 description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 name = "電影票根"
-photo = "assets/backpack/ticket.png"
+photo = "../assets/backpack/ticket.png"
 description = "《排球少年！！垃圾場的決戰》4DX電影票，描述一群少年在垃圾場將球排整齊的熱血故事"
 
 [[badend_jiang.dialogue]]
-dialog_box = "assets/scene/actorlines.png"
+dialog_box = "../assets/scene/actorlines.png"
 string_number = 18
 speaker = "中晢"
 text = "！！"
