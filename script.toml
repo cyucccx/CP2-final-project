@@ -2,10 +2,9 @@ project_name = "Final Project"
 author = "宋品頤"
 
 [home]
-background = "assets/home/background.png"
-button = "assets/home/button.png"
-backpack_background = "assets/home/backpack_background.png"
-max_character = 5
+background = "assets/home/menu.png"
+button = "assets/home/start.png"
+max_character = 15
 
 [chi_1_start]
 background = "assets/scene/road.png"
@@ -13,14 +12,16 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 3
 name = "博玟"
 photo = "assets/scene/chi.png"
+avatar = "assets/scene/head_chi.png"
 name = "我"
 photo = "null"
+avatar = "null"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[chi_1_start.backpack]]
 items_number = 0
-description_box = "assets/backpack/description_box.png"
 
 [[chi_1_start.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -58,14 +59,16 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 3
 name = "博玟"
 photo = "assets/scene/chi.png"
+avatar = "assets/scene/head_chi.png"
 name = "我"
 photo = "null"
+avatar = "null"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[chi_1_bad.backpack]]
 items_number = 0
-description_box = "assets/backpack/description_box.png"
 
 [[chi_1_bad.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -84,14 +87,16 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 3 
 name = "博玟"
 photo = "assets/scene/chi.png"
+avatar = "assets/scene/head_chi.png"
 name = "我"
 photo = "null"
+avatar = "null"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[chi_1_normal.backpack]]
 items_number = 0
-description_box = "assets/backpack/description_box.png"
 
 [[chi_1_normal.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -110,14 +115,16 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 3
 name = "博玟"
 photo = "assets/scene/chi.png"
+avatar = "assets/scene/head_chi.png"
 name = "我"
 photo = "null"
+avatar = "null"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[chi_1_good.backpack]]
 items_number = 0
-description_box = "assets/backpack/description_box.png"
 
 [[chi_1_good.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -136,14 +143,13 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 2
 name = "我"
 photo = "null"
+avatar = "null"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[chi_1_end.backpack]]
-items_number = 1
-description_box = "assets/backpack/description_box.png"
-name = "Razer Blade 16"
-photo = "assets/backpack/laptop.png"
+items_number = 0
 
 [[chi_1_end.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -172,16 +178,19 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 3
 name = "虹倫"
 photo = "assets/scene/wang.png"
+avatar = "assets/scene/head_wang.png"
 name = "我"
 photo = "null"
+avatar = "null"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[wang_1_start.backpack]]
 items_number = 1
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 
 [[wang_1_start.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -223,14 +232,16 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 2
 name = "虹倫"
 photo = "assets/scene/wang.png"
+avatar = "assets/scene/head_wang.png"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[wang_1_bad.backpack]]
 items_number = 1
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 
 [[wang_1_bad.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -247,14 +258,16 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 2
 name = "虹倫"
 photo = "assets/scene/wang.png"
+avatar = "assets/scene/head_wang.png"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[wang_1_good.backpack]]
 items_number = 1
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 
 [[wang_1_good.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -271,16 +284,19 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 3
 name = "虹倫"
 photo = "assets/scene/wang.png"
+avatar = "assets/scene/head_wang.png"
 name = "我"
 photo = "null"
+avatar = "null"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[wang_1_end.backpack]]
 items_number = 1
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 
 [[wang_1_end.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -299,16 +315,19 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 3
 name = "中晢"
 photo = "assets/scene/jiang.png"
+avatar = "assets/scene/head_jiang.png"
 name = "我"
 photo = "null"
+avatar = "null"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[jiang_1_start.backpack]] 
 items_number = 1
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 
 [[jiang_1_start.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -347,14 +366,16 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 2
 name = "中晢"
 photo = "assets/scene/jiang.png"
+avatar = "assets/scene/head_jiang.png"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[jiang_1_bad.backpack]]
 items_number = 1
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 
 [[jiang_1_bad.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -371,16 +392,19 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 3 
 name = "中晢"
 photo = "assets/scene/jiang.png"
+avatar = "assets/scene/head_jiang.png"
 name = "我"
 photo = "null"
+avatar = "null"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[jiang_1_normal.backpack]]
 items_number = 1
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 
 [[jiang_1_normal.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -401,16 +425,19 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 3 
 name = "中晢"
 photo = "assets/scene/jiang.png"
+avatar = "assets/scene/head_jiang.png"
 name = "我"
 photo = "null"
+avatar = "null"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[jiang_1_good.backpack]]
 items_number = 1
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 
 [[jiang_1_good.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -431,18 +458,22 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 4
 name = "老師"
 photo = "null"
+avatar = "null"
 name = "我"
 photo = "null"
+avatar = "null"
 name = "旁白"
 photo = "null"
+avatar = "null"
 name = "博玟"
 photo = "assets/scene/chi.png"
+avatar = "assets/scene/head_chi.png"
 
 [[jiang_1_end.backpack]]
 items_number = 1
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 
 [[jiang_1_end.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -489,16 +520,19 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 3
 name = "博玟"
 photo = "assets/scene/chi.png"
+avatar = "assets/scene/head_chi.png"
 name = "我"
 photo = "null"
+avatar = "null"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[chi_2_start.backpack]] 
 items_number = 1
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 
 [[chi_2_start.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -566,14 +600,16 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 2 
 name = "博玟"
 photo = "assets/scene/chi.png"
+avatar = "assets/scene/head_chi.png"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[chi_2_bad.backpack]]
 items_number = 1
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 
 [[chi_2_bad.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -590,14 +626,16 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 2
 name = "博玟"
 photo = "assets/scene/chi.png"
+avatar = "assets/scene/head_chi.png"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[chi_2_good.backpack]]
 items_number = 1
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 
 [[chi_2_good.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -614,16 +652,19 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 3
 name = "博玟"
 photo = "assets/scene/chi.png"
+avatar = "assets/scene/head_chi.png"
 name = "我"
 photo = "null"
+avatar = "null"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[chi_2_end.backpack]]
 items_number = 1
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 
 [[chi_2_end.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -646,18 +687,22 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 4
 name = "中晢"
 photo = "assets/scene/jiang.png"
+avatar = "assets/scene/head_jiang.png"
 name = "我"
 photo = "null"
+avatar = "null"
 name = "旁白"
 photo = "null"
+avatar = "null"
 name = "同學們"
 photo = "null"
+avatar = "null"
 
 [[jiang_2_start.backpack]] 
 items_number = 1
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 
 [[jiang_2_start.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -727,18 +772,19 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 3 
 name = "中晢"
 photo = "assets/scene/jiang.png"
+avatar = "assets/scene/head_jiang.png"
 name = "我"
 photo = "null"
+avatar = "null"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[jiang_2_bad.backpack]]
-items_number = 2
-description_box = "assets/backpack/description_box.png"
+items_number = 1
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
-name = "中晢訂正的筆記"
-photo = "assets/backpack/note.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 
 [[jiang_2_bad.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -761,18 +807,19 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 3 
 name = "中晢"
 photo = "assets/scene/jiang.png"
+avatar = "assets/scene/head_jiang.png"
 name = "我"
 photo = "null"
+avatar = "null"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[jiang_2_normal.backpack]]
-items_number = 2
-description_box = "assets/backpack/description_box.png"
+items_number = 1
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
-name = "中晢訂正的筆記"
-photo = "assets/backpack/note.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 
 [[jiang_2_normal.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -795,18 +842,19 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 3 
 name = "中晢"
 photo = "assets/scene/jiang.png"
+avatar = "assets/scene/head_jiang.png"
 name = "我"
 photo = "null"
+avatar = "null"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[jiang_2_good.backpack]]
-items_number = 2
-description_box = "assets/backpack/description_box.png"
+items_number = 1
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
-name = "中晢訂正的筆記"
-photo = "assets/backpack/note.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 
 [[jiang_2_good.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -829,20 +877,25 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 4
 name = "中晢"
 photo = "assets/scene/jiang.png"
+avatar = "assets/scene/head_jiang.png"
 name = "我"
 photo = "null"
+avatar = "null"
 name = "旁白"
 photo = "null"
+avatar = "null"
 name = "老師"
 photo = "null"
+avatar = "null"
 
 [[jiang_2_end.backpack]]
 items_number = 2
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
 photo = "assets/backpack/note.png"
+description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 
 [[jiang_2_end.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -865,18 +918,22 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 3
 name = "虹倫"
 photo = "assets/scene/wang.png"
+avatar = "assets/scene/head_wang.png"
 name = "我"
 photo = "null"
+avatar = "null"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[wang_2_start.backpack]] 
 items_number = 2
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
 photo = "assets/backpack/note.png"
+description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 
 [[wang_2_start.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -932,18 +989,22 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 3 
 name = "虹倫"
 photo = "assets/scene/wang.png"
+avatar = "assets/scene/head_wang.png"
 name = "我"
 photo = "null"
+avatar = "null"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[wang_2_bad.backpack]]
 items_number = 2
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
 photo = "assets/backpack/note.png"
+description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 
 [[wang_2_bad.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -962,18 +1023,22 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 3 
 name = "虹倫"
 photo = "assets/scene/wang.png"
+avatar = "assets/scene/head_wang.png"
 name = "我"
 photo = "null"
+avatar = "null"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[wang_2_good.backpack]]
 items_number = 2
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
 photo = "assets/backpack/note.png"
+description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 
 [[wang_2_good.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -990,18 +1055,22 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 3
 name = "虹倫"
 photo = "assets/scene/wang.png"
+avatar = "assets/scene/head_wang.png"
 name = "我"
 photo = "null"
+avatar = "null"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[wang_2_end.backpack]]
 items_number = 2
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
 photo = "assets/backpack/note.png"
+description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 
 [[wang_2_end.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -1034,18 +1103,22 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 3
 name = "虹倫"
 photo = "assets/scene/wang.png"
+avatar = "assets/scene/head_wang.png"
 name = "我"
 photo = "null"
+avatar = "null"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[wang_3_start.backpack]] 
 items_number = 2
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
 photo = "assets/backpack/note.png"
+description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 
 [[wang_3_start.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -1109,16 +1182,19 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 2
 name = "虹倫"
 photo = "assets/scene/wang.png"
+avatar = "assets/scene/head_wang.png"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[wang_3_bad.backpack]]
 items_number = 2
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
 photo = "assets/backpack/note.png"
+description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 
 [[wang_3_bad.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -1135,16 +1211,19 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 2 
 name = "虹倫"
 photo = "assets/scene/wang.png"
+avatar = "assets/scene/head_wang.png"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[wang_3_good.backpack]]
 items_number = 2
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
 photo = "assets/backpack/note.png"
+description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 
 [[wang_3_good.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -1161,20 +1240,22 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 3
 name = "虹倫"
 photo = "assets/scene/wang.png"
+avatar = "assets/scene/head_wang.png"
 name = "我"
 photo = "null"
+avatar = "null"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[wang_3_end.backpack]]
-items_number = 3
-description_box = "assets/backpack/description_box.png"
+items_number = 2
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
 photo = "assets/backpack/note.png"
-name = "電影票根"
-photo = "assets/backpack/ticket.png"
+description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 
 [[wang_3_end.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -1206,21 +1287,26 @@ background = "assets/scene/street.png"
 backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 3
 name = "中晢"
-photo = "assets/scene/wang.png"
+photo = "assets/scene/jiang.png"
+avatar = "assets/scene/head_jiang.png"
 name = "我"
 photo = "null"
+avatar = "null"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[jiang_3_start.backpack]] 
 items_number = 3
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
 photo = "assets/backpack/note.png"
+description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 name = "電影票根"
 photo = "assets/backpack/ticket.png"
+description = "《排球少年！！垃圾場的決戰》4DX電影票，描述一群少年在垃圾場將球排整齊的熱血故事"
 
 [[jiang_3_start.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -1276,18 +1362,22 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 3 
 name = "中晢"
 photo = "assets/scene/jiang.png"
+avatar = "assets/scene/head_jiang.png"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[jiang_3_bad.backpack]]
 items_number = 3
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
 photo = "assets/backpack/note.png"
+description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 name = "電影票根"
 photo = "assets/backpack/ticket.png"
+description = "《排球少年！！垃圾場的決戰》4DX電影票，描述一群少年在垃圾場將球排整齊的熱血故事"
 
 [[jiang_3_bad.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -1304,20 +1394,25 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 3 
 name = "中晢"
 photo = "assets/scene/jiang.png"
+avatar = "assets/scene/head_jiang.png"
 name = "我"
 photo = "null"
+avatar = "null"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[jiang_3_normal.backpack]]
 items_number = 3
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
 photo = "assets/backpack/note.png"
+description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 name = "電影票根"
 photo = "assets/backpack/ticket.png"
+description = "《排球少年！！垃圾場的決戰》4DX電影票，描述一群少年在垃圾場將球排整齊的熱血故事"
 
 [[jiang_3_normal.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -1340,20 +1435,25 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 3 
 name = "中晢"
 photo = "assets/scene/jiang.png"
+avatar = "assets/scene/head_jiang.png"
 name = "我"
 photo = "null"
+avatar = "null"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[jiang_3_good.backpack]]
 items_number = 3
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
 photo = "assets/backpack/note.png"
+description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 name = "電影票根"
 photo = "assets/backpack/ticket.png"
+description = "《排球少年！！垃圾場的決戰》4DX電影票，描述一群少年在垃圾場將球排整齊的熱血故事"
 
 [[jiang_3_good.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -1376,18 +1476,22 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 3
 name = "我"
 photo = "null"
+avatar = "null"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[jiang_3_end.backpack]]
 items_number = 3
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
 photo = "assets/backpack/note.png"
+description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 name = "電影票根"
 photo = "assets/backpack/ticket.png"
+description = "《排球少年！！垃圾場的決戰》4DX電影票，描述一群少年在垃圾場將球排整齊的熱血故事"
 
 [[jiang_3_end.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -1410,20 +1514,25 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 3
 name = "博玟"
 photo = "assets/scene/chi.png"
+avatar = "assets/scene/head_chi.png"
 name = "我"
 photo = "null"
+avatar = "null"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[chi_3_start.backpack]] 
 items_number = 3
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
 photo = "assets/backpack/note.png"
+description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 name = "電影票根"
 photo = "assets/backpack/ticket.png"
+description = "《排球少年！！垃圾場的決戰》4DX電影票，描述一群少年在垃圾場將球排整齊的熱血故事"
 
 [[chi_3_start.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -1473,18 +1582,22 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 2 
 name = "博玟"
 photo = "assets/scene/chi.png"
+avatar = "assets/scene/head_chi.png"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[chi_3_bad.backpack]]
 items_number = 3
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
 photo = "assets/backpack/note.png"
+description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 name = "電影票根"
 photo = "assets/backpack/ticket.png"
+description = "《排球少年！！垃圾場的決戰》4DX電影票，描述一群少年在垃圾場將球排整齊的熱血故事"
 
 [[chi_3_bad.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -1501,18 +1614,22 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 2
 name = "博玟"
 photo = "assets/scene/chi.png"
+avatar = "assets/scene/head_chi.png"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[chi_3_normal.backpack]]
 items_number = 3
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
 photo = "assets/backpack/note.png"
+description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 name = "電影票根"
 photo = "assets/backpack/ticket.png"
+description = "《排球少年！！垃圾場的決戰》4DX電影票，描述一群少年在垃圾場將球排整齊的熱血故事"
 
 [[chi_3_normal.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -1529,18 +1646,22 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 2
 name = "博玟"
 photo = "assets/scene/chi.png"
+avatar = "assets/scene/head_chi.png"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[chi_3_good.backpack]]
 items_number = 3
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
 photo = "assets/backpack/note.png"
+description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 name = "電影票根"
 photo = "assets/backpack/ticket.png"
+description = "《排球少年！！垃圾場的決戰》4DX電影票，描述一群少年在垃圾場將球排整齊的熱血故事"
 
 [[chi_3_good.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -1557,20 +1678,25 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 3
 name = "博玟"
 photo = "assets/scene/chi.png"
+avatar = "assets/scene/head_chi.png"
 name = "我"
 photo = "null"
+avatar = "null"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[chi_3_end.backpack]]
 items_number = 3
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
 photo = "assets/backpack/note.png"
+description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 name = "電影票根"
 photo = "assets/backpack/ticket.png"
+description = "《排球少年！！垃圾場的決戰》4DX電影票，描述一群少年在垃圾場將球排整齊的熱血故事"
 
 [[chi_3_end.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -1593,24 +1719,31 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 5
 name = "我"
 photo = "null"
+avatar = "null"
 name = "旁白"
 photo = "null"
+avatar = "null"
 name = "同學A"
 photo = "null"
+avatar = "null"
 name = "同學B"
 photo = "null"
+avatar = "null"
 name = "老師"
 photo = "null"
+avatar = "null"
 
 [[final_event.backpack]] 
 items_number = 3
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
 photo = "assets/backpack/note.png"
+description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 name = "電影票根"
 photo = "assets/backpack/ticket.png"
+description = "《排球少年！！垃圾場的決戰》4DX電影票，描述一群少年在垃圾場將球排整齊的熱血故事"
 
 [[final_event.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -1686,20 +1819,25 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 3
 name = "博玟"
 photo = "assets/scene/chi.png"
+avatar = "assets/scene/head_chi.png"
 name = "我"
 photo = "null"
+avatar = "null"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[goodend_chi.backpack]] 
 items_number = 3
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
 photo = "assets/backpack/note.png"
+description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 name = "電影票根"
 photo = "assets/backpack/ticket.png"
+description = "《排球少年！！垃圾場的決戰》4DX電影票，描述一群少年在垃圾場將球排整齊的熱血故事"
 
 [[goodend_chi.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -1740,24 +1878,31 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 5
 name = "博玟"
 photo = "assets/scene/chi.png"
+avatar = "assets/scene/head_chi.png"
 name = "我"
 photo = "null"
+avatar = "null"
 name = "旁白"
 photo = "null"
+avatar = "null"
 name = "兄弟A"
 photo = "null"
+avatar = "null"
 name = "兄弟B"
 photo = "null"
+avatar = "null"
 
 [[badend_chi.backpack]]
 items_number = 3
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
 photo = "assets/backpack/note.png"
+description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 name = "電影票根"
 photo = "assets/backpack/ticket.png"
+description = "《排球少年！！垃圾場的決戰》4DX電影票，描述一群少年在垃圾場將球排整齊的熱血故事"
 
 [[badend_chi.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -1806,20 +1951,25 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 3
 name = "虹倫"
 photo = "assets/scene/wang.png"
+avatar = "assets/scene/head_wang.png"
 name = "我"
 photo = "null"
+avatar = "null"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[goodend_wang.backpack]] 
 items_number = 3
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
 photo = "assets/backpack/note.png"
+description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 name = "電影票根"
 photo = "assets/backpack/ticket.png"
+description = "《排球少年！！垃圾場的決戰》4DX電影票，描述一群少年在垃圾場將球排整齊的熱血故事"
 
 [[goodend_wang.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -1860,24 +2010,31 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 5
 name = "虹倫"
 photo = "assets/scene/wang.png"
+avatar = "assets/scene/head_wang.png"
 name = "我"
 photo = "null"
+avatar = "null"
 name = "旁白"
 photo = "null"
+avatar = "null"
 name = "兄弟A"
 photo = "null"
+avatar = "null"
 name = "兄弟B"
 photo = "null"
+avatar = "null"
 
 [[badend_wang.backpack]]
 items_number = 3
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
 photo = "assets/backpack/note.png"
+description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 name = "電影票根"
 photo = "assets/backpack/ticket.png"
+description = "《排球少年！！垃圾場的決戰》4DX電影票，描述一群少年在垃圾場將球排整齊的熱血故事"
 
 [[badend_wang.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -1926,20 +2083,25 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 3
 name = "中晢"
 photo = "assets/scene/jiang.png"
+avatar = "assets/scene/head_jiang.png"
 name = "我"
 photo = "null"
+avatar = "null"
 name = "旁白"
 photo = "null"
+avatar = "null"
 
 [[goodend_jiang.backpack]] 
 items_number = 3
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
 photo = "assets/backpack/note.png"
+description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 name = "電影票根"
 photo = "assets/backpack/ticket.png"
+description = "《排球少年！！垃圾場的決戰》4DX電影票，描述一群少年在垃圾場將球排整齊的熱血故事"
 
 [[goodend_jiang.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
@@ -1980,26 +2142,33 @@ backpack_icon = "assets/scene/backpack_icon.png"
 character_number = 5
 name = "中晢"
 photo = "assets/scene/jiang.png"
+avatar = "assets/scene/head_jiang.png"
 name = "我"
 photo = "null"
+avatar = "null"
 name = "旁白"
 photo = "null"
+avatar = "null"
 name = "兄弟A"
 photo = "null"
+avatar = "null"
 name = "兄弟B"
 photo = "null"
+avatar = "null"
 
 [[badend_jiang.backpack]]
 items_number = 3
-description_box = "assets/backpack/description_box.png"
 name = "Razer Blade 16"
 photo = "assets/backpack/laptop.png"
+description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，讓你體驗驚人的鮮明視覺與色彩深度"
 name = "中晢訂正的筆記"
 photo = "assets/backpack/note.png"
+description = "細心的訂正好了我沒搞清楚的觀念和Writing Style，雖然讓人壓力有點大但改得真好"
 name = "電影票根"
 photo = "assets/backpack/ticket.png"
+description = "《排球少年！！垃圾場的決戰》4DX電影票，描述一群少年在垃圾場將球排整齊的熱血故事"
 
-[[badend_.dialogue]]
+[[badend_jiang.dialogue]]
 dialog_box = "assets/scene/actorlines.png"
 string_number = 18
 speaker = "中晢"
@@ -2039,3 +2208,4 @@ text = "即使三人版本的同婚法案不知何時才會通過，但現在的
 speaker = "旁白"
 text = "我想未來的路上，我們三人也一定會永遠幸福下去的吧"
 next = "null"
+
