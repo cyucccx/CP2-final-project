@@ -83,7 +83,6 @@ void free_reply(sReply *input){
 
 void allocate_backpack(sBackpack *input){
     input->items_number = 0;
-    input->description_box = calloc(100, sizeof(char));
     input->name = calloc(9, sizeof(char *));
     input->photo = calloc(9, sizeof(char *));
     input->description = calloc(9, sizeof(char *));
@@ -95,8 +94,6 @@ void allocate_backpack(sBackpack *input){
 }
 
 void free_backpack(sBackpack *input){
-    free(input->description_box);
-    input->description_box = NULL;
     for (int32_t i = 0; i < 9; i++){
         free(input->name[i]);
         input->name[i] = NULL;

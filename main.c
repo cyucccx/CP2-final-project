@@ -34,7 +34,6 @@ int main(){
     int32_t home = 0;
     char *home_background = 0;
     char *home_button = 0;
-    char *backpack_background = 0;
     int32_t max_character = 0; // create an array to store the favor of every character
     sScene scene;
     scene.name = NULL;
@@ -95,12 +94,6 @@ int main(){
                 }
                 printf("home_button = %s\n", home_button);
             }
-            else if (backpack_background == 0){
-                if (getstring(buffer, &backpack_background) == -1){
-                    // wrong
-                }
-                printf("backpack_background = %s\n", backpack_background);
-            }
             else if (max_character == 0){
                 if (strstr(buffer, "max_character") != 0){
                     char *start = strstr(buffer, "=");
@@ -121,6 +114,7 @@ int main(){
                     for (int32_t i = 0; i < max_character; i++){
                         character[i].name = calloc(100, sizeof(char));
                         character[i].photo = calloc(100, sizeof(char));
+                        character[i].avatar = calloc(100, sizeof(char));
                         character[i].favor = 0;
                     }
                 }
@@ -135,7 +129,10 @@ int main(){
                     free_scene(&scene);
                 }
                 allocate_scene(&scene);
-                strcpy(scene.name, search_event);
+                char *end = strstr(buffer, "]");
+                *end = '\0';
+                strcpy(scene.name, buffer+1);
+                printf("scene.name = %s\n", scene.name);
                 search_event = NULL;
             }
             else{
@@ -152,7 +149,7 @@ int main(){
             strcpy(scene.name, buffer+1);
             printf("scene.name = %s\n", scene.name);
         }
-        // printf("%d:%d %d %d\n", scene_number, scene[scene_number].dialogue, scene[scene_number].reply, scene[scene_number].backpack);
+        // printf("%s:%d %d %d\n", scene.name, scene.backpack, scene.dialogue, scene.reply);
         if (scene.dialogue == 0 && scene.reply == 0 && scene.backpack == 0){
             if (scene.background != NULL){
                 if (strstr(buffer, "background") != 0){
@@ -186,7 +183,6 @@ int main(){
                     check = 0;
                     char *temp = 0;
                     getstring(buffer, &temp);
-                    printf("count = %d\n", count_character);
                     for (int32_t i = 0; i < count_character; i++){
                         if (strcmp(character[i].name, temp) == 0){
                             check = 1;
@@ -205,14 +201,22 @@ int main(){
                 }
                 else if (strstr(buffer, "photo") != 0){
                     if (check == 0){
-                        character_index = count_character;
                         getstring(buffer, &character[character_index].photo);
-                        printf("character_photo = %s\n", character[character_index].photo);
                         if (strcmp(character[character_index].photo, "null") == 0){
+                            // switch to no photo function
+                        }
+                    }
+                    printf("character_photo = %s\n", character[character_index].photo);
+                }
+                else if (strstr(buffer, "avatar") != 0){
+                    if (check == 0){
+                        getstring(buffer, &character[character_index].avatar);
+                        if (strcmp(character[character_index].avatar, "null") == 0){
                             // switch to no photo function
                         }
                         count_character++;
                     }
+                    printf("avatar = %s\n", character[character_index].avatar);
                     index--;
                 }
             }
@@ -237,7 +241,7 @@ int main(){
                 else if (strstr(buffer, "backpack") != 0){
                     backpack_index = 0;
                     scene.backpack = 1;
-                    if (backpack.description_box != NULL){
+                    if (backpack.items_number == 0){
                         free_backpack(&backpack);
                     }
                     allocate_backpack(&backpack);
@@ -263,10 +267,6 @@ int main(){
                     }
                 }
                 printf("items_number = %d\n", backpack.items_number);
-            }
-            if (strstr(buffer, "description_box") != 0){
-                getstring(buffer, &backpack.description_box);
-                printf("backpack.descriptionbox = %s\n", backpack.description_box);
             }
             if (backpack_index < backpack.items_number){
                 if (strstr(buffer, "name") != 0){
@@ -329,9 +329,77 @@ int main(){
             }
             if (strstr(buffer, "next") != 0 && scene.reply == 0){
                 getstring(buffer, &dialogue.next);
-                if (strstr(dialogue.next, "null") == 0){
-                    // search_event = calloc(100, sizeof(char));
-                    // strcpy(search_event, dialogue.next);
+                Backpack back;
+                back.background_image = malloc(256);
+                // 這裡是張祐豪的我沒動 刪掉backpack.description_box要改一下哦
+                // strncpy(back.background_image,backpack.description_box,sizeof(backpack.description_box));
+                if(backpack.items_number==0)
+                {
+                    back.laptop_image=NULL;
+                    back.laptop_image=NULL;
+                    back.laptop_message=NULL;
+                    back.laptop_name=NULL;
+                    back.note_image=NULL;
+                    back.note_message=NULL;
+                    back.note_name=NULL;
+                    back.ticket_image=NULL;
+                    back.ticket_message=NULL;
+                    back.ticket_name=NULL;
+                }
+                else if(backpack.items_number==1)
+                {
+                    back.laptop_image = malloc(256);
+                    strcpy(back.laptop_image,backpack.photo[0]);
+                    back.note_image=NULL;//strcpy(back.note_image,backpack.photo[1]);
+                    back.ticket_image=NULL;//strcpy(back.ticket_image,backpack.photo[2]);
+                    back.laptop_name = malloc(256);
+                    strcpy(back.laptop_name,backpack.name[0]);
+                    back.note_name=NULL;//strcpy(back.note_name,backpack.name[1]);
+                    back.ticket_name=NULL;//strcpy(back.ticket_name,backpack.name[2]);
+                    back.laptop_message = malloc(256);
+                    //strcpy(back.laptop_message,backpack.description[0]);
+                    back.laptop_message=NULL;
+                    back.note_message=NULL;//strcpy(back.note_message,backpack.description[1]);
+                    back.ticket_image=NULL;//strcpy(back.ticket_message,backpack.description[2]);
+                }
+                else if(backpack.items_number==2)
+                {
+                    back.laptop_image = malloc(256);
+                    back.note_image = malloc(256);
+                    strcpy(back.laptop_image,backpack.photo[0]);
+                    strcpy(back.note_image,backpack.photo[1]);
+                    back.ticket_image=NULL;//strcpy(back.ticket_image,backpack.photo[2]);
+                    back.laptop_name = malloc(256);
+                    back.note_name = malloc(256);
+                    strcpy(back.laptop_name,backpack.name[0]);
+                    strcpy(back.note_name,backpack.name[1]);
+                    back.ticket_name=NULL;//strcpy(back.ticket_name,backpack.name[2]);
+                    //strcpy(back.laptop_message,backpack.description[0]);
+                    //strcpy(back.note_message,backpack.description[1]);
+                    back.laptop_message=NULL;
+                    back.note_message=NULL;
+                    back.ticket_message=NULL;//strcpy(back.ticket_message,backpack.description[2]);
+                }
+                else if(backpack.items_number==3)
+                {
+                    back.laptop_image = malloc(256);
+                    back.note_image = malloc(256);
+                    back.ticket_image = malloc(256);
+                    strcpy(back.laptop_image,backpack.photo[0]);
+                    strcpy(back.note_image,backpack.photo[1]);
+                    strcpy(back.ticket_image,backpack.photo[2]);
+                    back.laptop_name = malloc(256);
+                    back.note_name = malloc(256);
+                    back.ticket_name = malloc(256);
+                    strcpy(back.laptop_name,backpack.name[0]);
+                    strcpy(back.note_name,backpack.name[1]);
+                    strcpy(back.ticket_name,backpack.name[2]);
+                    back.laptop_message=NULL;
+                    back.note_message=NULL;
+                    back.ticket_message=NULL;
+                    //strcpy(back.laptop_message,backpack.description[0]);
+                    //strcpy(back.note_message,backpack.description[1]);
+                    //strcpy(back.ticket_message,backpack.description[2]);
                 }
                 Backpack back;
                 back.background_image = malloc(256);
@@ -421,7 +489,10 @@ int main(){
                         }
                     }
                 }
-                
+                if (strstr(dialogue.next, "null") == 0){
+                    search_event = calloc(100, sizeof(char));
+                    strcpy(search_event, dialogue.next);
+                }
                 if (dialogue.dialog_box != NULL){
                     free_dialogue(&dialogue);
                     free(back.background_image);
@@ -654,22 +725,10 @@ int main(){
                     }
                 }
                 printf("%d\n", reply.change_favor1);
-                // if player choose option 1
-                // character[object_number].favor += reply.change_favor1;
-                // if (character[object_number].favor > 100){
-                //     character[object_number].favor = 100;
-                // }
-                // else if (character[object_number].favor < 0){
-                //     character[object_number].favor = 0;
-                // }
             }
             else if (strstr(buffer, "next1") != 0){
                 getstring(buffer, &reply.next1);
                 printf("%s\n", reply.next1);
-                // switch to next1 event
-                // if player choose option1
-                // search_event = calloc(100, sizeof(char));
-                // strcpy(search_event, reply.next1);
             }
             else if (strstr(buffer, "option2") != 0){
                 getstring(buffer, &reply.option2);
@@ -693,22 +752,10 @@ int main(){
                     }
                 }
                 printf("%d\n", reply.change_favor2);
-                // if player choose option 2
-                // character[object_number].favor += reply.change_favor2;
-                // if (character[object_number].favor > 100){
-                //     character[object_number].favor = 100;
-                // }
-                // else if (character[object_number].favor < 0){
-                //     character[object_number].favor = 0;
-                // }
             }
             else if (strstr(buffer, "next2") != 0){
                 getstring(buffer, &reply.next2);
                 printf("%s\n", reply.next2);
-                // switch to next2 event
-                // if player choose option2
-                // search_event = calloc(100, sizeof(char));
-                // strcpy(search_event, reply.next2);
             }
             else if (strstr(buffer, "option3") != 0){
                 getstring(buffer, &reply.option3);
@@ -732,25 +779,14 @@ int main(){
                     }
                 }
                 printf("%d\n", reply.change_favor3);
-                // if player choose option 3
-                // character[object_number].favor += reply.change_favor3;
-                // if (character[object_number].favor > 100){
-                //     character[object_number].favor = 100;
-                // }
-                // else if (character[object_number].favor < 0){
-                //     character[object_number].favor = 0;
-                // }
             }
             else if (strstr(buffer, "next3") != 0){
                 getstring(buffer, &reply.next3);
                 printf("%s\n", reply.next3);
-                // switch to next3 event
-                // if player choose option3
-                // search_event = calloc(100, sizeof(char));
-                // strcpy(search_event, reply.next3);
                 Backpack back;
                 back.background_image = malloc(256);
-                strncpy(back.background_image,backpack.description_box,sizeof(backpack.description_box));
+                // 這裡也是description box刪掉了
+                // strncpy(back.background_image,backpack.description_box,sizeof(backpack.description_box));
                 if(backpack.items_number==0)
                 {
                     back.laptop_image=NULL;
@@ -833,6 +869,39 @@ int main(){
                                 SDL_DestroyWindow(window);
                                 SDL_Quit();
                                 return 0;
+                            }
+                            else if (end == 1){
+                                character[object_number].favor += reply.change_favor1;
+                                if (character[object_number].favor > 100){
+                                    character[object_number].favor = 100;
+                                }
+                                else if (character[object_number].favor < 0){
+                                    character[object_number].favor = 0;
+                                }
+                                search_event = calloc(100, sizeof(char));
+                                strcpy(search_event, reply.next1);
+                            }
+                            else if (end == 2){
+                                character[object_number].favor += reply.change_favor2;
+                                if (character[object_number].favor > 100){
+                                    character[object_number].favor = 100;
+                                }
+                                else if (character[object_number].favor < 0){
+                                    character[object_number].favor = 0;
+                                }
+                                search_event = calloc(100, sizeof(char));
+                                strcpy(search_event, reply.next2);
+                            }
+                            else if (end == 3){
+                                character[object_number].favor += reply.change_favor3;
+                                if (character[object_number].favor > 100){
+                                    character[object_number].favor = 100;
+                                }
+                                else if (character[object_number].favor < 0){
+                                    character[object_number].favor = 0;
+                                }
+                                search_event = calloc(100, sizeof(char));
+                                strcpy(search_event, reply.next3);
                             }
                         }
                     }
