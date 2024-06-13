@@ -55,6 +55,7 @@ int main(){
     int32_t backpack_index = 0;
     char *search_event = NULL;
     int32_t check = 0;
+    int32_t character_index = 0;
     window = SDL_CreateWindow( "fin_project", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN );
     screen = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     while(fgets(buffer, 500, script) != 0){
@@ -186,9 +187,9 @@ int main(){
                 }
             }
             if (index > 0){
-                int32_t character_index = 0;
                 if (strstr(buffer, "name") != 0){
                     check = 0;
+                    character_index = 0;
                     char *temp = 0;
                     getstring(buffer, &temp);
                     for (int32_t i = 0; i < count_character; i++){
