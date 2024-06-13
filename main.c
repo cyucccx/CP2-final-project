@@ -120,14 +120,14 @@ int main(){
                     }
                 }
                 printf("max_character = %d\n", max_character);
-                // int end =SDL_main_screen(home_background,120,460,220,90);
-                // if(end==4)
-                // {
-                //     SDL_DestroyRenderer(screen);
-                //     SDL_DestroyWindow(window);
-                //     SDL_Quit();
-                //     return 0;
-                // }
+                int end =SDL_main_screen(home_background,120,460,220,90);
+                if(end==4)
+                {
+                    SDL_DestroyRenderer(screen);
+                    SDL_DestroyWindow(window);
+                    SDL_Quit();
+                    return 0;
+                }
             }
         }
         // read event
@@ -417,26 +417,26 @@ int main(){
                         {
                             if(first==0)
                             {
-                                // int end = SDL_no_choice_one_character_anime(scene.background,character[j].photo,dialogue.text[i],character[j].name,back,character[j].avatar);
-                                // first=1;
-                                // if(end==4)
-                                // {
-                                //     SDL_DestroyRenderer(screen);
-                                //     SDL_DestroyWindow(window);
-                                //     SDL_Quit();
-                                //     return 0;
-                                // }
+                                int end = SDL_no_choice_one_character_anime(scene.background,character[j].photo,dialogue.text[i],character[j].name,back,character[j].avatar);
+                                first=1;
+                                if(end==4)
+                                {
+                                    SDL_DestroyRenderer(screen);
+                                    SDL_DestroyWindow(window);
+                                    SDL_Quit();
+                                    return 0;
+                                }
                             }
                             else
                             {
-                                // int end = SDL_no_choice_one_character(scene.background,character[j].photo,dialogue.text[i],character[j].name,back,character[j].avatar);
-                                // if(end==4)
-                                // {
-                                //     SDL_DestroyRenderer(screen);
-                                //     SDL_DestroyWindow(window);
-                                //     SDL_Quit();
-                                //     return 0;
-                                // }
+                                int end = SDL_no_choice_one_character(scene.background,character[j].photo,dialogue.text[i],character[j].name,back,character[j].avatar);
+                                if(end==4)
+                                {
+                                    SDL_DestroyRenderer(screen);
+                                    SDL_DestroyWindow(window);
+                                    SDL_Quit();
+                                    return 0;
+                                }
                             }
                         }
                     }
