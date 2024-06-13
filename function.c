@@ -83,7 +83,6 @@ void free_reply(sReply *input){
 
 void allocate_backpack(sBackpack *input){
     input->items_number = 0;
-    input->description_box = calloc(100, sizeof(char));
     input->name = calloc(9, sizeof(char *));
     input->photo = calloc(9, sizeof(char *));
     input->description = calloc(9, sizeof(char *));
@@ -95,8 +94,6 @@ void allocate_backpack(sBackpack *input){
 }
 
 void free_backpack(sBackpack *input){
-    free(input->description_box);
-    input->description_box = NULL;
     for (int32_t i = 0; i < 9; i++){
         free(input->name[i]);
         input->name[i] = NULL;
@@ -111,4 +108,55 @@ void free_backpack(sBackpack *input){
     input->photo = NULL;
     free(input->description);
     input->description = NULL;
+}
+
+void allocate_FinalReply(sFinalReply *input){
+    input->option_box = calloc(100, sizeof(char));
+    input->object1 = calloc(100, sizeof(char));
+    input->option1 = calloc(100, sizeof(char));
+    input->good_next1 = calloc(100, sizeof(char));
+    input->bad_next1 = calloc(100, sizeof(char));
+    input->change_favor1 = 0;
+    input->favor_threshold1 = 0;
+    input->object2 = calloc(100, sizeof(char));
+    input->option2 = calloc(100, sizeof(char));
+    input->good_next2 = calloc(100, sizeof(char));
+    input->bad_next2 = calloc(100, sizeof(char));
+    input->change_favor2 = 0;
+    input->favor_threshold2 = 0;
+    input->object3 = calloc(100, sizeof(char));
+    input->option3 = calloc(100, sizeof(char));
+    input->good_next3 = calloc(100, sizeof(char));
+    input->bad_next3 = calloc(100, sizeof(char));
+    input->change_favor3 = 0;
+    input->favor_threshold3 = 0;
+}
+
+void free_FinalReply(sFinalReply *input){
+    free(input->option_box);
+    input->option_box = NULL;
+    free(input->object1);
+    input->object1 = NULL;
+    free(input->option1);
+    input->option1 = NULL;
+    free(input->good_next1);
+    input->good_next1 = NULL;
+    free(input->bad_next1);
+    input->bad_next1 = NULL;
+    free(input->object2);
+    input->object2 = NULL;
+    free(input->option2);
+    input->option2 = NULL;
+    free(input->good_next2);
+    input->good_next2 = NULL;
+    free(input->bad_next2);
+    input->bad_next2 = NULL;
+    free(input->object1);
+    input->object3 = NULL;
+    free(input->option3);
+    input->option3 = NULL;
+    free(input->good_next3);
+    input->good_next3 = NULL;
+    free(input->bad_next3);
+    input->bad_next3 = NULL;
 }
