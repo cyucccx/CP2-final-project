@@ -1,4 +1,5 @@
 #include "include.h"
+#include <SDL2/SDL_mixer.h>
 
 SDL_Window* window;
 SDL_Renderer* screen;
@@ -72,11 +73,17 @@ int backpack(char *background_image, char *laptop_image,char *note_image, char *
     b.h = 600;
     b.w = 800;
     SDL_RenderClear(screen);
-    SDL_Texture* laptop_texture = SDL_CreateTextureFromSurface(screen, laptop);
+    SDL_Texture* laptop_texture;
+    if(laptop_image!=NULL)
+    laptop_texture = SDL_CreateTextureFromSurface(screen, laptop);
     SDL_FreeSurface(laptop);
     SDL_Texture* note_texture = SDL_CreateTextureFromSurface(screen, note);
+    if(note_image!=NULL)
+    note_texture = SDL_CreateTextureFromSurface(screen, note);
     SDL_FreeSurface(note);
-    SDL_Texture* ticket_texture = SDL_CreateTextureFromSurface(screen, ticket);
+    SDL_Texture* ticket_texture;
+    if(ticket_image!=NULL)
+    ticket_texture = SDL_CreateTextureFromSurface(screen, ticket);
     SDL_FreeSurface(ticket);
     SDL_Texture* background_texture = SDL_CreateTextureFromSurface(screen, image);
     SDL_FreeSurface(image);
@@ -1390,6 +1397,9 @@ int SDL_choice_one_character(char *background_image, char *character_image,char 
 int SDL_main_screen(char *background_image,char *start_image,char *load_image,int x_position,int y_position,int width,int height)
 {
     SDL_Surface *image,*start,*load;
+    Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+    //Mix_Music* bgm = Mix_LoadMUS("y2300.mp3");
+    //Mix_PlayMusic(bgm, -1);
     image = IMG_Load(background_image);
     start = IMG_Load(start_image);
     load = IMG_Load(load_image);
