@@ -426,7 +426,6 @@ int main(){
                         {
                             if(need_anime==1)
                             {
-                                printf("%d222\n",need_anime);
                                 int end = SDL_no_choice_one_character_anime(scene.background,character[j].photo,dialogue.text[i],character[j].name,back,character[j].avatar);
                                 need_anime=0;
                                 if(end==4 || end == 6)
