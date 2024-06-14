@@ -59,6 +59,7 @@ int main(){
     int32_t character_index = 0;
     int32_t need_anime = 1;
     char *compare;
+    int32_t last_scene = 0;
     compare = calloc(100, sizeof(char));
     window = SDL_CreateWindow( "fin_project", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN );
     screen = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
@@ -154,12 +155,18 @@ int main(){
                 strcpy(scene.name, buffer+1);
                 printf("scene.name = %s\n", scene.name);
                 search_event = NULL;
+                if (last_scene == 1){
+                    last_scene++;
+                }
             }
             else{
                 continue;
             }
         }
         else if (buffer[0] == '[' && home == 0 && buffer[1] != '['){
+            if (last_scene > 1){
+                break;
+            }
             if (scene.name != NULL){
                 compare = calloc(100, sizeof(char));
                 if(scene.background!=NULL)
@@ -717,8 +724,7 @@ int main(){
                     strcpy(back.note_message,backpack.description[1]);
                     strcpy(back.ticket_message,backpack.description[2]);
                 }
-                printf("%s\n", final_reply.option1);
-                int end = SDL_choice_one_character(scene.background,"NULL",final_reply.option1,final_reply.option2,final_reply.option3,"NULL",back);
+                int end = SDL_choice_one_character(scene.background,"NULL",final_reply.option1,final_reply.option2,final_reply.option3," ",back);
                 if(end==4 || end == 6)
                 {
                     SDL_DestroyRenderer(screen);
@@ -727,7 +733,17 @@ int main(){
                     return 0;
                 }
                 else if (end == 1){
-                    character[object_number].favor += reply.change_favor1;
+                    object_number = -1;
+                    for (int32_t i = 0; i < count_character; i++){
+                        if (strcmp(final_reply.object1, character[i].name) == 0){
+                            object_number = i;
+                            break;
+                        }
+                        else if (object_number == -1){
+                            // wrong
+                        }
+                    }
+                    character[object_number].favor += final_reply.change_favor1;
                     if (character[object_number].favor > 100){
                         character[object_number].favor = 100;
                     }
@@ -735,10 +751,25 @@ int main(){
                         character[object_number].favor = 0;
                     }
                     search_event = calloc(100, sizeof(char));
-                    strcpy(search_event, reply.next1);
+                    if (character[object_number].favor >= final_reply.favor_threshold1){
+                        strcpy(search_event, final_reply.good_next1);
+                    }
+                    else{
+                        strcpy(search_event, final_reply.bad_next1);
+                    }
                 }
                 else if (end == 2){
-                    character[object_number].favor += reply.change_favor2;
+                    object_number = -1;
+                    for (int32_t i = 0; i < count_character; i++){
+                        if (strcmp(final_reply.object2, character[i].name) == 0){
+                            object_number = i;
+                            break;
+                        }
+                        else if (object_number == -1){
+                            // wrong
+                        }
+                    }
+                    character[object_number].favor += final_reply.change_favor2;
                     if (character[object_number].favor > 100){
                         character[object_number].favor = 100;
                     }
@@ -746,10 +777,25 @@ int main(){
                         character[object_number].favor = 0;
                     }
                     search_event = calloc(100, sizeof(char));
-                    strcpy(search_event, reply.next2);
+                    if (character[object_number].favor >= final_reply.favor_threshold2){
+                        strcpy(search_event, final_reply.good_next2);
+                    }
+                    else{
+                        strcpy(search_event, final_reply.bad_next2);
+                    }
                 }
                 else if (end == 3){
-                    character[object_number].favor += reply.change_favor3;
+                    object_number = -1;
+                    for (int32_t i = 0; i < count_character; i++){
+                        if (strcmp(final_reply.object3, character[i].name) == 0){
+                            object_number = i;
+                            break;
+                        }
+                        else if (object_number == -1){
+                            // wrong
+                        }
+                    }
+                    character[object_number].favor += final_reply.change_favor3;
                     if (character[object_number].favor > 100){
                         character[object_number].favor = 100;
                     }
@@ -757,8 +803,14 @@ int main(){
                         character[object_number].favor = 0;
                     }
                     search_event = calloc(100, sizeof(char));
-                    strcpy(search_event, reply.next3);
+                    if (character[object_number].favor >= final_reply.favor_threshold3){
+                        strcpy(search_event, final_reply.good_next3);
+                    }
+                    else{
+                        strcpy(search_event, final_reply.bad_next3);
+                    }
                 }
+                last_scene = 1;
                 // SDL_choice_one_character(接return value)
                 // object_number = -1;
                 // for (int32_t i = 0; i < count_character; i++){
