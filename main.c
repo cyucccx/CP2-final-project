@@ -411,10 +411,11 @@ int main(){
                 int first=0;
                 for(int i=0;i<dialogue.string_number;i++)
                 {
-                    for(int j=0;j<scene.character_number;j++)
+                    for(int j=0;j<count_character;j++)
                     {
                         if(strcmp(dialogue.speaker[i],character[j].name)==0 )
                         {
+                            
                             if(first==0)
                             {
                                 int end = SDL_no_choice_one_character_anime(scene.background,character[j].photo,dialogue.text[i],character[j].name,back,character[j].avatar);
