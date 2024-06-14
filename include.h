@@ -42,8 +42,7 @@ int SDL_no_choice_one_character_anime(char *background_image, char *character_im
 
 int SDL_choice_one_character(char *background_image, char *character_image,char *sellect_button_message_up,char *sellect_button_message_middle,char *sellect_button_message_down, char *character_name, Backpack packing);
 
-int SDL_main_screen(char *background_image,int x_position,int y_position,int width,int height);
-
+int SDL_main_screen(char *background_image,char *start_image,char *load_image,int x_position,int y_position,int width,int height);
 typedef struct scene{
     char *name;
     char *background;
