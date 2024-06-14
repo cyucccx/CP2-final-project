@@ -167,7 +167,7 @@ int main(){
         if (scene.dialogue == 0 && scene.reply == 0 && scene.backpack == 0){
             if (scene.background != NULL){
                 if (strstr(buffer, "background") != 0){
-                    char compare[100] = 0;
+                    char compare[100] = {0};
                     strcpy(compare, scene.background);
                     getstring(buffer, &scene.background);
                     if (strcmp(compare, scene.background) == 0){
@@ -424,11 +424,11 @@ int main(){
                     {
                         if(strcmp(dialogue.speaker[i],character[j].name)==0 )
                         {
-                            
-                            if(need_anime==0)
+                            if(need_anime==1)
                             {
+                                printf("%d222\n",need_anime);
                                 int end = SDL_no_choice_one_character_anime(scene.background,character[j].photo,dialogue.text[i],character[j].name,back,character[j].avatar);
-                                need_anime=1;
+                                need_anime=0;
                                 if(end==4 || end == 6)
                                 {
                                     SDL_DestroyRenderer(screen);
