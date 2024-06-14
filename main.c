@@ -56,6 +56,7 @@ int main(){
     char *search_event = NULL;
     int32_t check = 0;
     int32_t character_index = 0;
+    int32_t need_anime = 1;
     window = SDL_CreateWindow( "fin_project", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN );
     screen = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     while(fgets(buffer, 500, script) != 0){
@@ -121,12 +122,16 @@ int main(){
                 }
                 printf("max_character = %d\n", max_character);
                 int end =SDL_main_screen(home_background,120,460,220,90);
-                if(end==4)
+                if(end==4 || end == 6)
                 {
                     SDL_DestroyRenderer(screen);
                     SDL_DestroyWindow(window);
                     SDL_Quit();
                     return 0;
+                }
+                if (end == 5 || end == 6){
+                    FILE *save = fopen("save.txt", "wb");
+                    printf("%s\n", buffer);
                 }
             }
         }
@@ -162,7 +167,12 @@ int main(){
         if (scene.dialogue == 0 && scene.reply == 0 && scene.backpack == 0){
             if (scene.background != NULL){
                 if (strstr(buffer, "background") != 0){
+                    char compare[100] = 0;
+                    strcpy(compare, scene.background);
                     getstring(buffer, &scene.background);
+                    if (strcmp(compare, scene.background) == 0){
+                        need_anime = 0;
+                    }
                     printf("scene.background = %s\n", scene.background);
                 }
             }
@@ -408,7 +418,6 @@ int main(){
                     strcpy(back.note_message,backpack.description[1]);
                     strcpy(back.ticket_message,backpack.description[2]);
                 }
-                int first=0;
                 for(int i=0;i<dialogue.string_number;i++)
                 {
                     for(int j=0;j<count_character;j++)
@@ -416,11 +425,11 @@ int main(){
                         if(strcmp(dialogue.speaker[i],character[j].name)==0 )
                         {
                             
-                            if(first==0)
+                            if(need_anime==0)
                             {
                                 int end = SDL_no_choice_one_character_anime(scene.background,character[j].photo,dialogue.text[i],character[j].name,back,character[j].avatar);
-                                first=1;
-                                if(end==4)
+                                need_anime=1;
+                                if(end==4 || end == 6)
                                 {
                                     SDL_DestroyRenderer(screen);
                                     SDL_DestroyWindow(window);
@@ -431,12 +440,16 @@ int main(){
                             else
                             {
                                 int end = SDL_no_choice_one_character(scene.background,character[j].photo,dialogue.text[i],character[j].name,back,character[j].avatar);
-                                if(end==4)
+                                if(end==4 || end == 6)
                                 {
                                     SDL_DestroyRenderer(screen);
                                     SDL_DestroyWindow(window);
                                     SDL_Quit();
                                     return 0;
+                                }
+                                if (end == 5 || end == 6){
+                                    FILE *save = fopen("save.txt", "wb");
+                                    printf("%s\n\n", buffer);
                                 }
                             }
                         }
@@ -813,7 +826,7 @@ int main(){
                         if(strcmp(reply.object,character[j].name)==0 )
                         {
                             int end = SDL_choice_one_character(scene.background,character[j].photo,reply.option1,reply.option2,reply.option3,character[j].name,back);
-                            if(end==4)
+                            if(end==4 || end == 6)
                             {
                                 SDL_DestroyRenderer(screen);
                                 SDL_DestroyWindow(window);
