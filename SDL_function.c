@@ -1385,18 +1385,34 @@ int SDL_choice_one_character(char *background_image, char *character_image,char 
     return quit;
 }
 
-int SDL_main_screen(char *background_image,int x_position,int y_position,int width,int height)
+int SDL_main_screen(char *background_image,char *start_image,char *load_image,int x_position,int y_position,int width,int height)
 {
-    SDL_Surface *image;
+    SDL_Surface *image,*start,*load;
     image = IMG_Load(background_image);
+    start = IMG_Load(start_image);
+    load = IMG_Load(load_image);
     SDL_Texture* background_texture = SDL_CreateTextureFromSurface(screen, image);
+    SDL_Texture* start_texture = SDL_CreateTextureFromSurface(screen, start);
+    SDL_Texture* load_texture = SDL_CreateTextureFromSurface(screen, load);
     SDL_FreeSurface(image);
+    SDL_FreeSurface(start);
+    SDL_FreeSurface(load);
     Player play;
-    SDL_Rect b;
+    SDL_Rect b,c,d;
     b.x = 0;
     b.y = 0;
     b.h = 600;
     b.w = 800;
+
+    c.x = 112;
+    c.y = 417;
+    c.h = 50;
+    c.w = 181;
+
+    d.x = 112;
+    d.y = 486;
+    d.h = 50;
+    d.w = 181;
     
     play.x = 0;
     play.y = 0;
@@ -1446,7 +1462,11 @@ int SDL_main_screen(char *background_image,int x_position,int y_position,int wid
         if (alpha < 255) {
             SDL_RenderClear(screen);
             SDL_SetTextureAlphaMod(background_texture, alpha);
+            SDL_SetTextureAlphaMod(start_texture, alpha);
+            SDL_SetTextureAlphaMod(load_texture, alpha);
             SDL_RenderCopy(screen, background_texture, NULL, NULL);
+            SDL_RenderCopy(screen, start_texture, NULL, &c);
+            SDL_RenderCopy(screen, load_texture, NULL, &d);
             SDL_RenderPresent(screen);
             alpha++;
         }

@@ -121,7 +121,7 @@ int main(){
                     }
                 }
                 printf("max_character = %d\n", max_character);
-                int end =SDL_main_screen(home_background,120,460,220,90);
+                int end =SDL_main_screen(home_background,home_button,home_button,120,460,220,90);
                 if(end==4 || end == 6)
                 {
                     SDL_DestroyRenderer(screen);
