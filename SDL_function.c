@@ -1,4 +1,5 @@
 #include "include.h"
+#include <SDL2/SDL_mixer.h>
 
 SDL_Window* window;
 SDL_Renderer* screen;
@@ -79,13 +80,13 @@ int backpack(char *background_image, char *laptop_image,char *note_image, char *
     SDL_Texture* note_texture;
     if(note_image!=NULL)
     note_texture = SDL_CreateTextureFromSurface(screen, note);
-    SDL_FreeSurface(note);
+    //SDL_FreeSurface(note);
     SDL_Texture* ticket_texture;
     if(ticket_image!=NULL)
     ticket_texture = SDL_CreateTextureFromSurface(screen, ticket);
     
     SDL_Texture* background_texture = SDL_CreateTextureFromSurface(screen, image);
-    SDL_FreeSurface(image);
+    //SDL_FreeSurface(image);
     //SDL_FreeSurface(ticket);
     SDL_RenderCopy(screen, background_texture, NULL, &background);
     if(laptop_image!=NULL)
@@ -402,7 +403,6 @@ int backpack(char *background_image, char *laptop_image,char *note_image, char *
     {
         SDL_Event event;
         int x,y;
-        
         while (SDL_PollEvent(&event))
         {
             switch (event.type)
@@ -410,149 +410,7 @@ int backpack(char *background_image, char *laptop_image,char *note_image, char *
                 case SDL_QUIT:
                     quit = 1;
                     break;
-                case SDL_MOUSEMOTION:
-                    x=event.motion.x;
-                    y=event.motion.y;
-                    if(x>115&&x<225&&y>145&&y<240)
-                    {
-                        if(press == 2 || press == 3)
-                        {
-                            SDL_RenderCopy(screen, background_texture, NULL, &background);
-                        }
-                        SDL_Surface *button1;
-                        button1 = IMG_Load("../assets/scene/select1.png");
-                        SDL_Texture* button_texture = SDL_CreateTextureFromSurface(screen, button1);
-                        //SDL_FreeSurface(button1);
-                        SDL_Rect button_1;
-                        button_1.x = 0;
-                        button_1.y = 0;
-                        button_1.h = 600;
-                        button_1.w = 800;
-                        SDL_RenderCopy(screen, button_texture, NULL, &button_1);
-                        if(laptop_image!=NULL)
-                        SDL_RenderCopy(screen, laptop_texture, NULL, &laptopp);
-                        if(note_image!=NULL)
-                        SDL_RenderCopy(screen, note_texture, NULL, &notee);
-                        if(ticket_image!=NULL)
-                        SDL_RenderCopy(screen, ticket_texture, NULL, &tickett);
-                        SDL_RenderPresent(screen);
-                        SDL_FreeSurface(button1);
-                        SDL_DestroyTexture(button_texture);
-                    }
-                    else if(x>345&&x<450&&y>145&&y<240)
-                    {
-                        if(press == 1 || press == 3)
-                        {
-                            SDL_RenderCopy(screen, background_texture, NULL, &background);
-                        }
-                        SDL_Surface *button1;
-                        button1 = IMG_Load("../assets/scene/select2.png");
-                        SDL_Texture* button_texture = SDL_CreateTextureFromSurface(screen, button1);
-                        //SDL_FreeSurface(button1);
-                        SDL_Rect button_1;
-                        button_1.x = 0;
-                        button_1.y = 0;
-                        button_1.h = 600;
-                        button_1.w = 800;
-                        SDL_RenderCopy(screen, button_texture, NULL, &button_1);
-                        if(laptop_image!=NULL)
-                        SDL_RenderCopy(screen, laptop_texture, NULL, &laptopp);
-                        if(note_image!=NULL)
-                        SDL_RenderCopy(screen, note_texture, NULL, &notee);
-                        if(ticket_image!=NULL)
-                        SDL_RenderCopy(screen, ticket_texture, NULL, &tickett);
-                        SDL_RenderPresent(screen);
-                        SDL_FreeSurface(button1);
-                        SDL_DestroyTexture(button_texture);
-                    }
-                    else if(x>575&&x<680&&y>145&&y<240)
-                    {
-                        if(press == 1 || press == 2)
-                        {
-                            SDL_RenderCopy(screen, background_texture, NULL, &background);
-                        }
-                        SDL_Surface *button1;
-                        //SDL_FreeSurface(button1);
-                        button1 = IMG_Load("../assets/scene/select3.png");
-                        SDL_Texture* button_texture = SDL_CreateTextureFromSurface(screen, button1);
-                        SDL_Rect button_1;
-                        button_1.x = 0;
-                        button_1.y = 0;
-                        button_1.h = 600;
-                        button_1.w = 800;
-                        SDL_RenderCopy(screen, button_texture, NULL, &button_1);
-                        if(laptop_image!=NULL)
-                        SDL_RenderCopy(screen, laptop_texture, NULL, &laptopp);
-                        if(note_image!=NULL)
-                        SDL_RenderCopy(screen, note_texture, NULL, &notee);
-                        if(ticket_image!=NULL)
-                        SDL_RenderCopy(screen, ticket_texture, NULL, &tickett);
-                        SDL_RenderPresent(screen);
-                        SDL_FreeSurface(button1);
-                        SDL_DestroyTexture(button_texture);
-                    }
-                    else
-                    {
-                        SDL_RenderCopy(screen, background_texture, NULL, &background);
-                        if(laptop_image!=NULL)
-                        SDL_RenderCopy(screen, laptop_texture, NULL, &laptopp);
-                        if(note_image!=NULL)
-                        SDL_RenderCopy(screen, note_texture, NULL, &notee);
-                        if(ticket_image!=NULL)
-                        SDL_RenderCopy(screen, ticket_texture, NULL, &tickett);
-                        if(press == 1)
-                        {
-                            if(cou==0)
-                            SDL_RenderCopy(screen, textTexture, NULL, &textRect);
-                            else if(cou==1)
-                            {
-                                SDL_RenderCopy(screen, textTexture, NULL, &textRect);
-                                SDL_RenderCopy(screen, textTexture_2, NULL, &textRect_2);
-                            }
-                            else if(cou==2)
-                            {
-                                SDL_RenderCopy(screen, textTexture, NULL, &textRect);
-                                SDL_RenderCopy(screen, textTexture_2, NULL, &textRect_2);
-                                SDL_RenderCopy(screen, textTexture_3, NULL, &textRect_3);
-                            }
-                            SDL_RenderCopy(screen, textTexture_name, NULL, &textRect_name);
-                        }
-                        else if(press == 2)
-                        {
-                            if(couu==0)
-                            SDL_RenderCopy(screen, textTexture2, NULL, &textRect2);
-                            else if(couu==1)
-                            {
-                                SDL_RenderCopy(screen, textTexture2, NULL, &textRect2);
-                                SDL_RenderCopy(screen, textTexture2_2, NULL, &textRect2_2);
-                            }
-                            else if(couu==2)
-                            {
-                                SDL_RenderCopy(screen, textTexture2, NULL, &textRect2);
-                                SDL_RenderCopy(screen, textTexture2_2, NULL, &textRect2_2);
-                                SDL_RenderCopy(screen, textTexture2_3, NULL, &textRect2_3);
-                            }
-                            SDL_RenderCopy(screen, textTexture_name2, NULL, &textRect_name2);
-                        }
-                        else if(press == 3)
-                        {
-                            if(couuu==0)
-                            SDL_RenderCopy(screen, textTexture3, NULL, &textRect3);
-                            else if(couuu==1)
-                            {
-                                SDL_RenderCopy(screen, textTexture3, NULL, &textRect3);
-                                SDL_RenderCopy(screen, textTexture3_2, NULL, &textRect3_2);
-                            }
-                            else if(couuu==2)
-                            {
-                                SDL_RenderCopy(screen, textTexture3, NULL, &textRect3);
-                                SDL_RenderCopy(screen, textTexture3_2, NULL, &textRect3_2);
-                                SDL_RenderCopy(screen, textTexture3_3, NULL, &textRect3_3);
-                            }
-                            SDL_RenderCopy(screen, textTexture_name3, NULL, &textRect_name3);
-                        }
-                        SDL_RenderPresent(screen);
-                    }
+                
                 case SDL_MOUSEBUTTONDOWN:
                     if(event.button.button == SDL_BUTTON_LEFT)
                     {
@@ -560,8 +418,28 @@ int backpack(char *background_image, char *laptop_image,char *note_image, char *
                         y=event.button.y;
                         if(x>115&&x<225&&y>145&&y<240)
                         {
+                            SDL_RenderCopy(screen, background_texture, NULL, &background);
+                            SDL_Surface *button1;
+                            button1 = IMG_Load("../assets/scene/select1.png");
+                            SDL_Texture* button_texture = SDL_CreateTextureFromSurface(screen, button1);
+                            //SDL_FreeSurface(button1);
+                            SDL_Rect button_1;
+                            button_1.x = 0;
+                            button_1.y = 0;
+                            button_1.h = 600;
+                            button_1.w = 800;
+                            SDL_RenderCopy(screen, button_texture, NULL, &button_1);
+                            if(ticket_image!=NULL)
+                            {
+                                SDL_RenderCopy(screen, ticket_texture, NULL, &tickett);
+                            }
+                            if(note_image!=NULL)
+                            {
+                                SDL_RenderCopy(screen, note_texture, NULL, &notee);
+                            }
                             if(laptop_image!=NULL)
                             {
+                                SDL_RenderCopy(screen, laptop_texture, NULL, &laptopp);
                                 if(cou==0)
                                 SDL_RenderCopy(screen, textTexture, NULL, &textRect);
                                 else if(cou==1)
@@ -576,14 +454,35 @@ int backpack(char *background_image, char *laptop_image,char *note_image, char *
                                     SDL_RenderCopy(screen, textTexture_3, NULL, &textRect_3);
                                 }
                                 SDL_RenderCopy(screen, textTexture_name, NULL, &textRect_name);
-                                SDL_RenderPresent(screen);
+                                
                                 press=1;
                             }
+                            SDL_RenderPresent(screen);
                         }
                         else if(x>345&&x<450&&y>145&&y<240)
                         {
+                            SDL_RenderCopy(screen, background_texture, NULL, &background);
+                            SDL_Surface *button1;
+                            button1 = IMG_Load("../assets/scene/select2.png");
+                            SDL_Texture* button_texture = SDL_CreateTextureFromSurface(screen, button1);
+                            //SDL_FreeSurface(button1);
+                            SDL_Rect button_1;
+                            button_1.x = 0;
+                            button_1.y = 0;
+                            button_1.h = 600;
+                            button_1.w = 800;
+                            SDL_RenderCopy(screen, button_texture, NULL, &button_1);
+                            if(laptop_image!=NULL)
+                            {
+                                SDL_RenderCopy(screen, laptop_texture, NULL, &laptopp);
+                            }
+                            if(ticket_image!=NULL)
+                            {
+                                SDL_RenderCopy(screen, ticket_texture, NULL, &tickett);
+                            }
                             if(note_image!=NULL)
                             {
+                                SDL_RenderCopy(screen, note_texture, NULL, &notee);
                                 if(couu==0)
                                 SDL_RenderCopy(screen, textTexture2, NULL, &textRect2);
                                 else if(couu==1)
@@ -598,14 +497,35 @@ int backpack(char *background_image, char *laptop_image,char *note_image, char *
                                     SDL_RenderCopy(screen, textTexture2_3, NULL, &textRect2_3);
                                 }
                                 SDL_RenderCopy(screen, textTexture_name2, NULL, &textRect_name2);
-                                SDL_RenderPresent(screen);
+                                
                                 press=2;
                             }
+                            SDL_RenderPresent(screen);
                         }
                         else if(x>575&&x<680&&y>145&&y<240)
                         {
+                            SDL_RenderCopy(screen, background_texture, NULL, &background);
+                            SDL_Surface *button1;
+                            button1 = IMG_Load("../assets/scene/select3.png");
+                            SDL_Texture* button_texture = SDL_CreateTextureFromSurface(screen, button1);
+                            //SDL_FreeSurface(button1);
+                            SDL_Rect button_1;
+                            button_1.x = 0;
+                            button_1.y = 0;
+                            button_1.h = 600;
+                            button_1.w = 800;
+                            SDL_RenderCopy(screen, button_texture, NULL, &button_1);
+                            if(note_image!=NULL)
+                            {
+                                SDL_RenderCopy(screen, note_texture, NULL, &notee);
+                            }
+                            if(laptop_image!=NULL)
+                            {
+                                SDL_RenderCopy(screen, laptop_texture, NULL, &laptopp);
+                            }
                             if(ticket_image!=NULL)
                             {
+                                SDL_RenderCopy(screen, ticket_texture, NULL, &tickett);
                                 if(couuu==0)
                                 SDL_RenderCopy(screen, textTexture3, NULL, &textRect3);
                                 else if(couuu==1)
@@ -620,9 +540,10 @@ int backpack(char *background_image, char *laptop_image,char *note_image, char *
                                     SDL_RenderCopy(screen, textTexture3_3, NULL, &textRect3_3);
                                 }
                                 SDL_RenderCopy(screen, textTexture_name3, NULL, &textRect_name3);
-                                SDL_RenderPresent(screen);
+                                
                                 press=3;
                             }
+                            SDL_RenderPresent(screen);
                         }
                         else if(x>335&&x<465&&y>500&&y<550)
                         {
@@ -1450,7 +1371,7 @@ int SDL_choice_one_character(char *background_image, char *character_image,char 
 int SDL_main_screen(char *background_image,char *start_image,char *load_image,int x_position,int y_position,int width,int height)
 {
     SDL_Surface *image,*start,*load;
-    //Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+    Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
     //Mix_Music* bgm = Mix_LoadMUS("y2300.mp3");
     //Mix_PlayMusic(bgm, -1);
     image = IMG_Load(background_image);
