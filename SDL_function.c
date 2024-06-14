@@ -410,7 +410,7 @@ int backpack(char *background_image, char *laptop_image,char *note_image, char *
                             SDL_RenderCopy(screen, background_texture, NULL, &background);
                         }
                         SDL_Surface *button1;
-                        button1 = IMG_Load("select1.png");
+                        button1 = IMG_Load("../assets/scene/select1.png");
                         SDL_Texture* button_texture = SDL_CreateTextureFromSurface(screen, button1);
                         SDL_FreeSurface(button1);
                         SDL_Rect button_1;
@@ -431,7 +431,7 @@ int backpack(char *background_image, char *laptop_image,char *note_image, char *
                             SDL_RenderCopy(screen, background_texture, NULL, &background);
                         }
                         SDL_Surface *button1;
-                        button1 = IMG_Load("select2.png");
+                        button1 = IMG_Load("../assets/scene/select2.png");
                         SDL_Texture* button_texture = SDL_CreateTextureFromSurface(screen, button1);
                         SDL_FreeSurface(button1);
                         SDL_Rect button_1;
@@ -453,7 +453,7 @@ int backpack(char *background_image, char *laptop_image,char *note_image, char *
                         }
                         SDL_Surface *button1;
                         SDL_FreeSurface(button1);
-                        button1 = IMG_Load("select3.png");
+                        button1 = IMG_Load("../assets/scene/select3.png");
                         SDL_Texture* button_texture = SDL_CreateTextureFromSurface(screen, button1);
                         SDL_Rect button_1;
                         button_1.x = 0;
@@ -635,9 +635,9 @@ int SDL_no_choice_one_character(char *background_image, char *character_image, c
     if(character_image!=NULL)
     player = IMG_Load(character_image);
     small_player = IMG_Load(small_character_image);
-    talk = IMG_Load("talk.png");
-    button = IMG_Load("button.png");
-    button2 = IMG_Load("button.png");
+    talk = IMG_Load("../assets/scene/talk.png");
+    button = IMG_Load("../assets/scene/button.png");
+    button2 = IMG_Load("../assets/scene/button.png");
     blank = IMG_Load("blank.png");
     
     Player play,small_play,background,talking,butt;
@@ -902,9 +902,9 @@ int SDL_no_choice_one_character_anime(char *background_image, char *character_im
     image = IMG_Load(background_image);
     if(character_image!=NULL)
     player = IMG_Load(character_image);
-    talk = IMG_Load("talk.png");
-    button = IMG_Load("button.png");
-    button2 = IMG_Load("button.png");
+    talk = IMG_Load("../assets/scene/talk.png");
+    button = IMG_Load("../assets/scene/button.png");
+    button2 = IMG_Load("../assets/scene/button.png");
     small_player = IMG_Load(small_character_image);
     
     Player play,background,talking,butt,small_play;
@@ -1210,10 +1210,10 @@ int SDL_choice_one_character(char *background_image, char *character_image,char 
     image = IMG_Load(background_image);
     if(character_image != NULL)
     player = IMG_Load(character_image);
-    talk = IMG_Load("talk.png");
-    button = IMG_Load("button.png");
-    button2 = IMG_Load("button.png");
-    sellect_button = IMG_Load("select_button.png");
+    talk = IMG_Load("../assets/scene/talk.png");
+    button = IMG_Load("../assets/scene/button.png");
+    button2 = IMG_Load("../assets/scene/button.png");
+    sellect_button = IMG_Load("../assets/scene/select_button.png");
     
     Player play,background,talking,butt;
     
@@ -1241,7 +1241,9 @@ int SDL_choice_one_character(char *background_image, char *character_image,char 
     
     SDL_Texture* background_texture = SDL_CreateTextureFromSurface(screen, image);
     SDL_FreeSurface(image);
-    SDL_Texture* play_texture = SDL_CreateTextureFromSurface(screen, player);
+    SDL_Texture* play_texture;
+    if(character_image!=NULL)
+    play_texture = SDL_CreateTextureFromSurface(screen, player);
     SDL_FreeSurface(player);
     SDL_Texture* talk_texture = SDL_CreateTextureFromSurface(screen, talk);
     SDL_FreeSurface(talk);
@@ -1297,7 +1299,7 @@ int SDL_choice_one_character(char *background_image, char *character_image,char 
     textRect_pack.w = pack->w/1.85;
     textRect_pack.h = pack->h/1.85;
     SDL_Rect textRect_keepdata;
-    textRect_keepdata.x = 671;
+    textRect_keepdata.x = 571;
     textRect_keepdata.y = 397;
     textRect_keepdata.w = keep_data->w/1.85;
     textRect_keepdata.h = keep_data->h/1.85;
@@ -1441,17 +1443,37 @@ int SDL_main_screen(char *background_image,char *start_image,char *load_image,in
                         x=event.button.x;
                         y=event.button.y;
                         
-                        if(x>=x_position&&x<=x_position+width&&y>=y_position&&y<=y_position+height)
+                        if(x>=112&&x<=112+181&&y>=417&&y<=417+50)
                         {
                             alpha = 255;
                             while (alpha > 0) {
                                 SDL_RenderClear(screen);
                                 SDL_SetTextureAlphaMod(background_texture, alpha);
+                                SDL_SetTextureAlphaMod(start_texture, alpha);
+                                SDL_SetTextureAlphaMod(load_texture, alpha);
                                 SDL_RenderCopy(screen, background_texture, NULL, NULL);
+                                SDL_RenderCopy(screen, start_texture, NULL, &c);
+                                SDL_RenderCopy(screen, load_texture, NULL, &d);
                                 SDL_RenderPresent(screen);
                                 alpha--;
                             }
                             quit = 1;
+                        }
+                        if(x>=112&&x<=112+181&&y>=486&&y<=486+50)
+                        {
+                            alpha = 255;
+                            while (alpha > 0) {
+                                SDL_RenderClear(screen);
+                                SDL_SetTextureAlphaMod(background_texture, alpha);
+                                SDL_SetTextureAlphaMod(start_texture, alpha);
+                                SDL_SetTextureAlphaMod(load_texture, alpha);
+                                SDL_RenderCopy(screen, background_texture, NULL, NULL);
+                                SDL_RenderCopy(screen, start_texture, NULL, &c);
+                                SDL_RenderCopy(screen, load_texture, NULL, &d);
+                                SDL_RenderPresent(screen);
+                                alpha--;
+                            }
+                            quit = 7;
                         }
                     }
                     break;
