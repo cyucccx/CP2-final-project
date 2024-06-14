@@ -122,7 +122,7 @@ int main(){
                     }
                 }
                 printf("max_character = %d\n", max_character);
-                int end =SDL_main_screen(home_background,120,460,220,90);
+                int end =SDL_main_screen(home_background,home_button,home_button,120,460,220,90);
                 if(end==4 || end == 6)
                 {
                     SDL_DestroyRenderer(screen);
@@ -433,7 +433,6 @@ int main(){
                     {
                         if(strcmp(dialogue.speaker[i],character[j].name)==0 )
                         {
-                            
                             if(need_anime==1)
                             {
                                 int end = SDL_no_choice_one_character_anime(scene.background,character[j].photo,dialogue.text[i],character[j].name,back,character[j].avatar);
