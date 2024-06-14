@@ -58,6 +58,7 @@ int main(){
     int32_t character_index = 0;
     int32_t need_anime = 1;
     char *compare;
+    compare = calloc(100, sizeof(char));
     window = SDL_CreateWindow( "fin_project", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN );
     screen = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     while(fgets(buffer, 500, script) != 0){
@@ -142,6 +143,7 @@ int main(){
             if (strstr(buffer, search_event) != 0 && buffer[0] == '['){
                 if (scene.name != NULL){
                     compare = calloc(100, sizeof(char));
+                    if(scene.background!=NULL)
                     strcpy(compare, scene.background);
                     free_scene(&scene);
                 }
@@ -159,6 +161,7 @@ int main(){
         else if (buffer[0] == '[' && home == 0 && buffer[1] != '['){
             if (scene.name != NULL){
                 compare = calloc(100, sizeof(char));
+                if(scene.background!=NULL)
                 strcpy(compare, scene.background);
                 free_scene(&scene);
             }
@@ -179,8 +182,10 @@ int main(){
                         continue;
                     }
                     else if (strcmp(compare, scene.background) == 0){
+                        printf("2555\n");
                         need_anime = 0;
                     }
+                    if(compare!=NULL)
                     free(compare);
                     printf("scene.background = %s\n", scene.background);
                 }
@@ -639,7 +644,117 @@ int main(){
             else if (strstr(buffer, "bad_next3") != 0){
                 getstring(buffer, &final_reply.bad_next3);
                 printf("%s\n", final_reply.bad_next3);
-                
+                Backpack back;
+                back.background_image = malloc(256);
+                back.background_image="../assets/scene/backpack.png";
+                if(backpack.items_number==0)
+                {
+                    back.laptop_image=NULL;
+                    back.laptop_image=NULL;
+                    back.laptop_message=NULL;
+                    back.laptop_name=NULL;
+                    back.note_image=NULL;
+                    back.note_message=NULL;
+                    back.note_name=NULL;
+                    back.ticket_image=NULL;
+                    back.ticket_message=NULL;
+                    back.ticket_name=NULL;
+                }
+                else if(backpack.items_number==1)
+                {
+                    back.laptop_image = malloc(256);
+                    strcpy(back.laptop_image,backpack.photo[0]);
+                    back.note_image=NULL;//strcpy(back.note_image,backpack.photo[1]);
+                    back.ticket_image=NULL;//strcpy(back.ticket_image,backpack.photo[2]);
+                    back.laptop_name = malloc(256);
+                    strcpy(back.laptop_name,backpack.name[0]);
+                    back.note_name=NULL;//strcpy(back.note_name,backpack.name[1]);
+                    back.ticket_name=NULL;//strcpy(back.ticket_name,backpack.name[2]);
+                    back.laptop_message = malloc(256);
+                    strcpy(back.laptop_message,backpack.description[0]);
+                    back.note_message=NULL;//strcpy(back.note_message,backpack.description[1]);
+                    back.ticket_image=NULL;//strcpy(back.ticket_message,backpack.description[2]);
+                }
+                else if(backpack.items_number==2)
+                {
+                    back.laptop_image = malloc(256);
+                    back.note_image = malloc(256);
+                    strcpy(back.laptop_image,backpack.photo[0]);
+                    strcpy(back.note_image,backpack.photo[1]);
+                    back.ticket_image=NULL;//strcpy(back.ticket_image,backpack.photo[2]);
+                    back.laptop_name = malloc(256);
+                    back.note_name = malloc(256);
+                    strcpy(back.laptop_name,backpack.name[0]);
+                    strcpy(back.note_name,backpack.name[1]);
+                    back.ticket_name=NULL;//strcpy(back.ticket_name,backpack.name[2]);
+                    back.laptop_message=malloc(256);
+                    back.note_message=malloc(256);
+                    strcpy(back.laptop_message,backpack.description[0]);
+                    strcpy(back.note_message,backpack.description[1]);
+                    back.ticket_message=NULL;//strcpy(back.ticket_message,backpack.description[2]);
+                }
+                else if(backpack.items_number==3)
+                {
+                    back.laptop_image = malloc(256);
+                    back.note_image = malloc(256);
+                    back.ticket_image = malloc(256);
+                    strcpy(back.laptop_image,backpack.photo[0]);
+                    strcpy(back.note_image,backpack.photo[1]);
+                    strcpy(back.ticket_image,backpack.photo[2]);
+                    back.laptop_name = malloc(256);
+                    back.note_name = malloc(256);
+                    back.ticket_name = malloc(256);
+                    strcpy(back.laptop_name,backpack.name[0]);
+                    strcpy(back.note_name,backpack.name[1]);
+                    strcpy(back.ticket_name,backpack.name[2]);
+                    back.laptop_message=malloc(256);
+                    back.note_message=malloc(256);
+                    back.ticket_message=malloc(256);
+                    strcpy(back.laptop_message,backpack.description[0]);
+                    strcpy(back.note_message,backpack.description[1]);
+                    strcpy(back.ticket_message,backpack.description[2]);
+                }
+                int end = SDL_choice_one_character(scene.background,"NULL",final_reply.option1,final_reply.option2,final_reply.option3,"NULL",back);
+                if(end==4 || end == 6)
+                {
+                    SDL_DestroyRenderer(screen);
+                    SDL_DestroyWindow(window);
+                    SDL_Quit();
+                    return 0;
+                }
+                else if (end == 1){
+                    character[object_number].favor += reply.change_favor1;
+                    if (character[object_number].favor > 100){
+                        character[object_number].favor = 100;
+                    }
+                    else if (character[object_number].favor < 0){
+                        character[object_number].favor = 0;
+                    }
+                    search_event = calloc(100, sizeof(char));
+                    strcpy(search_event, reply.next1);
+                }
+                else if (end == 2){
+                    character[object_number].favor += reply.change_favor2;
+                    if (character[object_number].favor > 100){
+                        character[object_number].favor = 100;
+                    }
+                    else if (character[object_number].favor < 0){
+                        character[object_number].favor = 0;
+                    }
+                    search_event = calloc(100, sizeof(char));
+                    strcpy(search_event, reply.next2);
+                }
+                else if (end == 3){
+                    character[object_number].favor += reply.change_favor3;
+                    if (character[object_number].favor > 100){
+                        character[object_number].favor = 100;
+                    }
+                    else if (character[object_number].favor < 0){
+                        character[object_number].favor = 0;
+                    }
+                    search_event = calloc(100, sizeof(char));
+                    strcpy(search_event, reply.next3);
+                }
                 // SDL_choice_one_character(接return value)
                 // object_number = -1;
                 // for (int32_t i = 0; i < count_character; i++){
@@ -829,7 +944,7 @@ int main(){
                 
                 for(int i=0;i<1;i++)
                 {
-                    for(int j=0;j<scene.character_number;j++)
+                    for(int j=0;j<count_character;j++)
                     {
                         if(strcmp(reply.object,character[j].name)==0 )
                         {
