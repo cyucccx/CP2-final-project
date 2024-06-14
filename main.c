@@ -168,6 +168,7 @@ int main(){
             if (scene.background != NULL){
                 if (strstr(buffer, "background") != 0){
                     char compare[100] = {0};
+                    need_anime=1;
                     strcpy(compare, scene.background);
                     getstring(buffer, &scene.background);
                     if (strcmp(compare, scene.background) == 0){
