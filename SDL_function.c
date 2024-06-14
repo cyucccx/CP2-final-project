@@ -1,5 +1,4 @@
 #include "include.h"
-#include <SDL2/SDL_mixer.h>
 
 SDL_Window* window;
 SDL_Renderer* screen;
