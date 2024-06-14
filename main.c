@@ -57,6 +57,7 @@ int main(){
     int32_t check = 0;
     int32_t character_index = 0;
     int32_t need_anime = 1;
+    char *compare;
     window = SDL_CreateWindow( "fin_project", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN );
     screen = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     while(fgets(buffer, 500, script) != 0){
@@ -140,6 +141,8 @@ int main(){
         if (search_event != NULL){
             if (strstr(buffer, search_event) != 0 && buffer[0] == '['){
                 if (scene.name != NULL){
+                    compare = calloc(100, sizeof(char));
+                    strcpy(compare, scene.background);
                     free_scene(&scene);
                 }
                 allocate_scene(&scene);
@@ -155,6 +158,8 @@ int main(){
         }
         else if (buffer[0] == '[' && home == 0 && buffer[1] != '['){
             if (scene.name != NULL){
+                compare = calloc(100, sizeof(char));
+                strcpy(compare, scene.background);
                 free_scene(&scene);
             }
             allocate_scene(&scene);
@@ -167,12 +172,16 @@ int main(){
         if (scene.dialogue == 0 && scene.reply == 0 && scene.backpack == 0){
             if (scene.background != NULL){
                 if (strstr(buffer, "background") != 0){
-                    char compare[100] = 0;
-                    strcpy(compare, scene.background);
+                    need_anime = 1;
                     getstring(buffer, &scene.background);
-                    if (strcmp(compare, scene.background) == 0){
+                    printf("compare = %s\nbackground = %s\n", compare, scene.background);
+                    if (compare == NULL){
+                        continue;
+                    }
+                    else if (strcmp(compare, scene.background) == 0){
                         need_anime = 0;
                     }
+                    free(compare);
                     printf("scene.background = %s\n", scene.background);
                 }
             }
@@ -425,10 +434,10 @@ int main(){
                         if(strcmp(dialogue.speaker[i],character[j].name)==0 )
                         {
                             
-                            if(need_anime==0)
+                            if(need_anime==1)
                             {
                                 int end = SDL_no_choice_one_character_anime(scene.background,character[j].photo,dialogue.text[i],character[j].name,back,character[j].avatar);
-                                need_anime=1;
+                                need_anime=0;
                                 if(end==4 || end == 6)
                                 {
                                     SDL_DestroyRenderer(screen);
