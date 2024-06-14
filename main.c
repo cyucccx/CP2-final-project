@@ -49,6 +49,7 @@ int main(){
     sReply reply;
     allocate_reply(&reply);
     sFinalReply final_reply;
+    final_reply.option_box = NULL;
     sBackpack backpack;
     allocate_backpack(&backpack);
     int32_t string_index = 0;
@@ -484,7 +485,9 @@ int main(){
             continue;
         }
         if (strcmp(scene.name, "final_event") == 0 && scene.reply == 1){
-            allocate_FinalReply(&final_reply);
+            if (final_reply.option_box == NULL){
+                allocate_FinalReply(&final_reply);
+            }
             if (strstr(buffer, "option_box") != 0){
                 getstring(buffer, &final_reply.option_box);
                 printf("special = %s\n", final_reply.option_box);
@@ -495,7 +498,7 @@ int main(){
             }
             else if (strstr(buffer, "option1") != 0){
                 getstring(buffer, &final_reply.option1);
-                printf("%s\n", final_reply.option1);
+                printf("option 1 = %s\n", final_reply.option1);
             }
             else if (strstr(buffer, "change_favor1") != 0){
                 char *start = strstr(buffer, "=");
@@ -547,7 +550,7 @@ int main(){
             }
             else if (strstr(buffer, "option2") != 0){
                 getstring(buffer, &final_reply.option2);
-                printf("%s\n", final_reply.option2);
+                printf("option2 = %s\n", final_reply.option2);
             }
             else if (strstr(buffer, "change_favor2") != 0){
                 char *start = strstr(buffer, "=");
@@ -599,7 +602,7 @@ int main(){
             }
             else if (strstr(buffer, "option3") != 0){
                 getstring(buffer, &final_reply.option3);
-                printf("%s\n", final_reply.option3);
+                printf("option3 = %s\n", final_reply.option3);
             }
             else if (strstr(buffer, "change_favor3") != 0){
                 char *start = strstr(buffer, "=");
@@ -714,6 +717,7 @@ int main(){
                     strcpy(back.note_message,backpack.description[1]);
                     strcpy(back.ticket_message,backpack.description[2]);
                 }
+                printf("%s\n", final_reply.option1);
                 int end = SDL_choice_one_character(scene.background,"NULL",final_reply.option1,final_reply.option2,final_reply.option3,"NULL",back);
                 if(end==4 || end == 6)
                 {
