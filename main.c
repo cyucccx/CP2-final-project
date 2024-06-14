@@ -425,7 +425,7 @@ int main(){
                         if(strcmp(dialogue.speaker[i],character[j].name)==0 )
                         {
                             
-                            if(need_anime==0)
+                            if(need_anime==1)
                             {
                                 int end = SDL_no_choice_one_character_anime(scene.background,character[j].photo,dialogue.text[i],character[j].name,back,character[j].avatar);
                                 need_anime=1;
