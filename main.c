@@ -59,7 +59,6 @@ int main(){
     int32_t string_index = 0;
     int32_t backpack_index = 0;
     char search_event[1000]={0};
-    
     int32_t check = 0;
     int32_t character_index = 0;
     int32_t need_anime = 1;
@@ -70,6 +69,7 @@ int main(){
     char avatar_choose3[100]={0};
     char avatar_choose4[100]={0};
     char avatar_choose5[100]={0};
+    int32_t object_number = 0;
     //compare = calloc(100, sizeof(char));
     window = SDL_CreateWindow( "fin_project", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN );
     screen = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
@@ -113,6 +113,9 @@ int main(){
             else if (max_character == 0){
                 if (strstr(buffer, "max_character") != 0){
                     sscanf(buffer,"max_character = %d",&max_character);
+                    for (int32_t i = 0; i < max_character; i++){
+                        character[i].favor = 0;
+                    }
                     // char *start = strstr(buffer, "=");
                     // int32_t START = start-buffer;
                     // for (int32_t i = START; buffer[i] != '\n'; i++){
@@ -705,7 +708,6 @@ int main(){
         }
 
         // read reply
-        int32_t object_number = -1;
         if (scene.name[0] == 0){
             continue;
         }
@@ -865,7 +867,7 @@ int main(){
                 printf("%d\n", final_reply.change_favor3);
             }
             else if (strstr(buffer, "favor_threshold3") != 0){
-                sscanf(buffer,"change_favor3 = %d",&final_reply.favor_threshold3);
+                sscanf(buffer,"favor_threshold3 = %d",&final_reply.favor_threshold3);
                 // char *start = strstr(buffer, "=");
                 // int32_t START = start-buffer;
                 // for (int32_t i = START; buffer[i] != '\n'; i++){
@@ -1071,9 +1073,7 @@ int main(){
                 // }
             }
         }
-
         if (scene.reply == 1 && strcmp(scene.name, "final_event") != 0){
-            object_number = -1;
             if (strstr(buffer, "option_box") != 0){
                 sscanf(buffer,"option_box = \"%[^\"]\"",reply.option_box);
                 //getstring(buffer, &reply.option_box);
@@ -1082,9 +1082,11 @@ int main(){
             else if (strstr(buffer, "object") != 0){
                 sscanf(buffer,"object = \"%[^\"]\"",reply.object);
                 //getstring(buffer, &reply.object);
+                object_number = -1;
                 for (int32_t i = 0; i < count_character; i++){
                     if (strcmp(reply.object, character[i].name) == 0){
                         object_number = i;
+                        printf("ooooo%d\n", object_number);
                         break;
                     }
                 }
