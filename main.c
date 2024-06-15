@@ -64,6 +64,11 @@ int main(){
     int32_t need_anime = 1;
     char *compare;
     int32_t last_scene = 0;
+    char avatar_choose1[100]={0};
+    char avatar_choose2[100]={0};
+    char avatar_choose3[100]={0};
+    char avatar_choose4[100]={0};
+    char avatar_choose5[100]={0};
     compare = calloc(100, sizeof(char));
     window = SDL_CreateWindow( "fin_project", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN );
     screen = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
@@ -143,7 +148,7 @@ int main(){
                 }
             }
         }
-
+        
         // read select character
         if (strstr(buffer, "[select_character]") != 0 && home == 0){
             select_character = 1;
@@ -165,6 +170,26 @@ int main(){
                 select.background = calloc(100, sizeof(char));
                 sscanf(buffer, "background = \"%[^\"]\"", select.background);
                 printf("%s\n", select.background);
+            }
+            else if (avatar_choose1[0] == 0 && strstr(buffer, "avatar_choose1") != 0){
+                sscanf(buffer, "avatar_choose1 = \"%[^\"]\"", avatar_choose1);
+                printf("%s\n", avatar_choose1);
+            }
+            else if (avatar_choose2[0] == 0 && strstr(buffer, "avatar_choose2") != 0){
+                sscanf(buffer, "avatar_choose2 = \"%[^\"]\"", avatar_choose2);
+                printf("%s\n", avatar_choose2);
+            }
+            else if (avatar_choose3[0] == 0 && strstr(buffer, "avatar_choose3") != 0){
+                sscanf(buffer, "avatar_choose3 = \"%[^\"]\"", avatar_choose3);
+                printf("%s\n", avatar_choose3);
+            }
+            else if (avatar_choose4[0] == 0 && strstr(buffer, "avatar_choose4") != 0){
+                sscanf(buffer, "avatar_choose4 = \"%[^\"]\"", avatar_choose4);
+                printf("%s\n", avatar_choose4);
+            }
+            else if (avatar_choose5[0] == 0 && strstr(buffer, "avatar_choose5") != 0){
+                sscanf(buffer, "avatar_choose5 = \"%[^\"]\"", avatar_choose5);
+                printf("%s\n", avatar_choose5);
             }
             else if (select.name1 == NULL && strstr(buffer, "name1") != 0){
                 select.name1 = calloc(100, sizeof(char));
@@ -215,7 +240,14 @@ int main(){
                 select.avatar5 = calloc(100, sizeof(char));
                 sscanf(buffer, "avatar5 = \"%[^\"]\"", select.avatar5);
                 printf("%s\n", select.avatar5);
-                int end; // SDL
+                int end = SDL_sellcet_screen(avatar_choose1,avatar_choose2,avatar_choose3,avatar_choose4,avatar_choose5,select.name1,select.name2,select.name3,select.name4,select.name5); // SDL
+                if(end==4)
+                {
+                    SDL_DestroyRenderer(screen);
+                    SDL_DestroyWindow(window);
+                    SDL_Quit();
+                    return 0;
+                }
                 if (end == 11){
                     strcpy(myname, select.name1);
                     strcpy(myavatar, select.avatar1);
