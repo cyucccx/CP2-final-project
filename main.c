@@ -190,7 +190,6 @@ int main(){
                         continue;
                     }
                     else if (strcmp(compare, scene.background) == 0){
-                        printf("2555\n");
                         need_anime = 0;
                     }
                     if(compare!=NULL)
@@ -241,8 +240,8 @@ int main(){
                     printf("character_name = %s\n", character[character_index].name);
                 }
                 else if (strstr(buffer, "photo") != 0){
+                    getstring(buffer, &character[character_index].photo);
                     if (check == 0){
-                        getstring(buffer, &character[character_index].photo);
                         if (strcmp(character[character_index].photo, "null") == 0){
                             // switch to no photo function
                         }
@@ -250,8 +249,8 @@ int main(){
                     printf("character_photo = %s\n", character[character_index].photo);
                 }
                 else if (strstr(buffer, "avatar") != 0){
+                    getstring(buffer, &character[character_index].avatar);
                     if (check == 0){
-                        getstring(buffer, &character[character_index].avatar);
                         if (strcmp(character[character_index].avatar, "null") == 0){
                             // switch to no photo function
                         }
