@@ -45,6 +45,8 @@ int SDL_choice_one_character(char *background_image, char *character_image,char 
 
 int SDL_main_screen(char *background_image,char *start_image,char *load_image,int x_position,int y_position,int width,int height);
 
+int SDL_sellcet_screen(char *character_image1,char *character_image2,char *character_image3,char *character_image4,char *character_image5,char *character_name1,char *character_name2,char *character_name3,char *character_name4,char *character_name5);
+
 typedef struct select{
     char *background;
     char *name1;
@@ -126,6 +128,8 @@ typedef struct character{
     char *avatar;
     int32_t favor;
 }sCharacter;
+
+void free_select(sSelect *input);
 
 void allocate_scene(sScene *input);
 

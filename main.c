@@ -149,7 +149,7 @@ int main(){
                 }
             }
         }
-
+        
         // read select character
         if (strstr(buffer, "[select_character]") != 0 && home == 0){
             select_character = 1;
