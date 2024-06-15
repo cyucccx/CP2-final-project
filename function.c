@@ -1,5 +1,30 @@
 #include "include.h"
 
+void free_select(sSelect *input){
+    free(input->background);
+    input->background = NULL;
+    free(input->name1);
+    input->name1 = NULL;
+    free(input->name2);
+    input->name2 = NULL;
+    free(input->name3);
+    input->name3 = NULL;
+    free(input->name4);
+    input->name4 = NULL;
+    free(input->name5);
+    input->name5 = NULL;
+    free(input->avatar1);
+    input->avatar1 = NULL;
+    free(input->avatar2);
+    input->avatar2 = NULL;
+    free(input->avatar3);
+    input->avatar3 = NULL;
+    free(input->avatar4);
+    input->avatar4 = NULL;
+    free(input->avatar5);
+    input->avatar5 = NULL;
+}
+
 void allocate_scene(sScene *input){
     input->name = calloc(100, sizeof(sScene));
     input->background = calloc(100, sizeof(sScene));

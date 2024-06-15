@@ -129,6 +129,8 @@ typedef struct character{
     int32_t favor;
 }sCharacter;
 
+void free_select(sSelect *input);
+
 void allocate_scene(sScene *input);
 
 void free_scene(sScene *input);
