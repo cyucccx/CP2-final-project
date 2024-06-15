@@ -58,12 +58,12 @@ int main(){
     //allocate_backpack(&backpack);
     int32_t string_index = 0;
     int32_t backpack_index = 0;
-    char search_event[100]={0};
+    char search_event[1000]={0};
     
     int32_t check = 0;
     int32_t character_index = 0;
     int32_t need_anime = 1;
-    char compare[100]={0};
+    char compare[1000]={0};
     int32_t last_scene = 0;
     char avatar_choose1[100]={0};
     char avatar_choose2[100]={0};
@@ -282,8 +282,8 @@ int main(){
         // search event code
         if (search_event[0] != 0){
             if (strstr(buffer, search_event) != 0 && buffer[0] == '['){
-                if (scene.name != NULL){
-                    for(int i=0;i<100;i++)
+                if (scene.name[0] != 0){
+                    for(int i=0;i<1000;i++)
                     {
                         compare[i]=0;
                     }
@@ -305,7 +305,7 @@ int main(){
                 *end = '\0';
                 strcpy(scene.name, buffer+1);
                 printf("scene.name = %s\n", scene.name);
-                for(int i=0;i<100;i++)
+                for(int i=0;i<1000;i++)
                 search_event[i]=0;
                 if (last_scene == 1){
                     last_scene++;
@@ -319,13 +319,13 @@ int main(){
             if (last_scene > 1){
                 break;
             }
-            if (scene.name != NULL){
-                for(int i=0;i<100;i++)
+            if (scene.name[0] != 0){
+                for(int i=0;i<1000;i++)
                 {
                     compare[i]=0;
                 }
                 //compare = calloc(100, sizeof(char));
-                if(scene.background!=NULL)
+                if(scene.background[0]!=0)
                 strcpy(compare, scene.background);
                 //free_scene(&scene);
             }
@@ -345,14 +345,13 @@ int main(){
         // printf("%s:%d %d %d\n", scene.name, scene.backpack, scene.dialogue, scene.reply);
         if (scene.dialogue == 0 && scene.reply == 0 && scene.backpack == 0){
             if (scene.background[0] == 0){
-                printf("%s88\n",buffer);
                 
                 if (strstr(buffer, "background") != 0){
-                    need_anime = 1;printf("%s55\n",compare);
+                    need_anime = 1;
                     sscanf(buffer,"background = \"%[^\"]\"",scene.background);
                     // getstring(buffer, &scene.background);
                     printf("compare = %s\nbackground = %s\n", compare, scene.background);
-                    if (compare == NULL){
+                    if (compare[0] == 0){
                         continue;
                     }
                     else if (strcmp(compare, scene.background) == 0){
@@ -446,15 +445,15 @@ int main(){
                     // if (dialogue.dialog_box != NULL){
                     //     //free_dialogue(&dialogue);
                     // }
-                    for(int i=0;i<100;i++)
+                    for(int i=0;i<1000;i++)
                     {
                         dialogue.dialog_box[i]=0;
                         dialogue.next[i]=0;
                     }
                     dialogue.string_number=0;
-                    for(int i=0;i<25;i++)
+                    for(int i=0;i<250;i++)
                     {
-                        for(int j=0;j<1000;j++)
+                        for(int j=0;j<10000;j++)
                         {
                             dialogue.speaker[i][j]=0;
                             dialogue.text[i][j]=0;
@@ -600,71 +599,57 @@ int main(){
                 sscanf(buffer,"next = \"%[^\"]\"",dialogue.next);
                 //getstring(buffer, &dialogue.next);
                 Backpack back;
-                back.background_image = malloc(256);
-                back.background_image="../assets/scene/backpack.png";
+                for(int i=0;i<100;i++)
+                {
+                    back.laptop_image[i]=0;
+                    back.laptop_name[i]=0;
+                    back.note_image[i]=0;
+                    back.note_name[i]=0;
+                    back.ticket_image[i]=0;
+                    back.ticket_name[i]=0;
+                    back.background_image[i]=0;
+                }
+                for(int i=0;i<1000;i++)
+                {
+                    back.laptop_message[i]=0;
+                    back.note_message[i]=0;
+                    back.ticket_message[i]=0;
+                }
+                strcpy(back.background_image,"../assets/scene/backpack.png");
                 if(backpack.items_number==0)
                 {
-                    back.laptop_image=NULL;
-                    back.laptop_image=NULL;
-                    back.laptop_message=NULL;
-                    back.laptop_name=NULL;
-                    back.note_image=NULL;
-                    back.note_message=NULL;
-                    back.note_name=NULL;
-                    back.ticket_image=NULL;
-                    back.ticket_message=NULL;
-                    back.ticket_name=NULL;
+                    
                 }
                 else if(backpack.items_number==1)
                 {
-                    back.laptop_image = malloc(256);
                     strcpy(back.laptop_image,backpack.photo[0]);
-                    back.note_image=NULL;//strcpy(back.note_image,backpack.photo[1]);
-                    back.ticket_image=NULL;//strcpy(back.ticket_image,backpack.photo[2]);
-                    back.laptop_name = malloc(256);
                     strcpy(back.laptop_name,backpack.name[0]);
-                    back.note_name=NULL;//strcpy(back.note_name,backpack.name[1]);
-                    back.ticket_name=NULL;//strcpy(back.ticket_name,backpack.name[2]);
-                    back.laptop_message = malloc(256);
                     strcpy(back.laptop_message,backpack.description[0]);
-                    back.note_message=NULL;//strcpy(back.note_message,backpack.description[1]);
-                    back.ticket_image=NULL;//strcpy(back.ticket_message,backpack.description[2]);
                 }
                 else if(backpack.items_number==2)
                 {
-                    back.laptop_image = malloc(256);
-                    back.note_image = malloc(256);
+                    
                     strcpy(back.laptop_image,backpack.photo[0]);
                     strcpy(back.note_image,backpack.photo[1]);
-                    back.ticket_image=NULL;//strcpy(back.ticket_image,backpack.photo[2]);
-                    back.laptop_name = malloc(256);
-                    back.note_name = malloc(256);
+                   
                     strcpy(back.laptop_name,backpack.name[0]);
                     strcpy(back.note_name,backpack.name[1]);
-                    back.ticket_name=NULL;//strcpy(back.ticket_name,backpack.name[2]);
-                    back.laptop_message=malloc(256);
-                    back.note_message=malloc(256);
+                    
                     strcpy(back.laptop_message,backpack.description[0]);
+                    
                     strcpy(back.note_message,backpack.description[1]);
-                    back.ticket_message=NULL;//strcpy(back.ticket_message,backpack.description[2]);
                 }
                 else if(backpack.items_number==3)
                 {
-                    back.laptop_image = malloc(256);
-                    back.note_image = malloc(256);
-                    back.ticket_image = malloc(256);
+                    
                     strcpy(back.laptop_image,backpack.photo[0]);
                     strcpy(back.note_image,backpack.photo[1]);
                     strcpy(back.ticket_image,backpack.photo[2]);
-                    back.laptop_name = malloc(256);
-                    back.note_name = malloc(256);
-                    back.ticket_name = malloc(256);
+                   
                     strcpy(back.laptop_name,backpack.name[0]);
                     strcpy(back.note_name,backpack.name[1]);
                     strcpy(back.ticket_name,backpack.name[2]);
-                    back.laptop_message=malloc(256);
-                    back.note_message=malloc(256);
-                    back.ticket_message=malloc(256);
+                   
                     strcpy(back.laptop_message,backpack.description[0]);
                     strcpy(back.note_message,backpack.description[1]);
                     strcpy(back.ticket_message,backpack.description[2]);
@@ -707,27 +692,27 @@ int main(){
                 }
                 
                 if (strstr(dialogue.next, "null") == 0){
-                    for(int i=0;i<100;i++)
+                    for(int i=0;i<1000;i++)
                     {
                         search_event[i]=0;
                     }
                     strcpy(search_event, dialogue.next);
                 }
-                if (dialogue.dialog_box != NULL){
-                    //free_dialogue(&dialogue);
-                }
+                // if (dialogue.dialog_box != NULL){
+                //     //free_dialogue(&dialogue);
+                // }
             }
         }
 
         // read reply
         int32_t object_number = -1;
-        if (scene.name == NULL){
+        if (scene.name[0] == 0){
             continue;
         }
         if (strcmp(scene.name, "final_event") == 0 && scene.reply == 1){
-            if (final_reply.option_box == NULL){
-                //allocate_FinalReply(&final_reply);
-            }
+            // if (final_reply.option_box == NULL){
+            //     //allocate_FinalReply(&final_reply);
+            // }
             if (strstr(buffer, "option_box") != 0){
                 sscanf(buffer,"option_box = \"%[^\"]\"",final_reply.option_box);
                 //getstring(buffer, &final_reply.option_box);
@@ -907,71 +892,56 @@ int main(){
                 //getstring(buffer, &final_reply.bad_next3);
                 printf("%s\n", final_reply.bad_next3);
                 Backpack back;
-                back.background_image = malloc(256);
-                back.background_image="../assets/scene/backpack.png";
+                for(int i=0;i<100;i++)
+                {
+                    back.laptop_image[i]=0;
+                    back.laptop_name[i]=0;
+                    back.note_image[i]=0;
+                    back.note_name[i]=0;
+                    back.ticket_image[i]=0;
+                    back.ticket_name[i]=0;
+                    back.background_image[i]=0;
+                }
+                for(int i=0;i<1000;i++)
+                {
+                    back.laptop_message[i]=0;
+                    back.note_message[i]=0;
+                    back.ticket_message[i]=0;
+                }
+                strcpy(back.background_image,"../assets/scene/backpack.png");
                 if(backpack.items_number==0)
                 {
-                    back.laptop_image=NULL;
-                    back.laptop_image=NULL;
-                    back.laptop_message=NULL;
-                    back.laptop_name=NULL;
-                    back.note_image=NULL;
-                    back.note_message=NULL;
-                    back.note_name=NULL;
-                    back.ticket_image=NULL;
-                    back.ticket_message=NULL;
-                    back.ticket_name=NULL;
+                    
                 }
                 else if(backpack.items_number==1)
                 {
-                    back.laptop_image = malloc(256);
                     strcpy(back.laptop_image,backpack.photo[0]);
-                    back.note_image=NULL;//strcpy(back.note_image,backpack.photo[1]);
-                    back.ticket_image=NULL;//strcpy(back.ticket_image,backpack.photo[2]);
-                    back.laptop_name = malloc(256);
                     strcpy(back.laptop_name,backpack.name[0]);
-                    back.note_name=NULL;//strcpy(back.note_name,backpack.name[1]);
-                    back.ticket_name=NULL;//strcpy(back.ticket_name,backpack.name[2]);
-                    back.laptop_message = malloc(256);
                     strcpy(back.laptop_message,backpack.description[0]);
-                    back.note_message=NULL;//strcpy(back.note_message,backpack.description[1]);
-                    back.ticket_image=NULL;//strcpy(back.ticket_message,backpack.description[2]);
                 }
                 else if(backpack.items_number==2)
                 {
-                    back.laptop_image = malloc(256);
-                    back.note_image = malloc(256);
+                    
                     strcpy(back.laptop_image,backpack.photo[0]);
                     strcpy(back.note_image,backpack.photo[1]);
-                    back.ticket_image=NULL;//strcpy(back.ticket_image,backpack.photo[2]);
-                    back.laptop_name = malloc(256);
-                    back.note_name = malloc(256);
+                   
                     strcpy(back.laptop_name,backpack.name[0]);
                     strcpy(back.note_name,backpack.name[1]);
-                    back.ticket_name=NULL;//strcpy(back.ticket_name,backpack.name[2]);
-                    back.laptop_message=malloc(256);
-                    back.note_message=malloc(256);
+                    
                     strcpy(back.laptop_message,backpack.description[0]);
                     strcpy(back.note_message,backpack.description[1]);
-                    back.ticket_message=NULL;//strcpy(back.ticket_message,backpack.description[2]);
                 }
                 else if(backpack.items_number==3)
                 {
-                    back.laptop_image = malloc(256);
-                    back.note_image = malloc(256);
-                    back.ticket_image = malloc(256);
+                    
                     strcpy(back.laptop_image,backpack.photo[0]);
                     strcpy(back.note_image,backpack.photo[1]);
                     strcpy(back.ticket_image,backpack.photo[2]);
-                    back.laptop_name = malloc(256);
-                    back.note_name = malloc(256);
-                    back.ticket_name = malloc(256);
+                   
                     strcpy(back.laptop_name,backpack.name[0]);
                     strcpy(back.note_name,backpack.name[1]);
                     strcpy(back.ticket_name,backpack.name[2]);
-                    back.laptop_message=malloc(256);
-                    back.note_message=malloc(256);
-                    back.ticket_message=malloc(256);
+                   
                     strcpy(back.laptop_message,backpack.description[0]);
                     strcpy(back.note_message,backpack.description[1]);
                     strcpy(back.ticket_message,backpack.description[2]);
@@ -1003,14 +973,14 @@ int main(){
                         character[object_number].favor = 0;
                     }
                     if (character[object_number].favor >= final_reply.favor_threshold1){
-                        for(int i=0;i<100;i++)
+                        for(int i=0;i<1000;i++)
                         {
                             search_event[i]=0;
                         }
                         strcpy(search_event, final_reply.good_next1);
                     }
                     else{
-                        for(int i=0;i<100;i++)
+                        for(int i=0;i<1000;i++)
                         {
                             search_event[i]=0;
                         }
@@ -1036,14 +1006,14 @@ int main(){
                         character[object_number].favor = 0;
                     }
                     if (character[object_number].favor >= final_reply.favor_threshold2){
-                        for(int i=0;i<100;i++)
+                        for(int i=0;i<1000;i++)
                         {
                             search_event[i]=0;
                         }
                         strcpy(search_event, final_reply.good_next2);
                     }
                     else{
-                        for(int i=0;i<100;i++)
+                        for(int i=0;i<1000;i++)
                         {
                             search_event[i]=0;
                         }
@@ -1069,14 +1039,14 @@ int main(){
                         character[object_number].favor = 0;
                     }
                     if (character[object_number].favor >= final_reply.favor_threshold3){
-                        for(int i=0;i<100;i++)
+                        for(int i=0;i<1000;i++)
                         {
                             search_event[i]=0;
                         }
                         strcpy(search_event, final_reply.good_next3);
                     }
                     else{
-                        for(int i=0;i<100;i++)
+                        for(int i=0;i<1000;i++)
                         {
                             search_event[i]=0;
                         }
@@ -1096,9 +1066,9 @@ int main(){
                 //     // wrong
                 // }
                 
-                if (final_reply.option_box != NULL){
-                    //free_FinalReply(&final_reply);
-                }
+                // if (final_reply.option_box != NULL){
+                //     //free_FinalReply(&final_reply);
+                // }
             }
         }
 
@@ -1213,71 +1183,56 @@ int main(){
                 //getstring(buffer, &reply.next3);
                 printf("%s\n", reply.next3);
                 Backpack back;
-                back.background_image = malloc(256);
-                back.background_image="../assets/scene/backpack.png";
+                for(int i=0;i<100;i++)
+                {
+                    back.laptop_image[i]=0;
+                    back.laptop_name[i]=0;
+                    back.note_image[i]=0;
+                    back.note_name[i]=0;
+                    back.ticket_image[i]=0;
+                    back.ticket_name[i]=0;
+                    back.background_image[i]=0;
+                }
+                for(int i=0;i<1000;i++)
+                {
+                    back.laptop_message[i]=0;
+                    back.note_message[i]=0;
+                    back.ticket_message[i]=0;
+                }
+                strcpy(back.background_image,"../assets/scene/backpack.png");
                 if(backpack.items_number==0)
                 {
-                    back.laptop_image=NULL;
-                    back.laptop_image=NULL;
-                    back.laptop_message=NULL;
-                    back.laptop_name=NULL;
-                    back.note_image=NULL;
-                    back.note_message=NULL;
-                    back.note_name=NULL;
-                    back.ticket_image=NULL;
-                    back.ticket_message=NULL;
-                    back.ticket_name=NULL;
+                    
                 }
                 else if(backpack.items_number==1)
                 {
-                    back.laptop_image = malloc(256);
                     strcpy(back.laptop_image,backpack.photo[0]);
-                    back.note_image=NULL;//strcpy(back.note_image,backpack.photo[1]);
-                    back.ticket_image=NULL;//strcpy(back.ticket_image,backpack.photo[2]);
-                    back.laptop_name = malloc(256);
                     strcpy(back.laptop_name,backpack.name[0]);
-                    back.note_name=NULL;//strcpy(back.note_name,backpack.name[1]);
-                    back.ticket_name=NULL;//strcpy(back.ticket_name,backpack.name[2]);
-                    back.laptop_message = malloc(256);
                     strcpy(back.laptop_message,backpack.description[0]);
-                    back.note_message=NULL;//strcpy(back.note_message,backpack.description[1]);
-                    back.ticket_image=NULL;//strcpy(back.ticket_message,backpack.description[2]);
                 }
                 else if(backpack.items_number==2)
                 {
-                    back.laptop_image = malloc(256);
-                    back.note_image = malloc(256);
+                    
                     strcpy(back.laptop_image,backpack.photo[0]);
                     strcpy(back.note_image,backpack.photo[1]);
-                    back.ticket_image=NULL;//strcpy(back.ticket_image,backpack.photo[2]);
-                    back.laptop_name = malloc(256);
-                    back.note_name = malloc(256);
+                   
                     strcpy(back.laptop_name,backpack.name[0]);
                     strcpy(back.note_name,backpack.name[1]);
-                    back.ticket_name=NULL;//strcpy(back.ticket_name,backpack.name[2]);
-                    back.laptop_message=malloc(256);
-                    back.note_message=malloc(256);
+                    
                     strcpy(back.laptop_message,backpack.description[0]);
                     strcpy(back.note_message,backpack.description[1]);
-                    back.ticket_message=NULL;//strcpy(back.ticket_message,backpack.description[2]);
                 }
                 else if(backpack.items_number==3)
                 {
-                    back.laptop_image = malloc(256);
-                    back.note_image = malloc(256);
-                    back.ticket_image = malloc(256);
+                    
                     strcpy(back.laptop_image,backpack.photo[0]);
                     strcpy(back.note_image,backpack.photo[1]);
                     strcpy(back.ticket_image,backpack.photo[2]);
-                    back.laptop_name = malloc(256);
-                    back.note_name = malloc(256);
-                    back.ticket_name = malloc(256);
+                   
                     strcpy(back.laptop_name,backpack.name[0]);
                     strcpy(back.note_name,backpack.name[1]);
                     strcpy(back.ticket_name,backpack.name[2]);
-                    back.laptop_message=malloc(256);
-                    back.note_message=malloc(256);
-                    back.ticket_message=malloc(256);
+                   
                     strcpy(back.laptop_message,backpack.description[0]);
                     strcpy(back.note_message,backpack.description[1]);
                     strcpy(back.ticket_message,backpack.description[2]);
@@ -1305,7 +1260,7 @@ int main(){
                                 else if (character[object_number].favor < 0){
                                     character[object_number].favor = 0;
                                 }
-                                for(int i=0;i<100;i++)
+                                for(int i=0;i<1000;i++)
                                 {
                                     search_event[i]=0;
                                 }
@@ -1319,7 +1274,7 @@ int main(){
                                 else if (character[object_number].favor < 0){
                                     character[object_number].favor = 0;
                                 }
-                                for(int i=0;i<100;i++)
+                                for(int i=0;i<1000;i++)
                                 {
                                     search_event[i]=0;
                                 }
@@ -1333,7 +1288,7 @@ int main(){
                                 else if (character[object_number].favor < 0){
                                     character[object_number].favor = 0;
                                 }
-                                for(int i=0;i<100;i++)
+                                for(int i=0;i<1000;i++)
                                 {
                                     search_event[i]=0;
                                 }
@@ -1343,11 +1298,12 @@ int main(){
                         }
                     }
                 }
+                
                 // SDL_choice_one_character(接return value)
                 
-                if (reply.option_box != NULL){
-                    //free_reply(&reply);
-                }
+                // if (reply.option_box != NULL){
+                //     //free_reply(&reply);
+                // }
             }
         }
     }
