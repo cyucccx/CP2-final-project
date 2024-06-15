@@ -32,6 +32,8 @@ int main(){
     char *project_name;
     char *author;
     int32_t home = 0;
+    int32_t select_character = 0;
+    sSelect select;
     char *home_background = 0;
     char *home_button = 0;
     int32_t max_character = 0; // create an array to store the favor of every character
@@ -105,8 +107,8 @@ int main(){
                     char *start = strstr(buffer, "=");
                     int32_t START = start-buffer;
                     for (int32_t i = START; buffer[i] != '\n'; i++){
-                        if (buffer[i] >= 48 && buffer[i] < 57){
-                            if (buffer[i+1] >= 48 && buffer[i+1] < 57){
+                        if (buffer[i] >= 48 && buffer[i] <= 57){
+                            if (buffer[i+1] >= 48 && buffer[i+1] <= 57){
                                 max_character = (buffer[i]-48)*10 + buffer[i+1]-48;
                                 break;
                             }
@@ -139,6 +141,81 @@ int main(){
                 }
             }
         }
+
+        // read select character
+        if (strstr(buffer, "[select_character]") != 0 && home == 0){
+            select_character = 1;
+            select.background = NULL;
+            select.name1 = NULL;
+            select.name2 = NULL;
+            select.name3 = NULL;
+            select.name4 = NULL;
+            select.name5 = NULL;
+            select.avatar1 = NULL;
+            select.avatar2 = NULL;
+            select.avatar3 = NULL;
+            select.avatar4 = NULL;
+            select.avatar5 = NULL;
+            continue;
+        }
+        if (select_character == 1){
+            if (select.background == NULL && strstr(buffer, "background") != 0){
+                select.background = calloc(100, sizeof(char));
+                sscanf(buffer, "background = \"%[^\"]\"", select.background);
+                printf("%s\n", select.background);
+            }
+            else if (select.name1 == NULL && strstr(buffer, "name1") != 0){
+                select.name1 = calloc(100, sizeof(char));
+                sscanf(buffer, "name1 = \"%[^\"]\"", select.name1);
+                printf("%s\n", select.name1);
+            }
+            else if (select.name2 == NULL && strstr(buffer, "name2") != 0){
+                select.name2 = calloc(100, sizeof(char));
+                sscanf(buffer, "name2 = \"%[^\"]\"", select.name2);
+                printf("%s\n", select.name2);
+            }
+            else if (select.name3 == NULL && strstr(buffer, "name3") != 0){
+                select.name3 = calloc(100, sizeof(char));
+                sscanf(buffer, "name3 = \"%[^\"]\"", select.name3);
+                printf("%s\n", select.name3);
+            }
+            else if (select.name4 == NULL && strstr(buffer, "name4") != 0){
+                select.name4 = calloc(100, sizeof(char));
+                sscanf(buffer, "name4 = \"%[^\"]\"", select.name4);
+                printf("%s\n", select.name4);
+            }
+            else if (select.name5 == NULL && strstr(buffer, "name5") != 0){
+                select.name5 = calloc(100, sizeof(char));
+                sscanf(buffer, "name5 = \"%[^\"]\"", select.name5);
+                printf("%s\n", select.name5);
+            }
+            else if (select.avatar1 == NULL && strstr(buffer, "avatar1") != 0){
+                select.avatar1 = calloc(100, sizeof(char));
+                sscanf(buffer, "avatar1 = \"%[^\"]\"", select.avatar1);
+                printf("%s\n", select.avatar1);
+            }
+            else if (select.avatar2 == NULL && strstr(buffer, "avatar2") != 0){
+                select.avatar2 = calloc(100, sizeof(char));
+                sscanf(buffer, "avatar2 = \"%[^\"]\"", select.avatar2);
+                printf("%s\n", select.avatar2);
+            }
+            else if (select.avatar3 == NULL && strstr(buffer, "avatar3") != 0){
+                select.avatar3 = calloc(100, sizeof(char));
+                sscanf(buffer, "avatar3 = \"%[^\"]\"", select.avatar3);
+                printf("%s\n", select.avatar3);
+            }
+            else if (select.avatar4 == NULL && strstr(buffer, "avatar4") != 0){
+                select.avatar4 = calloc(100, sizeof(char));
+                sscanf(buffer, "avatar4 = \"%[^\"]\"", select.avatar4);
+                printf("%s\n", select.avatar4);
+            }
+            else if (select.avatar5 == NULL && strstr(buffer, "avatar5") != 0){
+                select.avatar5 = calloc(100, sizeof(char));
+                sscanf(buffer, "avatar5 = \"%[^\"]\"", select.avatar5);
+                printf("%s\n", select.avatar5);
+            }
+        }
+
         // read event
         // search event code
         if (search_event != NULL){
@@ -208,7 +285,7 @@ int main(){
                     char *start = strstr(buffer, "=");
                     int32_t START = start-buffer;
                     for (int32_t i = START; buffer[i] != '\n'; i++){
-                        if (buffer[i] >= 48 && buffer[i] < 57){
+                        if (buffer[i] >= 48 && buffer[i] <= 57){
                             scene.character_number = buffer[i]-48;
                             break;
                         }
@@ -301,7 +378,7 @@ int main(){
                 char *start = strstr(buffer, "=");
                 int32_t START = start-buffer;
                 for (int32_t i = START; buffer[i] != '\n'; i++){
-                    if (buffer[i] >= 48 && buffer[i] < 57){
+                    if (buffer[i] >= 48 && buffer[i] <= 57){
                         backpack.items_number = buffer[i]-48;
                         break;
                     }
@@ -339,17 +416,20 @@ int main(){
                 char *start = strstr(buffer, "=");
                 int32_t START = start-buffer;
                 for (int32_t i = START; buffer[i] != '\n'; i++){
-                    if (buffer[i] >= 48 && buffer[i] < 57){
-                        if (buffer[i+2] >= 48 && buffer[i+2] < 57){
+                    if (buffer[i] >= 48 && buffer[i] <= 57){
+                        if (buffer[i+2] >= 48 && buffer[i+2] <= 57){
                             dialogue.string_number = (buffer[i]-48)*100 + (buffer[i+1]-48)*10 + buffer[i+2]-48;
+                            printf("345\n");
                             break;
                         }
-                        else if (buffer[i+1] >= 48 && buffer[i+1] < 57){
+                        else if (buffer[i+1] >= 48 && buffer[i+1] <= 57){
                             dialogue.string_number = (buffer[i]-48)*10 + buffer[i+1]-48;
+                            printf("350\n");
                             break;
                         }
                         else{
                             dialogue.string_number = buffer[i]-48;
+                            printf("355\n");
                             break;
                         }
                     }
@@ -518,7 +598,7 @@ int main(){
                         final_reply.change_favor1 = -(buffer[i+1]-48);
                         break;
                     }
-                    else if (buffer[i] >= 48 && buffer[i] < 57){
+                    else if (buffer[i] >= 48 && buffer[i] <= 57){
                         final_reply.change_favor1 = buffer[i]-48;
                         break;
                     }
@@ -529,8 +609,8 @@ int main(){
                 char *start = strstr(buffer, "=");
                 int32_t START = start-buffer;
                 for (int32_t i = START; buffer[i] != '\n'; i++){
-                    if (buffer[i] >= 48 && buffer[i] < 57){
-                        if (buffer[i+1] >= 48 && buffer[i+1] < 57){
+                    if (buffer[i] >= 48 && buffer[i] <= 57){
+                        if (buffer[i+1] >= 48 && buffer[i+1] <= 57){
                             final_reply.favor_threshold1 = (buffer[i]-48)*10 + buffer[i+1]-48;
                             break;
                         }
@@ -570,7 +650,7 @@ int main(){
                         final_reply.change_favor2 = -(buffer[i+1]-48);
                         break;
                     }
-                    else if (buffer[i] >= 48 && buffer[i] < 57){
+                    else if (buffer[i] >= 48 && buffer[i] <= 57){
                         final_reply.change_favor2 = buffer[i]-48;
                         break;
                     }
@@ -581,8 +661,8 @@ int main(){
                 char *start = strstr(buffer, "=");
                 int32_t START = start-buffer;
                 for (int32_t i = START; buffer[i] != '\n'; i++){
-                    if (buffer[i] >= 48 && buffer[i] < 57){
-                        if (buffer[i+1] >= 48 && buffer[i+1] < 57){
+                    if (buffer[i] >= 48 && buffer[i] <= 57){
+                        if (buffer[i+1] >= 48 && buffer[i+1] <= 57){
                             final_reply.favor_threshold2 = (buffer[i]-48)*10 + buffer[i+1]-48;
                             break;
                         }
@@ -622,7 +702,7 @@ int main(){
                         final_reply.change_favor3 = -(buffer[i+1]-48);
                         break;
                     }
-                    else if (buffer[i] >= 48 && buffer[i] < 57){
+                    else if (buffer[i] >= 48 && buffer[i] <= 57){
                         final_reply.change_favor3 = buffer[i]-48;
                         break;
                     }
@@ -633,8 +713,8 @@ int main(){
                 char *start = strstr(buffer, "=");
                 int32_t START = start-buffer;
                 for (int32_t i = START; buffer[i] != '\n'; i++){
-                    if (buffer[i] >= 48 && buffer[i] < 57){
-                        if (buffer[i+1] >= 48 && buffer[i+1] < 57){
+                    if (buffer[i] >= 48 && buffer[i] <= 57){
+                        if (buffer[i+1] >= 48 && buffer[i+1] <= 57){
                             final_reply.favor_threshold3 = (buffer[i]-48)*10 + buffer[i+1]-48;
                             break;
                         }
@@ -862,7 +942,7 @@ int main(){
                         reply.change_favor1 = -(buffer[i+1]-48);
                         break;
                     }
-                    else if (buffer[i] >= 48 && buffer[i] < 57){
+                    else if (buffer[i] >= 48 && buffer[i] <= 57){
                         reply.change_favor1 = buffer[i]-48;
                         break;
                     }
@@ -889,7 +969,7 @@ int main(){
                         reply.change_favor2 = -(buffer[i+1]-48);
                         break;
                     }
-                    else if (buffer[i] >= 48 && buffer[i] < 57){
+                    else if (buffer[i] >= 48 && buffer[i] <= 57){
                         reply.change_favor2 = buffer[i]-48;
                         break;
                     }
@@ -916,7 +996,7 @@ int main(){
                         reply.change_favor3 = -(buffer[i+1]-48);
                         break;
                     }
-                    else if (buffer[i] >= 48 && buffer[i] < 57){
+                    else if (buffer[i] >= 48 && buffer[i] <= 57){
                         reply.change_favor3 = buffer[i]-48;
                         break;
                     }
