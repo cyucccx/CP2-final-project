@@ -9,14 +9,19 @@ max_character = 15
 [select_character]
 background = "../assets/home/select.png"
 name1 = "Jacob"
+avatar_choose1 = "../assets/scene/jacob.png"
 avatar1 = "../assets/scene/head_jacob.png"
 name2 = "Howard"
+avatar_choose2 = "../assets/scene/howard.png"
 avatar2 = "../assets/scene/head_howard.png"
 name3 = "Sky"
+avatar_choose3 = "../assets/scene/sky.png"
 avatar3 = "../assets/scene/head_sky.png"
 name4 = "Ryan"
+avatar_choose4 = "../assets/scene/ryan.png"
 avatar4 = "../assets/scene/head_ryan.png"
 name5 = "Takala"
+avatar_choose5 = "../assets/scene/takala.png"
 avatar5 = "../assets/scene/head_takala.png"
 
 [chi_1_start]
@@ -1823,7 +1828,7 @@ bad_next2 = "[badend_wang]"
 object3 = "中晢"
 option3 = "中晢" 
 change_favor3 = 0
-favor_threshold3 = 1
+favor_threshold3 = 0
 good_next3 = "[goodend_jiang]"
 bad_next3 = "[badend_jiang]"
 
@@ -2222,4 +2227,3 @@ text = "即使三人版本的同婚法案不知何時才會通過，但現在的
 speaker = "旁白"
 text = "我想未來的路上，我們三人也一定會永遠幸福下去的吧"
 next = "null"
-
