@@ -62,9 +62,9 @@ typedef struct select{
 }sSelect;
 
 typedef struct scene{
-    char *name;
-    char *background;
-    char *backpack_icon;
+    char name[100];
+    char background[100];
+    char backpack_icon[100];
     int32_t character_number;
     int32_t dialogue;
     int32_t reply;
@@ -72,64 +72,62 @@ typedef struct scene{
 }sScene;
 
 typedef struct dialogue{
-    char *dialog_box;
+    char dialog_box[100];
     int32_t string_number;
-    char **speaker;
-    char **text;
-    char *next;
+    char speaker[25][100];
+    char text[25][1000];
+    char next[100];
 }sDialogue;
 
 typedef struct reply{
-    char *option_box;
-    char *object;
-    char *option1;
-    char *next1;
+    char option_box[100];
+    char object[100];
+    char option1[100];
+    char next1[100];
     int32_t change_favor1;
-    char *option2;
-    char *next2;
+    char option2[100];
+    char next2[100];
     int32_t change_favor2;
-    char *option3;
-    char *next3;
+    char option3[100];
+    char next3[100];
     int32_t change_favor3;
 }sReply;
 
 typedef struct final_reply{
-    char *option_box;
-    char *object1;
-    char *option1;
-    char *good_next1;
-    char *bad_next1;
+    char option_box[100];
+    char object1[100];
+    char option1[100];
+    char good_next1[100];
+    char bad_next1[100];
     int32_t change_favor1;
     int32_t favor_threshold1;
-    char *object2;
-    char *option2;
-    char *good_next2;
-    char *bad_next2;
+    char object2[100];
+    char option2[100];
+    char good_next2[100];
+    char bad_next2[100];
     int32_t change_favor2;
     int32_t favor_threshold2;
-    char *object3;
-    char *option3;
-    char *good_next3;
-    char *bad_next3;
+    char object3[100];
+    char option3[100];
+    char good_next3[100];
+    char bad_next3[100];
     int32_t change_favor3;
     int32_t favor_threshold3;
 }sFinalReply;
 
 typedef struct backpack{
     int32_t items_number;
-    char **name;
-    char **photo;
-    char **description;
+    char name[25][100];
+    char photo[25][100];
+    char description[25][100];
 }sBackpack;
 
 typedef struct character{
-    char *name;
-    char *photo;
-    char *avatar;
+    char name[100];
+    char photo[100];
+    char avatar[100];
     int32_t favor;
 }sCharacter;
-
-void free_select(sSelect *input);
 
 void allocate_scene(sScene *input);
 
