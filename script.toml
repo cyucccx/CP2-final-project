@@ -1823,7 +1823,7 @@ bad_next2 = "[badend_wang]"
 object3 = "中晢"
 option3 = "中晢" 
 change_favor3 = 0
-favor_threshold3 = 0
+favor_threshold3 = 1
 good_next3 = "[goodend_jiang]"
 bad_next3 = "[badend_jiang]"
 
