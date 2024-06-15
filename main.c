@@ -32,6 +32,8 @@ int main(){
     char *project_name;
     char *author;
     int32_t home = 0;
+    int32_t select_character = 0;
+    sSelect select;
     char *home_background = 0;
     char *home_button = 0;
     int32_t max_character = 0; // create an array to store the favor of every character
@@ -49,6 +51,7 @@ int main(){
     sReply reply;
     allocate_reply(&reply);
     sFinalReply final_reply;
+    final_reply.option_box = NULL;
     sBackpack backpack;
     allocate_backpack(&backpack);
     int32_t string_index = 0;
@@ -58,6 +61,8 @@ int main(){
     int32_t character_index = 0;
     int32_t need_anime = 1;
     char *compare;
+    int32_t last_scene = 0;
+    compare = calloc(100, sizeof(char));
     window = SDL_CreateWindow( "fin_project", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN );
     screen = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     while(fgets(buffer, 500, script) != 0){
@@ -102,8 +107,8 @@ int main(){
                     char *start = strstr(buffer, "=");
                     int32_t START = start-buffer;
                     for (int32_t i = START; buffer[i] != '\n'; i++){
-                        if (buffer[i] >= 48 && buffer[i] < 57){
-                            if (buffer[i+1] >= 48 && buffer[i+1] < 57){
+                        if (buffer[i] >= 48 && buffer[i] <= 57){
+                            if (buffer[i+1] >= 48 && buffer[i+1] <= 57){
                                 max_character = (buffer[i]-48)*10 + buffer[i+1]-48;
                                 break;
                             }
@@ -136,12 +141,88 @@ int main(){
                 }
             }
         }
+
+        // read select character
+        if (strstr(buffer, "[select_character]") != 0 && home == 0){
+            select_character = 1;
+            select.background = NULL;
+            select.name1 = NULL;
+            select.name2 = NULL;
+            select.name3 = NULL;
+            select.name4 = NULL;
+            select.name5 = NULL;
+            select.avatar1 = NULL;
+            select.avatar2 = NULL;
+            select.avatar3 = NULL;
+            select.avatar4 = NULL;
+            select.avatar5 = NULL;
+            continue;
+        }
+        if (select_character == 1){
+            if (select.background == NULL && strstr(buffer, "background") != 0){
+                select.background = calloc(100, sizeof(char));
+                sscanf(buffer, "background = \"%[^\"]\"", select.background);
+                printf("%s\n", select.background);
+            }
+            else if (select.name1 == NULL && strstr(buffer, "name1") != 0){
+                select.name1 = calloc(100, sizeof(char));
+                sscanf(buffer, "name1 = \"%[^\"]\"", select.name1);
+                printf("%s\n", select.name1);
+            }
+            else if (select.name2 == NULL && strstr(buffer, "name2") != 0){
+                select.name2 = calloc(100, sizeof(char));
+                sscanf(buffer, "name2 = \"%[^\"]\"", select.name2);
+                printf("%s\n", select.name2);
+            }
+            else if (select.name3 == NULL && strstr(buffer, "name3") != 0){
+                select.name3 = calloc(100, sizeof(char));
+                sscanf(buffer, "name3 = \"%[^\"]\"", select.name3);
+                printf("%s\n", select.name3);
+            }
+            else if (select.name4 == NULL && strstr(buffer, "name4") != 0){
+                select.name4 = calloc(100, sizeof(char));
+                sscanf(buffer, "name4 = \"%[^\"]\"", select.name4);
+                printf("%s\n", select.name4);
+            }
+            else if (select.name5 == NULL && strstr(buffer, "name5") != 0){
+                select.name5 = calloc(100, sizeof(char));
+                sscanf(buffer, "name5 = \"%[^\"]\"", select.name5);
+                printf("%s\n", select.name5);
+            }
+            else if (select.avatar1 == NULL && strstr(buffer, "avatar1") != 0){
+                select.avatar1 = calloc(100, sizeof(char));
+                sscanf(buffer, "avatar1 = \"%[^\"]\"", select.avatar1);
+                printf("%s\n", select.avatar1);
+            }
+            else if (select.avatar2 == NULL && strstr(buffer, "avatar2") != 0){
+                select.avatar2 = calloc(100, sizeof(char));
+                sscanf(buffer, "avatar2 = \"%[^\"]\"", select.avatar2);
+                printf("%s\n", select.avatar2);
+            }
+            else if (select.avatar3 == NULL && strstr(buffer, "avatar3") != 0){
+                select.avatar3 = calloc(100, sizeof(char));
+                sscanf(buffer, "avatar3 = \"%[^\"]\"", select.avatar3);
+                printf("%s\n", select.avatar3);
+            }
+            else if (select.avatar4 == NULL && strstr(buffer, "avatar4") != 0){
+                select.avatar4 = calloc(100, sizeof(char));
+                sscanf(buffer, "avatar4 = \"%[^\"]\"", select.avatar4);
+                printf("%s\n", select.avatar4);
+            }
+            else if (select.avatar5 == NULL && strstr(buffer, "avatar5") != 0){
+                select.avatar5 = calloc(100, sizeof(char));
+                sscanf(buffer, "avatar5 = \"%[^\"]\"", select.avatar5);
+                printf("%s\n", select.avatar5);
+            }
+        }
+
         // read event
         // search event code
         if (search_event != NULL){
             if (strstr(buffer, search_event) != 0 && buffer[0] == '['){
                 if (scene.name != NULL){
                     compare = calloc(100, sizeof(char));
+                    if(scene.background!=NULL)
                     strcpy(compare, scene.background);
                     free_scene(&scene);
                 }
@@ -151,14 +232,21 @@ int main(){
                 strcpy(scene.name, buffer+1);
                 printf("scene.name = %s\n", scene.name);
                 search_event = NULL;
+                if (last_scene == 1){
+                    last_scene++;
+                }
             }
             else{
                 continue;
             }
         }
-        else if (buffer[0] == '[' && home == 0 && buffer[1] != '['){
+        else if (buffer[0] == '[' && home == 0 && buffer[1] != '[' && select_character == 0){
+            if (last_scene > 1){
+                break;
+            }
             if (scene.name != NULL){
                 compare = calloc(100, sizeof(char));
+                if(scene.background!=NULL)
                 strcpy(compare, scene.background);
                 free_scene(&scene);
             }
@@ -181,6 +269,7 @@ int main(){
                     else if (strcmp(compare, scene.background) == 0){
                         need_anime = 0;
                     }
+                    if(compare!=NULL)
                     free(compare);
                     printf("scene.background = %s\n", scene.background);
                 }
@@ -196,7 +285,7 @@ int main(){
                     char *start = strstr(buffer, "=");
                     int32_t START = start-buffer;
                     for (int32_t i = START; buffer[i] != '\n'; i++){
-                        if (buffer[i] >= 48 && buffer[i] < 57){
+                        if (buffer[i] >= 48 && buffer[i] <= 57){
                             scene.character_number = buffer[i]-48;
                             break;
                         }
@@ -228,8 +317,8 @@ int main(){
                     printf("character_name = %s\n", character[character_index].name);
                 }
                 else if (strstr(buffer, "photo") != 0){
+                    getstring(buffer, &character[character_index].photo);
                     if (check == 0){
-                        getstring(buffer, &character[character_index].photo);
                         if (strcmp(character[character_index].photo, "null") == 0){
                             // switch to no photo function
                         }
@@ -237,8 +326,8 @@ int main(){
                     printf("character_photo = %s\n", character[character_index].photo);
                 }
                 else if (strstr(buffer, "avatar") != 0){
+                    getstring(buffer, &character[character_index].avatar);
                     if (check == 0){
-                        getstring(buffer, &character[character_index].avatar);
                         if (strcmp(character[character_index].avatar, "null") == 0){
                             // switch to no photo function
                         }
@@ -249,7 +338,7 @@ int main(){
                 }
             }
         }
-        if (buffer[0] == '[' && buffer[1] == '[' && home == 0){
+        if (buffer[0] == '[' && buffer[1] == '[' && home == 0 && select_character == 0){
             if (strstr(buffer, scene.name) != 0){
                 if (strstr(buffer, "dialogue") != 0){
                     string_index = 0;
@@ -289,7 +378,7 @@ int main(){
                 char *start = strstr(buffer, "=");
                 int32_t START = start-buffer;
                 for (int32_t i = START; buffer[i] != '\n'; i++){
-                    if (buffer[i] >= 48 && buffer[i] < 57){
+                    if (buffer[i] >= 48 && buffer[i] <= 57){
                         backpack.items_number = buffer[i]-48;
                         break;
                     }
@@ -327,17 +416,20 @@ int main(){
                 char *start = strstr(buffer, "=");
                 int32_t START = start-buffer;
                 for (int32_t i = START; buffer[i] != '\n'; i++){
-                    if (buffer[i] >= 48 && buffer[i] < 57){
-                        if (buffer[i+2] >= 48 && buffer[i+2] < 57){
+                    if (buffer[i] >= 48 && buffer[i] <= 57){
+                        if (buffer[i+2] >= 48 && buffer[i+2] <= 57){
                             dialogue.string_number = (buffer[i]-48)*100 + (buffer[i+1]-48)*10 + buffer[i+2]-48;
+                            printf("345\n");
                             break;
                         }
-                        else if (buffer[i+1] >= 48 && buffer[i+1] < 57){
+                        else if (buffer[i+1] >= 48 && buffer[i+1] <= 57){
                             dialogue.string_number = (buffer[i]-48)*10 + buffer[i+1]-48;
+                            printf("350\n");
                             break;
                         }
                         else{
                             dialogue.string_number = buffer[i]-48;
+                            printf("355\n");
                             break;
                         }
                     }
@@ -479,7 +571,9 @@ int main(){
             continue;
         }
         if (strcmp(scene.name, "final_event") == 0 && scene.reply == 1){
-            allocate_FinalReply(&final_reply);
+            if (final_reply.option_box == NULL){
+                allocate_FinalReply(&final_reply);
+            }
             if (strstr(buffer, "option_box") != 0){
                 getstring(buffer, &final_reply.option_box);
                 printf("special = %s\n", final_reply.option_box);
@@ -490,7 +584,7 @@ int main(){
             }
             else if (strstr(buffer, "option1") != 0){
                 getstring(buffer, &final_reply.option1);
-                printf("%s\n", final_reply.option1);
+                printf("option 1 = %s\n", final_reply.option1);
             }
             else if (strstr(buffer, "change_favor1") != 0){
                 char *start = strstr(buffer, "=");
@@ -504,7 +598,7 @@ int main(){
                         final_reply.change_favor1 = -(buffer[i+1]-48);
                         break;
                     }
-                    else if (buffer[i] >= 48 && buffer[i] < 57){
+                    else if (buffer[i] >= 48 && buffer[i] <= 57){
                         final_reply.change_favor1 = buffer[i]-48;
                         break;
                     }
@@ -515,8 +609,8 @@ int main(){
                 char *start = strstr(buffer, "=");
                 int32_t START = start-buffer;
                 for (int32_t i = START; buffer[i] != '\n'; i++){
-                    if (buffer[i] >= 48 && buffer[i] < 57){
-                        if (buffer[i+1] >= 48 && buffer[i+1] < 57){
+                    if (buffer[i] >= 48 && buffer[i] <= 57){
+                        if (buffer[i+1] >= 48 && buffer[i+1] <= 57){
                             final_reply.favor_threshold1 = (buffer[i]-48)*10 + buffer[i+1]-48;
                             break;
                         }
@@ -542,7 +636,7 @@ int main(){
             }
             else if (strstr(buffer, "option2") != 0){
                 getstring(buffer, &final_reply.option2);
-                printf("%s\n", final_reply.option2);
+                printf("option2 = %s\n", final_reply.option2);
             }
             else if (strstr(buffer, "change_favor2") != 0){
                 char *start = strstr(buffer, "=");
@@ -556,7 +650,7 @@ int main(){
                         final_reply.change_favor2 = -(buffer[i+1]-48);
                         break;
                     }
-                    else if (buffer[i] >= 48 && buffer[i] < 57){
+                    else if (buffer[i] >= 48 && buffer[i] <= 57){
                         final_reply.change_favor2 = buffer[i]-48;
                         break;
                     }
@@ -567,8 +661,8 @@ int main(){
                 char *start = strstr(buffer, "=");
                 int32_t START = start-buffer;
                 for (int32_t i = START; buffer[i] != '\n'; i++){
-                    if (buffer[i] >= 48 && buffer[i] < 57){
-                        if (buffer[i+1] >= 48 && buffer[i+1] < 57){
+                    if (buffer[i] >= 48 && buffer[i] <= 57){
+                        if (buffer[i+1] >= 48 && buffer[i+1] <= 57){
                             final_reply.favor_threshold2 = (buffer[i]-48)*10 + buffer[i+1]-48;
                             break;
                         }
@@ -594,7 +688,7 @@ int main(){
             }
             else if (strstr(buffer, "option3") != 0){
                 getstring(buffer, &final_reply.option3);
-                printf("%s\n", final_reply.option3);
+                printf("option3 = %s\n", final_reply.option3);
             }
             else if (strstr(buffer, "change_favor3") != 0){
                 char *start = strstr(buffer, "=");
@@ -608,7 +702,7 @@ int main(){
                         final_reply.change_favor3 = -(buffer[i+1]-48);
                         break;
                     }
-                    else if (buffer[i] >= 48 && buffer[i] < 57){
+                    else if (buffer[i] >= 48 && buffer[i] <= 57){
                         final_reply.change_favor3 = buffer[i]-48;
                         break;
                     }
@@ -619,8 +713,8 @@ int main(){
                 char *start = strstr(buffer, "=");
                 int32_t START = start-buffer;
                 for (int32_t i = START; buffer[i] != '\n'; i++){
-                    if (buffer[i] >= 48 && buffer[i] < 57){
-                        if (buffer[i+1] >= 48 && buffer[i+1] < 57){
+                    if (buffer[i] >= 48 && buffer[i] <= 57){
+                        if (buffer[i+1] >= 48 && buffer[i+1] <= 57){
                             final_reply.favor_threshold3 = (buffer[i]-48)*10 + buffer[i+1]-48;
                             break;
                         }
@@ -639,7 +733,163 @@ int main(){
             else if (strstr(buffer, "bad_next3") != 0){
                 getstring(buffer, &final_reply.bad_next3);
                 printf("%s\n", final_reply.bad_next3);
-                
+                Backpack back;
+                back.background_image = malloc(256);
+                back.background_image="../assets/scene/backpack.png";
+                if(backpack.items_number==0)
+                {
+                    back.laptop_image=NULL;
+                    back.laptop_image=NULL;
+                    back.laptop_message=NULL;
+                    back.laptop_name=NULL;
+                    back.note_image=NULL;
+                    back.note_message=NULL;
+                    back.note_name=NULL;
+                    back.ticket_image=NULL;
+                    back.ticket_message=NULL;
+                    back.ticket_name=NULL;
+                }
+                else if(backpack.items_number==1)
+                {
+                    back.laptop_image = malloc(256);
+                    strcpy(back.laptop_image,backpack.photo[0]);
+                    back.note_image=NULL;//strcpy(back.note_image,backpack.photo[1]);
+                    back.ticket_image=NULL;//strcpy(back.ticket_image,backpack.photo[2]);
+                    back.laptop_name = malloc(256);
+                    strcpy(back.laptop_name,backpack.name[0]);
+                    back.note_name=NULL;//strcpy(back.note_name,backpack.name[1]);
+                    back.ticket_name=NULL;//strcpy(back.ticket_name,backpack.name[2]);
+                    back.laptop_message = malloc(256);
+                    strcpy(back.laptop_message,backpack.description[0]);
+                    back.note_message=NULL;//strcpy(back.note_message,backpack.description[1]);
+                    back.ticket_image=NULL;//strcpy(back.ticket_message,backpack.description[2]);
+                }
+                else if(backpack.items_number==2)
+                {
+                    back.laptop_image = malloc(256);
+                    back.note_image = malloc(256);
+                    strcpy(back.laptop_image,backpack.photo[0]);
+                    strcpy(back.note_image,backpack.photo[1]);
+                    back.ticket_image=NULL;//strcpy(back.ticket_image,backpack.photo[2]);
+                    back.laptop_name = malloc(256);
+                    back.note_name = malloc(256);
+                    strcpy(back.laptop_name,backpack.name[0]);
+                    strcpy(back.note_name,backpack.name[1]);
+                    back.ticket_name=NULL;//strcpy(back.ticket_name,backpack.name[2]);
+                    back.laptop_message=malloc(256);
+                    back.note_message=malloc(256);
+                    strcpy(back.laptop_message,backpack.description[0]);
+                    strcpy(back.note_message,backpack.description[1]);
+                    back.ticket_message=NULL;//strcpy(back.ticket_message,backpack.description[2]);
+                }
+                else if(backpack.items_number==3)
+                {
+                    back.laptop_image = malloc(256);
+                    back.note_image = malloc(256);
+                    back.ticket_image = malloc(256);
+                    strcpy(back.laptop_image,backpack.photo[0]);
+                    strcpy(back.note_image,backpack.photo[1]);
+                    strcpy(back.ticket_image,backpack.photo[2]);
+                    back.laptop_name = malloc(256);
+                    back.note_name = malloc(256);
+                    back.ticket_name = malloc(256);
+                    strcpy(back.laptop_name,backpack.name[0]);
+                    strcpy(back.note_name,backpack.name[1]);
+                    strcpy(back.ticket_name,backpack.name[2]);
+                    back.laptop_message=malloc(256);
+                    back.note_message=malloc(256);
+                    back.ticket_message=malloc(256);
+                    strcpy(back.laptop_message,backpack.description[0]);
+                    strcpy(back.note_message,backpack.description[1]);
+                    strcpy(back.ticket_message,backpack.description[2]);
+                }
+                int end = SDL_choice_one_character(scene.background,"NULL",final_reply.option1,final_reply.option2,final_reply.option3," ",back);
+                if(end==4 || end == 6)
+                {
+                    SDL_DestroyRenderer(screen);
+                    SDL_DestroyWindow(window);
+                    SDL_Quit();
+                    return 0;
+                }
+                else if (end == 1){
+                    object_number = -1;
+                    for (int32_t i = 0; i < count_character; i++){
+                        if (strcmp(final_reply.object1, character[i].name) == 0){
+                            object_number = i;
+                            break;
+                        }
+                        else if (object_number == -1){
+                            // wrong
+                        }
+                    }
+                    character[object_number].favor += final_reply.change_favor1;
+                    if (character[object_number].favor > 100){
+                        character[object_number].favor = 100;
+                    }
+                    else if (character[object_number].favor < 0){
+                        character[object_number].favor = 0;
+                    }
+                    search_event = calloc(100, sizeof(char));
+                    if (character[object_number].favor >= final_reply.favor_threshold1){
+                        strcpy(search_event, final_reply.good_next1);
+                    }
+                    else{
+                        strcpy(search_event, final_reply.bad_next1);
+                    }
+                }
+                else if (end == 2){
+                    object_number = -1;
+                    for (int32_t i = 0; i < count_character; i++){
+                        if (strcmp(final_reply.object2, character[i].name) == 0){
+                            object_number = i;
+                            break;
+                        }
+                        else if (object_number == -1){
+                            // wrong
+                        }
+                    }
+                    character[object_number].favor += final_reply.change_favor2;
+                    if (character[object_number].favor > 100){
+                        character[object_number].favor = 100;
+                    }
+                    else if (character[object_number].favor < 0){
+                        character[object_number].favor = 0;
+                    }
+                    search_event = calloc(100, sizeof(char));
+                    if (character[object_number].favor >= final_reply.favor_threshold2){
+                        strcpy(search_event, final_reply.good_next2);
+                    }
+                    else{
+                        strcpy(search_event, final_reply.bad_next2);
+                    }
+                }
+                else if (end == 3){
+                    object_number = -1;
+                    for (int32_t i = 0; i < count_character; i++){
+                        if (strcmp(final_reply.object3, character[i].name) == 0){
+                            object_number = i;
+                            break;
+                        }
+                        else if (object_number == -1){
+                            // wrong
+                        }
+                    }
+                    character[object_number].favor += final_reply.change_favor3;
+                    if (character[object_number].favor > 100){
+                        character[object_number].favor = 100;
+                    }
+                    else if (character[object_number].favor < 0){
+                        character[object_number].favor = 0;
+                    }
+                    search_event = calloc(100, sizeof(char));
+                    if (character[object_number].favor >= final_reply.favor_threshold3){
+                        strcpy(search_event, final_reply.good_next3);
+                    }
+                    else{
+                        strcpy(search_event, final_reply.bad_next3);
+                    }
+                }
+                last_scene = 1;
                 // SDL_choice_one_character(接return value)
                 // object_number = -1;
                 // for (int32_t i = 0; i < count_character; i++){
@@ -692,7 +942,7 @@ int main(){
                         reply.change_favor1 = -(buffer[i+1]-48);
                         break;
                     }
-                    else if (buffer[i] >= 48 && buffer[i] < 57){
+                    else if (buffer[i] >= 48 && buffer[i] <= 57){
                         reply.change_favor1 = buffer[i]-48;
                         break;
                     }
@@ -719,7 +969,7 @@ int main(){
                         reply.change_favor2 = -(buffer[i+1]-48);
                         break;
                     }
-                    else if (buffer[i] >= 48 && buffer[i] < 57){
+                    else if (buffer[i] >= 48 && buffer[i] <= 57){
                         reply.change_favor2 = buffer[i]-48;
                         break;
                     }
@@ -746,7 +996,7 @@ int main(){
                         reply.change_favor3 = -(buffer[i+1]-48);
                         break;
                     }
-                    else if (buffer[i] >= 48 && buffer[i] < 57){
+                    else if (buffer[i] >= 48 && buffer[i] <= 57){
                         reply.change_favor3 = buffer[i]-48;
                         break;
                     }
@@ -829,7 +1079,7 @@ int main(){
                 
                 for(int i=0;i<1;i++)
                 {
-                    for(int j=0;j<scene.character_number;j++)
+                    for(int j=0;j<count_character;j++)
                     {
                         if(strcmp(reply.object,character[j].name)==0 )
                         {

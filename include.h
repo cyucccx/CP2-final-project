@@ -8,6 +8,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
+#include <SDL2/SDL_mixer.h>
 
 extern SDL_Window* window;
 extern SDL_Renderer* screen;
@@ -42,7 +43,22 @@ int SDL_no_choice_one_character_anime(char *background_image, char *character_im
 
 int SDL_choice_one_character(char *background_image, char *character_image,char *sellect_button_message_up,char *sellect_button_message_middle,char *sellect_button_message_down, char *character_name, Backpack packing);
 
-int SDL_main_screen(char *background_image,int x_position,int y_position,int width,int height);
+int SDL_main_screen(char *background_image,char *start_image,char *load_image,int x_position,int y_position,int width,int height);
+
+typedef struct select{
+    char *background;
+    char *name1;
+    char *name2;
+    char *name3;
+    char *name4;
+    char *name5;
+    char *avatar1;
+    char *avatar2;
+    char *avatar3;
+    char *avatar4;
+    char *avatar5;
+}sSelect;
+
 
 typedef struct scene{
     char *name;
