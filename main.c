@@ -75,6 +75,7 @@ int main(){
     while(fgets(buffer, 500, script) != 0){
         if (strcmp(buffer, "\n") == 0 && home == 1){
             home = 0;
+            select_character = 0;
             continue;
         }
         // printf("%s", buffer);
@@ -251,27 +252,27 @@ int main(){
                 if (end == 11){
                     strncpy(myname, select.name1,strlen(select.name1));
                     strncpy(myavatar, select.avatar1,strlen(select.avatar1));
-                    // free select
+                    free_select(&select);
                 }
                 else if (end == 12){
                     strncpy(myname, select.name2,strlen(select.name2));
                     strncpy(myavatar, select.avatar2,strlen(select.avatar2));
-                    // free select
+                    free_select(&select);
                 }
                 else if (end == 13){
                     strncpy(myname, select.name3,strlen(select.name3));
                     strncpy(myavatar, select.avatar3,strlen(select.avatar3));
-                    // free select
+                    free_select(&select);
                 }
                 else if (end == 14){
                     strncpy(myname, select.name4,strlen(select.name4));
                     strncpy(myavatar, select.avatar4,strlen(select.avatar4));
-                    // free select
+                    free_select(&select);
                 }
                 else if (end == 15){
                     strncpy(myname, select.name5,strlen(select.name5));
                     strncpy(myavatar, select.avatar5,strlen(select.avatar5));
-                    // free select
+                    free_select(&select);
                 }
             }
         }
@@ -360,9 +361,10 @@ int main(){
                     character_index = 0;
                     char *temp = 0;
                     getstring(buffer, &temp);
-                    if (strcmp(temp, "me") == 0){
-                        strncpy(temp, myname, strlen(myname));
-                    }
+                    // temp = (char*)realloc(temp, 100*sizeof(char));
+                    // if (strcmp(temp, "me") == 0){
+                    //     strncpy(temp, myname, strlen(myname));
+                    // }
                     for (int32_t i = 0; i < count_character; i++){
                         if (strcmp(character[i].name, temp) == 0){
                             check = 1;
@@ -390,9 +392,10 @@ int main(){
                 }
                 else if (strstr(buffer, "avatar") != 0){
                     getstring(buffer, &character[character_index].avatar);
-                    if (strcmp(character[character_index].avatar, "me_avatar") == 0){
-                        strncpy(character[character_index].avatar, myavatar, strlen(myavatar));
-                    }
+                    // character[character_index].avatar = (char*)realloc(character[character_index].avatar, sizeof(char));
+                    // if (strcmp(character[character_index].avatar, "me_avatar") == 0){
+                    //     strncpy(character[character_index].avatar, myavatar, strlen(myavatar));
+                    // }
                     if (check == 0){
                         if (strcmp(character[character_index].avatar, "null") == 0){
                             // switch to no photo function
@@ -485,14 +488,17 @@ int main(){
                     if (buffer[i] >= 48 && buffer[i] <= 57){
                         if (buffer[i+2] >= 48 && buffer[i+2] <= 57){
                             dialogue.string_number = (buffer[i]-48)*100 + (buffer[i+1]-48)*10 + buffer[i+2]-48;
+                            printf("345\n");
                             break;
                         }
                         else if (buffer[i+1] >= 48 && buffer[i+1] <= 57){
                             dialogue.string_number = (buffer[i]-48)*10 + buffer[i+1]-48;
+                            printf("350\n");
                             break;
                         }
                         else{
                             dialogue.string_number = buffer[i]-48;
+                            printf("355\n");
                             break;
                         }
                     }
@@ -502,9 +508,10 @@ int main(){
             if (string_index < dialogue.string_number){
                 if (strstr(buffer, "speaker") != 0){
                     getstring(buffer, &dialogue.speaker[string_index]);
-                    if (strcmp(dialogue.speaker[string_index], "me") == 0){
-                        strncpy(dialogue.speaker[string_index], myname, strlen(myname));
-                    }
+                    // dialogue.speaker[string_index] = (char*)realloc(dialogue.speaker[string_index], 100*sizeof(char));
+                    // if (strcmp(dialogue.speaker[string_index], "me") == 0){
+                    //     // strncpy(dialogue.speaker[string_index], myname, strlen(myname));
+                    // }
                     printf("%s\n", dialogue.speaker[string_index]);
                 }
                 else if (strstr(buffer, "text") != 0){
