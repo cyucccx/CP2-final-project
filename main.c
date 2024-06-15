@@ -249,28 +249,28 @@ int main(){
                     return 0;
                 }
                 if (end == 11){
-                    strcpy(myname, select.name1);
-                    strcpy(myavatar, select.avatar1);
+                    strncpy(myname, select.name1,strlen(select.name1));
+                    strncpy(myavatar, select.avatar1,strlen(select.avatar1));
                     // free select
                 }
                 else if (end == 12){
-                    strcpy(myname, select.name2);
-                    strcpy(myavatar, select.avatar2);
+                    strncpy(myname, select.name2,strlen(select.name2));
+                    strncpy(myavatar, select.avatar2,strlen(select.avatar2));
                     // free select
                 }
                 else if (end == 13){
-                    strcpy(myname, select.name3);
-                    strcpy(myavatar, select.avatar3);
+                    strncpy(myname, select.name3,strlen(select.name3));
+                    strncpy(myavatar, select.avatar3,strlen(select.avatar3));
                     // free select
                 }
                 else if (end == 14){
-                    strcpy(myname, select.name4);
-                    strcpy(myavatar, select.avatar4);
+                    strncpy(myname, select.name4,strlen(select.name4));
+                    strncpy(myavatar, select.avatar4,strlen(select.avatar4));
                     // free select
                 }
                 else if (end == 15){
-                    strcpy(myname, select.name5);
-                    strcpy(myavatar, select.avatar5);
+                    strncpy(myname, select.name5,strlen(select.name5));
+                    strncpy(myavatar, select.avatar5,strlen(select.avatar5));
                     // free select
                 }
             }
