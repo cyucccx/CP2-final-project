@@ -974,7 +974,6 @@ int main(){
                     else if (character[object_number].favor < 0){
                         character[object_number].favor = 0;
                     }
-                    printf("1111111 %d\n", character[object_number].favor);
                     if (character[object_number].favor >= final_reply.favor_threshold1){
                         for(int i=0;i<1000;i++)
                         {
@@ -1008,7 +1007,6 @@ int main(){
                     else if (character[object_number].favor < 0){
                         character[object_number].favor = 0;
                     }
-                    printf("2222222 %d\n", character[object_number].favor);
                     if (character[object_number].favor >= final_reply.favor_threshold2){
                         for(int i=0;i<1000;i++)
                         {
@@ -1042,7 +1040,6 @@ int main(){
                     else if (character[object_number].favor < 0){
                         character[object_number].favor = 0;
                     }
-                    printf("3333333 %d\n", character[object_number].favor);
                     if (character[object_number].favor >= final_reply.favor_threshold3){
                         for(int i=0;i<1000;i++)
                         {
@@ -1265,7 +1262,6 @@ int main(){
                                 else if (character[object_number].favor < 0){
                                     character[object_number].favor = 0;
                                 }
-                                printf("1111111 %d\n", character[object_number].favor);
                                 for(int i=0;i<1000;i++)
                                 {
                                     search_event[i]=0;
@@ -1280,7 +1276,6 @@ int main(){
                                 else if (character[object_number].favor < 0){
                                     character[object_number].favor = 0;
                                 }
-                                printf("2222222 %d\n", character[object_number].favor);
                                 for(int i=0;i<1000;i++)
                                 {
                                     search_event[i]=0;
