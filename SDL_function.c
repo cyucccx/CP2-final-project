@@ -1,4 +1,5 @@
 #include "include.h"
+#include <SDL2/SDL_mixer.h>
 
 SDL_Window* window;
 SDL_Renderer* screen;
@@ -84,7 +85,7 @@ int backpack(char *background_image, char *laptop_image,char *note_image, char *
     if(ticket_image!=NULL)
     ticket_texture = SDL_CreateTextureFromSurface(screen, ticket);
     
-    SDL_Texture* background_texture = SDL_CreateTextureFromSurface(screen, image);
+    SDL_Texture *background_texture = SDL_CreateTextureFromSurface(screen, image);
     //SDL_FreeSurface(image);
     //SDL_FreeSurface(ticket);
     SDL_RenderCopy(screen, background_texture, NULL, &background);
@@ -457,6 +458,8 @@ int backpack(char *background_image, char *laptop_image,char *note_image, char *
                                 press=1;
                             }
                             SDL_RenderPresent(screen);
+                            SDL_FreeSurface(button1);
+                            SDL_DestroyTexture(button_texture);
                         }
                         else if(x>345&&x<450&&y>145&&y<240)
                         {
@@ -500,6 +503,8 @@ int backpack(char *background_image, char *laptop_image,char *note_image, char *
                                 press=2;
                             }
                             SDL_RenderPresent(screen);
+                            SDL_FreeSurface(button1);
+                            SDL_DestroyTexture(button_texture);
                         }
                         else if(x>575&&x<680&&y>145&&y<240)
                         {
@@ -543,6 +548,8 @@ int backpack(char *background_image, char *laptop_image,char *note_image, char *
                                 press=3;
                             }
                             SDL_RenderPresent(screen);
+                            SDL_FreeSurface(button1);
+                            SDL_DestroyTexture(button_texture);
                         }
                         else if(x>335&&x<465&&y>500&&y<550)
                         {
@@ -722,7 +729,9 @@ int SDL_no_choice_one_character(char *background_image, char *character_image, c
     SDL_Rect textRect;
     textRect.x = 182;
     textRect.y = 451;
+    if(message!=NULL)
     textRect.w = message->w/2;
+    if(message!=NULL)
     textRect.h = message->h/2;
     SDL_Rect textRect2;
     textRect2.x = 182;
@@ -1428,7 +1437,7 @@ int SDL_main_screen(char *background_image,char *start_image,char *load_image,in
                         
                         if(x>=112&&x<=112+181&&y>=417&&y<=417+50)
                         {
-                            alpha = 255;
+                            alpha = 175;
                             while (alpha > 0) {
                                 SDL_RenderClear(screen);
                                 SDL_SetTextureAlphaMod(background_texture, alpha);
@@ -1442,9 +1451,9 @@ int SDL_main_screen(char *background_image,char *start_image,char *load_image,in
                             }
                             quit = 1;
                         }
-                        if(x>=112&&x<=112+181&&y>=486&&y<=486+50)
+                        else if(x>=112&&x<=112+181&&y>=486&&y<=486+50)
                         {
-                            alpha = 255;
+                            alpha = 175;
                             while (alpha > 0) {
                                 SDL_RenderClear(screen);
                                 SDL_SetTextureAlphaMod(background_texture, alpha);
@@ -1483,7 +1492,386 @@ int SDL_main_screen(char *background_image,char *start_image,char *load_image,in
     return quit;
 }
 
+int SDL_sellcet_screen(char *character_image1,char *character_image2,char *character_image3,char *character_image4,char *character_image5,char *character_name1,char *character_name2,char *character_name3,char *character_name4,char *character_name5)
+{
+    TTF_Init();
+    TTF_Font* font = TTF_OpenFont("simfang.ttf", 40);
+    if(font==NULL)
+    {
+        printf("can not found %s\n",TTF_GetError());
+        return 0;
+    }
+    SDL_Color blackColor={ 0, 0, 0 };
+    SDL_Color whiteColor={ 255, 255, 255 };
+    SDL_Surface *background,*one,*two,*three,*four,*five,*nameblank;
+    SDL_Surface *one_name=NULL;
+    SDL_Surface *two_name=NULL;
+    SDL_Surface *three_name=NULL;
+    SDL_Surface *four_name=NULL;
+    SDL_Surface *five_name=NULL;
+    background = IMG_Load("../assets/scene/select.png");
+    one = IMG_Load(character_image1);
+    two = IMG_Load(character_image2);
+    three = IMG_Load(character_image3);
+    four = IMG_Load(character_image4);
+    five = IMG_Load(character_image5);
+    nameblank = IMG_Load("../assets/scene/name_blank.png");
+    SDL_Texture* background_texture = SDL_CreateTextureFromSurface(screen, background);
+    SDL_Texture* one_texture = SDL_CreateTextureFromSurface(screen, one);
+    SDL_Texture* two_texture = SDL_CreateTextureFromSurface(screen, two);
+    SDL_Texture* three_texture = SDL_CreateTextureFromSurface(screen, three);
+    SDL_Texture* four_texture = SDL_CreateTextureFromSurface(screen, four);
+    SDL_Texture* five_texture = SDL_CreateTextureFromSurface(screen, five);
+    SDL_Texture* nameblank_texture = SDL_CreateTextureFromSurface(screen, nameblank);
+    
+    one_name=TTF_RenderUTF8_Solid( font,character_name1, blackColor );
+    two_name=TTF_RenderUTF8_Solid( font,character_name2, blackColor );
+    three_name=TTF_RenderUTF8_Solid( font,character_name3, blackColor );
+    four_name=TTF_RenderUTF8_Solid( font,character_name4, blackColor );
+    five_name=TTF_RenderUTF8_Solid( font,character_name5, blackColor );
+    
+    
+    SDL_Texture* textTexture1 = SDL_CreateTextureFromSurface(screen, one_name);
+    SDL_Texture* textTexture2 = SDL_CreateTextureFromSurface(screen, two_name);
+    SDL_Texture* textTexture3 = SDL_CreateTextureFromSurface(screen, three_name);
+    SDL_Texture* textTexture4 = SDL_CreateTextureFromSurface(screen, four_name);
+    SDL_Texture* textTexture5 = SDL_CreateTextureFromSurface(screen, five_name);
 
+    SDL_Rect textRect1;
+    textRect1.x = 62;
+    textRect1.y = 380;
+    if(one_name!=NULL)
+    textRect1.w = one_name->w/2;
+    if(one_name!=NULL)
+    textRect1.h = one_name->h/2;
+    SDL_Rect textRect2;
+    textRect2.x = 207;
+    textRect2.y = 380;
+    if(two_name!=NULL)
+    textRect2.w = two_name->w/2;
+    if(two_name!=NULL)
+    textRect2.h = two_name->h/2;
+    SDL_Rect textRect3;
+    textRect3.x = 377;
+    textRect3.y = 380;
+    if(three_name!=NULL)
+    textRect3.w = three_name->w/2;
+    if(three_name!=NULL)
+    textRect3.h = three_name->h/2;
+    SDL_Rect textRect4;
+    textRect4.x = 521;
+    textRect4.y = 380;
+    if(four_name!=NULL)
+    textRect4.w = four_name->w/2;
+    if(four_name!=NULL)
+    textRect4.h = four_name->h/2;
+    SDL_Rect textRect5;
+    textRect5.x = 660;
+    textRect5.y = 380;
+    if(five_name!=NULL)
+    textRect5.w = five_name->w/2;
+    if(five_name!=NULL)
+    textRect5.h = five_name->h/2;
+
+    Player play;
+    SDL_Rect a,b,c,d,e;
+    SDL_Rect aa,bb,cc,dd,ee;
+    a.x=57;
+    a.y=237;
+    a.h=100;
+    a.w=89;
+    b.x = 206;
+    b.y = 237;
+    b.h = 100;
+    b.w = 89;
+    c.x=355;
+    c.y=237;
+    c.h=100;
+    c.w=89;
+    d.x=505;
+    d.y=237;
+    d.h=100;
+    d.w=89;
+    e.x=655;
+    e.y=237;
+    e.h=100;
+    e.w=89;
+
+    aa.x=37;
+    aa.y=367;
+    aa.h=51;
+    aa.w=126;
+    bb.x = 187;
+    bb.y = 367;
+    bb.h = 51;
+    bb.w = 126;
+    cc.x=337;
+    cc.y=367;
+    cc.h=51;
+    cc.w=126;
+    dd.x=487;
+    dd.y=367;
+    dd.h=51;
+    dd.w=126;
+    ee.x=637;
+    ee.y=367;
+    ee.h=51;
+    ee.w=126;
+
+    SDL_RenderClear(screen);
+    SDL_RenderCopy(screen, background_texture, NULL, NULL);
+    SDL_RenderCopy(screen, one_texture, NULL, &a);
+    SDL_RenderCopy(screen, two_texture, NULL, &b);
+    SDL_RenderCopy(screen, three_texture, NULL, &c);
+    SDL_RenderCopy(screen, four_texture, NULL, &d);
+    SDL_RenderCopy(screen, five_texture, NULL, &e);
+    SDL_RenderCopy(screen, nameblank_texture, NULL, &aa);
+    SDL_RenderCopy(screen, nameblank_texture, NULL, &bb);
+    SDL_RenderCopy(screen, nameblank_texture, NULL, &cc);
+    SDL_RenderCopy(screen, nameblank_texture, NULL, &dd);
+    SDL_RenderCopy(screen, nameblank_texture, NULL, &ee);
+
+    SDL_RenderCopy(screen, textTexture1, NULL, &textRect1);
+    SDL_RenderCopy(screen, textTexture2, NULL, &textRect2);
+    SDL_RenderCopy(screen, textTexture3, NULL, &textRect3);
+    SDL_RenderCopy(screen, textTexture4, NULL, &textRect4);
+    SDL_RenderCopy(screen, textTexture5, NULL, &textRect5);
+    SDL_RenderPresent(screen);  
+
+    SDL_FlushEvents(SDL_FIRSTEVENT,SDL_LASTEVENT);
+    Uint8 alpha = 0;
+    int quit = 0;
+    int choose=0;
+    while (!quit)
+    {
+        SDL_Event event;
+        int x,y;
+        while (SDL_PollEvent(&event))
+        {
+            switch (event.type)
+            {
+                case SDL_QUIT:
+                    quit = 4;
+                    break;
+                case SDL_MOUSEBUTTONDOWN:
+                    if(event.button.button == SDL_BUTTON_LEFT)
+                    {
+                        x=event.button.x;
+                        y=event.button.y;
+                        
+                        if(x>=47&&x<=47+89&&y>=227&&y<=227+100)
+                        {
+                            SDL_RenderCopy(screen, background_texture, NULL, NULL);
+                            SDL_Surface *button1;
+                            button1 = IMG_Load("../assets/scene/selected_blank.png");
+                            SDL_Texture* button_texture = SDL_CreateTextureFromSurface(screen, button1);
+                            //SDL_FreeSurface(button1);
+                            SDL_Rect button_1;
+                            button_1.x = 44;
+                            button_1.y = 223;
+                            button_1.h = 134;
+                            button_1.w = 115;
+                            SDL_RenderCopy(screen, button_texture, NULL, &button_1);
+                            SDL_RenderCopy(screen, one_texture, NULL, &a);
+                            SDL_RenderCopy(screen, two_texture, NULL, &b);
+                            SDL_RenderCopy(screen, three_texture, NULL, &c);
+                            SDL_RenderCopy(screen, four_texture, NULL, &d);
+                            SDL_RenderCopy(screen, five_texture, NULL, &e);
+                            SDL_RenderCopy(screen, nameblank_texture, NULL, &aa);
+                            SDL_RenderCopy(screen, nameblank_texture, NULL, &bb);
+                            SDL_RenderCopy(screen, nameblank_texture, NULL, &cc);
+                            SDL_RenderCopy(screen, nameblank_texture, NULL, &dd);
+                            SDL_RenderCopy(screen, nameblank_texture, NULL, &ee);
+
+                            SDL_RenderCopy(screen, textTexture1, NULL, &textRect1);
+                            SDL_RenderCopy(screen, textTexture2, NULL, &textRect2);
+                            SDL_RenderCopy(screen, textTexture3, NULL, &textRect3);
+                            SDL_RenderCopy(screen, textTexture4, NULL, &textRect4);
+                            SDL_RenderCopy(screen, textTexture5, NULL, &textRect5);
+                            SDL_RenderPresent(screen);
+                            SDL_FreeSurface(button1);
+                            SDL_DestroyTexture(button_texture);
+                            choose=11;
+                        }
+                        else if(x>=196&&x<=196+89&&y>=227&&y<=227+100)
+                        {
+                            SDL_RenderCopy(screen, background_texture, NULL, NULL);
+                            SDL_Surface *button1;
+                            button1 = IMG_Load("../assets/scene/selected_blank.png");
+                            SDL_Texture* button_texture = SDL_CreateTextureFromSurface(screen, button1);
+                            //SDL_FreeSurface(button1);
+                            SDL_Rect button_1;
+                            button_1.x = 193;
+                            button_1.y = 223;
+                            button_1.h = 134;
+                            button_1.w = 115;
+                            SDL_RenderCopy(screen, button_texture, NULL, &button_1);
+                            SDL_RenderCopy(screen, one_texture, NULL, &a);
+                            SDL_RenderCopy(screen, two_texture, NULL, &b);
+                            SDL_RenderCopy(screen, three_texture, NULL, &c);
+                            SDL_RenderCopy(screen, four_texture, NULL, &d);
+                            SDL_RenderCopy(screen, five_texture, NULL, &e);
+                            SDL_RenderCopy(screen, nameblank_texture, NULL, &aa);
+                            SDL_RenderCopy(screen, nameblank_texture, NULL, &bb);
+                            SDL_RenderCopy(screen, nameblank_texture, NULL, &cc);
+                            SDL_RenderCopy(screen, nameblank_texture, NULL, &dd);
+                            SDL_RenderCopy(screen, nameblank_texture, NULL, &ee);
+
+                            SDL_RenderCopy(screen, textTexture1, NULL, &textRect1);
+                            SDL_RenderCopy(screen, textTexture2, NULL, &textRect2);
+                            SDL_RenderCopy(screen, textTexture3, NULL, &textRect3);
+                            SDL_RenderCopy(screen, textTexture4, NULL, &textRect4);
+                            SDL_RenderCopy(screen, textTexture5, NULL, &textRect5);
+                            SDL_RenderPresent(screen);
+                            SDL_FreeSurface(button1);
+                            SDL_DestroyTexture(button_texture);
+                            choose=12;
+                        }
+                        else if(x>=345&&x<=345+89&&y>=227&&y<=227+100)
+                        {
+                            SDL_RenderCopy(screen, background_texture, NULL, NULL);
+                            SDL_Surface *button1;
+                            button1 = IMG_Load("../assets/scene/selected_blank.png");
+                            SDL_Texture* button_texture = SDL_CreateTextureFromSurface(screen, button1);
+                            //SDL_FreeSurface(button1);
+                            SDL_Rect button_1;
+                            button_1.x = 342;
+                            button_1.y = 223;
+                            button_1.h = 134;
+                            button_1.w = 115;
+                            SDL_RenderCopy(screen, button_texture, NULL, &button_1);
+                            SDL_RenderCopy(screen, one_texture, NULL, &a);
+                            SDL_RenderCopy(screen, two_texture, NULL, &b);
+                            SDL_RenderCopy(screen, three_texture, NULL, &c);
+                            SDL_RenderCopy(screen, four_texture, NULL, &d);
+                            SDL_RenderCopy(screen, five_texture, NULL, &e);
+                            SDL_RenderCopy(screen, nameblank_texture, NULL, &aa);
+                            SDL_RenderCopy(screen, nameblank_texture, NULL, &bb);
+                            SDL_RenderCopy(screen, nameblank_texture, NULL, &cc);
+                            SDL_RenderCopy(screen, nameblank_texture, NULL, &dd);
+                            SDL_RenderCopy(screen, nameblank_texture, NULL, &ee);
+
+                            SDL_RenderCopy(screen, textTexture1, NULL, &textRect1);
+                            SDL_RenderCopy(screen, textTexture2, NULL, &textRect2);
+                            SDL_RenderCopy(screen, textTexture3, NULL, &textRect3);
+                            SDL_RenderCopy(screen, textTexture4, NULL, &textRect4);
+                            SDL_RenderCopy(screen, textTexture5, NULL, &textRect5);
+                            SDL_RenderPresent(screen);
+                            SDL_FreeSurface(button1);
+                            SDL_DestroyTexture(button_texture);
+                            choose=13;
+                        }
+                        else if(x>=495&&x<=495+89&&y>=227&&y<=227+100)
+                        {
+                            SDL_RenderCopy(screen, background_texture, NULL, NULL);
+                            SDL_Surface *button1;
+                            button1 = IMG_Load("../assets/scene/selected_blank.png");
+                            SDL_Texture* button_texture = SDL_CreateTextureFromSurface(screen, button1);
+                            //SDL_FreeSurface(button1);
+                            SDL_Rect button_1;
+                            button_1.x = 492;
+                            button_1.y = 223;
+                            button_1.h = 134;
+                            button_1.w = 115;
+                            SDL_RenderCopy(screen, button_texture, NULL, &button_1);
+                            SDL_RenderCopy(screen, one_texture, NULL, &a);
+                            SDL_RenderCopy(screen, two_texture, NULL, &b);
+                            SDL_RenderCopy(screen, three_texture, NULL, &c);
+                            SDL_RenderCopy(screen, four_texture, NULL, &d);
+                            SDL_RenderCopy(screen, five_texture, NULL, &e);
+                            SDL_RenderCopy(screen, nameblank_texture, NULL, &aa);
+                            SDL_RenderCopy(screen, nameblank_texture, NULL, &bb);
+                            SDL_RenderCopy(screen, nameblank_texture, NULL, &cc);
+                            SDL_RenderCopy(screen, nameblank_texture, NULL, &dd);
+                            SDL_RenderCopy(screen, nameblank_texture, NULL, &ee);
+
+                            SDL_RenderCopy(screen, textTexture1, NULL, &textRect1);
+                            SDL_RenderCopy(screen, textTexture2, NULL, &textRect2);
+                            SDL_RenderCopy(screen, textTexture3, NULL, &textRect3);
+                            SDL_RenderCopy(screen, textTexture4, NULL, &textRect4);
+                            SDL_RenderCopy(screen, textTexture5, NULL, &textRect5);
+                            SDL_RenderPresent(screen);
+                            SDL_FreeSurface(button1);
+                            SDL_DestroyTexture(button_texture);
+                            choose=14;
+                        }
+                        else if(x>=645&&x<=645+89&&y>=227&&y<=486+100)
+                        {
+                            SDL_RenderCopy(screen, background_texture, NULL, NULL);
+                            SDL_Surface *button1;
+                            button1 = IMG_Load("../assets/scene/selected_blank.png");
+                            SDL_Texture* button_texture = SDL_CreateTextureFromSurface(screen, button1);
+                            //SDL_FreeSurface(button1);
+                            SDL_Rect button_1;
+                            button_1.x = 642;
+                            button_1.y = 223;
+                            button_1.h = 134;
+                            button_1.w = 115;
+                            SDL_RenderCopy(screen, button_texture, NULL, &button_1);
+                            SDL_RenderCopy(screen, one_texture, NULL, &a);
+                            SDL_RenderCopy(screen, two_texture, NULL, &b);
+                            SDL_RenderCopy(screen, three_texture, NULL, &c);
+                            SDL_RenderCopy(screen, four_texture, NULL, &d);
+                            SDL_RenderCopy(screen, five_texture, NULL, &e);
+                            SDL_RenderCopy(screen, nameblank_texture, NULL, &aa);
+                            SDL_RenderCopy(screen, nameblank_texture, NULL, &bb);
+                            SDL_RenderCopy(screen, nameblank_texture, NULL, &cc);
+                            SDL_RenderCopy(screen, nameblank_texture, NULL, &dd);
+                            SDL_RenderCopy(screen, nameblank_texture, NULL, &ee);
+
+                            SDL_RenderCopy(screen, textTexture1, NULL, &textRect1);
+                            SDL_RenderCopy(screen, textTexture2, NULL, &textRect2);
+                            SDL_RenderCopy(screen, textTexture3, NULL, &textRect3);
+                            SDL_RenderCopy(screen, textTexture4, NULL, &textRect4);
+                            SDL_RenderCopy(screen, textTexture5, NULL, &textRect5);
+                            SDL_RenderPresent(screen);
+                            SDL_FreeSurface(button1);
+                            SDL_DestroyTexture(button_texture);
+                            choose=15;
+                        }
+                        else if(x>=324&&x<=474&&y>=473&&y<=531)
+                        {
+                            quit=choose;
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+    SDL_FreeSurface(background);
+    SDL_FreeSurface(one);
+    SDL_FreeSurface(two);
+    SDL_FreeSurface(three);
+    SDL_FreeSurface(four);
+    SDL_FreeSurface(five);
+    SDL_FreeSurface(nameblank);
+    SDL_FreeSurface(one_name);
+    SDL_FreeSurface(two_name);
+    SDL_FreeSurface(three_name);
+    SDL_FreeSurface(four_name);
+    SDL_FreeSurface(five_name);
+
+    SDL_DestroyTexture(background_texture);
+    SDL_DestroyTexture(one_texture);
+    SDL_DestroyTexture(two_texture);
+    SDL_DestroyTexture(three_texture);
+    SDL_DestroyTexture(four_texture);
+    SDL_DestroyTexture(five_texture);
+    SDL_DestroyTexture(nameblank_texture);
+    SDL_DestroyTexture(textTexture1);
+    SDL_DestroyTexture(textTexture2);
+    SDL_DestroyTexture(textTexture3);
+    SDL_DestroyTexture(textTexture4);
+    SDL_DestroyTexture(textTexture5);
+
+    TTF_CloseFont(font);
+    TTF_Quit();
+    
+    
+    return quit;
+}
 // int main(int argc, char* args[]) 
 // {
 //     char *in="classroom.png";
