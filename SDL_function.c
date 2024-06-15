@@ -1,5 +1,4 @@
 #include "include.h"
-#include <SDL2/SDL_mixer.h>
 
 SDL_Window* window;
 SDL_Renderer* screen;
@@ -26,7 +25,7 @@ void create_player(Player play, SDL_Renderer *render, SDL_Surface *image, SDL_Re
     //SDL_DestroyTexture(play.texture);
 }
 
-int backpack(char *background_image, char *laptop_image,char *note_image, char *ticket_image,char *laptop_message,char *note_message,char *ticket_message,char *laptop_name,char *note_name,char *ticket_name)
+int backpack(char *background_image, char *laptop_image,char *note_image, char *ticket_image,char *laptop_message,char *note_message,char *ticket_message,char laptop_name[100],char note_name[100],char ticket_name[100])
 {
     TTF_Init();
     TTF_Font* font = TTF_OpenFont("simfang.ttf", 50);
@@ -190,9 +189,9 @@ int backpack(char *background_image, char *laptop_image,char *note_image, char *
     SDL_Rect textRect_name;
     textRect_name.x = 105;
     textRect_name.y = 286;
-    if(laptop_name!=NULL)
+    if(laptop_name[0]!=0)
     textRect_name.w = name->w/2;
-    if(laptop_name!=NULL)
+    if(laptop_name[0]!=0)
     textRect_name.h = name->h/2;
 
     SDL_Surface *message2=NULL;
@@ -290,9 +289,9 @@ int backpack(char *background_image, char *laptop_image,char *note_image, char *
     textRect_name2.x = 105;
     textRect_name2.y = 286;
     
-    if(note_name!=NULL)
+    if(note_name[0]!=0)
     textRect_name2.w = name2->w/2;
-    if(note_name!=NULL)
+    if(note_name[0]!=0)
     textRect_name2.h = name2->h/2;
 
     SDL_Surface *message3=NULL;
@@ -390,9 +389,9 @@ int backpack(char *background_image, char *laptop_image,char *note_image, char *
     SDL_Rect textRect_name3;
     textRect_name3.x = 105;
     textRect_name3.y = 286;
-    if(ticket_name!=NULL)
+    if(ticket_name[0]!=0)
     textRect_name3.w = name3->w/2;
-    if(ticket_name!=NULL)
+    if(ticket_name[0]!=0)
     textRect_name3.h = name3->h/2;
     
     SDL_RenderPresent(screen);
@@ -1379,7 +1378,6 @@ int SDL_choice_one_character(char *background_image, char *character_image,char 
 int SDL_main_screen(char *background_image,char *start_image,char *load_image,int x_position,int y_position,int width,int height)
 {
     SDL_Surface *image,*start,*load;
-    Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
     //Mix_Music* bgm = Mix_LoadMUS("y2300.mp3");
     //Mix_PlayMusic(bgm, -1);
     image = IMG_Load(background_image);
@@ -1659,7 +1657,7 @@ int SDL_sellcet_screen(char *character_image1,char *character_image2,char *chara
                         x=event.button.x;
                         y=event.button.y;
                         
-                        if(x>=47&&x<=47+89&&y>=227&&y<=227+100)
+                        if((x>=47&&x<=47+89&&y>=227&&y<=227+100)||(x>=37&&x<=37+126&&y>=367&&y<=367+51))
                         {
                             SDL_RenderCopy(screen, background_texture, NULL, NULL);
                             SDL_Surface *button1;
@@ -1693,7 +1691,7 @@ int SDL_sellcet_screen(char *character_image1,char *character_image2,char *chara
                             SDL_DestroyTexture(button_texture);
                             choose=11;
                         }
-                        else if(x>=196&&x<=196+89&&y>=227&&y<=227+100)
+                        else if((x>=196&&x<=196+89&&y>=227&&y<=227+100)||(x>=187&&x<=187+126&&y>=367&&y<=367+51))
                         {
                             SDL_RenderCopy(screen, background_texture, NULL, NULL);
                             SDL_Surface *button1;
@@ -1727,7 +1725,7 @@ int SDL_sellcet_screen(char *character_image1,char *character_image2,char *chara
                             SDL_DestroyTexture(button_texture);
                             choose=12;
                         }
-                        else if(x>=345&&x<=345+89&&y>=227&&y<=227+100)
+                        else if((x>=345&&x<=345+89&&y>=227&&y<=227+100)||(x>=337&&x<=337+126&&y>=367&&y<=367+51))
                         {
                             SDL_RenderCopy(screen, background_texture, NULL, NULL);
                             SDL_Surface *button1;
@@ -1761,7 +1759,7 @@ int SDL_sellcet_screen(char *character_image1,char *character_image2,char *chara
                             SDL_DestroyTexture(button_texture);
                             choose=13;
                         }
-                        else if(x>=495&&x<=495+89&&y>=227&&y<=227+100)
+                        else if((x>=495&&x<=495+89&&y>=227&&y<=227+100)||(x>=487&&x<=487+126&&y>=367&&y<=367+51))
                         {
                             SDL_RenderCopy(screen, background_texture, NULL, NULL);
                             SDL_Surface *button1;
@@ -1795,7 +1793,7 @@ int SDL_sellcet_screen(char *character_image1,char *character_image2,char *chara
                             SDL_DestroyTexture(button_texture);
                             choose=14;
                         }
-                        else if(x>=645&&x<=645+89&&y>=227&&y<=486+100)
+                        else if((x>=645&&x<=645+89&&y>=227&&y<=486+100)||(x>=637&&x<=637+126&&y>=367&&y<=367+51))
                         {
                             SDL_RenderCopy(screen, background_texture, NULL, NULL);
                             SDL_Surface *button1;
