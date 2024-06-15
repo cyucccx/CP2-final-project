@@ -240,7 +240,7 @@ int main(){
                 continue;
             }
         }
-        else if (buffer[0] == '[' && home == 0 && buffer[1] != '[' && select_character == 0){
+        else if (buffer[0] == '[' && home == 0 && buffer[1] != '['){
             if (last_scene > 1){
                 break;
             }
@@ -338,7 +338,7 @@ int main(){
                 }
             }
         }
-        if (buffer[0] == '[' && buffer[1] == '[' && home == 0 && select_character == 0){
+        if (buffer[0] == '[' && buffer[1] == '[' && home == 0){
             if (strstr(buffer, scene.name) != 0){
                 if (strstr(buffer, "dialogue") != 0){
                     string_index = 0;

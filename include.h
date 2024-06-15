@@ -59,7 +59,6 @@ typedef struct select{
     char *avatar5;
 }sSelect;
 
-
 typedef struct scene{
     char *name;
     char *background;

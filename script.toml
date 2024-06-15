@@ -35,7 +35,7 @@ text = "（開學第一天，原本應該吃完早餐再悠悠哉哉散步到學
 speaker = "旁白"
 text = "就在我默默後悔出門沒有叼一片土司走的時候，突然有個人影從眼前的轉角衝了出來"
 speaker = "我"
-test = "嗚喔！"
+text = "嗚喔！"
 speaker = "旁白"
 text = "出現在眼前的，是一位綁著可愛雙馬尾、嘴裡叼著筆電的豐滿女孩"
 next = "null"
@@ -346,6 +346,7 @@ speaker = "旁白"
 text = "眼前帶著神秘氣息的美少女是中晢，雖然以前就同班過，但坐在她隔壁還是第一次"
 speaker = "旁白"
 text = "...我還是完全看不出她在想什麼，還是搭個話吧"
+next = "null"
 
 [[jiang_1_start.reply]]
 option_box = "../assets/scene/select_button.png"
@@ -420,7 +421,7 @@ text = "...是錯覺嗎？總覺得她的臉好紅"
 next = "[jiang_1_end]"
 
 [jiang_1_good]
-background = "../assets/scene/hallway.png"
+background = "../assets/scene/classroom.png"
 backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 3 
 name = "中晢"
@@ -453,7 +454,7 @@ text = "...是錯覺嗎？總覺得她的臉好紅"
 next = "[jiang_1_end]"
 
 [jiang_1_end]
-background = "../assets/scene/classroom"
+background = "../assets/scene/classroom.png"
 backpack_icon = "../assets/scene/backpack_icon.png"
 character_number = 4
 name = "老師"
@@ -478,7 +479,7 @@ description = "全球第一台配備OLED 240Hz 16吋顯示器的電競筆電，�
 [[jiang_1_end.dialogue]]
 dialog_box = "../assets/scene/actorlines.png"
 string_number = 17
-speaker = "旁白"
+speaker = "我"
 text = "...嗯，我果然還是搞不懂她在想什麼"
 speaker = "旁白"
 text = "在我還在想自己的臉到底有什麼好看的時候，老師清喉嚨的聲音打斷了我的思考"
@@ -766,8 +767,8 @@ option2 = "...哇喔"
 change_favor2 = +5
 next2 = "[jiang_2_normal]"
 option3 = "太扯了吧，先不要欸" 
-change_favor3 = "[jiang_2_normal]"
-next3 = "-5"
+change_favor3 = -5
+next3 = "[jiang_2_normal]"
 
 [jiang_2_bad]
 background = "../assets/scene/classroom.png"
@@ -1640,7 +1641,7 @@ string_number = 2
 speaker = "博玟"
 text = "身為一個資工系的學生，我還是希望你這些基本的東西要知道..."
 speaker = "旁白"
-text = "博文皺著眉頭看著我"
+text = "博玟皺著眉頭看著我"
 next = "[chi_3_end]"
 
 [chi_3_good]
