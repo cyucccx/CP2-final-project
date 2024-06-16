@@ -1718,7 +1718,6 @@ text = "（好吧沒辦法了！鼓起勇氣上吧！我要去約的是！）"
 next = "null"
 
 [[final_event.reply]]
-option_box = "assests/scene/option_box.png"
 object1 = "博玟"
 option1 = "博玟"
 change_favor1 = 0
