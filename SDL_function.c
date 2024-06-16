@@ -1523,13 +1523,17 @@ int SDL_main_screen(char *background_image,char *start_image,char *load_image,in
     Mix_Chunk* bgm = Mix_LoadWAV("../assets/music/SE_button.mp3");
     image = IMG_Load(background_image);
     start = IMG_Load(start_image);
+    FILE *save = fopen("save.txt", "r");
+    if(save!=NULL)
     load = IMG_Load(load_image);
+
     SDL_Texture* background_texture = SDL_CreateTextureFromSurface(screen, image);
     SDL_Texture* start_texture = SDL_CreateTextureFromSurface(screen, start);
-    SDL_Texture* load_texture = SDL_CreateTextureFromSurface(screen, load);
-    SDL_FreeSurface(image);
-    SDL_FreeSurface(start);
-    SDL_FreeSurface(load);
+    SDL_Texture* load_texture;
+    if(save!=NULL)
+    load_texture = SDL_CreateTextureFromSurface(screen, load);
+    
+    
     Player play;
     SDL_Rect b,c,d;
     b.x = 0;
@@ -1580,14 +1584,13 @@ int SDL_main_screen(char *background_image,char *start_image,char *load_image,in
                             
                             quit = 1;
                         }
-                        else if(x>=112&&x<=112+181&&y>=486&&y<=486+50)
+                        if(save!=NULL)
                         {
-                            Mix_PlayChannel(-1,bgm, 0);
-                            FILE *save = fopen("save.txt", "r");
-                            if(save!=NULL)
-                            quit = 7;
-                            else
-                            quit = 0;
+                            if(x>=112&&x<=112+181&&y>=486&&y<=486+50)
+                            {
+                                Mix_PlayChannel(-1,bgm, 0);
+                                quit = 7;
+                            }
                         }
                     }
                     break;
@@ -1599,9 +1602,11 @@ int SDL_main_screen(char *background_image,char *start_image,char *load_image,in
             SDL_RenderClear(screen);
             SDL_SetTextureAlphaMod(background_texture, alpha);
             SDL_SetTextureAlphaMod(start_texture, alpha);
+            if(save!=NULL)
             SDL_SetTextureAlphaMod(load_texture, alpha);
             SDL_RenderCopy(screen, background_texture, NULL, NULL);
             SDL_RenderCopy(screen, start_texture, NULL, &c);
+            if(save!=NULL)
             SDL_RenderCopy(screen, load_texture, NULL, &d);
             SDL_RenderPresent(screen);
             alpha++;
