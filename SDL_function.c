@@ -25,9 +25,12 @@ void create_player(Player play, SDL_Renderer *render, SDL_Surface *image, SDL_Re
     //SDL_DestroyTexture(play.texture);
 }
 
-int backpack(char *background_image, char *laptop_image,char *note_image, char *ticket_image,char *laptop_message,char *note_message,char *ticket_message,char laptop_name[100],char note_name[100],char ticket_name[100])
+int backpack(char *background_image, char laptop_image[100],char note_image[100], char ticket_image[100],char *laptop_message,char *note_message,char *ticket_message,char laptop_name[100],char note_name[100],char ticket_name[100])
 {
     TTF_Init();
+    Mix_Chunk* bgm = Mix_LoadWAV("../assets/music/SE_backpack.mp3");
+    Mix_Chunk* bgm2 = Mix_LoadWAV("../assets/music/SE_button.mp3");
+    Mix_PlayChannel(-1,bgm, 0);
     TTF_Font* font = TTF_OpenFont("simfang.ttf", 50);
     if(font==NULL)
     {
@@ -73,26 +76,26 @@ int backpack(char *background_image, char *laptop_image,char *note_image, char *
     b.w = 800;
     
     SDL_Texture* laptop_texture;
-    if(laptop_image!=NULL)
+    if(laptop_image[0]!=0)
     laptop_texture = SDL_CreateTextureFromSurface(screen, laptop);
     //SDL_FreeSurface(laptop);
     SDL_Texture* note_texture;
-    if(note_image!=NULL)
+    if(note_image[0]!=0)
     note_texture = SDL_CreateTextureFromSurface(screen, note);
     //SDL_FreeSurface(note);
     SDL_Texture* ticket_texture;
-    if(ticket_image!=NULL)
+    if(ticket_image[0]!=0)
     ticket_texture = SDL_CreateTextureFromSurface(screen, ticket);
     
     SDL_Texture *background_texture = SDL_CreateTextureFromSurface(screen, image);
     //SDL_FreeSurface(image);
     //SDL_FreeSurface(ticket);
     SDL_RenderCopy(screen, background_texture, NULL, &background);
-    if(laptop_image!=NULL)
+    if(laptop_image[0]!=0)
     SDL_RenderCopy(screen, laptop_texture, NULL, &laptopp);
-    if(note_image!=NULL)
+    if(note_image[0]!=0)
     SDL_RenderCopy(screen, note_texture, NULL, &notee);
-    if(ticket_image!=NULL)
+    if(ticket_image[0]!=0)
     SDL_RenderCopy(screen, ticket_texture, NULL, &tickett);
     SDL_RenderPresent(screen);
 
@@ -151,7 +154,7 @@ int backpack(char *background_image, char *laptop_image,char *note_image, char *
         }
     }
     
-    if(laptop_name!=NULL)
+    if(laptop_name[0]!=0)
     name=TTF_RenderUTF8_Solid( font,laptop_name, textColor );
     SDL_Texture* textTexture;
     SDL_Texture* textTexture_2;
@@ -249,7 +252,7 @@ int backpack(char *background_image, char *laptop_image,char *note_image, char *
         }
     }
 
-    if(note_name!=NULL)
+    if(note_name[0]!=0)
     name2=TTF_RenderUTF8_Solid( font,note_name, textColor );
     SDL_Texture* textTexture2;
     SDL_Texture* textTexture2_2;
@@ -349,7 +352,7 @@ int backpack(char *background_image, char *laptop_image,char *note_image, char *
         }
     }
 
-    if(ticket_name!=NULL)
+    if(ticket_name[0]!=0)
     name3=TTF_RenderUTF8_Solid( font,ticket_name, textColor );
     SDL_Texture* textTexture3;
     SDL_Texture* textTexture3_2;
@@ -362,7 +365,7 @@ int backpack(char *background_image, char *laptop_image,char *note_image, char *
     textTexture3_3 = SDL_CreateTextureFromSurface(screen, message3_3);
 
     SDL_Texture* textTexture_name3;
-    if(ticket_name!=NULL)
+    if(ticket_name[0]!=0)
     textTexture_name3 = SDL_CreateTextureFromSurface(screen, name3);
     SDL_Rect textRect3;
     textRect3.x = 105;
@@ -417,6 +420,7 @@ int backpack(char *background_image, char *laptop_image,char *note_image, char *
                         y=event.button.y;
                         if(x>115&&x<225&&y>145&&y<240)
                         {
+                            Mix_PlayChannel(-1,bgm2, 0);
                             SDL_RenderCopy(screen, background_texture, NULL, &background);
                             SDL_Surface *button1;
                             button1 = IMG_Load("../assets/scene/select1.png");
@@ -428,15 +432,15 @@ int backpack(char *background_image, char *laptop_image,char *note_image, char *
                             button_1.h = 600;
                             button_1.w = 800;
                             SDL_RenderCopy(screen, button_texture, NULL, &button_1);
-                            if(ticket_image!=NULL)
+                            if(ticket_image[0]!=0)
                             {
                                 SDL_RenderCopy(screen, ticket_texture, NULL, &tickett);
                             }
-                            if(note_image!=NULL)
+                            if(note_image[0]!=0)
                             {
                                 SDL_RenderCopy(screen, note_texture, NULL, &notee);
                             }
-                            if(laptop_image!=NULL)
+                            if(laptop_image[0]!=0)
                             {
                                 SDL_RenderCopy(screen, laptop_texture, NULL, &laptopp);
                                 if(cou==0)
@@ -462,6 +466,7 @@ int backpack(char *background_image, char *laptop_image,char *note_image, char *
                         }
                         else if(x>345&&x<450&&y>145&&y<240)
                         {
+                            Mix_PlayChannel(-1,bgm2, 0);
                             SDL_RenderCopy(screen, background_texture, NULL, &background);
                             SDL_Surface *button1;
                             button1 = IMG_Load("../assets/scene/select2.png");
@@ -473,15 +478,15 @@ int backpack(char *background_image, char *laptop_image,char *note_image, char *
                             button_1.h = 600;
                             button_1.w = 800;
                             SDL_RenderCopy(screen, button_texture, NULL, &button_1);
-                            if(laptop_image!=NULL)
+                            if(laptop_image[0]!=0)
                             {
                                 SDL_RenderCopy(screen, laptop_texture, NULL, &laptopp);
                             }
-                            if(ticket_image!=NULL)
+                            if(ticket_image[0]!=0)
                             {
                                 SDL_RenderCopy(screen, ticket_texture, NULL, &tickett);
                             }
-                            if(note_image!=NULL)
+                            if(note_image[0]!=0)
                             {
                                 SDL_RenderCopy(screen, note_texture, NULL, &notee);
                                 if(couu==0)
@@ -507,6 +512,7 @@ int backpack(char *background_image, char *laptop_image,char *note_image, char *
                         }
                         else if(x>575&&x<680&&y>145&&y<240)
                         {
+                            Mix_PlayChannel(-1,bgm2, 0);
                             SDL_RenderCopy(screen, background_texture, NULL, &background);
                             SDL_Surface *button1;
                             button1 = IMG_Load("../assets/scene/select3.png");
@@ -518,15 +524,15 @@ int backpack(char *background_image, char *laptop_image,char *note_image, char *
                             button_1.h = 600;
                             button_1.w = 800;
                             SDL_RenderCopy(screen, button_texture, NULL, &button_1);
-                            if(note_image!=NULL)
+                            if(note_image[0]!=0)
                             {
                                 SDL_RenderCopy(screen, note_texture, NULL, &notee);
                             }
-                            if(laptop_image!=NULL)
+                            if(laptop_image[0]!=0)
                             {
                                 SDL_RenderCopy(screen, laptop_texture, NULL, &laptopp);
                             }
-                            if(ticket_image!=NULL)
+                            if(ticket_image[0]!=0)
                             {
                                 SDL_RenderCopy(screen, ticket_texture, NULL, &tickett);
                                 if(couuu==0)
@@ -552,6 +558,7 @@ int backpack(char *background_image, char *laptop_image,char *note_image, char *
                         }
                         else if(x>335&&x<465&&y>500&&y<550)
                         {
+                            Mix_PlayChannel(-1,bgm,0);
                             quit = 3;
                             return quit;
                         }
@@ -594,12 +601,15 @@ int backpack(char *background_image, char *laptop_image,char *note_image, char *
     SDL_DestroyTexture(textTexture3_2);
     SDL_DestroyTexture(textTexture3_3);
     SDL_DestroyTexture(textTexture_name3);
+    Mix_FreeChunk(bgm);
+    Mix_FreeChunk(bgm2);
     return quit;
 }
 
 int SDL_no_choice_one_character(char *background_image, char *character_image, char *character_message, char *character_name, Backpack packing, char *small_character_image)
 {
     TTF_Init();
+    Mix_Chunk* bgm2 = Mix_LoadWAV("../assets/music/SE_button.mp3");
     TTF_Font* font = TTF_OpenFont("simfang.ttf", 40);
     if(font==NULL)
     {
@@ -839,6 +849,7 @@ int SDL_no_choice_one_character(char *background_image, char *character_image, c
                         }
                         else if(x>=546&&x<=546+91&&y>=393&&y<=393+41)
                         {
+                            Mix_PlayChannel(-1,bgm2, 0);
                             keep = 5;
                         }
                         else
@@ -859,6 +870,7 @@ int SDL_no_choice_one_character(char *background_image, char *character_image, c
     SDL_FreeSurface(name);
     TTF_CloseFont(font);
     TTF_Quit();
+    Mix_FreeChunk(bgm2);
     if(keep==5&&quit==4)
     quit=6;
     else if(keep==5)
@@ -870,6 +882,9 @@ int SDL_no_choice_one_character(char *background_image, char *character_image, c
 int SDL_no_choice_one_character_anime(char *background_image, char *character_image, char *character_message, char *character_name, Backpack packing,char *small_character_image)
 {
     TTF_Init();
+    Mix_Chunk* bgm = Mix_LoadWAV("../assets/music/SE_transition.mp3");
+    Mix_Chunk* bgm2 = Mix_LoadWAV("../assets/music/SE_button.mp3");
+    Mix_PlayChannel(-1,bgm, 0);
     TTF_Font* font = TTF_OpenFont("simfang.ttf", 40);
     if(font==NULL)
     {
@@ -1103,6 +1118,7 @@ int SDL_no_choice_one_character_anime(char *background_image, char *character_im
                         }
                         else if(x>=546&&x<=546+91&&y>=393&&y<=393+41)
                         {
+                            Mix_PlayChannel(-1,bgm2, 0);
                             keep = 5;
                         }
                         else
@@ -1161,12 +1177,122 @@ int SDL_no_choice_one_character_anime(char *background_image, char *character_im
         // 延遲一小段時間
         SDL_Delay(10);
     }
-    
+    if(alpha<255&&quit!=4)
+    {
+        SDL_SetTextureAlphaMod(background_texture, 255);
+        SDL_SetTextureAlphaMod(play_texture, 255);
+        SDL_SetTextureAlphaMod(talk_texture, 255);
+        SDL_SetTextureAlphaMod(button_texture, 255);
+        SDL_SetTextureAlphaMod(button2_texture, 255);
+        SDL_SetTextureAlphaMod(smallplayer_texture, 255);
+        SDL_RenderCopy(screen, background_texture, NULL, &b);
+        SDL_RenderCopy(screen, play_texture, NULL, &b);
+        SDL_RenderCopy(screen, talk_texture, NULL, &c);
+        SDL_RenderCopy(screen, button_texture, NULL, &d);
+        SDL_RenderCopy(screen, button2_texture, NULL, &e);
+        SDL_RenderCopy(screen, smallplayer_texture, NULL, &a);
+
+        if(cou==0)
+        SDL_RenderCopy(screen, textTexture, NULL, &textRect);
+        else if(cou==1)
+        {
+            SDL_RenderCopy(screen, textTexture, NULL, &textRect);
+            SDL_RenderCopy(screen, textTexture2, NULL, &textRect2);
+        }
+        else if(cou==2)
+        {
+            SDL_RenderCopy(screen, textTexture, NULL, &textRect);
+            SDL_RenderCopy(screen, textTexture2, NULL, &textRect2);
+            SDL_RenderCopy(screen, textTexture3, NULL, &textRect3);
+        }
+        
+        
+        SDL_RenderCopy(screen, textTexture_name, NULL, &textRect_name);
+        SDL_RenderCopy(screen, textTexture_pack, NULL, &textRect_pack);
+        SDL_RenderCopy(screen, textTexture_keepdata, NULL, &textRect_keepdata);
+        
+        SDL_RenderPresent(screen);
+        quit = 0,keep=0;
+        while (!quit)
+        {
+            SDL_Event event;
+            int x,y;
+            while (SDL_PollEvent(&event))
+            {
+                switch (event.type)
+                {
+                    case SDL_QUIT:
+                        quit = 4;
+                        break;
+                    case SDL_MOUSEBUTTONDOWN:
+                        if(event.button.button == SDL_BUTTON_LEFT)
+                        {
+                            x=event.button.x;
+                            y=event.button.y;
+                            if(x>=646&&x<=646+91&&y>=393&&y<=393+41)
+                            {
+                                int back = backpack(packing.background_image,packing.laptop_image,packing.note_image,packing.ticket_image,packing.laptop_message,packing.note_message,packing.ticket_message,packing.laptop_name,packing.note_name,packing.ticket_name);
+                                if(back == 3)
+                                {
+                                    SDL_RenderCopy(screen, background_texture, NULL, &b);
+                                    SDL_RenderCopy(screen, play_texture, NULL, &b);
+                                    SDL_RenderCopy(screen, talk_texture, NULL, &c);
+                                    SDL_RenderCopy(screen, button_texture, NULL, &d);
+                                    SDL_RenderCopy(screen, button2_texture, NULL, &e);
+                                    SDL_RenderCopy(screen, smallplayer_texture, NULL, &a);
+        
+                                    if(cou==0)
+                                    SDL_RenderCopy(screen, textTexture, NULL, &textRect);
+                                    else if(cou==1)
+                                    {
+                                        SDL_RenderCopy(screen, textTexture, NULL, &textRect);
+                                        SDL_RenderCopy(screen, textTexture2, NULL, &textRect2);
+                                    }
+                                    else if(cou==2)
+                                    {
+                                        SDL_RenderCopy(screen, textTexture, NULL, &textRect);
+                                        SDL_RenderCopy(screen, textTexture2, NULL, &textRect2);
+                                        SDL_RenderCopy(screen, textTexture3, NULL, &textRect3);
+                                    }
+                                    
+                                    
+                                    SDL_RenderCopy(screen, textTexture_name, NULL, &textRect_name);
+                                    SDL_RenderCopy(screen, textTexture_pack, NULL, &textRect_pack);
+                                    SDL_RenderCopy(screen, textTexture_keepdata, NULL, &textRect_keepdata);
+                                    
+                                    SDL_RenderPresent(screen);
+                                }
+                                else if(back==1)
+                                {
+                                    quit = 4;
+                                    break;
+                                }
+                            }
+                            else if(x>=546&&x<=546+91&&y>=393&&y<=393+41)
+                            {
+                                Mix_PlayChannel(-1,bgm2, 0);
+                                keep = 5;
+                            }
+                            else
+                            {
+                                quit = 1;
+                            }
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+            
+        }
+    }
     SDL_DestroyTexture(textTexture);
     SDL_DestroyTexture(textTexture_name);
     SDL_FreeSurface(message);
     SDL_FreeSurface(name);
     TTF_CloseFont(font);
+    Mix_FreeChunk(bgm2);
+    Mix_FreeChunk(bgm);
     TTF_Quit();
     if(keep==5&&quit==4)
     quit=6;
@@ -1180,6 +1306,8 @@ int SDL_choice_one_character(char *background_image, char *character_image,char 
 {
     TTF_Init();
     TTF_Font* font = TTF_OpenFont("simfang.ttf", 40);
+    Mix_Chunk* bgm = Mix_LoadWAV("../assets/music/SE_select.mp3");
+    Mix_Chunk* bgm2 = Mix_LoadWAV("../assets/music/SE_button.mp3");
     if(font==NULL)
     {
         printf("can not found %s\n",TTF_GetError());
@@ -1345,13 +1473,23 @@ int SDL_choice_one_character(char *background_image, char *character_image,char 
                             }
                         }
                         else if(x>=138&&x<=660&&y>=285&&y<=322)
-                        quit = 3;
+                        {
+                            Mix_PlayChannel(-1,bgm, 0);
+                            quit = 3;
+                        }
                         else if(x>=138&&x<=660&&y>=218&&y<=254)
-                        quit = 2;
+                        {
+                            Mix_PlayChannel(-1,bgm, 0);
+                            quit = 2;
+                        }
                         else if(x>=138&&x<=660&&y>=149&&y<=189)
-                        quit = 1;
+                        {
+                            Mix_PlayChannel(-1,bgm, 0);
+                            quit = 1;
+                        }
                         else if(x>=546&&x<=546+91&&y>=393&&y<=393+41)
                         {
+                            Mix_PlayChannel(-1,bgm2, 0);
                             keep = 5;
                         }
                     }
@@ -1367,6 +1505,8 @@ int SDL_choice_one_character(char *background_image, char *character_image,char 
     SDL_DestroyTexture(textTexture_name);
     SDL_FreeSurface(name);
     TTF_CloseFont(font);
+    Mix_FreeChunk(bgm2);
+    Mix_FreeChunk(bgm);
     TTF_Quit();
     if(keep==5&&quit==4)
     quit=6;
@@ -1378,8 +1518,9 @@ int SDL_choice_one_character(char *background_image, char *character_image,char 
 int SDL_main_screen(char *background_image,char *start_image,char *load_image,int x_position,int y_position,int width,int height)
 {
     SDL_Surface *image,*start,*load;
-    //Mix_Music* bgm = Mix_LoadMUS("y2300.mp3");
-    //Mix_PlayMusic(bgm, -1);
+    // Mix_Music* bgm = Mix_LoadMUS("y2300.mp3");
+    // Mix_PlayMusic(bgm, -1);
+    Mix_Chunk* bgm = Mix_LoadWAV("../assets/music/SE_button.mp3");
     image = IMG_Load(background_image);
     start = IMG_Load(start_image);
     load = IMG_Load(load_image);
@@ -1435,35 +1576,18 @@ int SDL_main_screen(char *background_image,char *start_image,char *load_image,in
                         
                         if(x>=112&&x<=112+181&&y>=417&&y<=417+50)
                         {
-                            alpha = 175;
-                            while (alpha > 0) {
-                                SDL_RenderClear(screen);
-                                SDL_SetTextureAlphaMod(background_texture, alpha);
-                                SDL_SetTextureAlphaMod(start_texture, alpha);
-                                SDL_SetTextureAlphaMod(load_texture, alpha);
-                                SDL_RenderCopy(screen, background_texture, NULL, NULL);
-                                SDL_RenderCopy(screen, start_texture, NULL, &c);
-                                SDL_RenderCopy(screen, load_texture, NULL, &d);
-                                SDL_RenderPresent(screen);
-                                alpha--;
-                            }
+                            Mix_PlayChannel(-1,bgm, 0);
+                            
                             quit = 1;
                         }
                         else if(x>=112&&x<=112+181&&y>=486&&y<=486+50)
                         {
-                            alpha = 175;
-                            while (alpha > 0) {
-                                SDL_RenderClear(screen);
-                                SDL_SetTextureAlphaMod(background_texture, alpha);
-                                SDL_SetTextureAlphaMod(start_texture, alpha);
-                                SDL_SetTextureAlphaMod(load_texture, alpha);
-                                SDL_RenderCopy(screen, background_texture, NULL, NULL);
-                                SDL_RenderCopy(screen, start_texture, NULL, &c);
-                                SDL_RenderCopy(screen, load_texture, NULL, &d);
-                                SDL_RenderPresent(screen);
-                                alpha--;
-                            }
+                            Mix_PlayChannel(-1,bgm, 0);
+                            FILE *save = fopen("save.txt", "r");
+                            if(save!=NULL)
                             quit = 7;
+                            else
+                            quit = 0;
                         }
                     }
                     break;
@@ -1486,6 +1610,7 @@ int SDL_main_screen(char *background_image,char *start_image,char *load_image,in
     }
     
     
+    Mix_FreeChunk(bgm);
     
     return quit;
 }
@@ -1640,6 +1765,8 @@ int SDL_sellcet_screen(char *character_image1,char *character_image2,char *chara
     Uint8 alpha = 0;
     int quit = 0;
     int choose=0;
+    Mix_Chunk* bgm = Mix_LoadWAV("../assets/music/SE_select.mp3");
+    Mix_Chunk* bgm2 = Mix_LoadWAV("../assets/music/SE_button.mp3");
     while (!quit)
     {
         SDL_Event event;
@@ -1659,6 +1786,8 @@ int SDL_sellcet_screen(char *character_image1,char *character_image2,char *chara
                         
                         if((x>=47&&x<=47+89&&y>=227&&y<=227+100)||(x>=37&&x<=37+126&&y>=367&&y<=367+51))
                         {
+                            
+                            Mix_PlayChannel(-1,bgm, 0);
                             SDL_RenderCopy(screen, background_texture, NULL, NULL);
                             SDL_Surface *button1;
                             button1 = IMG_Load("../assets/scene/selected_blank.png");
@@ -1693,6 +1822,7 @@ int SDL_sellcet_screen(char *character_image1,char *character_image2,char *chara
                         }
                         else if((x>=196&&x<=196+89&&y>=227&&y<=227+100)||(x>=187&&x<=187+126&&y>=367&&y<=367+51))
                         {
+                            Mix_PlayChannel(-1,bgm, 0);
                             SDL_RenderCopy(screen, background_texture, NULL, NULL);
                             SDL_Surface *button1;
                             button1 = IMG_Load("../assets/scene/selected_blank.png");
@@ -1727,6 +1857,7 @@ int SDL_sellcet_screen(char *character_image1,char *character_image2,char *chara
                         }
                         else if((x>=345&&x<=345+89&&y>=227&&y<=227+100)||(x>=337&&x<=337+126&&y>=367&&y<=367+51))
                         {
+                            Mix_PlayChannel(-1,bgm, 0);
                             SDL_RenderCopy(screen, background_texture, NULL, NULL);
                             SDL_Surface *button1;
                             button1 = IMG_Load("../assets/scene/selected_blank.png");
@@ -1761,6 +1892,7 @@ int SDL_sellcet_screen(char *character_image1,char *character_image2,char *chara
                         }
                         else if((x>=495&&x<=495+89&&y>=227&&y<=227+100)||(x>=487&&x<=487+126&&y>=367&&y<=367+51))
                         {
+                            Mix_PlayChannel(-1,bgm, 0);
                             SDL_RenderCopy(screen, background_texture, NULL, NULL);
                             SDL_Surface *button1;
                             button1 = IMG_Load("../assets/scene/selected_blank.png");
@@ -1795,6 +1927,7 @@ int SDL_sellcet_screen(char *character_image1,char *character_image2,char *chara
                         }
                         else if((x>=645&&x<=645+89&&y>=227&&y<=486+100)||(x>=637&&x<=637+126&&y>=367&&y<=367+51))
                         {
+                            Mix_PlayChannel(-1,bgm, 0);
                             SDL_RenderCopy(screen, background_texture, NULL, NULL);
                             SDL_Surface *button1;
                             button1 = IMG_Load("../assets/scene/selected_blank.png");
@@ -1829,6 +1962,8 @@ int SDL_sellcet_screen(char *character_image1,char *character_image2,char *chara
                         }
                         else if(x>=324&&x<=474&&y>=473&&y<=531)
                         {
+                            Mix_PlayChannel(1,bgm2, 0);
+                            SDL_Delay(300);
                             quit=choose;
                         }
                     }
@@ -1837,6 +1972,41 @@ int SDL_sellcet_screen(char *character_image1,char *character_image2,char *chara
                     break;
             }
         }
+        if (alpha < 255) {
+            SDL_RenderClear(screen);
+            SDL_SetTextureAlphaMod(background_texture, alpha);
+            SDL_SetTextureAlphaMod(one_texture, alpha);
+            SDL_SetTextureAlphaMod(two_texture, alpha);
+            SDL_SetTextureAlphaMod(three_texture, alpha);
+            SDL_SetTextureAlphaMod(four_texture, alpha);
+            SDL_SetTextureAlphaMod(five_texture, alpha);
+            SDL_SetTextureAlphaMod(nameblank_texture, alpha);
+            SDL_SetTextureAlphaMod(textTexture1, alpha);
+            SDL_SetTextureAlphaMod(textTexture2, alpha);
+            SDL_SetTextureAlphaMod(textTexture3, alpha);
+            SDL_SetTextureAlphaMod(textTexture4, alpha);
+            SDL_SetTextureAlphaMod(textTexture5, alpha);
+            SDL_RenderCopy(screen, background_texture, NULL, NULL);
+            SDL_RenderCopy(screen, one_texture, NULL, &a);
+            SDL_RenderCopy(screen, two_texture, NULL, &b);
+            SDL_RenderCopy(screen, three_texture, NULL, &c);
+            SDL_RenderCopy(screen, four_texture, NULL, &d);
+            SDL_RenderCopy(screen, five_texture, NULL, &e);
+            SDL_RenderCopy(screen, nameblank_texture, NULL, &aa);
+            SDL_RenderCopy(screen, nameblank_texture, NULL, &bb);
+            SDL_RenderCopy(screen, nameblank_texture, NULL, &cc);
+            SDL_RenderCopy(screen, nameblank_texture, NULL, &dd);
+            SDL_RenderCopy(screen, nameblank_texture, NULL, &ee);
+
+            SDL_RenderCopy(screen, textTexture1, NULL, &textRect1);
+            SDL_RenderCopy(screen, textTexture2, NULL, &textRect2);
+            SDL_RenderCopy(screen, textTexture3, NULL, &textRect3);
+            SDL_RenderCopy(screen, textTexture4, NULL, &textRect4);
+            SDL_RenderCopy(screen, textTexture5, NULL, &textRect5);
+            SDL_RenderPresent(screen);
+            alpha++;
+        }
+        SDL_Delay(5);
     }
     SDL_FreeSurface(background);
     SDL_FreeSurface(one);
@@ -1866,8 +2036,8 @@ int SDL_sellcet_screen(char *character_image1,char *character_image2,char *chara
 
     TTF_CloseFont(font);
     TTF_Quit();
-    
-    
+    Mix_FreeChunk(bgm);
+    Mix_FreeChunk(bgm2);
     return quit;
 }
 // int main(int argc, char* args[]) 

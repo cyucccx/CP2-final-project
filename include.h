@@ -35,7 +35,7 @@ typedef struct Backpack{
 
 void create_player(Player play, SDL_Renderer *render, SDL_Surface *image, SDL_Rect a);
 
-int backpack(char *background_image, char *laptop_image,char *note_image, char *ticket_image,char *laptop_message,char *note_message,char *ticket_message,char laptop_name[100],char note_name[100],char ticket_name[100]);
+int backpack(char *background_image, char laptop_image[100],char note_image[100], char ticket_image[100],char *laptop_message,char *note_message,char *ticket_message,char laptop_name[100],char note_name[100],char ticket_name[100]);
 
 int SDL_no_choice_one_character(char *background_image, char *character_image, char *character_message, char *character_name, Backpack packing, char *small_character_image);
 
