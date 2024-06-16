@@ -43,3 +43,7 @@ https://github.com/cyucccx/CP2-final-project
 2. 在`final_project`目錄下執行 `./bin/interactive_novel_engine`
 ## script 編寫規則
 https://hackmd.io/@cyucccx/Hyb8iDmM0
+## 素材來源
+* UI素材：[空想曲線](https://kopacurve.blog.fc2.com/blog-entry-394.html) 
+* 背景素材：[きまぐれアフター背景素材置き場](https://gakaisozai.seesaa.net/article/202102article_1.html)
+* 音樂、音效：[魔王魂](https://maou.audio/rule/)
