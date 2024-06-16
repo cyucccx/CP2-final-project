@@ -38,6 +38,7 @@ int main(){
     char myavatar[100] = {0};
     char *home_background = 0;
     char *home_button = 0;
+    char *home_button_load = 0;
     int32_t max_character = 0; // create an array to store the favor of every character
     sScene scene;
     scene.name;
@@ -59,6 +60,7 @@ int main(){
     int32_t string_index = 0;
     int32_t backpack_index = 0;
     char search_event[1000]={0};
+    char *home_music = 0;
     int32_t check = 0;
     int32_t character_index = 0;
     int32_t need_anime = 1;
@@ -73,6 +75,11 @@ int main(){
     //compare = calloc(100, sizeof(char));
     window = SDL_CreateWindow( "fin_project", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN );
     screen = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+    Mix_Chunk* bgm2;
+    int channel;
+    // Mix_Music* bgm = Mix_LoadMUS("y2300.mp3");
+    // Mix_PlayMusic(bgm, -1);
     while(fgets(buffer, 500, script) != 0){
         if (strcmp(buffer, "\n") == 0 && home == 1){
             home = 0;
@@ -98,7 +105,16 @@ int main(){
         }
         if (home == 1){
             // printf("%s", buffer);
-            if (home_background == 0){
+            if (home_music == 0){
+                if (getstring(buffer, &home_music) == -1){
+                    // wrong
+                }
+                printf("home_music = %s\n", home_music);
+                bgm2 = Mix_LoadWAV(home_music);
+                channel = Mix_PlayChannel(-1, bgm2, -1);
+                Mix_VolumeChunk(bgm2, MIX_MAX_VOLUME / 3); // 设置为最大音量的一半
+            }
+            else if (home_background == 0){
                 if (getstring(buffer, &home_background) == -1){
                     // wrong
                 }
@@ -109,6 +125,12 @@ int main(){
                     // wrong
                 }
                 printf("home_button = %s\n", home_button);
+            }
+            else if (home_button_load == 0){
+                if (getstring(buffer, &home_button_load) == -1){
+                    // wrong
+                }
+                printf("home_button_load = %s\n", home_button_load);
             }
             else if (max_character == 0){
                 if (strstr(buffer, "max_character") != 0){
@@ -139,7 +161,7 @@ int main(){
                     // }
                 }
                 printf("max_character = %d\n", max_character);
-                int end =SDL_main_screen(home_background,home_button,home_button,120,460,220,90);
+                int end =SDL_main_screen(home_background,home_button,home_button_load,120,460,220,90);
                 if(end==4 || end == 6)
                 {
                     SDL_DestroyRenderer(screen);
@@ -948,6 +970,7 @@ int main(){
                     strcpy(back.note_message,backpack.description[1]);
                     strcpy(back.ticket_message,backpack.description[2]);
                 }
+                
                 int end = SDL_choice_one_character(scene.background,"NULL",final_reply.option1,final_reply.option2,final_reply.option3," ",back);
                 if(end==4 || end == 6)
                 {
@@ -980,6 +1003,10 @@ int main(){
                             search_event[i]=0;
                         }
                         strcpy(search_event, final_reply.good_next1);
+                        Mix_Pause(channel);
+                        Mix_Chunk* bgm = Mix_LoadWAV("../assets/music/goodend.mp3");
+                        Mix_VolumeChunk(bgm, MIX_MAX_VOLUME / 3);
+                        Mix_PlayChannel(-1,bgm, -1);
                     }
                     else{
                         for(int i=0;i<1000;i++)
@@ -987,6 +1014,10 @@ int main(){
                             search_event[i]=0;
                         }
                         strcpy(search_event, final_reply.bad_next1);
+                        Mix_Pause(channel);
+                        Mix_Chunk* bgm = Mix_LoadWAV("../assets/music/badend.mp3");
+                        Mix_VolumeChunk(bgm, MIX_MAX_VOLUME / 3);
+                        Mix_PlayChannel(-1,bgm, -1);
                     }
                 }
                 else if (end == 2){
@@ -1013,6 +1044,10 @@ int main(){
                             search_event[i]=0;
                         }
                         strcpy(search_event, final_reply.good_next2);
+                        Mix_Pause(channel);
+                        Mix_Chunk* bgm = Mix_LoadWAV("../assets/music/goodend.mp3");
+                        Mix_VolumeChunk(bgm, MIX_MAX_VOLUME / 3);
+                        Mix_PlayChannel(-1,bgm, -1);
                     }
                     else{
                         for(int i=0;i<1000;i++)
@@ -1020,6 +1055,10 @@ int main(){
                             search_event[i]=0;
                         }
                         strcpy(search_event, final_reply.bad_next2);
+                        Mix_Pause(channel);
+                        Mix_Chunk* bgm = Mix_LoadWAV("../assets/music/badend.mp3");
+                        Mix_VolumeChunk(bgm, MIX_MAX_VOLUME / 3);
+                        Mix_PlayChannel(-1,bgm, -1);
                     }
                 }
                 else if (end == 3){
@@ -1046,6 +1085,10 @@ int main(){
                             search_event[i]=0;
                         }
                         strcpy(search_event, final_reply.good_next3);
+                        Mix_Pause(channel);
+                        Mix_Chunk* bgm = Mix_LoadWAV("../assets/music/goodend.mp3");
+                        Mix_VolumeChunk(bgm, MIX_MAX_VOLUME / 3);
+                        Mix_PlayChannel(-1,bgm, -1);
                     }
                     else{
                         for(int i=0;i<1000;i++)
@@ -1053,6 +1096,10 @@ int main(){
                             search_event[i]=0;
                         }
                         strcpy(search_event, final_reply.bad_next3);
+                        Mix_Pause(channel);
+                        Mix_Chunk* bgm = Mix_LoadWAV("../assets/music/badend.mp3");
+                        Mix_VolumeChunk(bgm, MIX_MAX_VOLUME / 3);
+                        Mix_PlayChannel(-1,bgm, -1);
                     }
                 }
                 last_scene = 1;
@@ -1309,5 +1356,6 @@ int main(){
             }
         }
     }
+    Mix_CloseAudio();
     fclose(script);
 }
