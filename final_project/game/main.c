@@ -1,10 +1,5 @@
 #include "include.h"
 
-// main and home is set the biggest problem is scene part...
-// remember to free the memory!!!!!
-// don't read the sentence which is commented
-// if max_character < real number -> segmentation fault, plz resolve ;;
-
 int32_t getstring(char *string, char **var_name) {
     char *start = strstr(string, "\"");
     if (start == NULL) {
@@ -80,12 +75,12 @@ int main(){
             home = 0;
             continue;
         }
-        // printf("%s", buffer);
         if (strstr(buffer, "project_name") != 0){
             if (getstring(buffer, &project_name) == -1){
-                // wrong
+                printf("script error\n");
+                return 0;
             }
-            printf("project name = %s\n", project_name);
+            // printf("project name = %s\n", project_name);
         }
         // read home
         if (strstr(buffer, "[home]") != 0){
@@ -93,21 +88,22 @@ int main(){
             continue;
         }
         if (home == 1){
-            // printf("%s", buffer);
             if (home_music == 0){
                 if (getstring(buffer, &home_music) == -1){
-                    // wrong
+                    printf("script error\n");
+                    return 0;
                 }
-                printf("home_music = %s\n", home_music);
+                // printf("home_music = %s\n", home_music);
                 bgm2 = Mix_LoadWAV(home_music);
                 channel = Mix_PlayChannel(-1, bgm2, -1);
                 Mix_VolumeChunk(bgm2, MIX_MAX_VOLUME / 3); // 设置为最大音量的一半
             }
             else if (home_background == 0){
                 if (getstring(buffer, &home_background) == -1){
-                    // wrong
+                    printf("script error\n");
+                    return 0;
                 }
-                printf("home_background = %s\n", home_background);
+                // printf("home_background = %s\n", home_background);
             }
             else if (max_character == 0){
                 if (strstr(buffer, "max_character") != 0){
@@ -137,7 +133,7 @@ int main(){
                     //     character[i].favor = 0;
                     // }
                 }
-                printf("max_character = %d\n", max_character);
+                // printf("max_character = %d\n", max_character);
                 int end =SDL_main_screen(home_background,"assets/home/start.png","assets/home/load.png",120,460,220,90);
                 if(end==4)
                 {
@@ -221,73 +217,73 @@ int main(){
         if (select_character == 1 && strlen(myname) == 0){
             if (avatar_choose1[0] == 0 && strstr(buffer, "avatar_choose1") != 0){
                 sscanf(buffer, "avatar_choose1 = \"%[^\"]\"", avatar_choose1);
-                printf("%s\n", avatar_choose1);
+                // printf("%s\n", avatar_choose1);
             }
             else if (avatar_choose2[0] == 0 && strstr(buffer, "avatar_choose2") != 0){
                 sscanf(buffer, "avatar_choose2 = \"%[^\"]\"", avatar_choose2);
-                printf("%s\n", avatar_choose2);
+                // printf("%s\n", avatar_choose2);
             }
             else if (avatar_choose3[0] == 0 && strstr(buffer, "avatar_choose3") != 0){
                 sscanf(buffer, "avatar_choose3 = \"%[^\"]\"", avatar_choose3);
-                printf("%s\n", avatar_choose3);
+                // printf("%s\n", avatar_choose3);
             }
             else if (avatar_choose4[0] == 0 && strstr(buffer, "avatar_choose4") != 0){
                 sscanf(buffer, "avatar_choose4 = \"%[^\"]\"", avatar_choose4);
-                printf("%s\n", avatar_choose4);
+                // printf("%s\n", avatar_choose4);
             }
             else if (avatar_choose5[0] == 0 && strstr(buffer, "avatar_choose5") != 0){
                 sscanf(buffer, "avatar_choose5 = \"%[^\"]\"", avatar_choose5);
-                printf("%s\n", avatar_choose5);
+                // printf("%s\n", avatar_choose5);
             }
             else if (select.name1 == NULL && strstr(buffer, "name1") != 0){
                 select.name1 = calloc(100, sizeof(char));
                 sscanf(buffer, "name1 = \"%[^\"]\"", select.name1);
-                printf("%s\n", select.name1);
+                // printf("%s\n", select.name1);
             }
             else if (select.name2 == NULL && strstr(buffer, "name2") != 0){
                 select.name2 = calloc(100, sizeof(char));
                 sscanf(buffer, "name2 = \"%[^\"]\"", select.name2);
-                printf("%s\n", select.name2);
+                // printf("%s\n", select.name2);
             }
             else if (select.name3 == NULL && strstr(buffer, "name3") != 0){
                 select.name3 = calloc(100, sizeof(char));
                 sscanf(buffer, "name3 = \"%[^\"]\"", select.name3);
-                printf("%s\n", select.name3);
+                // printf("%s\n", select.name3);
             }
             else if (select.name4 == NULL && strstr(buffer, "name4") != 0){
                 select.name4 = calloc(100, sizeof(char));
                 sscanf(buffer, "name4 = \"%[^\"]\"", select.name4);
-                printf("%s\n", select.name4);
+                // printf("%s\n", select.name4);
             }
             else if (select.name5 == NULL && strstr(buffer, "name5") != 0){
                 select.name5 = calloc(100, sizeof(char));
                 sscanf(buffer, "name5 = \"%[^\"]\"", select.name5);
-                printf("%s\n", select.name5);
+                // printf("%s\n", select.name5);
             }
             else if (select.avatar1 == NULL && strstr(buffer, "avatar1") != 0){
                 select.avatar1 = calloc(100, sizeof(char));
                 sscanf(buffer, "avatar1 = \"%[^\"]\"", select.avatar1);
-                printf("%s\n", select.avatar1);
+                // printf("%s\n", select.avatar1);
             }
             else if (select.avatar2 == NULL && strstr(buffer, "avatar2") != 0){
                 select.avatar2 = calloc(100, sizeof(char));
                 sscanf(buffer, "avatar2 = \"%[^\"]\"", select.avatar2);
-                printf("%s\n", select.avatar2);
+                // printf("%s\n", select.avatar2);
             }
             else if (select.avatar3 == NULL && strstr(buffer, "avatar3") != 0){
                 select.avatar3 = calloc(100, sizeof(char));
                 sscanf(buffer, "avatar3 = \"%[^\"]\"", select.avatar3);
-                printf("%s\n", select.avatar3);
+                // printf("%s\n", select.avatar3);
             }
             else if (select.avatar4 == NULL && strstr(buffer, "avatar4") != 0){
                 select.avatar4 = calloc(100, sizeof(char));
                 sscanf(buffer, "avatar4 = \"%[^\"]\"", select.avatar4);
-                printf("%s\n", select.avatar4);
+                // printf("%s\n", select.avatar4);
             }
             else if (select.avatar5 == NULL && strstr(buffer, "avatar5") != 0){
                 select.avatar5 = calloc(100, sizeof(char));
                 sscanf(buffer, "avatar5 = \"%[^\"]\"", select.avatar5);
-                printf("%s\n", select.avatar5);
+                // printf("%s\n", select.avatar5);
                 int end = SDL_sellcet_screen(avatar_choose1,avatar_choose2,avatar_choose3,avatar_choose4,avatar_choose5,select.name1,select.name2,select.name3,select.name4,select.name5); // SDL
                 if(end==4)
                 {
@@ -299,27 +295,22 @@ int main(){
                 if (end == 11){
                     strcpy(myname, select.name1);
                     strcpy(myavatar, select.avatar1);
-                    // free select
                 }
                 else if (end == 12){
                     strcpy(myname, select.name2);
                     strcpy(myavatar, select.avatar2);
-                    // free select
                 }
                 else if (end == 13){
                     strcpy(myname, select.name3);
                     strcpy(myavatar, select.avatar3);
-                    // free select
                 }
                 else if (end == 14){
                     strcpy(myname, select.name4);
                     strcpy(myavatar, select.avatar4);
-                    // free select
                 }
                 else if (end == 15){
                     strcpy(myname, select.name5);
                     strcpy(myavatar, select.avatar5);
-                    // free select
                 }
             }
         }
@@ -349,7 +340,7 @@ int main(){
                 char *end = strstr(buffer, "]");
                 *end = '\0';
                 strcpy(scene.name, buffer+1);
-                printf("scene.name = %s\n", scene.name);
+                // printf("scene.name = %s\n", scene.name);
                 for(int i=0;i<1000;i++)
                 search_event[i]=0;
                 if (last_scene == 1){
@@ -384,7 +375,7 @@ int main(){
             char *end = strstr(buffer, "]");
             *end = '\0';
             strcpy(scene.name, buffer+1);
-            printf("scene.name = %s\n", scene.name);
+            // printf("scene.name = %s\n", scene.name);
         }
         // printf("%s:%d %d %d\n", scene.name, scene.backpack, scene.dialogue, scene.reply);
         if (scene.dialogue == 0 && scene.reply == 0 && scene.backpack == 0){
@@ -394,7 +385,6 @@ int main(){
                     need_anime = 1;
                     sscanf(buffer,"background = \"%[^\"]\"",scene.background);
                     // getstring(buffer, &scene.background);
-                    printf("compare = %s\nbackground = %s\n", compare, scene.background);
                     if (compare[0] == 0){
                         continue;
                     }
@@ -402,7 +392,7 @@ int main(){
                         need_anime = 0;
                     }
                     
-                    printf("scene.background = %s\n", scene.background);
+                    // printf("scene.background = %s\n", scene.background);
                 }
             }
             if (scene.character_number == 0){
@@ -417,7 +407,7 @@ int main(){
                     //     }
                     // }
                     index = scene.character_number;
-                    printf("character_number = %d\n", scene.character_number);
+                    // printf("character_number = %d\n", scene.character_number);
                 }
             }
             if (index > 0){
@@ -430,7 +420,6 @@ int main(){
                     if (strcmp(temp, "me") == 0){
                         strncpy(temp, myname, strlen(myname));
                     }
-                    printf("44444400000 %d\n", count_character);
                     for (int32_t i = 0; i < count_character; i++){
                         if (strcmp(character[i].name, temp) == 0){
                             check = 1;
@@ -439,14 +428,15 @@ int main(){
                         }
                     }
                     if (check == 0){
-                        if (count_character == max_character){
-                            // wrong
+                        if (count_character >= max_character){
+                            printf("script error\n");
+                            return 0;
                         }
                         character_index = count_character;
                         strcpy(character[count_character].name, temp);
                         
                     }
-                    printf("character_name = %s\n", character[character_index].name);
+                    // printf("character_name = %s\n", character[character_index].name);
                 }
                 else if (strstr(buffer, "photo") != 0){
                     sscanf(buffer,"photo = \"%[^\"]\"",character[character_index].photo);
@@ -456,7 +446,7 @@ int main(){
                             // switch to no photo function
                         }
                     }
-                    printf("character_photo = %s\n", character[character_index].photo);
+                    // printf("character_photo = %s\n", character[character_index].photo);
                 }
                 else if (strstr(buffer, "avatar") != 0){
                     sscanf(buffer,"avatar = \"%[^\"]\"",character[character_index].avatar);
@@ -470,10 +460,9 @@ int main(){
                         // }
                         count_character++;
                     }
-                    printf("avatar = %s\n", character[character_index].avatar);
+                    // printf("avatar = %s\n", character[character_index].avatar);
                     index--;
                 }
-                printf("444444000006666 %d\n", count_character);
             }
         }
         if (buffer[0] == '[' && buffer[1] == '[' && home == 0){
@@ -542,9 +531,8 @@ int main(){
                 }
             }
             if (scene.reply > 0 && scene.dialogue == 0){
-                printf("wrong\n");
+                printf("script error\n");
                 return 0;
-                // wrong
             }
             // printf("%d %d %d\n", scene[scene_number].dialogue, scene[scene_number].reply, scene[scene_number].backpack);
         }
@@ -561,23 +549,23 @@ int main(){
                 //         break;
                 //     }
                 // }
-                printf("items_number = %d\n", backpack.items_number);
+                // printf("items_number = %d\n", backpack.items_number);
             }
             if (backpack_index < backpack.items_number){
                 if (strstr(buffer, "name") != 0){
                     sscanf(buffer,"name = \"%[^\"]\"",backpack.name[backpack_index]);
                     //getstring(buffer, &backpack.name[backpack_index]);
-                    printf("backpackname = %s\n", backpack.name[backpack_index]);
+                    // printf("backpackname = %s\n", backpack.name[backpack_index]);
                 }
                 else if(strstr(buffer, "photo") != 0){
                     sscanf(buffer,"photo = \"%[^\"]\"",backpack.photo[backpack_index]);
                     //getstring(buffer, &backpack.photo[backpack_index]);
-                    printf("backpackphoto = %s\n", backpack.photo[backpack_index]);
+                    // printf("backpackphoto = %s\n", backpack.photo[backpack_index]);
                 }
                 else if(strstr(buffer, "description") != 0 && strstr(buffer, "description_box") == 0){
                     sscanf(buffer,"description = \"%[^\"]\"",backpack.description[backpack_index]);
                     //getstring(buffer, &backpack.description[backpack_index]);
-                    printf("backpackdescription = %s\n", backpack.description[backpack_index]);
+                    // printf("backpackdescription = %s\n", backpack.description[backpack_index]);
                     backpack_index++;
                 }
             }
@@ -609,7 +597,7 @@ int main(){
                 //         }
                 //     }
                 // }
-                printf("%d\n", dialogue.string_number);
+                // printf("%d\n", dialogue.string_number);
             }
             if (string_index < dialogue.string_number){
                 if (strstr(buffer, "speaker") != 0){
@@ -618,12 +606,12 @@ int main(){
                     if (strcmp(dialogue.speaker[string_index], "me") == 0){
                         strncpy(dialogue.speaker[string_index], myname, strlen(myname));
                     }
-                    printf("%s\n", dialogue.speaker[string_index]);
+                    // printf("%s\n", dialogue.speaker[string_index]);
                 }
                 else if (strstr(buffer, "text") != 0){
                     sscanf(buffer,"text = \"%[^\"]\"",dialogue.text[string_index]);
                     //getstring(buffer, &dialogue.text[string_index]);
-                    printf("%s\n", dialogue.text[string_index]);
+                    // printf("%s\n", dialogue.text[string_index]);
                     string_index++;
                 }
             }
@@ -781,12 +769,12 @@ int main(){
             if (strstr(buffer, "object1") != 0){
                 sscanf(buffer,"object1 = \"%[^\"]\"",final_reply.object1);
                 //getstring(buffer, &final_reply.object1);
-                printf("%s\n", final_reply.object1);
+                // printf("%s\n", final_reply.object1);
             }
             else if (strstr(buffer, "option1") != 0){
                 sscanf(buffer,"option1 = \"%[^\"]\"",final_reply.option1);
                 //getstring(buffer, &final_reply.option1);
-                printf("option 1 = %s\n", final_reply.option1);
+                // printf("option 1 = %s\n", final_reply.option1);
             }
             else if (strstr(buffer, "change_favor1") != 0){
                 sscanf(buffer,"change_favor1 = %d",&final_reply.change_favor1);
@@ -806,7 +794,7 @@ int main(){
                 //         break;
                 //     }
                 // }
-                printf("%d\n", final_reply.change_favor1);
+                // printf("%d\n", final_reply.change_favor1);
             }
             else if (strstr(buffer, "favor_threshold1") != 0){
                 sscanf(buffer,"favor_threshold1 = %d",&final_reply.favor_threshold1);
@@ -824,27 +812,27 @@ int main(){
                 //         }
                 //     }
                 // }
-                printf("%d\n", final_reply.favor_threshold1);
+                // printf("%d\n", final_reply.favor_threshold1);
             }
             else if (strstr(buffer, "good_next1") != 0){
                 sscanf(buffer,"good_next1 = \"%[^\"]\"",final_reply.good_next1);
                 //getstring(buffer, &final_reply.good_next1);
-                printf("%s\n", final_reply.good_next1);
+                // printf("%s\n", final_reply.good_next1);
             }
             else if (strstr(buffer, "bad_next1") != 0){
                 sscanf(buffer,"bad_next1 = \"%[^\"]\"",final_reply.bad_next1);
                 //getstring(buffer, &final_reply.bad_next1);
-                printf("%s\n", final_reply.bad_next1);
+                // printf("%s\n", final_reply.bad_next1);
             }
             else if (strstr(buffer, "object2") != 0){
                 sscanf(buffer,"object2 = \"%[^\"]\"",final_reply.object2);
                 //getstring(buffer, &final_reply.object2);
-                printf("%s\n", final_reply.object2);
+                // printf("%s\n", final_reply.object2);
             }
             else if (strstr(buffer, "option2") != 0){
                 sscanf(buffer,"option2 = \"%[^\"]\"",final_reply.option2);
                 //getstring(buffer, &final_reply.option2);
-                printf("option2 = %s\n", final_reply.option2);
+                // printf("option2 = %s\n", final_reply.option2);
             }
             else if (strstr(buffer, "change_favor2") != 0){
                 sscanf(buffer,"change_favor2 = %d",&final_reply.change_favor2);
@@ -864,7 +852,7 @@ int main(){
                 //         break;
                 //     }
                 // }
-                printf("%d\n", final_reply.change_favor2);
+                // printf("%d\n", final_reply.change_favor2);
             }
             else if (strstr(buffer, "favor_threshold2") != 0){
                 sscanf(buffer,"favor_threshold2 = %d",&final_reply.favor_threshold2);
@@ -882,27 +870,27 @@ int main(){
                 //         }
                 //     }
                 // }
-                printf("%d\n", final_reply.favor_threshold2);
+                // printf("%d\n", final_reply.favor_threshold2);
             }
             else if (strstr(buffer, "good_next2") != 0){
                 sscanf(buffer,"good_next2 = \"%[^\"]\"",final_reply.good_next2);
                 //getstring(buffer, &final_reply.good_next2);
-                printf("%s\n", final_reply.good_next2);
+                // printf("%s\n", final_reply.good_next2);
             }
             else if (strstr(buffer, "bad_next2") != 0){
                 sscanf(buffer,"bad_next2 = \"%[^\"]\"",final_reply.bad_next2);
                 //getstring(buffer, &final_reply.bad_next2);
-                printf("%s\n", final_reply.bad_next2);
+                // printf("%s\n", final_reply.bad_next2);
             }
             else if (strstr(buffer, "object3") != 0){
                 sscanf(buffer,"object3 = \"%[^\"]\"",final_reply.object3);
                 //getstring(buffer, &final_reply.object3);
-                printf("%s\n", final_reply.object3);
+                // printf("%s\n", final_reply.object3);
             }
             else if (strstr(buffer, "option3") != 0){
                 sscanf(buffer,"option3 = \"%[^\"]\"",final_reply.option3);
                 //getstring(buffer, &final_reply.option3);
-                printf("option3 = %s\n", final_reply.option3);
+                // printf("option3 = %s\n", final_reply.option3);
             }
             else if (strstr(buffer, "change_favor3") != 0){
                 sscanf(buffer,"change_favor3 = %d",&final_reply.change_favor3);
@@ -922,7 +910,7 @@ int main(){
                 //         break;
                 //     }
                 // }
-                printf("%d\n", final_reply.change_favor3);
+                // printf("%d\n", final_reply.change_favor3);
             }
             else if (strstr(buffer, "favor_threshold3") != 0){
                 sscanf(buffer,"favor_threshold3 = %d",&final_reply.favor_threshold3);
@@ -940,17 +928,17 @@ int main(){
                 //         }
                 //     }
                 // }
-                printf("%d\n", final_reply.favor_threshold3);
+                // printf("%d\n", final_reply.favor_threshold3);
             }
             else if (strstr(buffer, "good_next3") != 0){
                 sscanf(buffer,"good_next3 = \"%[^\"]\"",final_reply.good_next3);
                 //getstring(buffer, &final_reply.good_next3);
-                printf("%s\n", final_reply.good_next3);
+                // printf("%s\n", final_reply.good_next3);
             }
             else if (strstr(buffer, "bad_next3") != 0){
                 sscanf(buffer,"bad_next3 = \"%[^\"]\"",final_reply.bad_next3);
                 //getstring(buffer, &final_reply.bad_next3);
-                printf("%s\n", final_reply.bad_next3);
+                // printf("%s\n", final_reply.bad_next3);
                 Backpack back;
                 for(int i=0;i<100;i++)
                 {
@@ -1022,9 +1010,10 @@ int main(){
                             object_number = i;
                             break;
                         }
-                        else if (object_number == -1){
-                            // wrong
-                        }
+                    }
+                    if (object_number == -1){
+                        printf("script error\n");
+                        return 0;
                     }
                     character[object_number].favor += final_reply.change_favor1;
                     if (character[object_number].favor > 100){
@@ -1063,9 +1052,10 @@ int main(){
                             object_number = i;
                             break;
                         }
-                        else if (object_number == -1){
-                            // wrong
-                        }
+                    }
+                    if (object_number == -1){
+                        printf("script error\n");
+                        return 0;
                     }
                     character[object_number].favor += final_reply.change_favor2;
                     if (character[object_number].favor > 100){
@@ -1104,9 +1094,10 @@ int main(){
                             object_number = i;
                             break;
                         }
-                        else if (object_number == -1){
-                            // wrong
-                        }
+                    }
+                    if (object_number == -1){
+                        printf("script error\n");
+                        return 0;
                     }
                     character[object_number].favor += final_reply.change_favor3;
                     if (character[object_number].favor > 100){
@@ -1164,19 +1155,19 @@ int main(){
                 for (int32_t i = 0; i < count_character; i++){
                     if (strcmp(reply.object, character[i].name) == 0){
                         object_number = i;
-                        printf("ooooo%d\n", object_number);
                         break;
                     }
                 }
                 if (object_number == -1){
-                    // wrong
+                    printf("script error\n");
+                    return 0;
                 }
-                printf("%s\n", reply.object);
+                // printf("%s\n", reply.object);
             }
             else if (strstr(buffer, "option1") != 0){
                 sscanf(buffer,"option1 = \"%[^\"]\"",reply.option1);
                 //getstring(buffer, &reply.option1);
-                printf("%s\n", reply.option1);
+                // printf("%s\n", reply.option1);
             }
             else if (strstr(buffer, "change_favor1") != 0){
                 sscanf(buffer,"change_favor1 = %d",&reply.change_favor1);
@@ -1196,17 +1187,17 @@ int main(){
                 //         break;
                 //     }
                 // }
-                printf("%d\n", reply.change_favor1);
+                // printf("%d\n", reply.change_favor1);
             }
             else if (strstr(buffer, "next1") != 0){
                 sscanf(buffer,"next1 = \"%[^\"]\"",reply.next1);
                 //getstring(buffer, &reply.next1);
-                printf("%s\n", reply.next1);
+                // printf("%s\n", reply.next1);
             }
             else if (strstr(buffer, "option2") != 0){
                 sscanf(buffer,"option2 = \"%[^\"]\"",reply.option2);
                 //getstring(buffer, &reply.option2);
-                printf("%s\n", reply.option2);
+                // printf("%s\n", reply.option2);
             }
             else if (strstr(buffer, "change_favor2") != 0){
                 sscanf(buffer,"change_favor2 = %d",&reply.change_favor2);
@@ -1226,17 +1217,17 @@ int main(){
                 //         break;
                 //     }
                 // }
-                printf("%d\n", reply.change_favor2);
+                // printf("%d\n", reply.change_favor2);
             }
             else if (strstr(buffer, "next2") != 0){
                 sscanf(buffer,"next2 = \"%[^\"]\"",reply.next2);
                 //getstring(buffer, &reply.next2);
-                printf("%s\n", reply.next2);
+                // printf("%s\n", reply.next2);
             }
             else if (strstr(buffer, "option3") != 0){
                 sscanf(buffer,"option3 = \"%[^\"]\"",reply.option3);
                 //getstring(buffer, &reply.option3);
-                printf("%s\n", reply.option3);
+                // printf("%s\n", reply.option3);
             }
             else if (strstr(buffer, "change_favor3") != 0){
                 sscanf(buffer,"change_favor3 = %d",&reply.change_favor3);
@@ -1256,12 +1247,12 @@ int main(){
                 //         break;
                 //     }
                 // }
-                printf("%d\n", reply.change_favor3);
+                // printf("%d\n", reply.change_favor3);
             }
             else if (strstr(buffer, "next3") != 0){
                 sscanf(buffer,"next3 = \"%[^\"]\"",reply.next3);
                 //getstring(buffer, &reply.next3);
-                printf("%s\n", reply.next3);
+                // printf("%s\n", reply.next3);
                 Backpack back;
                 for(int i=0;i<100;i++)
                 {
