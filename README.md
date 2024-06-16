@@ -32,7 +32,7 @@ https://github.com/cyucccx/CP2-final-project
 |   ├── main.c
 |   ├── script.toml
 |   └── simfang.ttf
-└── README
+└── README.md
 ```
 ## 基本功能
 支援場景、人物、物品、人物頭像、人物立繪、物品圖標、對話選項、支線劇情
