@@ -30,7 +30,6 @@ int main(){
     FILE *script = fopen("game/script.toml", "r");
     char buffer[500] = {0};
     char *project_name;
-    char *author;
     int32_t home = 0;
     int32_t select_character = 0;
     sSelect select;
@@ -87,12 +86,6 @@ int main(){
                 // wrong
             }
             printf("project name = %s\n", project_name);
-        }
-        else if (strstr(buffer, "author") != 0){
-            if (getstring(buffer, &author) == -1){
-                // wrong
-            }
-            printf("author = %s\n", author);
         }
         // read home
         if (strstr(buffer, "[home]") != 0){
