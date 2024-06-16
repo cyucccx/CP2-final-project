@@ -171,7 +171,7 @@ int main(){
                             sscanf(get, "max_character = %d", &max_character);
                         }
                         // read character
-                        if (small_index < count_character-1){
+                        if (small_index < count_character){
                             if (strstr(get, "name") != 0){
                                 sscanf(get, "name = %s", character[small_index].name);
                             }
@@ -437,6 +437,7 @@ int main(){
                     if (strcmp(temp, "me") == 0){
                         strncpy(temp, myname, strlen(myname));
                     }
+                    printf("44444400000 %d\n", count_character);
                     for (int32_t i = 0; i < count_character; i++){
                         if (strcmp(character[i].name, temp) == 0){
                             check = 1;
@@ -471,14 +472,15 @@ int main(){
                         strncpy(character[character_index].avatar, myavatar, strlen(myavatar));
                     }
                     if (check == 0){
-                        if (strcmp(character[character_index].avatar, "null") == 0){
-                            // switch to no photo function
-                        }
+                        // if (strcmp(character[character_index].avatar, "null") == 0){
+                        //     // switch to no photo function
+                        // }
                         count_character++;
                     }
                     printf("avatar = %s\n", character[character_index].avatar);
                     index--;
                 }
+                printf("444444000006666 %d\n", count_character);
             }
         }
         if (buffer[0] == '[' && buffer[1] == '[' && home == 0){
@@ -701,6 +703,25 @@ int main(){
                             {
                                 int end = SDL_no_choice_one_character_anime(scene.background,character[j].photo,dialogue.text[i],character[j].name,back,character[j].avatar);
                                 need_anime=0;
+                                if (end == 5 || end == 6){
+                                    FILE *save = fopen("save.txt", "wb");
+                                    fprintf(save, "myname = %s\n", myname);
+                                    fprintf(save, "myavatar = %s\n", myavatar);
+                                    fprintf(save, "count_character = %d\n", count_character);
+                                    fprintf(save, "max_character = %d\n", max_character);
+                                    for (int32_t i = 0; i < count_character; i++){
+                                        fprintf(save, "name = %s\n", character[i].name);
+                                        fprintf(save, "photo = %s\n", character[i].photo);
+                                        fprintf(save, "avatar = %s\n", character[i].avatar);
+                                        fprintf(save, "favor = %d\n", character[i].favor);
+                                    }
+                                    fprintf(save, "scene_name = %s\n", scene.name);
+                                    fprintf(save, "scene_background = %s\n", scene.background);
+                                    fprintf(save, "scene_character_number = %d\n", scene.character_number);
+                                    fprintf(save, "scene_dialogue = %d\n", scene.dialogue);
+                                    fprintf(save, "scene_reply = %d\n", scene.reply);
+                                    fprintf(save, "scene_backpack = %d\n", scene.backpack);
+                                }
                                 if(end==4 || end == 6)
                                 {
                                     SDL_DestroyRenderer(screen);
@@ -1361,7 +1382,6 @@ int main(){
                                 strcpy(search_event, reply.next3);
                             }
                             else if (end == 5 || end == 6){
-                                printf("1380\n");
                                 FILE *save = fopen("save.txt", "wb");
                                 fprintf(save, "myname = %s\n", myname);
                                 fprintf(save, "myavatar = %s\n", myavatar);
