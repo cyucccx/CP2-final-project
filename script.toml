@@ -2,8 +2,10 @@ project_name = "Final Project"
 author = "宋品頤"
 
 [home]
+bgm = "../assets/music/bgm1.mp3"
 background = "../assets/home/menu.png"
 button = "../assets/home/start.png"
+button_load = "../assets/home/load.png"
 max_character = 15
 
 [select_character]
