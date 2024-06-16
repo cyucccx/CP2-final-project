@@ -1,5 +1,4 @@
 project_name = "Final Project"
-author = "宋品頤"
 
 [home]
 bgm = "assets/music/bgm1.mp3"
@@ -35,9 +34,6 @@ avatar = "me_avatar"
 name = "旁白"
 photo = "null"
 avatar = "null"
-
-[[chi_1_start.backpack]]
-items_number = 0
 
 [[chi_1_start.dialogue]]
 string_number = 6
@@ -80,9 +76,6 @@ name = "旁白"
 photo = "null"
 avatar = "null"
 
-[[chi_1_bad.backpack]]
-items_number = 0
-
 [[chi_1_bad.dialogue]]
 string_number = 3
 speaker = "me"
@@ -105,9 +98,6 @@ avatar = "me_avatar"
 name = "旁白"
 photo = "null"
 avatar = "null"
-
-[[chi_1_normal.backpack]]
-items_number = 0
 
 [[chi_1_normal.dialogue]]
 string_number = 3
@@ -132,9 +122,6 @@ name = "旁白"
 photo = "null"
 avatar = "null"
 
-[[chi_1_good.backpack]]
-items_number = 0
-
 [[chi_1_good.dialogue]]
 string_number = 3
 speaker = "me"
@@ -154,9 +141,6 @@ avatar = "me_avatar"
 name = "旁白"
 photo = "null"
 avatar = "null"
-
-[[chi_1_end.backpack]]
-items_number = 0
 
 [[chi_1_end.dialogue]]
 string_number = 8
