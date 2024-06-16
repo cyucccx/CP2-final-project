@@ -50,7 +50,6 @@ int SDL_sellcet_screen(char *character_image1,char *character_image2,char *chara
 
 
 typedef struct select{
-    char *background;
     char *name1;
     char *name2;
     char *name3;
@@ -66,7 +65,6 @@ void free_select(sSelect *input);
 typedef struct scene{
     char name[100];
     char background[100];
-    char backpack_icon[100];
     int32_t character_number;
     int32_t dialogue;
     int32_t reply;
@@ -74,7 +72,6 @@ typedef struct scene{
 }sScene;
 
 typedef struct dialogue{
-    char dialog_box[1000];
     int32_t string_number;
     char speaker[250][10000];
     char text[250][10000];
@@ -82,7 +79,6 @@ typedef struct dialogue{
 }sDialogue;
 
 typedef struct reply{
-    char option_box[100];
     char object[100];
     char option1[100];
     char next1[100];
@@ -96,7 +92,6 @@ typedef struct reply{
 }sReply;
 
 typedef struct final_reply{
-    char option_box[100];
     char object1[100];
     char option1[100];
     char good_next1[100];

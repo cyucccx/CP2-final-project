@@ -37,12 +37,10 @@ int main(){
     char myname[100] = {0};
     char myavatar[100] = {0};
     char *home_background = 0;
-    char *home_button = 0;
     int32_t max_character = 0; // create an array to store the favor of every character
     sScene scene;
     scene.name;
     scene.background;
-    scene.backpack_icon;
     scene.reply = 0;
     // allocate_scene(&scene);
     sCharacter character[16];
@@ -53,12 +51,12 @@ int main(){
     sReply reply;
     //allocate_reply(&reply);
     sFinalReply final_reply;
-    final_reply.option_box;
     sBackpack backpack;
     //allocate_backpack(&backpack);
     int32_t string_index = 0;
     int32_t backpack_index = 0;
     char search_event[1000]={0};
+    char *home_music = 0;
     int32_t check = 0;
     int32_t character_index = 0;
     int32_t need_anime = 1;
@@ -73,6 +71,11 @@ int main(){
     //compare = calloc(100, sizeof(char));
     window = SDL_CreateWindow( "fin_project", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN );
     screen = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+    Mix_Chunk* bgm2;
+    int channel;
+    // Mix_Music* bgm = Mix_LoadMUS("y2300.mp3");
+    // Mix_PlayMusic(bgm, -1);
     while(fgets(buffer, 500, script) != 0){
         if (strcmp(buffer, "\n") == 0 && home == 1){
             home = 0;
@@ -98,17 +101,20 @@ int main(){
         }
         if (home == 1){
             // printf("%s", buffer);
-            if (home_background == 0){
+            if (home_music == 0){
+                if (getstring(buffer, &home_music) == -1){
+                    // wrong
+                }
+                printf("home_music = %s\n", home_music);
+                bgm2 = Mix_LoadWAV(home_music);
+                channel = Mix_PlayChannel(-1, bgm2, -1);
+                Mix_VolumeChunk(bgm2, MIX_MAX_VOLUME / 3); // 设置为最大音量的一半
+            }
+            else if (home_background == 0){
                 if (getstring(buffer, &home_background) == -1){
                     // wrong
                 }
                 printf("home_background = %s\n", home_background);
-            }
-            else if (home_button == 0){
-                if (getstring(buffer, &home_button) == -1){
-                    // wrong
-                }
-                printf("home_button = %s\n", home_button);
             }
             else if (max_character == 0){
                 if (strstr(buffer, "max_character") != 0){
@@ -139,25 +145,74 @@ int main(){
                     // }
                 }
                 printf("max_character = %d\n", max_character);
-                int end =SDL_main_screen(home_background,home_button,home_button,120,460,220,90);
-                if(end==4 || end == 6)
+                int end =SDL_main_screen(home_background,"../assets/home/start.png","../assets/home/load.png",120,460,220,90);
+                if(end==4)
                 {
                     SDL_DestroyRenderer(screen);
                     SDL_DestroyWindow(window);
                     SDL_Quit();
                     return 0;
                 }
-                if (end == 5 || end == 6){
-                    FILE *save = fopen("save.txt", "wb");
-                    printf("%s\n", buffer);
+                else if (end == 7){
+                    FILE *load = fopen("save.txt", "rb");
+                    char get[100] = {0};
+                    int32_t small_index = 0;
+                    while(fgets(get, 100, load) != 0){
+                        if (strstr(get, "myname") != 0){
+                            sscanf(get, "myname = %s", myname);
+                        }
+                        else if (strstr(get, "myavatar") != 0){
+                            sscanf(get, "myavatar = %s", myavatar);
+                        }
+                        else if (strstr(get, "count_character") != 0){
+                            sscanf(get, "count_character = %d", &count_character);
+                        }
+                        else if (strstr(get, "max_character") != 0){
+                            sscanf(get, "max_character = %d", &max_character);
+                        }
+                        // read character
+                        if (small_index < count_character-1){
+                            if (strstr(get, "name") != 0){
+                                sscanf(get, "name = %s", character[small_index].name);
+                            }
+                            else if (strstr(get, "photo") != 0){
+                                sscanf(get, "photo = %s", character[small_index].photo);
+                            }
+                            else if (strstr(get, "avatar") != 0){
+                                sscanf(get, "avatar = %s", character[small_index].avatar);
+                            }
+                            else if (strstr(get, "favor") != 0){
+                                sscanf(get, "favor = %d", &character[small_index].favor);
+                                small_index++;
+                            }
+                        }
+                        // read event
+                        if (strstr(get, "scene_name") != 0){
+                            sscanf(get, "scene_name = %s", scene.name);
+                        }
+                        else if (strstr(get, "scene_backgroun") != 0){
+                            sscanf(get, "scene_backgroun = %s", scene.background);
+                        }
+                        else if (strstr(get, "scene_character_number") != 0){
+                            sscanf(get, "scene_character_number = %d", &scene.character_number);
+                        }
+                        else if (strstr(get, "scene_dialogue") != 0){
+                            sscanf(get, "scene_dialogue = %d", &scene.dialogue);
+                        }
+                        else if (strstr(get, "scene_reply") != 0){
+                            sscanf(get, "scene_reply = %d", &scene.reply);
+                        }
+                        else if (strstr(get, "scene_backpack") != 0){
+                            sscanf(get, "scene_backpack = %d", &scene.backpack);
+                        }
+                    }
+                    strncpy(search_event, scene.name, strlen(scene.name));
                 }
             }
         }
-        
         // read select character
-        if (strstr(buffer, "[select_character]") != 0 && home == 0){
+        if (strstr(buffer, "[select_character]") != 0 && home == 0 && strlen(myname) == 0){
             select_character = 1;
-            select.background = NULL;
             select.name1 = NULL;
             select.name2 = NULL;
             select.name3 = NULL;
@@ -170,13 +225,8 @@ int main(){
             select.avatar5 = NULL;
             continue;
         }
-        if (select_character == 1){
-            if (select.background == NULL && strstr(buffer, "background") != 0){
-                select.background = calloc(100, sizeof(char));
-                sscanf(buffer, "background = \"%[^\"]\"", select.background);
-                printf("%s\n", select.background);
-            }
-            else if (avatar_choose1[0] == 0 && strstr(buffer, "avatar_choose1") != 0){
+        if (select_character == 1 && strlen(myname) == 0){
+            if (avatar_choose1[0] == 0 && strstr(buffer, "avatar_choose1") != 0){
                 sscanf(buffer, "avatar_choose1 = \"%[^\"]\"", avatar_choose1);
                 printf("%s\n", avatar_choose1);
             }
@@ -301,7 +351,6 @@ int main(){
                 {
                     scene.background[i]=0;
                     scene.name[i]=0;
-                    scene.backpack_icon[i]=0;
                 }
                 scene.dialogue=0;scene.character_number=0;scene.reply=0;scene.backpack=0;
                 char *end = strstr(buffer, "]");
@@ -337,7 +386,6 @@ int main(){
             {
                 scene.background[i]=0;
                 scene.name[i]=0;
-                scene.backpack_icon[i]=0;
             }
             scene.dialogue=0;scene.character_number=0;scene.reply=0;scene.backpack=0;
             char *end = strstr(buffer, "]");
@@ -362,13 +410,6 @@ int main(){
                     }
                     
                     printf("scene.background = %s\n", scene.background);
-                }
-            }
-            if (scene.backpack_icon != 0){
-                if (strstr(buffer, "backpack_icon") != 0){
-                    sscanf(buffer,"backpack_icon = \"%[^\"]\"",scene.backpack_icon);
-                    //getstring(buffer, &scene.backpack_icon);
-                    printf("scene.backpack_icon = %s\n", scene.backpack_icon);
                 }
             }
             if (scene.character_number == 0){
@@ -450,7 +491,6 @@ int main(){
                     // }
                     for(int i=0;i<1000;i++)
                     {
-                        dialogue.dialog_box[i]=0;
                         dialogue.next[i]=0;
                     }
                     dialogue.string_number=0;
@@ -470,7 +510,6 @@ int main(){
                     // }
                     for(int i=0;i<100;i++)
                     {
-                        reply.option_box[i]=0;
                         reply.object[i]=0;
                         reply.option1[i]=0;
                         reply.next1[i]=0;
@@ -555,11 +594,6 @@ int main(){
 
         // read dialogue
         if (scene.dialogue == 1){
-            if (strstr(buffer, "dialog_box") != 0){
-                sscanf(buffer,"dialog_box = \"%[^\"]\"",dialogue.dialog_box);
-                //getstring(buffer, &dialogue.dialog_box);
-                printf("%s\n", dialogue.dialog_box);
-            }
             if (strstr(buffer, "string_number") != 0){
                 sscanf(buffer,"string_number = %d",&dialogue.string_number);
                 // char *start = strstr(buffer, "=");
@@ -678,16 +712,31 @@ int main(){
                             else
                             {
                                 int end = SDL_no_choice_one_character(scene.background,character[j].photo,dialogue.text[i],character[j].name,back,character[j].avatar);
+                                if (end == 5 || end == 6){
+                                    FILE *save = fopen("save.txt", "wb");
+                                    fprintf(save, "myname = %s\n", myname);
+                                    fprintf(save, "myavatar = %s\n", myavatar);
+                                    fprintf(save, "count_character = %d\n", count_character);
+                                    fprintf(save, "max_character = %d\n", max_character);
+                                    for (int32_t i = 0; i < count_character; i++){
+                                        fprintf(save, "name = %s\n", character[i].name);
+                                        fprintf(save, "photo = %s\n", character[i].photo);
+                                        fprintf(save, "avatar = %s\n", character[i].avatar);
+                                        fprintf(save, "favor = %d\n", character[i].favor);
+                                    }
+                                    fprintf(save, "scene_name = %s\n", scene.name);
+                                    fprintf(save, "scene_background = %s\n", scene.background);
+                                    fprintf(save, "scene_character_number = %d\n", scene.character_number);
+                                    fprintf(save, "scene_dialogue = %d\n", scene.dialogue);
+                                    fprintf(save, "scene_reply = %d\n", scene.reply);
+                                    fprintf(save, "scene_backpack = %d\n", scene.backpack);
+                                }
                                 if(end==4 || end == 6)
                                 {
                                     SDL_DestroyRenderer(screen);
                                     SDL_DestroyWindow(window);
                                     SDL_Quit();
                                     return 0;
-                                }
-                                if (end == 5 || end == 6){
-                                    FILE *save = fopen("save.txt", "wb");
-                                    printf("%s\n\n", buffer);
                                 }
                             }
                         }
@@ -715,12 +764,7 @@ int main(){
             // if (final_reply.option_box == NULL){
             //     //allocate_FinalReply(&final_reply);
             // }
-            if (strstr(buffer, "option_box") != 0){
-                sscanf(buffer,"option_box = \"%[^\"]\"",final_reply.option_box);
-                //getstring(buffer, &final_reply.option_box);
-                printf("special = %s\n", final_reply.option_box);
-            }
-            else if (strstr(buffer, "object1") != 0){
+            if (strstr(buffer, "object1") != 0){
                 sscanf(buffer,"object1 = \"%[^\"]\"",final_reply.object1);
                 //getstring(buffer, &final_reply.object1);
                 printf("%s\n", final_reply.object1);
@@ -948,6 +992,7 @@ int main(){
                     strcpy(back.note_message,backpack.description[1]);
                     strcpy(back.ticket_message,backpack.description[2]);
                 }
+                
                 int end = SDL_choice_one_character(scene.background,"NULL",final_reply.option1,final_reply.option2,final_reply.option3," ",back);
                 if(end==4 || end == 6)
                 {
@@ -980,6 +1025,10 @@ int main(){
                             search_event[i]=0;
                         }
                         strcpy(search_event, final_reply.good_next1);
+                        Mix_Pause(channel);
+                        Mix_Chunk* bgm = Mix_LoadWAV("../assets/music/goodend.mp3");
+                        Mix_VolumeChunk(bgm, MIX_MAX_VOLUME / 3);
+                        Mix_PlayChannel(-1,bgm, -1);
                     }
                     else{
                         for(int i=0;i<1000;i++)
@@ -987,6 +1036,10 @@ int main(){
                             search_event[i]=0;
                         }
                         strcpy(search_event, final_reply.bad_next1);
+                        Mix_Pause(channel);
+                        Mix_Chunk* bgm = Mix_LoadWAV("../assets/music/badend.mp3");
+                        Mix_VolumeChunk(bgm, MIX_MAX_VOLUME / 3);
+                        Mix_PlayChannel(-1,bgm, -1);
                     }
                 }
                 else if (end == 2){
@@ -1013,6 +1066,10 @@ int main(){
                             search_event[i]=0;
                         }
                         strcpy(search_event, final_reply.good_next2);
+                        Mix_Pause(channel);
+                        Mix_Chunk* bgm = Mix_LoadWAV("../assets/music/goodend.mp3");
+                        Mix_VolumeChunk(bgm, MIX_MAX_VOLUME / 3);
+                        Mix_PlayChannel(-1,bgm, -1);
                     }
                     else{
                         for(int i=0;i<1000;i++)
@@ -1020,6 +1077,10 @@ int main(){
                             search_event[i]=0;
                         }
                         strcpy(search_event, final_reply.bad_next2);
+                        Mix_Pause(channel);
+                        Mix_Chunk* bgm = Mix_LoadWAV("../assets/music/badend.mp3");
+                        Mix_VolumeChunk(bgm, MIX_MAX_VOLUME / 3);
+                        Mix_PlayChannel(-1,bgm, -1);
                     }
                 }
                 else if (end == 3){
@@ -1046,6 +1107,10 @@ int main(){
                             search_event[i]=0;
                         }
                         strcpy(search_event, final_reply.good_next3);
+                        Mix_Pause(channel);
+                        Mix_Chunk* bgm = Mix_LoadWAV("../assets/music/goodend.mp3");
+                        Mix_VolumeChunk(bgm, MIX_MAX_VOLUME / 3);
+                        Mix_PlayChannel(-1,bgm, -1);
                     }
                     else{
                         for(int i=0;i<1000;i++)
@@ -1053,6 +1118,10 @@ int main(){
                             search_event[i]=0;
                         }
                         strcpy(search_event, final_reply.bad_next3);
+                        Mix_Pause(channel);
+                        Mix_Chunk* bgm = Mix_LoadWAV("../assets/music/badend.mp3");
+                        Mix_VolumeChunk(bgm, MIX_MAX_VOLUME / 3);
+                        Mix_PlayChannel(-1,bgm, -1);
                     }
                 }
                 last_scene = 1;
@@ -1074,12 +1143,7 @@ int main(){
             }
         }
         if (scene.reply == 1 && strcmp(scene.name, "final_event") != 0){
-            if (strstr(buffer, "option_box") != 0){
-                sscanf(buffer,"option_box = \"%[^\"]\"",reply.option_box);
-                //getstring(buffer, &reply.option_box);
-                printf("%s\n", reply.option_box);
-            }
-            else if (strstr(buffer, "object") != 0){
+            if (strstr(buffer, "object") != 0){
                 sscanf(buffer,"object = \"%[^\"]\"",reply.object);
                 //getstring(buffer, &reply.object);
                 object_number = -1;
@@ -1295,7 +1359,26 @@ int main(){
                                     search_event[i]=0;
                                 }
                                 strcpy(search_event, reply.next3);
-                                
+                            }
+                            else if (end == 5 || end == 6){
+                                printf("1380\n");
+                                FILE *save = fopen("save.txt", "wb");
+                                fprintf(save, "myname = %s\n", myname);
+                                fprintf(save, "myavatar = %s\n", myavatar);
+                                fprintf(save, "count_character = %d\n", count_character);
+                                fprintf(save, "max_character = %d\n", max_character);
+                                for (int32_t i = 0; i < count_character; i++){
+                                    fprintf(save, "name = %s\n", character[i].name);
+                                    fprintf(save, "photo = %s\n", character[i].photo);
+                                    fprintf(save, "avatar = %s\n", character[i].avatar);
+                                    fprintf(save, "favor = %d\n", character[i].favor);
+                                }
+                                fprintf(save, "scene_name = %s\n", scene.name);
+                                fprintf(save, "scene_background = %s\n", scene.background);
+                                fprintf(save, "scene_character_number = %d\n", scene.character_number);
+                                fprintf(save, "scene_dialogue = %d\n", scene.dialogue);
+                                fprintf(save, "scene_reply = %d\n", scene.reply);
+                                fprintf(save, "scene_backpack = %d\n", scene.backpack);
                             }
                         }
                     }
@@ -1309,5 +1392,6 @@ int main(){
             }
         }
     }
+    Mix_CloseAudio();
     fclose(script);
 }
